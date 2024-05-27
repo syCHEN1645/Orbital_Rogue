@@ -6,11 +6,13 @@ public class PlayerInput : MonoBehaviour
 {
     public Animator animator;
     public float groundCheckDistance = 0.1f;
+    public float wallRaycastDistance = 0.1f;
     public ContactFilter2D groundCheckFilter;
 
     private Rigidbody2D rb;
     private Collider2D collider2d;
     private List<RaycastHit2D> groundHits = new List<RaycastHit2D>();
+    private List<RaycastHit2D> wallHits = new List<RaycastHit2D>();
     // Start is called before the first frame update
     void Start()
     {
@@ -37,6 +39,9 @@ public class PlayerInput : MonoBehaviour
             animator.SetTrigger(PAP.landedOnGround);
         }
 
+        bool onWall = CheckIfOnWall();
+        animator.SetBool(PAP.isOnWall, onWall);
+
         bool isJumpKeyPressed = Input.GetButtonDown(PAP.jumpKeyName);
 
         if(isJumpKeyPressed){
@@ -62,12 +67,32 @@ public class PlayerInput : MonoBehaviour
             animator.SetFloat(PAP.impulseY, 0);
             animator.SetFloat(PAP.impulseX, 0);  
         }
+
+        animator.SetFloat(PAP.velocityY, rb.velocity.y);
+
+        bool isStopVelocity = animator.GetBool(PAP.stopVelocity);
+
+        if (isStopVelocity) {
+            rb.velocity = Vector2.zero;
+            animator.SetBool(PAP.stopVelocity, false);
+        }
     }
 
     bool CheckIfOnGround() {
         collider2d.Cast(Vector2.down, groundCheckFilter, groundHits, groundCheckDistance);
 
         if(groundHits.Count > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    bool CheckIfOnWall() {
+        Vector2 localScale = transform.localScale;
+
+        collider2d.Raycast(Mathf.Sign(localScale.x) * Vector2.right, groundCheckFilter, wallHits, wallRaycastDistance);
+
+        if(wallHits.Count > 0) {
             return true;
         } else {
             return false;

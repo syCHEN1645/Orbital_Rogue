@@ -122,6 +122,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 0}
+  groundCheckDistance: 0.1
+  wallRaycastDistance: 0.6
+  groundCheckFilter:
+    useTriggers: 0
+    useLayerMask: 0
+    useDepth: 0
+    useOutsideDepth: 0
+    useNormalAngle: 0
+    useOutsideNormalAngle: 0
+    layerMask:
+      serializedVersion: 2
+      m_Bits: 0
+    minDepth: 0
+    maxDepth: 0
+    minNormalAngle: 0
+    maxNormalAngle: 0
 --- !u!50 &4065359511836550195
 Rigidbody2D:
   serializedVersion: 4
@@ -181,6 +197,6 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.028581798, y: 0.7025275}
-  m_Size: {x: 0.89564764, y: 1.2817011}
+  m_Offset: {x: -0.01843381, y: 0.7025275}
+  m_Size: {x: 0.73328066, y: 1.2817011}
   m_Direction: 0
