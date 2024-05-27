@@ -4,7 +4,7 @@
 public static class PAP {
     public const string moveX = "moveX";
     public const string isMoving = "isMoving";
-    
+    public const string isAttacking = "isAttacking";
     public const string forceX = "forceX";
     public const string impulseX = "impulseX";
     public const string impulseY = "impulseY";

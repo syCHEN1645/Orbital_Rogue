@@ -49,6 +49,11 @@ public class PlayerInput : MonoBehaviour
         } else {
             animator.ResetTrigger(PAP.JumpTriggerName);
         }
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            animator.SetBool(PAP.isAttacking, true);
+        }
     }
 
     void FixedUpdate() {
@@ -97,5 +102,10 @@ public class PlayerInput : MonoBehaviour
         } else {
             return false;
         }
+    }
+
+    public void endAttack()
+    {
+        animator.SetBool(PAP.isAttacking, false);
     }
 }
