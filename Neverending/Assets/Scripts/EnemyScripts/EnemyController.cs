@@ -6,31 +6,47 @@ using UnityEngine;
 public class EnemyController : MonoBehaviour
 {
     public Animator animator;
+    public EnemyGroundSensor groundSensor;
+    public EnemyLeftSensor leftSensor;
     private Rigidbody2D rb;
     private Collider2D collider2d;
     private Vector2 originalPosition;
-    private float patrolRange = 5.0f;
+    private GameObject player;
+    private float patrolRange = 10.0f;
     private float speed = 1.0f;
     // dir: enemy is facing this direction: l-left, r-right.
     private char dir;
-
-    // private Sensor_Bandit       m_groundSensor;
-    // Start is called before the first frame update
+    // hitWall: banging into a wall
+    private float health;
+    private float attack;
+    private float defence;
     void Start()
     {
         rb = GetComponent<Rigidbody2D> ();
         collider2d = GetComponent<Collider2D>();
+        player = GameObject.Find("Player");
         originalPosition = transform.position;
         // m_groundSensor = transform.Find("GroundSensor").GetComponent<Sensor_Bandit>();
         // set initial dir being left
         animator.transform.localScale = new Vector3(-1, 1, 1);
         dir = 'l';
+        // set health, attack, defence
+        // hitpoint = attacker's attack * defender's defence
+        // health -= hitpoint
+        health = 10.0f;
+        attack = 5.0f;
+        defence = 0.05f;
     }
 
     // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {
         Patrol();
+    }
+
+
+    void Attack() {
+        animator.SetTrigger("attack");
     }
 
     // run
@@ -63,11 +79,24 @@ public class EnemyController : MonoBehaviour
             MoveLeft();
         } else {
             // within boundary, move in current dir
-            if (dir == 'l') {
-                MoveLeft();
-            } else if (dir == 'r') {
-                MoveRight();
+            // if blocked, change dir
+            if (leftSensor.IsBlocked()) {
+                ChangeDir();
+            } else {
+                if (dir == 'l') {
+                    MoveLeft();
+                } else if (dir == 'r') {
+                    MoveRight();
+                }
             }
+        }
+    }
+
+    private void ChangeDir() {
+        if (dir == 'l') {
+            MoveRight();
+        } else if (dir == 'r') {
+            MoveLeft();
         }
     }
 }
