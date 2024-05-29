@@ -8,7 +8,7 @@ public class PlayerInput : MonoBehaviour
     public float groundCheckDistance = 0.1f;
     public float wallRaycastDistance = 0.1f;
     public ContactFilter2D groundCheckFilter;
-
+    public PlayerAttack playerAttack;
     private Rigidbody2D rb;
     private Collider2D collider2d;
     private List<RaycastHit2D> groundHits = new List<RaycastHit2D>();
@@ -18,6 +18,7 @@ public class PlayerInput : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D> ();
         collider2d = GetComponent<Collider2D>();
+        playerAttack = GetComponent<PlayerAttack>();
     }
 
     // Update is called once per frame
@@ -50,9 +51,13 @@ public class PlayerInput : MonoBehaviour
             animator.ResetTrigger(PAP.JumpTriggerName);
         }
 
+        // attack
         if (Input.GetMouseButtonDown(0))
         {
             animator.SetBool(PAP.isAttacking, true);
+            //
+            GameObject enemy = GameObject.FindGameObjectWithTag("Enemy");
+            playerAttack.DealDamage(enemy.GetComponent<EnemyHealth>());
         }
     }
 

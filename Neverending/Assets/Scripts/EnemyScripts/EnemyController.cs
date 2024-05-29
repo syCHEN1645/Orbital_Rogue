@@ -12,19 +12,18 @@ public class EnemyController : MonoBehaviour
     private Collider2D collider2d;
     private Vector2 originalPosition;
     private GameObject player;
+    private EnemyHealth enemyHealth;
     private float patrolRange = 10.0f;
     private float speed = 1.0f;
     // dir: enemy is facing this direction: l-left, r-right.
     private char dir;
     // hitWall: banging into a wall
-    private float health;
-    private float attack;
-    private float defence;
     void Start()
     {
         rb = GetComponent<Rigidbody2D> ();
         collider2d = GetComponent<Collider2D>();
         player = GameObject.Find("Player");
+        enemyHealth = gameObject.GetComponent<EnemyHealth>();
         originalPosition = transform.position;
         // m_groundSensor = transform.Find("GroundSensor").GetComponent<Sensor_Bandit>();
         // set initial dir being left
@@ -33,20 +32,39 @@ public class EnemyController : MonoBehaviour
         // set health, attack, defence
         // hitpoint = attacker's attack * defender's defence
         // health -= hitpoint
-        health = 10.0f;
-        attack = 5.0f;
-        defence = 0.05f;
+        // health is managed in HealthBar
     }
 
     // Update is called once per frame
     void LateUpdate()
     {
-        Patrol();
+        if (enemyHealth.IsDead()) {
+            Die();
+        } else {
+            Patrol();
+        }
     }
 
 
     void Attack() {
         animator.SetTrigger("attack");
+    }
+
+    private void Injure(float attack) {
+        animator.SetTrigger("Hurt");
+        enemyHealth.TakeDamage(attack);
+    }
+
+    private void Die() {
+        // animate death
+        animator.SetTrigger("Death");
+        bodyDisappear();
+    }
+
+    private IEnumerator bodyDisappear() {
+        // wait for 2 seconds then body will disappear.
+        yield return new WaitForSeconds(2);
+        Destroy(gameObject);
     }
 
     // run
@@ -99,4 +117,6 @@ public class EnemyController : MonoBehaviour
             MoveLeft();
         }
     }
+
+
 }

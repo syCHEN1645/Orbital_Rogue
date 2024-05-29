@@ -264,12 +264,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 643256113}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.016, y: 1.327, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.015999794, y: 1.3270001, z: 0}
   m_LocalScale: {x: 0.5, y: 0.06, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1872419322}
+  m_Father: {fileID: 760345091}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &643256115
 SpriteRenderer:
@@ -323,6 +323,51 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &760345089
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 760345091}
+  - component: {fileID: 760345090}
+  m_Layer: 0
+  m_Name: EnemyHealth
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &760345090
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 760345089}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94dce14e179272e48b286f92b12544cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &760345091
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 760345089}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 643256114}
+  m_Father: {fileID: 1872419322}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1295202835 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3224234830742576214, guid: 8293b9d746983ee4f91617fb983b4307, type: 3}
@@ -685,11 +730,28 @@ MonoBehaviour:
   m_CameraActivatedEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!1 &1872419316 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2803625761381486305, guid: 8293b9d746983ee4f91617fb983b4307, type: 3}
+  m_PrefabInstance: {fileID: 1684995502390319387}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1872419322 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1428656775803472740, guid: 8293b9d746983ee4f91617fb983b4307, type: 3}
   m_PrefabInstance: {fileID: 1684995502390319387}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1872419323
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1872419316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94dce14e179272e48b286f92b12544cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2042686205
 GameObject:
   m_ObjectHideFlags: 0
@@ -1777,6 +1839,10 @@ PrefabInstance:
       value: EnemyLight
       objectReference: {fileID: 0}
     - target: {fileID: 3454403849257570053, guid: 8293b9d746983ee4f91617fb983b4307, type: 3}
+      propertyPath: enemyHealth
+      value: 
+      objectReference: {fileID: 760345090}
+    - target: {fileID: 3454403849257570053, guid: 8293b9d746983ee4f91617fb983b4307, type: 3}
       propertyPath: groundSensor
       value: 
       objectReference: {fileID: 1295202835}
@@ -1785,8 +1851,11 @@ PrefabInstance:
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 1428656775803472740, guid: 8293b9d746983ee4f91617fb983b4307, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 643256114}
-    m_AddedComponents: []
+      addedObject: {fileID: 760345091}
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2803625761381486305, guid: 8293b9d746983ee4f91617fb983b4307, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1872419323}
   m_SourcePrefab: {fileID: 100100000, guid: 8293b9d746983ee4f91617fb983b4307, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
