@@ -55,7 +55,7 @@ public class PlayerInput : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             animator.SetBool(PAP.isAttacking, true);
-            //
+            // attack sample enemy
             GameObject enemy = GameObject.FindGameObjectWithTag("Enemy");
             playerAttack.DealDamage(enemy.GetComponent<EnemyHealth>());
         }

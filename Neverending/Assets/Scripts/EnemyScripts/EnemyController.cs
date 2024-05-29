@@ -39,32 +39,34 @@ public class EnemyController : MonoBehaviour
     void LateUpdate()
     {
         if (enemyHealth.IsDead()) {
-            Die();
+            Die();        
+            StartCoroutine(bodyDisappear());
         } else {
             Patrol();
         }
     }
 
 
-    void Attack() {
+    public void Attack() {
         animator.SetTrigger("attack");
     }
 
-    private void Injure(float attack) {
+    public void Injure() {
         animator.SetTrigger("Hurt");
-        enemyHealth.TakeDamage(attack);
     }
 
-    private void Die() {
+    public void Die() {
         // animate death
         animator.SetTrigger("Death");
-        bodyDisappear();
     }
 
     private IEnumerator bodyDisappear() {
         // wait for 2 seconds then body will disappear.
         yield return new WaitForSeconds(2);
+        // remove sprite
         Destroy(gameObject);
+        // remove health bar
+        Destroy(enemyHealth.healthBar);
     }
 
     // run
