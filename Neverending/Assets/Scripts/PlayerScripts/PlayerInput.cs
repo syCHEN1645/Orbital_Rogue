@@ -51,8 +51,8 @@ public class PlayerInput : MonoBehaviour
             animator.ResetTrigger(PAP.JumpTriggerName);
         }
 
-        // attack
-        if (Input.GetMouseButtonDown(0))
+        // attack "J"
+        if (Input.GetKeyDown(KeyCode.J))
         {
             animator.SetBool(PAP.isAttacking, true);
             // attack sample enemy
