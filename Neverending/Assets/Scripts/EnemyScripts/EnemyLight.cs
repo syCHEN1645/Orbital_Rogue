@@ -15,9 +15,13 @@ public class EnemyLight : MonoBehaviour
     private EnemyHealth enemyHealth;
     private float patrolRange = 10.0f;
     private float speed = 1.0f;
+    private float attack = 15.0f;
+    private float attackRange = 1.0f;
+    // attackInterval: time interval between attacks
+    private float attackInterval = 1.0f;
+    private bool isAttacking = false;
     // dir: enemy is facing this direction: l-left, r-right.
     private char dir;
-    // hitWall: banging into a wall
     void Start()
     {
         rb = GetComponent<Rigidbody2D> ();
@@ -36,19 +40,23 @@ public class EnemyLight : MonoBehaviour
     }
 
     // Update is called once per frame
-    void LateUpdate()
+    void Update()
     {
         if (enemyHealth.IsDead()) {
             Die();        
             StartCoroutine(bodyDisappear());
         } else {
-            Patrol();
+            if (WithinAttackRange() && !isAttacking) {
+                StartCoroutine(AttackPlayer());
+            } else {
+                Patrol();
+            }
         }
     }
 
 
     public void Attack() {
-        animator.SetTrigger("attack");
+        animator.SetTrigger("Attack");
     }
 
     public void Injure() {
@@ -118,5 +126,15 @@ public class EnemyLight : MonoBehaviour
         }
     }
 
+    private IEnumerator AttackPlayer() {
+        isAttacking = true;
+        Attack();
+        player.GetComponent<PlayerHealth>().TakeDamage(attack);
+        yield return new WaitForSeconds(attackInterval);
+        isAttacking = false;
+    }
 
+    private bool WithinAttackRange() {
+        return Vector3.Distance(player.transform.position, gameObject.transform.position) <= attackRange;
+    }
 }

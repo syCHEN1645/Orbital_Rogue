@@ -8,7 +8,7 @@ public class PlayerInput : MonoBehaviour
     public float groundCheckDistance = 0.1f;
     public float wallRaycastDistance = 0.1f;
     public ContactFilter2D groundCheckFilter;
-    public PlayerAttack playerAttack;
+    private PlayerAttack playerAttack;
     private Rigidbody2D rb;
     private Collider2D collider2d;
     private List<RaycastHit2D> groundHits = new List<RaycastHit2D>();
@@ -112,5 +112,10 @@ public class PlayerInput : MonoBehaviour
     public void endAttack()
     {
         animator.SetBool(PAP.isAttacking, false);
+    }
+
+    public void Injure() {
+        // need add animation
+        // animator.SetTrigger("Hurt");
     }
 }

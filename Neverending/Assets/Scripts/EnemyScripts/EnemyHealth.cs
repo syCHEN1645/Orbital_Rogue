@@ -7,7 +7,6 @@ using UnityEngine.UI;
 public class EnemyHealth : MonoBehaviour
 {
     public Image healthBar;
-    private const float HEALTHBAR_MAX_LENGTH = 0.5f;
     private const float MAX_HEALTH = 10.0f;
     private EnemyLight enemyLight;
     private float health;
