@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class EnemyController : MonoBehaviour
+public class EnemyLight : MonoBehaviour
 {
     public Animator animator;
     public EnemyGroundSensor groundSensor;
@@ -65,8 +65,6 @@ public class EnemyController : MonoBehaviour
         yield return new WaitForSeconds(2);
         // remove sprite
         Destroy(gameObject);
-        // remove health bar
-        Destroy(enemyHealth.healthBar);
     }
 
     // run

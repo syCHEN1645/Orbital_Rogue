@@ -9,7 +9,7 @@ public class EnemyHealth : MonoBehaviour
     public Image healthBar;
     private const float HEALTHBAR_MAX_LENGTH = 0.5f;
     private const float MAX_HEALTH = 10.0f;
-    private EnemyController enemyController;
+    private EnemyLight enemyLight;
     private float health;
     private float defense;
     // Start is called before the first frame update
@@ -19,7 +19,7 @@ public class EnemyHealth : MonoBehaviour
         // health = maxHealth;
         health = MAX_HEALTH;
         defense = 20.0f;
-        enemyController = gameObject.GetComponent<EnemyController>();
+        enemyLight = gameObject.GetComponent<EnemyLight>();
     }
 
     // Update is called once per frame
@@ -40,7 +40,7 @@ public class EnemyHealth : MonoBehaviour
         
         if (!IsDead()) {
             // take damage animation
-            enemyController.Injure();
+            enemyLight.Injure();
             // health points decrease
             float finalDamage = attack * (100.0f - defense) / 100.0f;
             health -= finalDamage;

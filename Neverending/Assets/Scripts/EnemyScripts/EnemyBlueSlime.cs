@@ -4,17 +4,20 @@ using UnityEngine;
 
 public class EnemyBlueSlime : MonoBehaviour
 {
+    private EnemyBlueSlimeHealth blueSlimeHealth;
     // Start is called before the first frame update
     void Start()
     {
-        // collider = gameObject.GetComponent<Collider2D>();
+        blueSlimeHealth = gameObject.GetComponent<EnemyBlueSlimeHealth>();
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (blueSlimeHealth.IsDead()) {
+            Die();
+        }
     }
 
     void OnCollisionEnter(Collision other) {
@@ -23,5 +26,16 @@ public class EnemyBlueSlime : MonoBehaviour
             // deal damage to player
             // other.gameObject.TakeDamage();
         }
+    }
+
+    private void Die() {
+        StartCoroutine("BodyDisappear");
+    }
+
+    private IEnumerator BodyDisappear() {
+        // wait for 2 seconds then body will disappear.
+        yield return new WaitForSeconds(2);
+        // remove sprite
+        Destroy(gameObject);
     }
 }

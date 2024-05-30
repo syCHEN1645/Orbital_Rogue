@@ -25,6 +25,14 @@ public class PlayerAttack : MonoBehaviour
         enemyHealth.TakeDamage(attack);
     }
 
+    public void DealDamage(EnemyBlueSlimeHealth enemyHealth) {
+        // need to consider:
+        // 1. is target an enemy?
+        // 2. is target within range?
+        // return WithinAttackRange && gameObject.CompareTag("Enemy");
+        enemyHealth.TakeDamage(attack);
+    }
+
     private bool CanDealDamage() {
         
         return true;
