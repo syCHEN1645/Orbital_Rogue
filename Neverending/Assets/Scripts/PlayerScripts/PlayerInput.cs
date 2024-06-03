@@ -8,7 +8,7 @@ public class PlayerInput : MonoBehaviour
     public float groundCheckDistance = 0.1f;
     public float wallRaycastDistance = 0.1f;
     public ContactFilter2D groundCheckFilter;
-
+    private PlayerAttack playerAttack;
     private Rigidbody2D rb;
     private Collider2D collider2d;
     private List<RaycastHit2D> groundHits = new List<RaycastHit2D>();
@@ -18,6 +18,7 @@ public class PlayerInput : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D> ();
         collider2d = GetComponent<Collider2D>();
+        playerAttack = GetComponent<PlayerAttack>();
     }
 
     // Update is called once per frame
@@ -50,9 +51,13 @@ public class PlayerInput : MonoBehaviour
             animator.ResetTrigger(PAP.JumpTriggerName);
         }
 
-        if (Input.GetMouseButtonDown(0))
+        // attack "J"
+        if (Input.GetKeyDown(KeyCode.J))
         {
             animator.SetBool(PAP.isAttacking, true);
+            // attack sample enemy
+            GameObject enemy = GameObject.FindGameObjectWithTag("Enemy");
+            playerAttack.DealDamage(enemy.GetComponent<EnemyHealth>());
         }
     }
 
@@ -107,5 +112,10 @@ public class PlayerInput : MonoBehaviour
     public void endAttack()
     {
         animator.SetBool(PAP.isAttacking, false);
+    }
+
+    public void Injure() {
+        // need add animation
+        // animator.SetTrigger("Hurt");
     }
 }
