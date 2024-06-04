@@ -3,40 +3,25 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class EnemyLight : MonoBehaviour
+public class EnemyLight : Enemy
 {
-    public Animator animator;
     public EnemyGroundSensor groundSensor;
     public EnemyLeftSensor leftSensor;
-    private Rigidbody2D rb;
-    private Collider2D collider2d;
-    private Vector2 originalPosition;
-    private GameObject player;
-    private EnemyHealth enemyHealth;
     private float patrolRange = 10.0f;
-    private float speed = 1.0f;
-    private float attack = 15.0f;
-    private float attackRange = 1.0f;
-    // attackInterval: time interval between attacks
-    private float attackInterval = 1.0f;
-    private bool isAttacking = false;
-    // dir: enemy is facing this direction: l-left, r-right.
-    private char dir;
-    void Start()
-    {
-        rb = GetComponent<Rigidbody2D> ();
-        collider2d = GetComponent<Collider2D>();
-        player = GameObject.Find("Player");
-        enemyHealth = gameObject.GetComponent<EnemyHealth>();
-        originalPosition = transform.position;
-        // m_groundSensor = transform.Find("GroundSensor").GetComponent<Sensor_Bandit>();
-        // set initial dir being left
-        animator.transform.localScale = new Vector3(-1, 1, 1);
-        dir = 'l';
-        // set health, attack, defence
+    protected override void SetParameters() {
+        base.SetParameters();
         // hitpoint = attacker's attack * defender's defence
         // health -= hitpoint
-        // health is managed in HealthBar
+        // health is managed by Health
+        speed = 1.0f;
+        attack = 15.0f;
+        attackRange = 1.0f;
+        attackInterval = 1.0f;
+    }
+    void Start()
+    {
+        SetParameters();
+        animator.transform.localScale = new Vector3(-1, 1, 1);
     }
 
     // Update is called once per frame
@@ -54,16 +39,15 @@ public class EnemyLight : MonoBehaviour
         }
     }
 
-
-    public void Attack() {
+    public override void Attack() {
         animator.SetTrigger("Attack");
     }
 
-    public void Injure() {
+    public override void Injure() {
         animator.SetTrigger("Hurt");
     }
 
-    public void Die() {
+    public override void Die() {
         // animate death
         animator.SetTrigger("Death");
     }
@@ -132,9 +116,5 @@ public class EnemyLight : MonoBehaviour
         player.GetComponent<PlayerHealth>().TakeDamage(attack);
         yield return new WaitForSeconds(attackInterval);
         isAttacking = false;
-    }
-
-    private bool WithinAttackRange() {
-        return Vector3.Distance(player.transform.position, gameObject.transform.position) <= attackRange;
     }
 }

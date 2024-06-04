@@ -1,31 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class EnemyHealth : MonoBehaviour
 {
     public Image healthBar;
-    private const float MAX_HEALTH = 10.0f;
-    private EnemyLight enemyLight;
+    private float maxHealth;
     private float health;
     private float defense;
+    private EnemyLight enemyLight;
     // Start is called before the first frame update
     void Start()
     {
+        maxHealth = 10.0f;
         // defence is a percentage, "20" means 20% of attacker's attack point is fended off
         // health = maxHealth;
-        health = MAX_HEALTH;
+        health = maxHealth;
         defense = 20.0f;
         enemyLight = gameObject.GetComponent<EnemyLight>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
+    public void HealthBarUpdate() {
         // health bar bound with health points
-        healthBar.fillAmount = Mathf.Clamp(health / MAX_HEALTH, 0, 1);
+        healthBar.fillAmount = Mathf.Clamp(health / maxHealth, 0, 1);
         // health bar follows enemy sprite
         healthBar.transform.position = gameObject.transform.position + new Vector3(0, 1.3f, 0);
     }
@@ -40,9 +38,11 @@ public class EnemyHealth : MonoBehaviour
         if (!IsDead()) {
             // take damage animation
             enemyLight.Injure();
-            // health points decrease
+            // health decreases
             float finalDamage = attack * (100.0f - defense) / 100.0f;
             health -= finalDamage;
+            // health bar decreases
+            HealthBarUpdate();
         }
         
     }
