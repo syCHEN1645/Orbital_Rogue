@@ -5,27 +5,8 @@ using UnityEngine;
 public class PlayerAttack : MonoBehaviour
 {
     private float attack = 5.0f;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     public void DealDamage(EnemyHealth enemyHealth) {
-        // need to consider:
-        // 1. is target an enemy?
-        // 2. is target within range?
-        // return WithinAttackRange && gameObject.CompareTag("Enemy");
-        enemyHealth.TakeDamage(attack);
-    }
-
-    public void DealDamage(EnemyBlueSlimeHealth enemyHealth) {
         // need to consider:
         // 1. is target an enemy?
         // 2. is target within range?

@@ -8,8 +8,8 @@ public class EnemyLight : Enemy
     public EnemyGroundSensor groundSensor;
     public EnemyLeftSensor leftSensor;
     private float patrolRange = 10.0f;
-    protected override void SetParameters() {
-        base.SetParameters();
+    protected override void InitialiseEnemy() {
+        base.InitialiseEnemy();
         // hitpoint = attacker's attack * defender's defence
         // health -= hitpoint
         // health is managed by Health
@@ -20,7 +20,7 @@ public class EnemyLight : Enemy
     }
     void Start()
     {
-        SetParameters();
+        InitialiseEnemy();      
         animator.transform.localScale = new Vector3(-1, 1, 1);
     }
 
@@ -40,23 +40,19 @@ public class EnemyLight : Enemy
     }
 
     public override void Attack() {
+        base.Attack();
         animator.SetTrigger("Attack");
     }
 
     public override void Injure() {
+        base.Injure();
         animator.SetTrigger("Hurt");
     }
 
     public override void Die() {
+        base.Die();
         // animate death
         animator.SetTrigger("Death");
-    }
-
-    private IEnumerator bodyDisappear() {
-        // wait for 2 seconds then body will disappear.
-        yield return new WaitForSeconds(2);
-        // remove sprite
-        Destroy(gameObject);
     }
 
     // run
