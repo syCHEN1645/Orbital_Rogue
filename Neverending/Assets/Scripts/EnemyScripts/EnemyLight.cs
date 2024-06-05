@@ -10,9 +10,6 @@ public class EnemyLight : Enemy
     private float patrolRange = 10.0f;
     protected override void InitialiseEnemy() {
         base.InitialiseEnemy();
-        // hitpoint = attacker's attack * defender's defence
-        // health -= hitpoint
-        // health is managed by Health
         speed = 1.0f;
         attack = 15.0f;
         attackRange = 1.0f;
@@ -28,8 +25,7 @@ public class EnemyLight : Enemy
     void Update()
     {
         if (enemyHealth.IsDead()) {
-            Die();        
-            StartCoroutine(bodyDisappear());
+            Die();
         } else {
             if (WithinAttackRange() && !isAttacking) {
                 StartCoroutine(AttackPlayer());
@@ -104,13 +100,5 @@ public class EnemyLight : Enemy
         } else if (dir == 'r') {
             MoveLeft();
         }
-    }
-
-    private IEnumerator AttackPlayer() {
-        isAttacking = true;
-        Attack();
-        player.GetComponent<PlayerHealth>().TakeDamage(attack);
-        yield return new WaitForSeconds(attackInterval);
-        isAttacking = false;
     }
 }

@@ -6,7 +6,7 @@ public class EnemySensor : MonoBehaviour
 {
     public Vector2 boxSize;
     public float castdistance;
-    public LayerMask groundLayer;
+    public LayerMask layer;
     // Start is called before the first frame update
 
     private void OnDrawGizmos() {

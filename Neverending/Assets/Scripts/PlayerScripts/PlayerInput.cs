@@ -57,7 +57,9 @@ public class PlayerInput : MonoBehaviour
             animator.SetBool(PAP.isAttacking, true);
             // attack sample enemy
             foreach(Enemy enemy in Enemy.enemyList) {
-                playerAttack.DealDamage(enemy.GetComponent<EnemyHealth>());
+                if (playerAttack.WithinAttackRange(enemy) && !playerAttack.IsAttacking()) {
+                    StartCoroutine(playerAttack.DealDamage(enemy.GetComponent<EnemyHealth>()));
+                }
             }
         }
     }

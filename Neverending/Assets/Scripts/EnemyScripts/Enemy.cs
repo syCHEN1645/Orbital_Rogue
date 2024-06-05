@@ -22,7 +22,9 @@ public class Enemy : MonoBehaviour
     protected bool isAttacking;
 
     protected virtual void InitialiseEnemy() {
-        enemyList = new List<Enemy>();
+        if (enemyList == null) {
+            enemyList = new List<Enemy>();
+        }
         player = GameObject.Find("Player");
         enemyHealth = gameObject.GetComponent<EnemyHealth>();
         originalPosition = transform.position;
@@ -48,11 +50,19 @@ public class Enemy : MonoBehaviour
 
     public virtual void Die() {
         RemoveThis();
+        StartCoroutine(BodyDisappear());
     }
     protected virtual bool WithinAttackRange() {
-        return Vector3.Distance(player.transform.position, gameObject.transform.position) <= attackRange;
+        return Vector2.Distance(player.transform.position, gameObject.transform.position) <= attackRange;
     }
-    protected virtual IEnumerator bodyDisappear() {
+    protected virtual IEnumerator AttackPlayer() {
+        isAttacking = true;
+        Attack();
+        player.GetComponent<PlayerHealth>().TakeDamage(attack);
+        yield return new WaitForSeconds(attackInterval);
+        isAttacking = false;
+    }
+    protected virtual IEnumerator BodyDisappear() {
         // wait for 2 seconds then body will disappear.
         yield return new WaitForSeconds(2);
         // remove sprite

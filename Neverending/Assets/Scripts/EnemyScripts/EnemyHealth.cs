@@ -6,11 +6,11 @@ using UnityEngine.UI;
 public class EnemyHealth : MonoBehaviour
 {
     public Image healthBar;
+    public float offset;
     private float maxHealth;
     private float health;
     private float defense;
-    private EnemyLight enemyLight;
-    // Start is called before the first frame update
+    private Enemy enemy;
     void Start()
     {
         maxHealth = 10.0f;
@@ -18,14 +18,14 @@ public class EnemyHealth : MonoBehaviour
         // health = maxHealth;
         health = maxHealth;
         defense = 20.0f;
-        enemyLight = gameObject.GetComponent<EnemyLight>();
+        enemy = gameObject.GetComponent<Enemy>();
+        // health bar slightly above enemy sprite
+        healthBar.transform.position = gameObject.transform.position + new Vector3(0, offset, 0);
     }
 
     public void HealthBarUpdate() {
         // health bar bound with health points
         healthBar.fillAmount = Mathf.Clamp(health / maxHealth, 0, 1);
-        // health bar follows enemy sprite
-        healthBar.transform.position = gameObject.transform.position + new Vector3(0, 1.3f, 0);
     }
 
     public void TakeDamage(float attack) {
@@ -34,17 +34,15 @@ public class EnemyHealth : MonoBehaviour
             // defence capped at 99;
             defense = 99.0f;
         }
-        
         if (!IsDead()) {
             // take damage animation
-            enemyLight.Injure();
+            enemy.Injure();
             // health decreases
             float finalDamage = attack * (100.0f - defense) / 100.0f;
             health -= finalDamage;
             // health bar decreases
             HealthBarUpdate();
-        }
-        
+        }        
     }
 
     public bool IsDead() {

@@ -1,41 +1,41 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
-public class EnemyBlueSlime : MonoBehaviour
+public class EnemyBlueSlime : Enemy
 {
-    private EnemyBlueSlimeHealth blueSlimeHealth;
-    // Start is called before the first frame update
+    protected override void InitialiseEnemy()
+    {
+        base.InitialiseEnemy();
+        speed = 0.0f;
+        attack = 20.0f;
+        attackRange = 0.0f;
+        attackInterval = 2.0f;
+    }
     void Start()
     {
-        blueSlimeHealth = gameObject.GetComponent<EnemyBlueSlimeHealth>();
-
+        InitialiseEnemy();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (blueSlimeHealth.IsDead()) {
+        if (enemyHealth.IsDead()) {
             Die();
         }
     }
 
-    void OnCollisionEnter(Collision other) {
+    void OnCollisionEnter2D(Collision2D other) {
         // if collide with player
         if (other.gameObject.CompareTag("Player")) {
             // deal damage to player
+            // remmber StartCorourine!!!
+            StartCoroutine(AttackPlayer());
             // other.gameObject.TakeDamage();
         }
     }
-
-    private void Die() {
-        StartCoroutine("BodyDisappear");
-    }
-
-    private IEnumerator BodyDisappear() {
-        // wait for 2 seconds then body will disappear.
-        yield return new WaitForSeconds(2);
-        // remove sprite
-        Destroy(gameObject);
+    public override void Die() {
+        base.Die();
     }
 }
