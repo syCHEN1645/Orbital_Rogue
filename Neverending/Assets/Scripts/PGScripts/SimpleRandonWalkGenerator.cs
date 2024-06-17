@@ -11,7 +11,10 @@ public class SimpleRandomWalkGenerator: AbstractGenerator
     protected override void RunPG() {
         HashSet<Vector2Int> floorPositions = RunRandomWalk(randomWalkData, startPos);
         visualiser.Clear();
+        // paint floors
         visualiser.PaintFloorTiles(floorPositions);
+        // paint walls
+        WallGenerator.CreateWalls(floorPositions, visualiser);
     }
 
     protected HashSet<Vector2Int> RunRandomWalk(SimpleRandomWalkData randomWalkData, Vector2Int pos) {

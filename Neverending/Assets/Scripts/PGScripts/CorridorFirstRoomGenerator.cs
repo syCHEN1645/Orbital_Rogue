@@ -38,6 +38,7 @@ public class CorridorFirstRoomGenerator : SimpleRandomWalkGenerator
         floorPositions.UnionWith(roomPositions);
 
         visualiser.PaintFloorTiles(floorPositions);
+        WallGenerator.CreateWalls(floorPositions, visualiser);
     }
 
     private void CreateRoomsDeadEnd(List<Vector2Int> deadEnds, HashSet<Vector2Int> roomFloorPositions)
@@ -93,12 +94,12 @@ public class CorridorFirstRoomGenerator : SimpleRandomWalkGenerator
     {
         var currentPos = startPos;
         potentialRoomPositions.Add(currentPos);
-        
+
         for (int i = 0; i < corridorCount; i++) {
-            // generate a number of corridor
+            // generate a number of corridors
             var corridor = PGAlgorithm.RandomWalkCorridor(currentPos, corridorLength);
             // currentPos = last tile of the corridor
-            currentPos = corridor[corridor.Count - 1];
+            currentPos = corridor.ElementAt(corridor.Count - 1);
             potentialRoomPositions.Add(currentPos);
             // merge corridor into map
             floorPositions.UnionWith(corridor);
