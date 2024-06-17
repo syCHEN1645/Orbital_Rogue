@@ -1,33 +1,31 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class EnemyHealth : MonoBehaviour
 {
     public Image healthBar;
-    private const float MAX_HEALTH = 10.0f;
-    private EnemyLight enemyLight;
+    public float offset;
+    private float maxHealth;
     private float health;
     private float defense;
-    // Start is called before the first frame update
+    private Enemy enemy;
     void Start()
     {
+        maxHealth = 10.0f;
         // defence is a percentage, "20" means 20% of attacker's attack point is fended off
         // health = maxHealth;
-        health = MAX_HEALTH;
+        health = maxHealth;
         defense = 20.0f;
-        enemyLight = gameObject.GetComponent<EnemyLight>();
+        enemy = gameObject.GetComponent<Enemy>();
+        // health bar slightly above enemy sprite
+        healthBar.transform.position = gameObject.transform.position + new Vector3(0, offset, 0);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
+    public void HealthBarUpdate() {
         // health bar bound with health points
-        healthBar.fillAmount = Mathf.Clamp(health / MAX_HEALTH, 0, 1);
-        // health bar follows enemy sprite
-        healthBar.transform.position = gameObject.transform.position + new Vector3(0, 1.3f, 0);
+        healthBar.fillAmount = Mathf.Clamp(health / maxHealth, 0, 1);
     }
 
     public void TakeDamage(float attack) {
@@ -36,15 +34,15 @@ public class EnemyHealth : MonoBehaviour
             // defence capped at 99;
             defense = 99.0f;
         }
-        
         if (!IsDead()) {
             // take damage animation
-            enemyLight.Injure();
-            // health points decrease
+            enemy.Injure();
+            // health decreases
             float finalDamage = attack * (100.0f - defense) / 100.0f;
             health -= finalDamage;
-        }
-        
+            // health bar decreases
+            HealthBarUpdate();
+        }        
     }
 
     public bool IsDead() {

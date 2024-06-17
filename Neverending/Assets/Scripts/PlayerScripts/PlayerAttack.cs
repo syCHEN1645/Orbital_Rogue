@@ -1,45 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
     private float attack = 5.0f;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    public void DealDamage(EnemyHealth enemyHealth) {
+    private float attackRange = 1.6f;
+    private float attackInterval = 0.8f;
+    private bool isAttacking = false;
+    public IEnumerator DealDamage(EnemyHealth enemyHealth) {
         // need to consider:
         // 1. is target an enemy?
         // 2. is target within range?
         // return WithinAttackRange && gameObject.CompareTag("Enemy");
+        isAttacking = true;
         enemyHealth.TakeDamage(attack);
+        yield return new WaitForSeconds(attackInterval);
+        isAttacking = false;
     }
 
-    public void DealDamage(EnemyBlueSlimeHealth enemyHealth) {
-        // need to consider:
-        // 1. is target an enemy?
-        // 2. is target within range?
-        // return WithinAttackRange && gameObject.CompareTag("Enemy");
-        enemyHealth.TakeDamage(attack);
+    public bool IsAttacking() {
+        return isAttacking;
     }
-
-    private bool CanDealDamage() {
-        
-        return true;
-    }
-
-    private bool WithinAttackRange() {
-        return true;
+    public bool WithinAttackRange(Enemy enemy) {
+        return (Vector2.Distance(enemy.transform.position, transform.position) <= attackRange);
     }
 
     /*

@@ -56,8 +56,11 @@ public class PlayerInput : MonoBehaviour
         {
             animator.SetBool(PAP.isAttacking, true);
             // attack sample enemy
-            GameObject enemy = GameObject.FindGameObjectWithTag("Enemy");
-            playerAttack.DealDamage(enemy.GetComponent<EnemyHealth>());
+            foreach(Enemy enemy in Enemy.enemyList) {
+                if (playerAttack.WithinAttackRange(enemy) && !playerAttack.IsAttacking()) {
+                    StartCoroutine(playerAttack.DealDamage(enemy.GetComponent<EnemyHealth>()));
+                }
+            }
         }
     }
 

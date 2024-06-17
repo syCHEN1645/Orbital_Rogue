@@ -1,8 +1,10 @@
-﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
-public class EnemyLeftSensor : EnemySensor {
-    public bool IsBlocked() {
+public class EnemyAttackRangeSensor : EnemySensor
+{
+    public bool IsInRange() {
         if (Physics2D.BoxCast(transform.position, boxSize, 0, -transform.right, castdistance, layer)) {
             // check if left side of box touches ground
             return true;
@@ -10,5 +12,4 @@ public class EnemyLeftSensor : EnemySensor {
             return false;
         }
     }
-    // note: when sprite flips, sensor also flips
 }
