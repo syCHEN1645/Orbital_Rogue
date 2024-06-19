@@ -27,13 +27,20 @@ public class RoomFirstGenerator : SimpleRandomWalkGenerator
             new BoundsInt((Vector3Int)startPos, new Vector3Int(width, height, 0)), 
             minWidth,
             minHeight);
+
         HashSet<Vector2Int> floorPositions = new HashSet<Vector2Int>();
-        foreach(var room in roomsList) {
-            for (int col = offset; col < room.size.x - offset; col++) {
-                for (int row = offset; row < room.size.y - offset; row++) {
-                    // add rooms into floor to be painted
-                    Vector2Int pos = (Vector2Int)room.min + new Vector2Int(col, row);
-                    floorPositions.Add(pos);
+        if (useRandomWalk) {
+            // create irregular rooms
+            floorPositions = CreateRoomsRandomly(roomsList);
+        } else {
+            // create rectangular rooms
+            foreach(var room in roomsList) {
+                for (int col = offset; col < room.size.x - offset; col++) {
+                    for (int row = offset; row < room.size.y - offset; row++) {
+                        // add rooms into floor to be painted
+                        Vector2Int pos = (Vector2Int)room.min + new Vector2Int(col, row);
+                        floorPositions.Add(pos);
+                    }
                 }
             }
         }
@@ -49,6 +56,24 @@ public class RoomFirstGenerator : SimpleRandomWalkGenerator
         
         visualiser.PaintFloorTiles(floorPositions);
         WallGenerator.CreateWalls(floorPositions, visualiser);
+    }
+
+    private HashSet<Vector2Int> CreateRoomsRandomly(List<BoundsInt> roomsList)
+    {
+        HashSet<Vector2Int> floorPositions = new HashSet<Vector2Int>();
+        for (int i = 0; i < roomsList.Count; i++) {
+            var roomBounds = roomsList[i];
+            // cast to Vector2Int
+            var roomCentre = new Vector2Int(Mathf.RoundToInt(roomBounds.center.x), Mathf.RoundToInt(roomBounds.center.y));
+            var roomFloor = RunRandomWalk(randomWalkData, roomCentre);
+            foreach (var pos in roomFloor) {
+                if (pos.x >= (roomBounds.xMin + offset) && pos.x <= (roomBounds.xMax - offset) &&
+                    pos.y >= (roomBounds.yMin + offset) && pos.y <= (roomBounds.yMax - offset)) {
+                        floorPositions.Add(pos);
+                }
+            }
+        }
+        return floorPositions;
     }
 
     private HashSet<Vector2Int> ConnectRooms(List<Vector2Int> roomCentres)
