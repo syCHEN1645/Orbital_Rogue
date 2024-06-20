@@ -154,7 +154,15 @@ MonoBehaviour:
   floorTileMap: {fileID: 748783066}
   wallTileMap: {fileID: 726990778}
   floorTile: {fileID: 11400000, guid: 2f64576086942ad4b8a4b22acb0fe2c4, type: 2}
-  wallTile: {fileID: 11400000, guid: 5ff0c1793623d4d40807e8945cb109a7, type: 2}
+  wallGenericTile: {fileID: 11400000, guid: 71d1a9f3c18301e4db3cea1ac29e26c7, type: 2}
+  wallTop: {fileID: 11400000, guid: c20cd87475a4d694886b0e12e6045ce3, type: 2}
+  wallBottom: {fileID: 11400000, guid: aa3bb409f5a3f6d4e8d9016162f47ea8, type: 2}
+  wallLeft: {fileID: 11400000, guid: fb9912924f933524d95c2a67110c04de, type: 2}
+  wallRight: {fileID: 11400000, guid: 4d39f938b384d774589f5eec56572f61, type: 2}
+  wallTopleft: {fileID: 11400000, guid: 74ebba021b6c4634cb06399c746ff31b, type: 2}
+  wallTopRight: {fileID: 11400000, guid: 40157bb7c4b726343b1e8ea873df3f16, type: 2}
+  wallBottomLeft: {fileID: 11400000, guid: 623aaf92a77c47b49a49e59d04951323, type: 2}
+  wallBottomRight: {fileID: 11400000, guid: d0c82a4d040e9ab4fa7921498aef3cde, type: 2}
 --- !u!4 &222295279
 Transform:
   m_ObjectHideFlags: 0

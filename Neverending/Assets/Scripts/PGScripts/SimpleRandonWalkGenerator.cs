@@ -14,7 +14,8 @@ public class SimpleRandomWalkGenerator: AbstractGenerator
         // paint floors
         visualiser.PaintFloorTiles(floorPositions);
         // paint walls
-        WallGenerator.CreateWalls(floorPositions, visualiser);
+        // WallGenerator.CreateWalls(floorPositions, visualiser);
+        WallTypes.CreateWalls(floorPositions, visualiser);
     }
 
     protected HashSet<Vector2Int> RunRandomWalk(SimpleRandomWalkData randomWalkData, Vector2Int pos) {

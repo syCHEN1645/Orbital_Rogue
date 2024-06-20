@@ -55,7 +55,7 @@ public class RoomFirstGenerator : SimpleRandomWalkGenerator
         floorPositions.UnionWith(corridors);
         
         visualiser.PaintFloorTiles(floorPositions);
-        WallGenerator.CreateWalls(floorPositions, visualiser);
+        WallTypes.CreateWalls(floorPositions, visualiser);
     }
 
     private HashSet<Vector2Int> CreateRoomsRandomly(List<BoundsInt> roomsList)
