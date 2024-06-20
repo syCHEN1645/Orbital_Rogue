@@ -38,7 +38,7 @@ public class CorridorFirstRoomGenerator : SimpleRandomWalkGenerator
         floorPositions.UnionWith(roomPositions);
 
         visualiser.PaintFloorTiles(floorPositions);
-        WallGenerator.CreateWalls(floorPositions, visualiser);
+        WallTypes.CreateWalls(floorPositions, visualiser);
     }
 
     private void CreateRoomsDeadEnd(List<Vector2Int> deadEnds, HashSet<Vector2Int> roomFloorPositions)
