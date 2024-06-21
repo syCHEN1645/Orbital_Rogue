@@ -18,7 +18,7 @@ public class TileMapVisualiser: MonoBehaviour
         }
     }
 
-    private void PaintSingleTile(Tilemap floorTileMap, TileBase floorTile, Vector2Int pos)
+    public void PaintSingleTile(Tilemap floorTileMap, TileBase floorTile, Vector2Int pos)
     {
         // convert world pos to cell pos
         var tilePosition = floorTileMap.WorldToCell((Vector3Int)pos);

@@ -53,6 +53,9 @@ public class Enemy : MonoBehaviour
         StartCoroutine(BodyDisappear());
     }
     protected virtual bool WithinAttackRange() {
+        if (player == null) {
+            return false;
+        }
         return Vector2.Distance(player.transform.position, gameObject.transform.position) <= attackRange;
     }
     protected virtual IEnumerator AttackPlayer() {
