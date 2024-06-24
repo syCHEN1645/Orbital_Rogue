@@ -10,6 +10,7 @@ public class Enemy : MonoBehaviour
     public Animator animator;
     protected EnemyHealth enemyHealth;
     protected GameObject player;
+    protected PlayerHealth playerHealth;
     // originalPosition: where this enemy is spawned
     protected Vector2 originalPosition;
     protected float speed;
@@ -20,6 +21,7 @@ public class Enemy : MonoBehaviour
     // dir: enemy is facing this direction: l-left, r-right.
     protected char dir;
     protected bool isAttacking;
+    protected bool canMove = true;
 
     protected virtual void InitialiseEnemy() {
         if (enemyList == null) {
@@ -50,22 +52,34 @@ public class Enemy : MonoBehaviour
 
     public virtual void Die() {
         RemoveThis();
-        StartCoroutine(BodyDisappear());
     }
+
+    public void LockMovement() {
+        canMove = false;
+    }
+
+    public void UnlockMovement() {
+        canMove = true;
+    }
+
     protected virtual bool WithinAttackRange() {
         return Vector2.Distance(player.transform.position, gameObject.transform.position) <= attackRange;
     }
+
     protected virtual IEnumerator AttackPlayer() {
         isAttacking = true;
         Attack();
-        player.GetComponent<PlayerHealth>().TakeDamage(attack);
         yield return new WaitForSeconds(attackInterval);
         isAttacking = false;
     }
-    protected virtual IEnumerator BodyDisappear() {
-        // wait for 2 seconds then body will disappear.
-        yield return new WaitForSeconds(2);
-        // remove sprite
+    protected virtual void InflictDamage() {
+        playerHealth = player.GetComponent<PlayerHealth>();
+        if (WithinAttackRange() && !playerHealth.IsDead()) {
+            playerHealth.TakeDamage(attack);
+        }
+    }
+
+    protected virtual void BodyDisappear() {
         Destroy(gameObject);
     }
 }

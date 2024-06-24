@@ -24,7 +24,10 @@ public class PlayerAttack : MonoBehaviour
         return isAttacking;
     }
     public bool WithinAttackRange(Enemy enemy) {
-        return (Vector2.Distance(enemy.transform.position, transform.position) <= attackRange);
+        if (enemy != null) {
+            return (Vector2.Distance(enemy.transform.position, transform.position) <= attackRange);
+        }
+        return false;
     }
 
     /*

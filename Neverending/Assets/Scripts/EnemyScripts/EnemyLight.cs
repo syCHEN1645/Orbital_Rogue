@@ -30,7 +30,9 @@ public class EnemyLight : Enemy
             if (WithinAttackRange() && !isAttacking) {
                 StartCoroutine(AttackPlayer());
             } else {
-                Patrol();
+                if (canMove) {
+                    Patrol();
+                }
             }
         }
     }

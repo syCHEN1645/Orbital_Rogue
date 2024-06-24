@@ -9,7 +9,7 @@ public class PlayerHealth : MonoBehaviour
     private float maxHealth;
     private float health;
     private float defense;
-    private PlayerInput playerInput;
+    private PlayerControl player;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,16 +18,18 @@ public class PlayerHealth : MonoBehaviour
         // health = maxHealth;
         health = maxHealth;
         defense = 20.0f;
-        playerInput = gameObject.GetComponent<PlayerInput>();
+        player = gameObject.GetComponent<PlayerControl>();
     }
 
     // Update is called once per frame
-    void Update()
-    {
+    void Update() {
         // health bar bound with health points
         healthBar.fillAmount = Mathf.Clamp(health / maxHealth, 0, 1);
         // health bar follows enemy sprite
         healthBar.transform.position = gameObject.transform.position + new Vector3(0, 1.5f, 0);
+        if (IsDead()) {
+            player.Die();    
+        }
     }
 
     public void HealthBarUpdate() {
@@ -39,19 +41,19 @@ public class PlayerHealth : MonoBehaviour
 
     public void TakeDamage(float attack) {
         // attack value will be sent by the dealer
-        if (defense > 99.0f) {
-            // defence capped at 99;
-            defense = 99.0f;
-        }
-        
         if (!IsDead()) {
-            // take damage animation
-            playerInput.Injure();
-            // health points decrease
-            float finalDamage = attack * (100.0f - defense) / 100.0f;
-            health -= finalDamage;
+            if (!player.isBlocking) {
+                // take damage animation
+                player.Injure();
+                // health points decrease
+                if (defense > 99.0f) {
+                // defence capped at 99;
+                    defense = 99.0f;
+                }
+                float finalDamage = attack * (100.0f - defense) / 100.0f;
+                health -= finalDamage;
+            }
         }
-        
     }
 
     public bool IsDead() {

@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class EnemyBlueSlime : Enemy
 {
+
     protected override void InitialiseEnemy()
     {
         base.InitialiseEnemy();
@@ -35,7 +36,9 @@ public class EnemyBlueSlime : Enemy
             // other.gameObject.TakeDamage();
         }
     }
+
     public override void Die() {
+        animator.SetTrigger("Death");
         base.Die();
     }
 }
