@@ -7,40 +7,43 @@ public class VolumeSettings : MonoBehaviour
     [SerializeField]
     private AudioMixer mixer;
     [SerializeField]
-    private float coe = 20;
-    [SerializeField]
     private Slider bgmSlider;
     [SerializeField]
     private Slider effectSlider;
-    const string BGM = "bgm";
-    const string EFFECT = "effect";
+    private string bgm = ManagerParameters.BGM;
+    private string effect = ManagerParameters.EFFECT;
+    private float coe = ManagerParameters.COE;
 
-    void Start () {
-        if (PlayerPrefs.HasKey(BGM)) {
+    void Start() {
+        Initialise();
+    }
+    public void Initialise () {
+        if (PlayerPrefs.HasKey(bgm)) {
             LoadBGMVolume();
         } else {
             // make sure slider val and music vol matches at the start
             SetBGMVolume();
         }
 
-        if (PlayerPrefs.HasKey(EFFECT)) {
+        if (PlayerPrefs.HasKey(effect)) {
             LoadEffectVolume();
         } else {
             SetEffectVolume();
         }
     }
     public void SetBGMVolume() {
-        // vol is the slider value, not the actual volume
+        // vol is the slider value, not actual volume
         float vol = bgmSlider.value;
         // music val changes logarithmically, slider val changes linearly
-        mixer.SetFloat(BGM, Mathf.Log10(vol) * coe);
+        mixer.SetFloat(bgm, Mathf.Log10(vol) * coe);
 
         // PlayerPrefs Class: saves player's preferences
-        PlayerPrefs.SetFloat(BGM, vol);
+        // stored value is vol (slider value), not actual vol
+        PlayerPrefs.SetFloat(bgm, vol);
     }
 
     private void LoadBGMVolume() {
-        bgmSlider.value = PlayerPrefs.GetFloat(BGM);
+        bgmSlider.value = PlayerPrefs.GetFloat(bgm);
         SetBGMVolume();
     }
 
@@ -48,14 +51,16 @@ public class VolumeSettings : MonoBehaviour
         // vol is the slider value, not the actual volume
         float vol = effectSlider.value;
         // music val changes logarithmically, slider val changes linearly
-        mixer.SetFloat(EFFECT, Mathf.Log10(vol) * coe);
+        mixer.SetFloat(effect, Mathf.Log10(vol) * coe);
 
         // PlayerPrefs Class: saves player's preferences
-        PlayerPrefs.SetFloat(EFFECT, vol);
+        // store vol (slider value) into PlayerPrefs
+        PlayerPrefs.SetFloat(effect, vol);
     }
 
     private void LoadEffectVolume() {
-        effectSlider.value = PlayerPrefs.GetFloat(EFFECT);
+        // get vol (slider value) from PlayerPrefs
+        effectSlider.value = PlayerPrefs.GetFloat(effect);
         SetEffectVolume();
     }
 }
