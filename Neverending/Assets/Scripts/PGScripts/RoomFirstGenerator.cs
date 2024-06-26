@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 
 public class RoomFirstGenerator : SimpleRandomWalkGenerator
@@ -15,26 +16,34 @@ public class RoomFirstGenerator : SimpleRandomWalkGenerator
     [SerializeField]
     private bool useRandomWalk = false;
 
+    // contains a list of rooms (floor tiles only), without corridor tiles
+    private List<HashSet<Vector2Int>> roomsList = new List<HashSet<Vector2Int>>();
+    // contains all floor tiles including corridors
+    private HashSet<Vector2Int> floorPositions = new HashSet<Vector2Int>();
+
     protected override void RunPG()
     {
         visualiser.Clear();
         CreateRooms();
+        // test roomsList
+        // for (int i = 0; i < roomsList.Count; i++) {
+        //     visualiser.TestPaint(roomsList[i]);
+        // }
     }
 
     private void CreateRooms()
     {
-        var roomsList = PGAlgorithm.BinarySpacePartitioning(
+        var roomsBoundsList = PGAlgorithm.BinarySpacePartitioning(
             new BoundsInt((Vector3Int)startPos, new Vector3Int(width, height, 0)), 
             minWidth,
             minHeight);
-
-        HashSet<Vector2Int> floorPositions = new HashSet<Vector2Int>();
+        
         if (useRandomWalk) {
             // create irregular rooms
-            floorPositions = CreateRoomsRandomly(roomsList);
+            floorPositions = CreateRoomsRandomly(roomsBoundsList);
         } else {
             // create rectangular rooms
-            foreach(var room in roomsList) {
+            foreach(var room in roomsBoundsList) {
                 for (int col = offset; col < room.size.x - offset; col++) {
                     for (int row = offset; row < room.size.y - offset; row++) {
                         // add rooms into floor to be painted
@@ -47,7 +56,7 @@ public class RoomFirstGenerator : SimpleRandomWalkGenerator
 
         // connect approximate centres of rooms through corridors
         List<Vector2Int> roomCentres = new List<Vector2Int>();
-        foreach (var room in roomsList) {
+        foreach (var room in roomsBoundsList) {
             roomCentres.Add((Vector2Int)Vector3Int.RoundToInt(room.center));
         }
 
@@ -58,22 +67,31 @@ public class RoomFirstGenerator : SimpleRandomWalkGenerator
         WallTypes.CreateWalls(floorPositions, visualiser);
     }
 
-    private HashSet<Vector2Int> CreateRoomsRandomly(List<BoundsInt> roomsList)
+    private HashSet<Vector2Int> CreateRoomsRandomly(List<BoundsInt> roomsBoundsList)
     {
-        HashSet<Vector2Int> floorPositions = new HashSet<Vector2Int>();
-        for (int i = 0; i < roomsList.Count; i++) {
-            var roomBounds = roomsList[i];
+        for (int i = 0; i < roomsBoundsList.Count; i++) {
+            Debug.Log(roomsBoundsList[i]);
+        }
+        // floorPositions is a collection of all floor tiles
+        HashSet<Vector2Int> floors = new HashSet<Vector2Int>();
+        for (int i = 0; i < roomsBoundsList.Count; i++) {
+            roomsList.Add(new HashSet<Vector2Int>());
+            var roomBounds = roomsBoundsList[i];
             // cast to Vector2Int
             var roomCentre = new Vector2Int(Mathf.RoundToInt(roomBounds.center.x), Mathf.RoundToInt(roomBounds.center.y));
             var roomFloor = RunRandomWalk(randomWalkData, roomCentre);
             foreach (var pos in roomFloor) {
                 if (pos.x >= (roomBounds.xMin + offset) && pos.x <= (roomBounds.xMax - offset) &&
                     pos.y >= (roomBounds.yMin + offset) && pos.y <= (roomBounds.yMax - offset)) {
-                        floorPositions.Add(pos);
+                    // if within bounds
+                    floors.Add(pos);
+                    roomsList[i].Add(pos);
                 }
             }
         }
-        return floorPositions;
+        // roomsList now contains a list of (roomsBoundsList.Count) rooms
+        // floors is a collection of all floor tiles
+        return floors;
     }
 
     private HashSet<Vector2Int> ConnectRooms(List<Vector2Int> roomCentres)
@@ -115,7 +133,7 @@ public class RoomFirstGenerator : SimpleRandomWalkGenerator
             }
             corridor.Add(pos);
         }
-        // here: has just reached des
+        // has just reached des here
         return corridor;
     }
 
