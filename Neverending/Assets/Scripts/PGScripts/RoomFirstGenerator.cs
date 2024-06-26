@@ -16,6 +16,8 @@ public class RoomFirstGenerator : SimpleRandomWalkGenerator
     [SerializeField]
     private bool useRandomWalk = false;
 
+    private EnemyGenerator enemyGenerator;
+
     // contains a list of rooms (floor tiles only), without corridor tiles
     private List<HashSet<Vector2Int>> roomsList = new List<HashSet<Vector2Int>>();
     // contains all floor tiles including corridors
@@ -29,6 +31,9 @@ public class RoomFirstGenerator : SimpleRandomWalkGenerator
         // for (int i = 0; i < roomsList.Count; i++) {
         //     visualiser.TestPaint(roomsList[i]);
         // }
+
+        // generate enemies
+        enemyGenerator = new EnemyGenerator(roomsList, floorPositions);
     }
 
     private void CreateRooms()
