@@ -24,6 +24,7 @@ public class EnemyLight : Enemy
     // Update is called once per frame
     void Update()
     {
+        enemyHealth.healthBar.transform.position = transform.position + new Vector3(0, enemyHealth.offset, 0);
         if (enemyHealth.IsDead()) {
             Die();
         } else {
