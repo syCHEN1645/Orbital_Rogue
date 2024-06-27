@@ -1227,63 +1227,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 819276894}
   m_CullTransparentMesh: 1
---- !u!1001 &822674115
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1400596300594053925, guid: 365b7f2fdf4d1104bb2c076f27be59d2, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 3.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 1400596300594053925, guid: 365b7f2fdf4d1104bb2c076f27be59d2, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -2.9
-      objectReference: {fileID: 0}
-    - target: {fileID: 1400596300594053925, guid: 365b7f2fdf4d1104bb2c076f27be59d2, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1400596300594053925, guid: 365b7f2fdf4d1104bb2c076f27be59d2, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1400596300594053925, guid: 365b7f2fdf4d1104bb2c076f27be59d2, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1400596300594053925, guid: 365b7f2fdf4d1104bb2c076f27be59d2, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1400596300594053925, guid: 365b7f2fdf4d1104bb2c076f27be59d2, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1400596300594053925, guid: 365b7f2fdf4d1104bb2c076f27be59d2, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1400596300594053925, guid: 365b7f2fdf4d1104bb2c076f27be59d2, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1400596300594053925, guid: 365b7f2fdf4d1104bb2c076f27be59d2, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3813845605544642068, guid: 365b7f2fdf4d1104bb2c076f27be59d2, type: 3}
-      propertyPath: m_Name
-      value: Enemy Light (1)
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 365b7f2fdf4d1104bb2c076f27be59d2, type: 3}
 --- !u!1 &866282876
 GameObject:
   m_ObjectHideFlags: 0
@@ -5426,14 +5369,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1279732015792762477, guid: 181c2134d5013d64facaec8534754d3b, type: 3}
-      propertyPath: m_ConstrainProportionsScale
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5816550763571886990, guid: 181c2134d5013d64facaec8534754d3b, type: 3}
-      propertyPath: dir
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 9180496246916260899, guid: 181c2134d5013d64facaec8534754d3b, type: 3}
       propertyPath: m_Name
       value: Blue Idle
@@ -5458,4 +5393,3 @@ SceneRoots:
   - {fileID: 1780854420}
   - {fileID: 7249043024713758247}
   - {fileID: 254822708}
-  - {fileID: 822674115}
