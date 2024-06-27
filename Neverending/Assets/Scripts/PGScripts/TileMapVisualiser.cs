@@ -11,20 +11,14 @@ public class TileMapVisualiser: MonoBehaviour
     [SerializeField]
     private TileBase floorTile, wallGenericTile, wallTop, wallBottom, 
         wallLeft, wallRight, wallTopleft, wallTopRight, 
-        wallBottomLeft, wallBottomRight, testTile;
+        wallBottomLeft, wallBottomRight;
     public void PaintFloorTiles(IEnumerable<Vector2Int> floorPositions) {
         foreach(var pos in floorPositions) {
             PaintSingleTile(floorTileMap, floorTile, pos);
         }
     }
 
-    public void TestPaint(HashSet<Vector2Int> floors) {
-        foreach(var pos in floors) {
-            PaintSingleTile(floorTileMap, testTile, pos);
-        }
-    }
-
-    public void PaintSingleTile(Tilemap floorTileMap, TileBase floorTile, Vector2Int pos)
+    private void PaintSingleTile(Tilemap floorTileMap, TileBase floorTile, Vector2Int pos)
     {
         // convert world pos to cell pos
         var tilePosition = floorTileMap.WorldToCell((Vector3Int)pos);

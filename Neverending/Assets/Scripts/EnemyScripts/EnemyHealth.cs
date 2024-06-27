@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class EnemyHealth : MonoBehaviour
 {
     public Image healthBar;
-    public float offset = 1.0f;
+    public float offset;
     private float maxHealth;
     private float health;
     private float defense;
@@ -20,8 +20,7 @@ public class EnemyHealth : MonoBehaviour
         defense = 20.0f;
         enemy = gameObject.GetComponent<Enemy>();
         // health bar slightly above enemy sprite
-        // healthBar.transform.position = enemy.transform.position + new Vector3(0, offset, 0);
-        // Debug.Log(healthBar.transform.position);
+        healthBar.transform.position = gameObject.transform.position + new Vector3(0, offset, 0);
     }
 
     public void HealthBarUpdate() {
