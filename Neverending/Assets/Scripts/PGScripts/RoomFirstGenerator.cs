@@ -25,7 +25,8 @@ public class RoomFirstGenerator : SimpleRandomWalkGenerator
 
     protected override void RunPG()
     {
-        visualiser.Clear();
+        ClearForEditorMode();
+
         CreateRooms();
         // test roomsList
         // for (int i = 0; i < roomsList.Count; i++) {
@@ -34,6 +35,18 @@ public class RoomFirstGenerator : SimpleRandomWalkGenerator
 
         // generate enemies
         enemyGenerator = new EnemyGenerator(roomsList, floorPositions);
+        enemyGenerator.GenerateOneRoom(roomsList[0]);
+    }
+
+    private void ClearForEditorMode() {
+        visualiser.Clear();
+        GameObject[] oldEnemies = GameObject.FindGameObjectsWithTag("Enemy");
+        foreach (GameObject enemy in oldEnemies) {
+            Debug.Log("found");
+            DestroyImmediate(enemy);
+        }
+        roomsList.Clear();
+        floorPositions.Clear();
     }
 
     private void CreateRooms()

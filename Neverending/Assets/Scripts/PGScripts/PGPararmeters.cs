@@ -7,10 +7,9 @@ public static class PGPararmeters
 {
     // list of enemies
     // may consider split into separate lists for different levels
-    public static List<GameObject> enemyList;
+    public static GameObject[] enemyList = {Resources.Load("Enemy Light") as GameObject,
+        Resources.Load("Blue Idle") as GameObject};
     
     // ...
     public static List<GameObject> itemList;
-
-    public static GameObject enemyLight = (GameObject)Resources.Load("Assets/Prefabs/new Prefabs/Enemy Light.prefab");
 }

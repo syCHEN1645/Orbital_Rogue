@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameObjectGenerator
 {
-    protected List<GameObject> objectList;
+    protected GameObject[] objectList;
     protected List<HashSet<Vector2Int>> roomsList;
     protected HashSet<Vector2Int> floorPositions;
     protected int level;
@@ -12,13 +12,13 @@ public class GameObjectGenerator
         // set parameters here
 
     }
-    virtual protected void GenerateOneRoom(HashSet<Vector2Int> room) {
+    public virtual void GenerateOneRoom(HashSet<Vector2Int> room) {
 
     }
-    protected bool RandomBool() {
+    protected bool RandomBool(int probability) {
         // randomly generate a bool
-        int x = Random.Range(0, 10);
-        if (x <= 1) {
+        int x = Random.Range(0, 100);
+        if (x <= probability - 1) {
             return true;
         }
         return false;

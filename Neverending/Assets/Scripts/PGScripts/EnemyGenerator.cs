@@ -11,12 +11,12 @@ public class EnemyGenerator : GameObjectGenerator
         this.objectList = PGPararmeters.enemyList;
         // level = ??;
     }
-    protected override void GenerateOneRoom(HashSet<Vector2Int> room)
+    public override void GenerateOneRoom(HashSet<Vector2Int> room)
     {
         foreach (var pos in room) {
-            if (RandomBool()) {
+            if (RandomBool(5)) {
                 GameObject.Instantiate(
-                    objectList[RandomInt(0, objectList.Count)], 
+                    objectList[RandomInt(0, objectList.Length - 1)], 
                     new Vector3(pos.x, pos.y, 0), 
                     Quaternion.identity);
             }
