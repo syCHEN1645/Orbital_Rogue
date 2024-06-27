@@ -1,20 +1,14 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.AI;
 
-
-// use this to generate walls
 public static class WallTypes
 {
     // see annotations in WallTypes
     public static void CreateWalls(HashSet<Vector2Int> floorPositions, TileMapVisualiser visualiser) {
-        HashSet<Vector2Int> wallPositions = FindWallsInDir(floorPositions, Direction2D.cardinalDirectionList);
-        
-        HashSet<Vector2Int> cornerPositions = new HashSet<Vector2Int>();
-        // draw walls
+        var wallPositions = FindWallsInDir(floorPositions, Direction2D.cardinalDirectionList);
         foreach (var pos in wallPositions) {
             string wallBinaryType = "";
             foreach (var dir in Direction2D.cardinalDirectionList) {
@@ -28,48 +22,11 @@ public static class WallTypes
                 }
             }
             visualiser.PaintWallTile(pos, wallBinaryType);
-
-            // draw corners
-            // if up is not a wall, right is a floor, up + right is a wall, then there is a corner
-            // corner AT topleft
-            if (!wallPositions.Contains(pos + Vector2Int.up) &&
-            wallPositions.Contains(pos + Vector2Int.up + Vector2Int.right) && 
-            floorPositions.Contains(pos + Vector2Int.right)) {
-                cornerPositions.Add(pos + Vector2Int.up);
-                // paint a corner
-                visualiser.PaintWallTile(pos + Vector2Int.up, "1000");
-                }
-            // similarly, corner AT bottomleft
-            if (!wallPositions.Contains(pos + Vector2Int.down) &&
-            wallPositions.Contains(pos + Vector2Int.down + Vector2Int.right) && 
-            floorPositions.Contains(pos + Vector2Int.right)) {
-                cornerPositions.Add(pos + Vector2Int.down);
-                // paint corner
-                visualiser.PaintWallTile(pos + Vector2Int.down, "0");
-            }
-            // if up is not a wall, and up + left is a wall, then there is a corner
-            // corner AT topright
-            if (!wallPositions.Contains(pos + Vector2Int.up) &&
-            wallPositions.Contains(pos + Vector2Int.up + Vector2Int.left) && 
-            floorPositions.Contains(pos + Vector2Int.left)) {
-                cornerPositions.Add(pos + Vector2Int.up);
-                // paint corner
-                visualiser.PaintWallTile(pos + Vector2Int.up, "0010");
-                }
-            // similarly, corner AT bottomright
-            if (!wallPositions.Contains(pos + Vector2Int.down) &&
-            wallPositions.Contains(pos + Vector2Int.down + Vector2Int.left) && 
-            floorPositions.Contains(pos + Vector2Int.left)) {
-                cornerPositions.Add(pos + Vector2Int.down);
-                // paint corner
-                visualiser.PaintWallTile(pos + Vector2Int.down, "0");
-            }
         }
-        // merge corners into walls
-        wallPositions.UnionWith(cornerPositions);
+        
     }
 
-    private static HashSet<Vector2Int> FindWallsInDir(HashSet<Vector2Int> floorPositions, List<Vector2Int> dirList)
+    private static IEnumerable<Vector2Int> FindWallsInDir(HashSet<Vector2Int> floorPositions, List<Vector2Int> dirList)
     {
         HashSet<Vector2Int> wallPositions = new HashSet<Vector2Int>();
         foreach (var pos in floorPositions) {

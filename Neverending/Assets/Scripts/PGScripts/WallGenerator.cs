@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// obsolete
 public static class WallGenerator
 {
     public static void CreateWalls(HashSet<Vector2Int> floorPositions, TileMapVisualiser visualiser) {
