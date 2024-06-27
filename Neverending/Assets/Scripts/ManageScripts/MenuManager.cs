@@ -13,13 +13,9 @@ public class MenuManager : MonoBehaviour
         // make sure showing main menu and not showing settings page
         gameObject.SetActive(true);
         settings.gameObject.SetActive(false);
+        // initialise saved settings
+        settings.GetComponent<VolumeSettings>().Initialise();
     }
-
-    // // Update is called once per frame
-    // void Update()
-    // {
-        
-    // }
 
     // public void LoadScene(string sceneName) {
     //     SceneManager.LoadScene(sceneName);
