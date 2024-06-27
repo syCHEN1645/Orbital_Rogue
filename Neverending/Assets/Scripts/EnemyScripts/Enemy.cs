@@ -20,6 +20,7 @@ public class Enemy : MonoBehaviour
     // dir: enemy is facing this direction: l-left, r-right.
     protected char dir;
     protected bool isAttacking;
+    protected float spriteScale;
 
     protected virtual void InitialiseEnemy() {
         if (enemyList == null) {

@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class EnemyGenerator : GameObjectGenerator
 {
+    // tile pos is the coordinates of bottom left corner of the tile, spawn locations need x, y offsets
+    private float spawnOffsetX = PGPararmeters.spawnOffsetX;
+    private float spawnOffsetY = PGPararmeters.spawnOffsetY;
     public EnemyGenerator(List<HashSet<Vector2Int>> roomsList, HashSet<Vector2Int> floorPositions) {
         // set parameters here
         this.roomsList = roomsList;
@@ -17,7 +20,7 @@ public class EnemyGenerator : GameObjectGenerator
             if (RandomBool(5)) {
                 GameObject.Instantiate(
                     objectList[RandomInt(0, objectList.Length - 1)], 
-                    new Vector3(pos.x, pos.y, 0), 
+                    new Vector3(pos.x + spawnOffsetX, pos.y + spawnOffsetY, 0), 
                     Quaternion.identity);
             }
         }
