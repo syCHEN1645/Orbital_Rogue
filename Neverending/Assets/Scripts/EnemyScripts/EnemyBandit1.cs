@@ -3,22 +3,21 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class EnemyLight : Enemy
+public class EnemyBandit1 : Enemy
 {
-    public EnemyGroundSensor groundSensor;
-    public EnemyLeftSensor leftSensor;
-    private float patrolRange = 10.0f;
+    private float patrolRange = 3.0f;
     protected override void InitialiseEnemy() {
         base.InitialiseEnemy();
-        speed = 1.0f;
+        speed = 0.7f;
         attack = 15.0f;
         attackRange = 1.0f;
         attackInterval = 1.0f;
+        spriteScale = 0.5f;
     }
     void Start()
     {
         InitialiseEnemy();      
-        animator.transform.localScale = new Vector3(-1, 1, 1);
+        animator.transform.localScale = new Vector3(-spriteScale, spriteScale, spriteScale);
     }
 
     // Update is called once per frame
@@ -55,7 +54,7 @@ public class EnemyLight : Enemy
     // run
     void MoveRight() {
         // face right
-        animator.transform.localScale = new Vector3(-1, 1, 1);
+        animator.transform.localScale = new Vector3(-spriteScale, spriteScale, spriteScale);
         dir = 'r';
         // move right
         gameObject.transform.Translate(speed * Time.deltaTime, 0, 0);
@@ -64,7 +63,7 @@ public class EnemyLight : Enemy
 
     void MoveLeft() {
         // face left
-        animator.transform.localScale = new Vector3(1, 1, 1);
+        animator.transform.localScale = new Vector3(spriteScale, spriteScale, spriteScale);
         dir = 'l';
         // move left
         gameObject.transform.Translate(-speed * Time.deltaTime, 0, 0);
@@ -83,15 +82,20 @@ public class EnemyLight : Enemy
         } else {
             // within boundary, move in current dir
             // if blocked, change dir
-            if (leftSensor.IsBlocked()) {
-                ChangeDir();
-            } else {
-                if (dir == 'l') {
-                    MoveLeft();
-                } else if (dir == 'r') {
-                    MoveRight();
-                }
+            if (dir == 'l') {
+                MoveLeft();
+            } else if (dir == 'r') {
+                MoveRight();
             }
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Wall")) {
+            // if collide with a wall, change movement dir
+            // Debug.Log("blocked");
+            ChangeDir();
         }
     }
 
