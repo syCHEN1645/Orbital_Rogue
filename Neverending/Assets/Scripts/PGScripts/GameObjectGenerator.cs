@@ -9,9 +9,13 @@ public class GameObjectGenerator
     protected HashSet<Vector2Int> floorPositions;
     protected int level;
     public GameObjectGenerator() {
-        // set parameters here
-
     }
+
+    public GameObjectGenerator(int level) {
+        this.level = level;
+        // set parameters here
+    }
+
     public virtual void GenerateOneRoom(HashSet<Vector2Int> room) {
 
     }

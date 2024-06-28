@@ -18,6 +18,7 @@ public class EnemyGenerator : GameObjectGenerator
     {
         foreach (var pos in room) {
             if (RandomBool(5)) {
+                // 5% chance being true
                 GameObject.Instantiate(
                     objectList[RandomInt(0, objectList.Length - 1)], 
                     new Vector3(pos.x + spawnOffsetX, pos.y + spawnOffsetY, 0), 

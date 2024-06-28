@@ -15,4 +15,7 @@ public static class PGPararmeters
 
     public static float spawnOffsetX = 0.5f;
     public static float spawnOffsetY = 0.1f;
+    // note: need to put player prefab in Resources folder
+    public static GameObject player = Resources.Load("Player") as GameObject;
+    public static GameObject portal = Resources.Load("Simple Portal") as GameObject;
 }
