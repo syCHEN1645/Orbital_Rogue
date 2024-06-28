@@ -48,7 +48,7 @@ namespace PlayerControlsScript
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""Fire"",
+                    ""name"": ""Primary Attack"",
                     ""type"": ""Button"",
                     ""id"": ""cc95e8b5-1b97-4c1e-9cc6-b9dd56f89bd9"",
                     ""expectedControlType"": ""Button"",
@@ -57,7 +57,7 @@ namespace PlayerControlsScript
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Block"",
+                    ""name"": ""Secondary Attack"",
                     ""type"": ""Button"",
                     ""id"": ""2942e273-ee2b-4212-8e9b-ac177b0dd4c9"",
                     ""expectedControlType"": ""Button"",
@@ -73,6 +73,15 @@ namespace PlayerControlsScript
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""KeyBoard"",
+                    ""type"": ""Value"",
+                    ""id"": ""8b366ffe-c8e1-4ba5-a59d-3e0d97fdf5dd"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -248,7 +257,7 @@ namespace PlayerControlsScript
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": "";Gamepad"",
-                    ""action"": ""Fire"",
+                    ""action"": ""Primary Attack"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -259,7 +268,7 @@ namespace PlayerControlsScript
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": "";Keyboard&Mouse"",
-                    ""action"": ""Fire"",
+                    ""action"": ""Primary Attack"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -270,7 +279,7 @@ namespace PlayerControlsScript
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": "";Touch"",
-                    ""action"": ""Fire"",
+                    ""action"": ""Primary Attack"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -281,7 +290,7 @@ namespace PlayerControlsScript
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Joystick"",
-                    ""action"": ""Fire"",
+                    ""action"": ""Primary Attack"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -292,7 +301,7 @@ namespace PlayerControlsScript
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""XR"",
-                    ""action"": ""Fire"",
+                    ""action"": ""Primary Attack"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -303,7 +312,7 @@ namespace PlayerControlsScript
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
-                    ""action"": ""Block"",
+                    ""action"": ""Secondary Attack"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -315,6 +324,50 @@ namespace PlayerControlsScript
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
                     ""action"": ""Dash"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""661623a5-2862-44d2-9b92-56b2b11f8cc4"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""KeyBoard"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d5c1053c-4033-4956-88ac-03d2305e3027"",
+                    ""path"": ""<Keyboard>/2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""KeyBoard"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""19e98d0b-960d-4546-b378-2f61917c1bfd"",
+                    ""path"": ""<Keyboard>/3"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""KeyBoard"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""bf6b6b64-ed9a-44bc-b161-e9f0cc728ddf"",
+                    ""path"": ""<Keyboard>/4"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""KeyBoard"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -965,9 +1018,10 @@ namespace PlayerControlsScript
             m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
             m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
             m_Player_Look = m_Player.FindAction("Look", throwIfNotFound: true);
-            m_Player_Fire = m_Player.FindAction("Fire", throwIfNotFound: true);
-            m_Player_Block = m_Player.FindAction("Block", throwIfNotFound: true);
+            m_Player_PrimaryAttack = m_Player.FindAction("Primary Attack", throwIfNotFound: true);
+            m_Player_SecondaryAttack = m_Player.FindAction("Secondary Attack", throwIfNotFound: true);
             m_Player_Dash = m_Player.FindAction("Dash", throwIfNotFound: true);
+            m_Player_KeyBoard = m_Player.FindAction("KeyBoard", throwIfNotFound: true);
             // UI
             m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
             m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1046,18 +1100,20 @@ namespace PlayerControlsScript
         private List<IPlayerActions> m_PlayerActionsCallbackInterfaces = new List<IPlayerActions>();
         private readonly InputAction m_Player_Move;
         private readonly InputAction m_Player_Look;
-        private readonly InputAction m_Player_Fire;
-        private readonly InputAction m_Player_Block;
+        private readonly InputAction m_Player_PrimaryAttack;
+        private readonly InputAction m_Player_SecondaryAttack;
         private readonly InputAction m_Player_Dash;
+        private readonly InputAction m_Player_KeyBoard;
         public struct PlayerActions
         {
             private @PlayerControls m_Wrapper;
             public PlayerActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
             public InputAction @Move => m_Wrapper.m_Player_Move;
             public InputAction @Look => m_Wrapper.m_Player_Look;
-            public InputAction @Fire => m_Wrapper.m_Player_Fire;
-            public InputAction @Block => m_Wrapper.m_Player_Block;
+            public InputAction @PrimaryAttack => m_Wrapper.m_Player_PrimaryAttack;
+            public InputAction @SecondaryAttack => m_Wrapper.m_Player_SecondaryAttack;
             public InputAction @Dash => m_Wrapper.m_Player_Dash;
+            public InputAction @KeyBoard => m_Wrapper.m_Player_KeyBoard;
             public InputActionMap Get() { return m_Wrapper.m_Player; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -1073,15 +1129,18 @@ namespace PlayerControlsScript
                 @Look.started += instance.OnLook;
                 @Look.performed += instance.OnLook;
                 @Look.canceled += instance.OnLook;
-                @Fire.started += instance.OnFire;
-                @Fire.performed += instance.OnFire;
-                @Fire.canceled += instance.OnFire;
-                @Block.started += instance.OnBlock;
-                @Block.performed += instance.OnBlock;
-                @Block.canceled += instance.OnBlock;
+                @PrimaryAttack.started += instance.OnPrimaryAttack;
+                @PrimaryAttack.performed += instance.OnPrimaryAttack;
+                @PrimaryAttack.canceled += instance.OnPrimaryAttack;
+                @SecondaryAttack.started += instance.OnSecondaryAttack;
+                @SecondaryAttack.performed += instance.OnSecondaryAttack;
+                @SecondaryAttack.canceled += instance.OnSecondaryAttack;
                 @Dash.started += instance.OnDash;
                 @Dash.performed += instance.OnDash;
                 @Dash.canceled += instance.OnDash;
+                @KeyBoard.started += instance.OnKeyBoard;
+                @KeyBoard.performed += instance.OnKeyBoard;
+                @KeyBoard.canceled += instance.OnKeyBoard;
             }
 
             private void UnregisterCallbacks(IPlayerActions instance)
@@ -1092,15 +1151,18 @@ namespace PlayerControlsScript
                 @Look.started -= instance.OnLook;
                 @Look.performed -= instance.OnLook;
                 @Look.canceled -= instance.OnLook;
-                @Fire.started -= instance.OnFire;
-                @Fire.performed -= instance.OnFire;
-                @Fire.canceled -= instance.OnFire;
-                @Block.started -= instance.OnBlock;
-                @Block.performed -= instance.OnBlock;
-                @Block.canceled -= instance.OnBlock;
+                @PrimaryAttack.started -= instance.OnPrimaryAttack;
+                @PrimaryAttack.performed -= instance.OnPrimaryAttack;
+                @PrimaryAttack.canceled -= instance.OnPrimaryAttack;
+                @SecondaryAttack.started -= instance.OnSecondaryAttack;
+                @SecondaryAttack.performed -= instance.OnSecondaryAttack;
+                @SecondaryAttack.canceled -= instance.OnSecondaryAttack;
                 @Dash.started -= instance.OnDash;
                 @Dash.performed -= instance.OnDash;
                 @Dash.canceled -= instance.OnDash;
+                @KeyBoard.started -= instance.OnKeyBoard;
+                @KeyBoard.performed -= instance.OnKeyBoard;
+                @KeyBoard.canceled -= instance.OnKeyBoard;
             }
 
             public void RemoveCallbacks(IPlayerActions instance)
@@ -1331,9 +1393,10 @@ namespace PlayerControlsScript
         {
             void OnMove(InputAction.CallbackContext context);
             void OnLook(InputAction.CallbackContext context);
-            void OnFire(InputAction.CallbackContext context);
-            void OnBlock(InputAction.CallbackContext context);
+            void OnPrimaryAttack(InputAction.CallbackContext context);
+            void OnSecondaryAttack(InputAction.CallbackContext context);
             void OnDash(InputAction.CallbackContext context);
+            void OnKeyBoard(InputAction.CallbackContext context);
         }
         public interface IUIActions
         {

@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3738002499867418183}
   - component: {fileID: 2574194382439476303}
   - component: {fileID: 5126279973190661756}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: EnemyLight
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -213,6 +213,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthBar: {fileID: 8898072900452285859}
+  offset: 0
 --- !u!1 &3328688201737287207
 GameObject:
   m_ObjectHideFlags: 0
@@ -223,7 +224,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1521324105662412049}
   - component: {fileID: 1994445640648366178}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: LeftSensor
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -259,9 +260,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   boxSize: {x: 0.03, y: 1.2}
   castdistance: 0
-  groundLayer:
+  layer:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 0
 --- !u!1 &5576237975734773221
 GameObject:
   m_ObjectHideFlags: 0
@@ -274,7 +275,7 @@ GameObject:
   - component: {fileID: 9070058797367495160}
   - component: {fileID: 4056962946303569088}
   - component: {fileID: 1626899572668203881}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -374,7 +375,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3198289791691887096}
   - component: {fileID: 4876210806145361787}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: GroundSensor
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -410,9 +411,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   boxSize: {x: 0.16, y: 0.03}
   castdistance: 0
-  groundLayer:
+  layer:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 0
 --- !u!1 &8885957407574580776
 GameObject:
   m_ObjectHideFlags: 0
@@ -424,7 +425,7 @@ GameObject:
   - component: {fileID: 2766798887933411203}
   - component: {fileID: 112056282759155231}
   - component: {fileID: 8898072900452285859}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: EnemyHealthBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}

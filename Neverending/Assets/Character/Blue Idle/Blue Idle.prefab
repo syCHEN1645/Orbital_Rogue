@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7429558967215759254}
   - component: {fileID: 3722940257529892282}
   - component: {fileID: 5616802668667897923}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Enemy Health Bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -87,7 +87,7 @@ GameObject:
   - component: {fileID: 5176306729138538780}
   - component: {fileID: 3302237744310755783}
   - component: {fileID: 7621972706675033926}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -192,7 +192,7 @@ GameObject:
   - component: {fileID: 3577726703003428207}
   - component: {fileID: 5816550763571886990}
   - component: {fileID: 760943114577822577}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Blue Idle
   m_TagString: Enemy
   m_Icon: {fileID: 0}
