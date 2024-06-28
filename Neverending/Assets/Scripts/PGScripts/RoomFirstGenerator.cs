@@ -18,6 +18,7 @@ public class RoomFirstGenerator : SimpleRandomWalkGenerator
 
     private EnemyGenerator enemyGenerator;
     private PlayerGenerator playerGenerator;
+    private VictoryPointGenerator victoryPointGenerator;
 
     // contains a list of rooms (floor tiles only), without corridor tiles
     private List<HashSet<Vector2Int>> roomsList = new List<HashSet<Vector2Int>>();
@@ -37,6 +38,7 @@ public class RoomFirstGenerator : SimpleRandomWalkGenerator
         // generate enemies
         enemyGenerator = new EnemyGenerator(roomsList, floorPositions);
         playerGenerator = new PlayerGenerator();
+        victoryPointGenerator = new VictoryPointGenerator();
         GenerateObjectsInRooms();
     }
 
@@ -44,7 +46,7 @@ public class RoomFirstGenerator : SimpleRandomWalkGenerator
         // roomsList[0] as Player's spawn room
         playerGenerator.GenerateOneRoom(roomsList[0]);
         // roomsList[count - 1] as victory point room/boss room/...
-
+        victoryPointGenerator.GenerateOneRoom(roomsList[roomsList.Count - 1]);
         // other rooms as ordinary rooms with enemies and items
         for (int i = 1; i < roomsList.Count - 1; i++) {
             enemyGenerator.GenerateOneRoom(roomsList[i]);
@@ -55,9 +57,19 @@ public class RoomFirstGenerator : SimpleRandomWalkGenerator
     private void ClearForEditorMode() {
         visualiser.Clear();
         GameObject[] oldEnemies = GameObject.FindGameObjectsWithTag("Enemy");
+        GameObject[] oldPlayers = GameObject.FindGameObjectsWithTag("Player");
+        GameObject[] oldInteractables = GameObject.FindGameObjectsWithTag("Interactable");
         foreach (GameObject enemy in oldEnemies) {
-            Debug.Log("found");
+            // Debug.Log("found");
             DestroyImmediate(enemy);
+        }
+        foreach (GameObject player in oldPlayers) {
+            // Debug.Log("found");
+            DestroyImmediate(player);
+        }
+        foreach (GameObject interactable in oldInteractables) {
+            // Debug.Log("found");
+            DestroyImmediate(interactable);
         }
         roomsList.Clear();
         floorPositions.Clear();

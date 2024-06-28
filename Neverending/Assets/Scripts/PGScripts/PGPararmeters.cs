@@ -7,7 +7,7 @@ public static class PGPararmeters
 {
     // list of enemies
     // may consider split into separate lists for different levels
-    public static GameObject[] enemyList = {Resources.Load("Enemy Bandit 1") as GameObject,
+    public static GameObject[] typesOfEnemies = {Resources.Load("Enemy Bandit 1") as GameObject,
         Resources.Load("Blue Slime 1") as GameObject};
     
     // ...

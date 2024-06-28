@@ -19,7 +19,7 @@ public class PlayerGenerator : GameObjectGenerator
         // instantiate player at a random tile
         Vector2Int spawnPos = floors[Random.Range(0, room.Count - 1)];
         if (player != null) {
-            GameObject.Instantiate(player, new Vector3(spawnPos.x, spawnPos.y, 0), Quaternion.identity);
+            GameObject.Instantiate(player, new Vector3(spawnPos.x + spawnOffsetX, spawnPos.y + spawnOffsetY, 0), Quaternion.identity);
         } else {
             Debug.Log("Player is empty, spawn at " + new Vector3(spawnPos.x, spawnPos.y, 0));
         }

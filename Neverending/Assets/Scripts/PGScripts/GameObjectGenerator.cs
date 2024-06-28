@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class GameObjectGenerator
 {
-    protected GameObject[] objectList;
     protected List<HashSet<Vector2Int>> roomsList;
     protected HashSet<Vector2Int> floorPositions;
+    protected float spawnOffsetX = PGPararmeters.spawnOffsetX;
+    protected float spawnOffsetY = PGPararmeters.spawnOffsetY;
     protected int level;
     public GameObjectGenerator() {
     }
