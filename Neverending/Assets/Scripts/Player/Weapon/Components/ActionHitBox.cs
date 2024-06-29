@@ -6,7 +6,6 @@ using UnityEngine;
 public class ActionHitBox : WeaponComponent<ActionHitBoxData, AttackActionHitBox>
 {
     public event Action<Collider2D[]> OnDetectedCollider2D;
-    public GameObject playerGameObject;
     protected Player player;
     protected int facingDirection;
     protected Vector2 offset;
@@ -30,7 +29,7 @@ public class ActionHitBox : WeaponComponent<ActionHitBoxData, AttackActionHitBox
     protected override void Awake()
     {
         base.Awake();
-        player = playerGameObject.GetComponent<Player>();
+        player = GameObject.Find("Player").GetComponent<Player>();
     }
 
     protected override void Start()

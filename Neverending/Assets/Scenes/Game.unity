@@ -8968,6 +8968,10 @@ PrefabInstance:
       propertyPath: playerGameObject
       value: 
       objectReference: {fileID: 527846156}
+    - target: {fileID: 5228701311566399896, guid: 02578574be3e3d1458c766648ce605dd, type: 3}
+      propertyPath: data
+      value: 
+      objectReference: {fileID: 11400000, guid: 95fa5f896dccbf74b9eb38bdeaf1b729, type: 2}
     - target: {fileID: 5650430937912813487, guid: 02578574be3e3d1458c766648ce605dd, type: 3}
       propertyPath: m_Layer
       value: 3
@@ -12840,6 +12844,14 @@ PrefabInstance:
       propertyPath: playerGameObject
       value: 
       objectReference: {fileID: 527846156}
+    - target: {fileID: 3834052145260651970, guid: 02578574be3e3d1458c766648ce605dd, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 503144627fb3f2c459a1d696b619446e, type: 2}
+    - target: {fileID: 5228701311566399896, guid: 02578574be3e3d1458c766648ce605dd, type: 3}
+      propertyPath: data
+      value: 
+      objectReference: {fileID: 11400000, guid: 95f3e1b1d8cd14243a0ec005ddc63193, type: 2}
     - target: {fileID: 5650430937912813487, guid: 02578574be3e3d1458c766648ce605dd, type: 3}
       propertyPath: m_Layer
       value: 3
@@ -12938,7 +12950,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7035237794021676929, guid: 02578574be3e3d1458c766648ce605dd, type: 3}
       propertyPath: numberOfAttacks
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7035237794021676929, guid: 02578574be3e3d1458c766648ce605dd, type: 3}
       propertyPath: <Data>k__BackingField

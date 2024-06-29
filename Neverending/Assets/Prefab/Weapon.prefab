@@ -129,9 +129,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8141720672373882428}
   - component: {fileID: 7035237794021676929}
-  - component: {fileID: 6179007686316245227}
-  - component: {fileID: 1922502628153624360}
-  - component: {fileID: 7702073274697047157}
+  - component: {fileID: 5228701311566399896}
   m_Layer: 0
   m_Name: Weapon
   m_TagString: Untagged
@@ -168,9 +166,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8808f470c27ac994db3c00433231e2e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Data>k__BackingField: {fileID: 0}
   numberOfAttacks: 0
---- !u!114 &6179007686316245227
+--- !u!114 &5228701311566399896
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -179,34 +176,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 6320208882656571626}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 29601a6d6109ef645b1e262ee6a359ee, type: 3}
+  m_Script: {fileID: 11500000, guid: cb2df538ee16c464586f06202aaebac1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1922502628153624360
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6320208882656571626}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab053add3002e394694a195db1eb77b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerGameObject: {fileID: 0}
---- !u!114 &7702073274697047157
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6320208882656571626}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91ee29450b9446f49943a154b76355f0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  weapon: {fileID: 7035237794021676929}
+  data: {fileID: 0}
 --- !u!1 &8534799332613681727
 GameObject:
   m_ObjectHideFlags: 0
@@ -218,7 +192,7 @@ GameObject:
   - component: {fileID: 1830686072856413645}
   - component: {fileID: 5818921139073894879}
   m_Layer: 0
-  m_Name: Weapon
+  m_Name: WeaponSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

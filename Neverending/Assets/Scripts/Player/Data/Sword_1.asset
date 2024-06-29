@@ -16,6 +16,7 @@ MonoBehaviour:
   - 0
   - 0
   - 0
+  <AnimatorController>k__BackingField: {fileID: 9100000, guid: 3228b9a441787874ca1d5692caf6b4b9, type: 2}
   <NumberOfAttacks>k__BackingField: 3
   <ComponentData>k__BackingField:
   - rid: 209949089917566983
@@ -31,26 +32,32 @@ MonoBehaviour:
         repeatData: 0
         attackData:
         - name: Attack 1
-          <Sprites>k__BackingField:
-          - {fileID: -2077423630, guid: ac150e52cb8147f499ce519798c0608a, type: 3}
-          - {fileID: 68799288, guid: ac150e52cb8147f499ce519798c0608a, type: 3}
-          - {fileID: 1836659696, guid: ac150e52cb8147f499ce519798c0608a, type: 3}
-          - {fileID: -132251957, guid: ac150e52cb8147f499ce519798c0608a, type: 3}
-          - {fileID: -482716104, guid: ac150e52cb8147f499ce519798c0608a, type: 3}
+          <PhaseSprites>k__BackingField:
+          - <Phase>k__BackingField: 2
+            <Sprites>k__BackingField:
+            - {fileID: -2077423630, guid: ac150e52cb8147f499ce519798c0608a, type: 3}
+            - {fileID: 68799288, guid: ac150e52cb8147f499ce519798c0608a, type: 3}
+            - {fileID: 1836659696, guid: ac150e52cb8147f499ce519798c0608a, type: 3}
+            - {fileID: -132251957, guid: ac150e52cb8147f499ce519798c0608a, type: 3}
+            - {fileID: -482716104, guid: ac150e52cb8147f499ce519798c0608a, type: 3}
         - name: Attack 2
-          <Sprites>k__BackingField:
-          - {fileID: 1003061634, guid: ac150e52cb8147f499ce519798c0608a, type: 3}
-          - {fileID: -1353300959, guid: ac150e52cb8147f499ce519798c0608a, type: 3}
-          - {fileID: 1789846594, guid: ac150e52cb8147f499ce519798c0608a, type: 3}
-          - {fileID: 1494107689, guid: ac150e52cb8147f499ce519798c0608a, type: 3}
-          - {fileID: 1329139778, guid: ac150e52cb8147f499ce519798c0608a, type: 3}
+          <PhaseSprites>k__BackingField:
+          - <Phase>k__BackingField: 2
+            <Sprites>k__BackingField:
+            - {fileID: 1003061634, guid: ac150e52cb8147f499ce519798c0608a, type: 3}
+            - {fileID: -1353300959, guid: ac150e52cb8147f499ce519798c0608a, type: 3}
+            - {fileID: 1789846594, guid: ac150e52cb8147f499ce519798c0608a, type: 3}
+            - {fileID: 1494107689, guid: ac150e52cb8147f499ce519798c0608a, type: 3}
+            - {fileID: 1329139778, guid: ac150e52cb8147f499ce519798c0608a, type: 3}
         - name: Attack 3
-          <Sprites>k__BackingField:
-          - {fileID: -1608095511, guid: ac150e52cb8147f499ce519798c0608a, type: 3}
-          - {fileID: 723430341, guid: ac150e52cb8147f499ce519798c0608a, type: 3}
-          - {fileID: -1886466146, guid: ac150e52cb8147f499ce519798c0608a, type: 3}
-          - {fileID: -113796128, guid: ac150e52cb8147f499ce519798c0608a, type: 3}
-          - {fileID: -122779850, guid: ac150e52cb8147f499ce519798c0608a, type: 3}
+          <PhaseSprites>k__BackingField:
+          - <Phase>k__BackingField: 2
+            <Sprites>k__BackingField:
+            - {fileID: -1608095511, guid: ac150e52cb8147f499ce519798c0608a, type: 3}
+            - {fileID: 723430341, guid: ac150e52cb8147f499ce519798c0608a, type: 3}
+            - {fileID: -1886466146, guid: ac150e52cb8147f499ce519798c0608a, type: 3}
+            - {fileID: -113796128, guid: ac150e52cb8147f499ce519798c0608a, type: 3}
+            - {fileID: -122779850, guid: ac150e52cb8147f499ce519798c0608a, type: 3}
     - rid: 209949089917566984
       type: {class: ActionHitBoxData, ns: , asm: Assembly-CSharp}
       data:
@@ -91,8 +98,8 @@ MonoBehaviour:
         repeatData: 0
         attackData:
         - name: Attack 1
-          <Amount>k__BackingField: 1
-        - name: Attack 2
-          <Amount>k__BackingField: 1
-        - name: Attack 3
           <Amount>k__BackingField: 10
+        - name: Attack 2
+          <Amount>k__BackingField: 10
+        - name: Attack 3
+          <Amount>k__BackingField: 15

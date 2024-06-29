@@ -8,6 +8,9 @@ using UnityEngine;
 public class WeaponDataSO : ScriptableObject
 {
     public float[] movementSpeed;
+
+    [field: SerializeField] public RuntimeAnimatorController AnimatorController { get; private set; }
+
     [field: SerializeField] public int NumberOfAttacks { get; private set; }
 
     [field: SerializeReference] public List<ComponentData> ComponentData { get; private set; }
@@ -17,6 +20,11 @@ public class WeaponDataSO : ScriptableObject
         return ComponentData.OfType<T>().FirstOrDefault();
     }
 
+    public List<Type> GetAllDependencies()
+    {
+        return ComponentData.Select(component => component.ComponentDependency).ToList();
+    }
+
     public void AddData(ComponentData data)
     {
         if (ComponentData.FirstOrDefault(t => t.GetType() == data.GetType()) != null)
@@ -24,29 +32,4 @@ public class WeaponDataSO : ScriptableObject
 
         ComponentData.Add(data);
     }
-
-    /*[ContextMenu("Add Sprite Data")]
-    private void AddSpriteData() => componentData.Add(new WeaponSpriteData());
-
-    [ContextMenu("Add Action HitBox Data")]
-    private void AddActionHitBoxData() => componentData.Add(new ActionHitBoxData());
-
-    [ContextMenu("Update Component Names")]
-    private void UpdateComponentNames() 
-    {
-        foreach (var item in componentData)
-        {
-            item.SetComponentName();
-            item.SetAttackDataNames();
-        }
-    }
-
-    [ContextMenu("Update Number of Attacks")]
-    private void UpdateNumberOfAttacks() 
-    {
-        foreach (var item in componentData)
-        {
-            item.InitializeAttackData(NumberOfAttacks);
-        }
-    }*/
 }

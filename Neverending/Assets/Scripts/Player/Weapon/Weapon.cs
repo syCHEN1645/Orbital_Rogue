@@ -5,8 +5,7 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
-    [field: SerializeField] public WeaponDataSO Data { get; private set; }
-    [SerializeField] private int numberOfAttacks;
+    public WeaponDataSO Data { get; private set; }
     public int CurrentAttackCounter
         {
             get => currentAttackCounter;
@@ -19,6 +18,7 @@ public class Weapon : MonoBehaviour
 
     protected Animator baseAnimator;
     public GameObject BaseGameObject { get; private set; }
+    public GameObject WeaponSpriteGameObject { get; private set; }
     public  AnimationEventHandler eventHandler { get; private set; }
     protected PlayerAttackState state;
     private int currentAttackCounter;
@@ -26,9 +26,9 @@ public class Weapon : MonoBehaviour
     protected void Awake()
     {
         BaseGameObject = transform.Find("Base").gameObject;
+        WeaponSpriteGameObject = transform.Find("WeaponSprite").gameObject;
 
         baseAnimator = BaseGameObject.GetComponent<Animator>();
-
         eventHandler = BaseGameObject.GetComponent<AnimationEventHandler>();
 
         gameObject.SetActive(true);
@@ -43,6 +43,11 @@ public class Weapon : MonoBehaviour
         baseAnimator.SetInteger("AttackCounter", CurrentAttackCounter);
 
         OnEnter?.Invoke();
+    }
+
+    public void SetData(WeaponDataSO data)
+    {
+        Data = data;
     }
 
     public void Exit()
@@ -73,34 +78,5 @@ public class Weapon : MonoBehaviour
     public void initializeWeapon(PlayerAttackState state) 
     {
         this.state = state;
-    }
-
-    /*
-    public virtual void AnimationFinishTrigger()
-    {
-        state.AnimationFinishTrigger();
-    }
-
-    public virtual void AnimationStartMovementTrigger()
-    {
-        state.SetPlayerVelocity(Data.movementSpeed[CurrentAttackCounter]);
-    }
-
-    public virtual void AnimationStopMovementTrigger()
-    {
-        state.SetPlayerVelocity(0f);
-    } 
-
-    public virtual void AnimationTurnOffFlipTrigger()
-    {
-        state.SetFlipCheck(false);
-    }
-
-    public virtual void AnimationTurnOnFlipTrigger()
-    {
-        state.SetFlipCheck(true);
-    }
-    */
-    
-    
+    }  
 }
