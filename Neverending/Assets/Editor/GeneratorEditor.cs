@@ -16,8 +16,8 @@ public class GeneratorEditor : Editor
     {
         base.OnInspectorGUI();
         // if the button Create Map is clicked
-        if (GUILayout.Button("Create Map")){
-            generator.GenerateMap();
+        if (GUILayout.Button("Create Map")) {
+            generator.GenerateMap(true);
         }
     }
 }

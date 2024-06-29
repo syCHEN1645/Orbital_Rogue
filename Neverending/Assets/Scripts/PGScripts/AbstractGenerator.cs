@@ -9,10 +9,13 @@ public abstract class AbstractGenerator : MonoBehaviour
     protected TileMapVisualiser visualiser = null;
     [SerializeField]
     protected Vector2Int startPos = Vector2Int.zero;
-    public void GenerateMap() {
+
+    public void GenerateMap(bool editor) {
         visualiser.Clear();
+        ClearOldMap(editor);
         RunPG();
     }
 
     protected abstract void RunPG();
+    protected abstract void ClearOldMap(bool editor);
 }

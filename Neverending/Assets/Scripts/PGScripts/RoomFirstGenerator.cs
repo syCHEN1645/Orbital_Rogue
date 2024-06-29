@@ -27,8 +27,6 @@ public class RoomFirstGenerator : SimpleRandomWalkGenerator
 
     protected override void RunPG()
     {
-        ClearForEditorMode();
-
         CreateRooms();
         // test roomsList
         // for (int i = 0; i < roomsList.Count; i++) {
@@ -51,25 +49,36 @@ public class RoomFirstGenerator : SimpleRandomWalkGenerator
         for (int i = 1; i < roomsList.Count - 1; i++) {
             enemyGenerator.GenerateOneRoom(roomsList[i]);
         }
-        // enemyGenerator.GenerateOneRoom(roomsList[0]);
     }
 
-    private void ClearForEditorMode() {
+    protected override void ClearOldMap(bool editor) {
         visualiser.Clear();
         GameObject[] oldEnemies = GameObject.FindGameObjectsWithTag("Enemy");
         GameObject[] oldPlayers = GameObject.FindGameObjectsWithTag("Player");
         GameObject[] oldInteractables = GameObject.FindGameObjectsWithTag("Interactable");
         foreach (GameObject enemy in oldEnemies) {
             // Debug.Log("found");
-            DestroyImmediate(enemy);
+            if (editor) {
+                DestroyImmediate(enemy);
+            } else {
+                Destroy(enemy);
+            }
         }
         foreach (GameObject player in oldPlayers) {
             // Debug.Log("found");
-            DestroyImmediate(player);
+            if (editor) {
+                DestroyImmediate(player);
+            } else {
+                Destroy(player);
+            }
         }
         foreach (GameObject interactable in oldInteractables) {
             // Debug.Log("found");
-            DestroyImmediate(interactable);
+            if (editor) {
+                DestroyImmediate(interactable);
+            } else {
+                Destroy(interactable);
+            }
         }
         roomsList.Clear();
         floorPositions.Clear();
