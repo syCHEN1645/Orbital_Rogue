@@ -21,8 +21,11 @@ public class Enemy : MonoBehaviour
     // dir: enemy is facing this direction: l-left, r-right.
     protected char dir;
     protected bool isAttacking;
+<<<<<<< HEAD:Neverending/Assets/Scripts/EnemyScripts/Enemy.cs
     protected float spriteScale;
+=======
     protected bool canMove = true;
+>>>>>>> New-Top-Down:Neverending/Assets/Scripts/Enemy/Enemy.cs
 
     protected virtual void InitialiseEnemy() {
         if (enemyList == null) {
