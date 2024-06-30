@@ -9,14 +9,30 @@ public class TileMapVisualiser: MonoBehaviour
     [SerializeField]
     private Tilemap floorTileMap, wallTileMap;
     [SerializeField]
+<<<<<<< Updated upstream
     private TileBase floorTile, wallTile;
+=======
+    private TileBase floorTile, wallGenericTile, wallTop, wallBottom, 
+        wallLeft, wallRight, wallTopleft, wallTopRight, 
+        wallBottomLeft, wallBottomRight, testTile;
+>>>>>>> Stashed changes
     public void PaintFloorTiles(IEnumerable<Vector2Int> floorPositions) {
         foreach(var pos in floorPositions) {
             PaintSingleTile(floorTileMap, floorTile, pos);
         }
     }
 
+<<<<<<< Updated upstream
     private void PaintSingleTile(Tilemap floorTileMap, TileBase floorTile, Vector2Int pos)
+=======
+    public void TestPaint(HashSet<Vector2Int> floors) {
+        foreach(var pos in floors) {
+            PaintSingleTile(floorTileMap, testTile, pos);
+        }
+    }
+
+    public void PaintSingleTile(Tilemap floorTileMap, TileBase floorTile, Vector2Int pos)
+>>>>>>> Stashed changes
     {
         // convert world pos to cell pos
         var tilePosition = floorTileMap.WorldToCell((Vector3Int)pos);
@@ -32,7 +48,40 @@ public class TileMapVisualiser: MonoBehaviour
     public void PaintWallTiles(IEnumerable<Vector2Int> wallPositions)
     {
         foreach (var pos in wallPositions) {
+<<<<<<< Updated upstream
             PaintSingleTile(wallTileMap, wallTile, pos);
+=======
+            PaintSingleTile(wallTileMap, wallGenericTile, pos);
+        }
+    }
+
+    public void PaintWallTile(Vector2Int pos, string bType) {
+        // convert from binary to dec int
+        int typeAsInt = Convert.ToInt32(bType, 2);
+        TileBase tileBase = null;
+        // check through each wall type
+        if (WallTypes.wallSideTop.Contains(typeAsInt)) {
+            tileBase = wallTop;
+        } else if (WallTypes.wallSideBottom.Contains(typeAsInt)) {
+            tileBase = wallBottom;
+        } else if (WallTypes.wallSideLeft.Contains(typeAsInt)) {
+            tileBase = wallLeft;
+        } else if (WallTypes.wallSideRight.Contains(typeAsInt)) {
+            tileBase = wallRight;
+        } else if (WallTypes.wallSideBottomLeft.Contains(typeAsInt)) {
+            tileBase = wallBottomLeft;
+        } else if (WallTypes.wallSideBottomRight.Contains(typeAsInt)) {
+            tileBase = wallBottomRight;
+        } else if (WallTypes.wallSideTopLeft.Contains(typeAsInt)) {
+            tileBase = wallTopleft;
+        } else if (WallTypes.wallSideTopRight.Contains(typeAsInt)) {
+            tileBase = wallTopRight;
+        } else {
+            tileBase = wallGenericTile;
+        }
+        if (tileBase != null) {
+            PaintSingleTile(wallTileMap, tileBase, pos);
+>>>>>>> Stashed changes
         }
     }
 }
