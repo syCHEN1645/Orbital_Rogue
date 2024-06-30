@@ -13,10 +13,11 @@ public class GameManager : MonoBehaviour
     public List<GameObject> enemies;
     public AbstractGenerator generator;
     public VictoryPoint portal;
-    public static int level = 0;
+    public int level = 0;
 
     void Start()
     {
+        LoadGame();
         // increase level by 1 at the start of the level
         level += 1;
         // generate Map, enemies, interactables and Player
@@ -44,16 +45,35 @@ public class GameManager : MonoBehaviour
             // press F to enter portal
             if (level == ManagerParameters.MAX_LEVEL) {
                 // this level is the last level, player wins, game ends
+                // reset level to 0
+                PlayerPrefs.SetInt(ManagerParameters.LEVEL, 0);
                 PlayerWins();
             } else {
                 // not the last level, go to transition scene and then next level
+                SaveGame();
                 SceneManager.LoadScene(ManagerParameters.TRANSITION_SCENE);
             }
         }
     }
 
+    private void LoadGame() {
+        if (PlayerPrefs.HasKey(ManagerParameters.LEVEL)) {
+            // if there is a saved level
+            level = PlayerPrefs.GetInt(ManagerParameters.LEVEL);
+        } else {
+            // if there is no saved level
+            PlayerPrefs.SetInt(ManagerParameters.LEVEL, 0);
+        }
+    }
+
+    private void SaveGame()
+    {
+        PlayerPrefs.SetInt(ManagerParameters.LEVEL, level);
+    }
+
     private void PlayerWins()
     {
-        throw new NotImplementedException();
+        SceneManager.LoadScene(ManagerParameters.MENU_SCENE);
+        Debug.Log("You Win!");
     }
 }

@@ -1,18 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TransitionMenuManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+    public void MainMenuButton() {
+        SceneManager.LoadScene(ManagerParameters.MENU_SCENE);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    public void NextLevelButton() {
+        SceneManager.LoadScene(ManagerParameters.GAME_SCENE);
     }
 }

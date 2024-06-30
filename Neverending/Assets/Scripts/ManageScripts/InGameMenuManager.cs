@@ -6,7 +6,6 @@ using UnityEngine.UI;
 
 public class InGameMenuManager : MonoBehaviour
 {
-    private string menuScene = ManagerParameters.MENU_SCENE;
     [SerializeField]
     private Button pauseButton;
     [SerializeField]
@@ -29,7 +28,7 @@ public class InGameMenuManager : MonoBehaviour
 
     // press this button to go to main menu
     public void QuitLevelButton() {
-        SceneManager.LoadScene(menuScene);
+        SceneManager.LoadScene(ManagerParameters.MENU_SCENE);
     }
 
     public void PauseGame() {

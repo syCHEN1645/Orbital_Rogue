@@ -5,7 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
-    private const string START_GAME = "PG Test Scene";
     public Canvas settings;
     // Start is called before the first frame update
     void Start() 
@@ -22,7 +21,7 @@ public class MenuManager : MonoBehaviour
     // }
 
     public void NewGameButton() {
-        SceneManager.LoadScene(START_GAME);
+        SceneManager.LoadScene(ManagerParameters.GAME_SCENE);
     }
 
     public void QuitGameButton() {

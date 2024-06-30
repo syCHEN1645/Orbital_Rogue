@@ -16,4 +16,5 @@ public static class ManagerParameters
 
     // Level related parameters
     public const int MAX_LEVEL = 3;
+    public const string LEVEL = "level";
 }
