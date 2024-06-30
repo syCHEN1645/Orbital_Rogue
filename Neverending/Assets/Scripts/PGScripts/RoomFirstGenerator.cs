@@ -17,6 +17,8 @@ public class RoomFirstGenerator : SimpleRandomWalkGenerator
     private bool useRandomWalk = false;
 
     private EnemyGenerator enemyGenerator;
+    private PlayerGenerator playerGenerator;
+    private VictoryPointGenerator victoryPointGenerator;
 
     // contains a list of rooms (floor tiles only), without corridor tiles
     private List<HashSet<Vector2Int>> roomsList = new List<HashSet<Vector2Int>>();
@@ -25,8 +27,6 @@ public class RoomFirstGenerator : SimpleRandomWalkGenerator
 
     protected override void RunPG()
     {
-        ClearForEditorMode();
-
         CreateRooms();
         // test roomsList
         // for (int i = 0; i < roomsList.Count; i++) {
@@ -35,15 +35,50 @@ public class RoomFirstGenerator : SimpleRandomWalkGenerator
 
         // generate enemies
         enemyGenerator = new EnemyGenerator(roomsList, floorPositions);
-        enemyGenerator.GenerateOneRoom(roomsList[0]);
+        playerGenerator = new PlayerGenerator();
+        victoryPointGenerator = new VictoryPointGenerator();
+        GenerateObjectsInRooms();
     }
 
-    private void ClearForEditorMode() {
+    private void GenerateObjectsInRooms() {
+        // roomsList[0] as Player's spawn room
+        playerGenerator.GenerateOneRoom(roomsList[0]);
+        // roomsList[count - 1] as victory point room/boss room/...
+        victoryPointGenerator.GenerateOneRoom(roomsList[roomsList.Count - 1]);
+        // other rooms as ordinary rooms with enemies and items
+        for (int i = 1; i < roomsList.Count - 1; i++) {
+            enemyGenerator.GenerateOneRoom(roomsList[i]);
+        }
+    }
+
+    protected override void ClearOldMap(bool editor) {
         visualiser.Clear();
         GameObject[] oldEnemies = GameObject.FindGameObjectsWithTag("Enemy");
+        GameObject[] oldPlayers = GameObject.FindGameObjectsWithTag("Player");
+        GameObject[] oldInteractables = GameObject.FindGameObjectsWithTag("Interactable");
         foreach (GameObject enemy in oldEnemies) {
-            Debug.Log("found");
-            DestroyImmediate(enemy);
+            // Debug.Log("found");
+            if (editor) {
+                DestroyImmediate(enemy);
+            } else {
+                Destroy(enemy);
+            }
+        }
+        foreach (GameObject player in oldPlayers) {
+            // Debug.Log("found");
+            if (editor) {
+                DestroyImmediate(player);
+            } else {
+                Destroy(player);
+            }
+        }
+        foreach (GameObject interactable in oldInteractables) {
+            // Debug.Log("found");
+            if (editor) {
+                DestroyImmediate(interactable);
+            } else {
+                Destroy(interactable);
+            }
         }
         roomsList.Clear();
         floorPositions.Clear();
@@ -51,10 +86,14 @@ public class RoomFirstGenerator : SimpleRandomWalkGenerator
 
     private void CreateRooms()
     {
-        var roomsBoundsList = PGAlgorithm.BinarySpacePartitioning(
+        List<BoundsInt> roomsBoundsList;
+        // create a list, and regenerate until the list has at least a size of 3.
+        do {
+            roomsBoundsList = PGAlgorithm.BinarySpacePartitioning(
             new BoundsInt((Vector3Int)startPos, new Vector3Int(width, height, 0)), 
             minWidth,
             minHeight);
+        } while (roomsBoundsList.Count < 3);
         
         if (useRandomWalk) {
             // create irregular rooms
@@ -87,9 +126,9 @@ public class RoomFirstGenerator : SimpleRandomWalkGenerator
 
     private HashSet<Vector2Int> CreateRoomsRandomly(List<BoundsInt> roomsBoundsList)
     {
-        for (int i = 0; i < roomsBoundsList.Count; i++) {
-            Debug.Log(roomsBoundsList[i]);
-        }
+        // for (int i = 0; i < roomsBoundsList.Count; i++) {
+        //     Debug.Log(roomsBoundsList[i]);
+        // }
         // floorPositions is a collection of all floor tiles
         HashSet<Vector2Int> floors = new HashSet<Vector2Int>();
         for (int i = 0; i < roomsBoundsList.Count; i++) {

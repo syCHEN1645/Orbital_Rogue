@@ -11,4 +11,10 @@ public static class ManagerParameters
 
     // Scene related parameters
     public const string MENU_SCENE = "Menu Scene";
+    public const string GAME_SCENE = "PG Test Scene";
+    public const string TRANSITION_SCENE = "Transition Scene";
+
+    // Level related parameters
+    public const int MAX_LEVEL = 3;
+    public const string LEVEL = "level";
 }

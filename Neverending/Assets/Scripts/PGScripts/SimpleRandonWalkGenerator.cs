@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEditor;
 using UnityEngine;
 
 public class SimpleRandomWalkGenerator: AbstractGenerator
@@ -16,6 +17,11 @@ public class SimpleRandomWalkGenerator: AbstractGenerator
         // paint walls
         // WallGenerator.CreateWalls(floorPositions, visualiser);
         WallTypes.CreateWalls(floorPositions, visualiser);
+    }
+
+    protected override void ClearOldMap(bool editor)
+    {
+        visualiser.Clear();
     }
 
     protected HashSet<Vector2Int> RunRandomWalk(SimpleRandomWalkData randomWalkData, Vector2Int pos) {
