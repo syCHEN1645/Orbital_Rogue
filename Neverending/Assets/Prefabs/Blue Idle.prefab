@@ -192,7 +192,7 @@ GameObject:
   - component: {fileID: 3355342163999367203}
   - component: {fileID: 5816550763571886990}
   - component: {fileID: 760943114577822577}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Blue Idle
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -386,3 +386,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthBar: {fileID: 5616802668667897923}
+  offset: 1

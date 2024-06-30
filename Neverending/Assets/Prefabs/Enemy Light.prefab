@@ -290,7 +290,7 @@ GameObject:
   - component: {fileID: 8278178104414553636}
   - component: {fileID: 415505149221864481}
   - component: {fileID: 2941670002675363984}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Enemy Light
   m_TagString: Enemy
   m_Icon: {fileID: 0}

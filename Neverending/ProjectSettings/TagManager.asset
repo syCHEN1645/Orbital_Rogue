@@ -16,7 +16,7 @@ TagManager:
   - Water
   - UI
   - Ground
-  - 
+  - Damageable
   - 
   - 
   - 
@@ -47,4 +47,7 @@ TagManager:
     locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: GamePlay
+    uniqueID: 356758901
     locked: 0
