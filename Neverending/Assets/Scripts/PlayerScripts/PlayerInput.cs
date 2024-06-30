@@ -24,31 +24,53 @@ public class PlayerInput : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float moveX = Input.GetAxisRaw(PAP.axisXinput);
+        // float moveX = Input.GetAxisRaw(PAP.axisXinput);
 
-        animator.SetFloat(PAP.moveX, moveX);
+        // animator.SetFloat(PAP.moveX, moveX);
 
-        bool isMoving = !Mathf.Approximately(moveX, 0f);
+        // bool isMoving = !Mathf.Approximately(moveX, 0f);
 
-        animator.SetBool(PAP.isMoving, isMoving);
+        // animator.SetBool(PAP.isMoving, isMoving);
 
-        bool lastOnGround = animator.GetBool(PAP.isOnGround);
-        bool newOnGround = CheckIfOnGround();
-        animator.SetBool(PAP.isOnGround, newOnGround);
+        // bool lastOnGround = animator.GetBool(PAP.isOnGround);
+        // bool newOnGround = CheckIfOnGround();
+        // animator.SetBool(PAP.isOnGround, newOnGround);
 
-        if (lastOnGround == false && newOnGround == true) {
-            animator.SetTrigger(PAP.landedOnGround);
+        // if (lastOnGround == false && newOnGround == true) {
+        //     animator.SetTrigger(PAP.landedOnGround);
+        // }
+
+        // bool onWall = CheckIfOnWall();
+        // animator.SetBool(PAP.isOnWall, onWall);
+
+        // bool isJumpKeyPressed = Input.GetButtonDown(PAP.jumpKeyName);
+
+        // if(isJumpKeyPressed){
+        //     animator.SetTrigger(PAP.JumpTriggerName);
+        // } else {
+        //     animator.ResetTrigger(PAP.JumpTriggerName);
+        // }
+
+        animator.SetBool(PAP.isOnGround, true);
+
+        if (Input.GetKey(KeyCode.W))
+        {
+            gameObject.transform.Translate(0, Time.deltaTime * 5.0f, 0);
         }
 
-        bool onWall = CheckIfOnWall();
-        animator.SetBool(PAP.isOnWall, onWall);
+        if (Input.GetKey(KeyCode.S))
+        {
+            gameObject.transform.Translate(0, -Time.deltaTime * 5.0f, 0);
+        }
 
-        bool isJumpKeyPressed = Input.GetButtonDown(PAP.jumpKeyName);
+        if (Input.GetKey(KeyCode.A))
+        {
+            gameObject.transform.Translate(-Time.deltaTime * 5.0f, 0, 0);
+        }
 
-        if(isJumpKeyPressed){
-            animator.SetTrigger(PAP.JumpTriggerName);
-        } else {
-            animator.ResetTrigger(PAP.JumpTriggerName);
+        if (Input.GetKey(KeyCode.D))
+        {
+            gameObject.transform.Translate(Time.deltaTime * 5.0f, 0, 0);
         }
 
         // attack "J"
@@ -64,32 +86,32 @@ public class PlayerInput : MonoBehaviour
         }
     }
 
-    void FixedUpdate() {
-        float forceX = animator.GetFloat(PAP.forceX);
+    // void FixedUpdate() {
+    //     float forceX = animator.GetFloat(PAP.forceX);
         
-        if (forceX != 0) rb.AddForce(new Vector2(forceX, 0) * Time.deltaTime);
+    //     if (forceX != 0) rb.AddForce(new Vector2(forceX, 0) * Time.deltaTime);
 
-        float impulseX = animator.GetFloat(PAP.impulseX);
-        float impulseY = animator.GetFloat(PAP.impulseY);
+    //     float impulseX = animator.GetFloat(PAP.impulseX);
+    //     float impulseY = animator.GetFloat(PAP.impulseY);
         
-        if (impulseY != 0 || impulseX != 0) {
-            float xDirectionSign = Mathf.Sign(transform.localScale.x);
-            Vector2 impulseVector = new Vector2(xDirectionSign * impulseX, impulseY);
+    //     if (impulseY != 0 || impulseX != 0) {
+    //         float xDirectionSign = Mathf.Sign(transform.localScale.x);
+    //         Vector2 impulseVector = new Vector2(xDirectionSign * impulseX, impulseY);
 
-            rb.AddForce(impulseVector, ForceMode2D.Impulse);
-            animator.SetFloat(PAP.impulseY, 0);
-            animator.SetFloat(PAP.impulseX, 0);  
-        }
+    //         rb.AddForce(impulseVector, ForceMode2D.Impulse);
+    //         animator.SetFloat(PAP.impulseY, 0);
+    //         animator.SetFloat(PAP.impulseX, 0);  
+    //     }
 
-        animator.SetFloat(PAP.velocityY, rb.velocity.y);
+    //     animator.SetFloat(PAP.velocityY, rb.velocity.y);
 
-        bool isStopVelocity = animator.GetBool(PAP.stopVelocity);
+    //     bool isStopVelocity = animator.GetBool(PAP.stopVelocity);
 
-        if (isStopVelocity) {
-            rb.velocity = Vector2.zero;
-            animator.SetBool(PAP.stopVelocity, false);
-        }
-    }
+    //     if (isStopVelocity) {
+    //         rb.velocity = Vector2.zero;
+    //         animator.SetBool(PAP.stopVelocity, false);
+    //     }
+    // }
 
     bool CheckIfOnGround() {
         collider2d.Cast(Vector2.down, groundCheckFilter, groundHits, groundCheckDistance);

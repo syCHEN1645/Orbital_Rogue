@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/PG Test Scene.unity
     guid: 72d3d83628f9120488b92641de0e0a85
+  - enabled: 1
+    path: Assets/Scenes/Transition Scene.unity
+    guid: 3bcb6cca6a2007044b998e94381afc81
   m_configObjects: {}
