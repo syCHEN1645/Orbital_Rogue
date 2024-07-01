@@ -28,6 +28,7 @@ public class InGameMenuManager : MonoBehaviour
 
     // press this button to go to main menu
     public void QuitLevelButton() {
+        Time.timeScale = 1;
         SceneManager.LoadScene(ManagerParameters.MENU_SCENE);
     }
 

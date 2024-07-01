@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
     public List<GameObject> enemies;
     public AbstractGenerator generator;
     public VictoryPoint portal;
-    public int level = 0;
+    public int level;
 
     void Start()
     {
