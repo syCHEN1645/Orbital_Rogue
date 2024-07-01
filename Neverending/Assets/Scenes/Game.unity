@@ -1120,12 +1120,20 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1487622247049384580, guid: f1cfe5984b5449a4da294ebda7661c57, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 633166202, guid: d29dffd733413184c870244f6772a00c, type: 3}
+    - target: {fileID: 1487622247049384580, guid: f1cfe5984b5449a4da294ebda7661c57, type: 3}
       propertyPath: m_SortingLayer
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1487622247049384580, guid: f1cfe5984b5449a4da294ebda7661c57, type: 3}
       propertyPath: m_SortingLayerID
       value: 356758901
+      objectReference: {fileID: 0}
+    - target: {fileID: 1487622247049384580, guid: f1cfe5984b5449a4da294ebda7661c57, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4660705436445906422, guid: f1cfe5984b5449a4da294ebda7661c57, type: 3}
       propertyPath: m_ActionEvents.Array.data[0].m_PersistentCalls.m_Calls.Array.size
