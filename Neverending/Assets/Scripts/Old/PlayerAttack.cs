@@ -23,7 +23,7 @@ public class PlayerAttack : MonoBehaviour
     public bool IsAttacking() {
         return isAttacking;
     }
-    public bool WithinAttackRange(Enemy enemy) {
+    public bool WithinAttackRange(GameObject enemy) {
         return (Vector2.Distance(enemy.transform.position, transform.position) <= attackRange);
     }
 

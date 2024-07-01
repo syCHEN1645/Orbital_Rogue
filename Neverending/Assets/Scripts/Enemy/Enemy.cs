@@ -26,7 +26,7 @@ public class Enemy : MonoBehaviour
         if (enemyList == null) {
             enemyList = new List<Enemy>();
         }
-        player = GameObject.Find("Player");
+        player = GameObject.FindGameObjectWithTag("Player");
         enemyHealth = gameObject.GetComponent<EnemyHealth>();
         originalPosition = transform.position;
         isAttacking = false;
