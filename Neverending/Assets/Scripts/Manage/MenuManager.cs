@@ -43,4 +43,8 @@ public class MenuManager : MonoBehaviour
         // main menu appears
         gameObject.SetActive(true);
     }
+
+    public void TestFeatureButton() {
+        SceneManager.LoadScene("Game");
+    }
 }
