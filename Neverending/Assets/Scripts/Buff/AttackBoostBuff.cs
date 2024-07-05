@@ -6,10 +6,7 @@ public class AttackBoostBuff : TimedBuff
 {
     [SerializeField]
     protected float attackBonus;
-    AttackBoostBuff() {
-        duration = 5.0f;
-        attackBonus = 10.0f;
-    }
+    
     protected override IEnumerator BuffEffect(Player player)
     {
         // buff effect

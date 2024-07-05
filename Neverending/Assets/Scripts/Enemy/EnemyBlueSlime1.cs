@@ -27,8 +27,10 @@ public class EnemyBlueSlime1 : Enemy
     }
 
     void OnCollisionEnter2D(Collision2D other) {
+        Debug.Log("collide");
         // if collide with player
         if (other.gameObject.CompareTag("Player")) {
+            Debug.Log("slime attacks");
             // deal damage to player
             // remmber StartCorourine!!!
             StartCoroutine(AttackPlayer());

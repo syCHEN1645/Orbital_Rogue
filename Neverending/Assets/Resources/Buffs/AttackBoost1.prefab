@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6877770446939144432}
-  - component: {fileID: 7760876605100469392}
   - component: {fileID: 171513591725059407}
+  - component: {fileID: 8569277154000642642}
   m_Layer: 0
   m_Name: AttackBoost1
   m_TagString: Interactable
@@ -34,22 +34,6 @@ Transform:
   - {fileID: 5124473598442750511}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7760876605100469392
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2637971410690755948}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 25a73f08997a27440911c235bfd0efa9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  art: {fileID: 4500137135596227091}
-  collide: {fileID: 0}
-  duration: 2
-  attackBonus: 10
 --- !u!61 &171513591725059407
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -95,6 +79,22 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.38213158, y: 0.478357}
   m_EdgeRadius: 0
+--- !u!114 &8569277154000642642
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2637971410690755948}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bfe975e1b2577594d904f4dde7d0c161, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  art: {fileID: 4500137135596227091}
+  collide: {fileID: 0}
+  duration: 5
+  attackBonus: 10
 --- !u!1 &4500137135596227091
 GameObject:
   m_ObjectHideFlags: 0

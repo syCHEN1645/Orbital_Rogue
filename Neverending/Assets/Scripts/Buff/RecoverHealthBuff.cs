@@ -10,6 +10,6 @@ public class RecoverHealthBuff : PermanentBuff
     {
         Debug.Log("Health + " + recovery);
         // increase player's health by "recovery"
-        // player.Health.health += recovery;
+        player.GetComponent<NewPlayerHealth>().RecoverHealth(recovery);
     }
 }

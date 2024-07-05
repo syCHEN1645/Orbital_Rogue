@@ -10,6 +10,7 @@ public class Enemy : MonoBehaviour
     public Animator animator;
     protected EnemyHealth enemyHealth;
     protected GameObject player;
+    protected NewPlayerHealth playerHealth;
     // originalPosition: where this enemy is spawned
     protected Vector2 originalPosition;
     protected float speed;
@@ -27,6 +28,9 @@ public class Enemy : MonoBehaviour
             enemyList = new List<Enemy>();
         }
         player = GameObject.FindGameObjectWithTag("Player");
+        playerHealth = player.GetComponent<NewPlayerHealth>();
+        // Debug.Log(playerHealth);
+        Debug.Log(playerHealth == null);
         enemyHealth = gameObject.GetComponent<EnemyHealth>();
         originalPosition = transform.position;
         isAttacking = false;
@@ -62,7 +66,7 @@ public class Enemy : MonoBehaviour
     protected virtual IEnumerator AttackPlayer() {
         isAttacking = true;
         Attack();
-        player.GetComponent<PlayerHealth>().TakeDamage(attack);
+        playerHealth.TakeDamage(attack);
         yield return new WaitForSeconds(attackInterval);
         isAttacking = false;
     }
