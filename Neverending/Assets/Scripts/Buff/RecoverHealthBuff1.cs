@@ -6,6 +6,6 @@ public class RecoverHealthBuff1 : RecoverHealthBuff
 {
     // a different amount of recovery
     public RecoverHealthBuff1() {
-        recovery = 20.0f;
+        amt = 20.0f;
     }
 }

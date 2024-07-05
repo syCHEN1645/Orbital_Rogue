@@ -5,11 +5,11 @@ using UnityEngine;
 public class RecoverHealthBuff : PermanentBuff
 {
     [SerializeField]
-    protected float recovery = 10.0f;
+    protected float amt = 10.0f;
     protected override void BuffEffect(Player player)
     {
-        Debug.Log("Health + " + recovery);
+        Debug.Log("Health + " + amt);
         // increase player's health by "recovery"
-        player.GetComponent<NewPlayerHealth>().RecoverHealth(recovery);
+        player.GetComponent<NewPlayerHealth>().RecoverHealth(amt);
     }
 }

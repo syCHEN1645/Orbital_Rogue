@@ -52,8 +52,18 @@ public class NewPlayerHealth : MonoBehaviour
         return false;
     }
 
-    public void RecoverHealth(float recovery) {
-        health += recovery;
+    public void RecoverHealth(float amt) {
+        health += amt;
+        HealthBarUpdate();
+    }
+
+    public void IncreaseDefense(float amt) {
+        defense += amt;
+    }
+
+    public void IncreaseMaxHealth(float amt) {
+        maxHealth += amt;
+        health += amt;
         HealthBarUpdate();
     }
 }
