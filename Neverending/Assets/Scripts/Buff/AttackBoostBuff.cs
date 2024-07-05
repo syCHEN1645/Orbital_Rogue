@@ -7,17 +7,20 @@ public class AttackBoostBuff : TimedBuff
     [SerializeField]
     protected float attackBonus;
     AttackBoostBuff() {
-        duration = 2.0f;
+        duration = 5.0f;
         attackBonus = 10.0f;
     }
     protected override IEnumerator BuffEffect(Player player)
     {
         // buff effect
         // Debug.Log("Attack+");
-        
+        // Debug.Log(player.GetPlayerData().baseAttack);
+        player.GetPlayerData().baseAttack += attackBonus;
+        // Debug.Log(player.GetPlayerData().baseAttack);
         yield return new WaitForSeconds(duration);
         // remove buff effect
         RemoveBuffEffect(player);
+        // Debug.Log(player.GetPlayerData().baseAttack);
         // destroy buff
         Destroy(gameObject);
     }
@@ -25,5 +28,6 @@ public class AttackBoostBuff : TimedBuff
     protected override void RemoveBuffEffect(Player player)
     {
         // Debug.Log("Attack-");
+        player.GetPlayerData().baseAttack -= attackBonus;
     }
 }

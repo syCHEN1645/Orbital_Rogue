@@ -98,4 +98,9 @@ public class Player : MonoBehaviour
                 rb.transform.Rotate(0.0f, 180.0f, 0.0f);
             }
         }
+    
+    // Added to access playerdata in other functions
+    public PlayerData GetPlayerData() {
+        return this.playerData;
+    }
 }

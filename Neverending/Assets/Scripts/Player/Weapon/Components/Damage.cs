@@ -14,7 +14,9 @@ public class Damage : WeaponComponent<DamageData, AttackDamage>
             if (item.CompareTag("Enemy"))
             {
                 Debug.Log($"item: {item.tag} + {item.name}");
-                item.GetComponent<EnemyHealth>().TakeDamage(currentAttackData.Amount);
+                // Deal damage to enemy
+                // Added base attack of player
+                item.GetComponent<EnemyHealth>().TakeDamage(currentAttackData.Amount + player.GetPlayerData().baseAttack);
             }
         }
     }

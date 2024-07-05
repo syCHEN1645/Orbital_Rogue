@@ -7,6 +7,8 @@ public class WeaponComponent : MonoBehaviour
     protected Weapon weapon;
     protected AnimationEventHandler eventHandler;
     protected bool isAttackActive;
+    // Added a player
+    protected Player player;
 
     public virtual void Init()
     {
@@ -17,6 +19,8 @@ public class WeaponComponent : MonoBehaviour
     {
         weapon = GetComponent<Weapon>();
         eventHandler = GetComponentInChildren<AnimationEventHandler>();
+        // Added initialise player
+        player = GameObject.Find("Player").GetComponent<Player>();
     }
 
     protected virtual void Start()
