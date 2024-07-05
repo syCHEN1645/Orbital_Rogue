@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RecoverHealthBuff : Buff
+public class RecoverHealthBuff : PermanentBuff
 {
     [SerializeField]
     protected float recovery = 10.0f;
