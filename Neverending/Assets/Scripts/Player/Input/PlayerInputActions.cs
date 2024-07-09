@@ -75,13 +75,22 @@ namespace PlayerControlScript
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""KeyBoard"",
-                    ""type"": ""Value"",
-                    ""id"": ""8b366ffe-c8e1-4ba5-a59d-3e0d97fdf5dd"",
-                    ""expectedControlType"": """",
+                    ""name"": ""PrimaryWeaponPickup"",
+                    ""type"": ""Button"",
+                    ""id"": ""a8384441-dbad-4df7-adf8-599011bd1597"",
+                    ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
-                    ""initialStateCheck"": true
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SecondaryWeaponPickup"",
+                    ""type"": ""Button"",
+                    ""id"": ""84f9c966-c95e-479b-8eb5-708e2057242c"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -329,45 +338,23 @@ namespace PlayerControlScript
                 },
                 {
                     ""name"": """",
-                    ""id"": ""661623a5-2862-44d2-9b92-56b2b11f8cc4"",
-                    ""path"": ""<Keyboard>/1"",
+                    ""id"": ""bfb018e5-71cf-43ef-8adf-260fd26d8c19"",
+                    ""path"": ""<Keyboard>/q"",
                     ""interactions"": """",
-                    ""processors"": """",
+                    ""processors"": ""Scale"",
                     ""groups"": """",
-                    ""action"": ""KeyBoard"",
+                    ""action"": ""PrimaryWeaponPickup"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""d5c1053c-4033-4956-88ac-03d2305e3027"",
-                    ""path"": ""<Keyboard>/2"",
+                    ""id"": ""52b0e7c1-bc4c-4eb3-a83f-a5a941a53da2"",
+                    ""path"": ""<Keyboard>/e"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""KeyBoard"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""19e98d0b-960d-4546-b378-2f61917c1bfd"",
-                    ""path"": ""<Keyboard>/3"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""KeyBoard"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""bf6b6b64-ed9a-44bc-b161-e9f0cc728ddf"",
-                    ""path"": ""<Keyboard>/4"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""KeyBoard"",
+                    ""action"": ""SecondaryWeaponPickup"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -888,67 +875,6 @@ namespace PlayerControlScript
                     ""isPartOfComposite"": false
                 }
             ]
-        },
-        {
-            ""name"": ""Inventory"",
-            ""id"": ""3d242d95-a8fa-4e2e-add8-7540bebebe57"",
-            ""actions"": [
-                {
-                    ""name"": ""Keyboard"",
-                    ""type"": ""Value"",
-                    ""id"": ""0c436aa3-1299-4908-b9d6-bab8e7028c8c"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": true
-                }
-            ],
-            ""bindings"": [
-                {
-                    ""name"": """",
-                    ""id"": ""c4e680bb-cb3c-40a9-9b4f-5bbd044c5f67"",
-                    ""path"": ""<Keyboard>/1"",
-                    ""interactions"": """",
-                    ""processors"": ""Scale"",
-                    ""groups"": """",
-                    ""action"": ""Keyboard"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""14ba1280-6ac8-413c-8980-6862612c5f01"",
-                    ""path"": ""<Keyboard>/2"",
-                    ""interactions"": """",
-                    ""processors"": ""Scale(factor=2)"",
-                    ""groups"": """",
-                    ""action"": ""Keyboard"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""1fe8a762-7811-4be5-86f8-2a7298b0e305"",
-                    ""path"": ""<Keyboard>/3"",
-                    ""interactions"": """",
-                    ""processors"": ""Scale(factor=3)"",
-                    ""groups"": """",
-                    ""action"": ""Keyboard"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""ef8ccd9f-4587-4f25-b06a-1b48e71669c5"",
-                    ""path"": ""<Keyboard>/4"",
-                    ""interactions"": """",
-                    ""processors"": ""Scale(factor=4)"",
-                    ""groups"": """",
-                    ""action"": ""Keyboard"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                }
-            ]
         }
     ],
     ""controlSchemes"": [
@@ -1021,7 +947,8 @@ namespace PlayerControlScript
             m_Player_PrimaryAttack = m_Player.FindAction("Primary Attack", throwIfNotFound: true);
             m_Player_SecondaryAttack = m_Player.FindAction("Secondary Attack", throwIfNotFound: true);
             m_Player_Dash = m_Player.FindAction("Dash", throwIfNotFound: true);
-            m_Player_KeyBoard = m_Player.FindAction("KeyBoard", throwIfNotFound: true);
+            m_Player_PrimaryWeaponPickup = m_Player.FindAction("PrimaryWeaponPickup", throwIfNotFound: true);
+            m_Player_SecondaryWeaponPickup = m_Player.FindAction("SecondaryWeaponPickup", throwIfNotFound: true);
             // UI
             m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
             m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1034,9 +961,6 @@ namespace PlayerControlScript
             m_UI_RightClick = m_UI.FindAction("RightClick", throwIfNotFound: true);
             m_UI_TrackedDevicePosition = m_UI.FindAction("TrackedDevicePosition", throwIfNotFound: true);
             m_UI_TrackedDeviceOrientation = m_UI.FindAction("TrackedDeviceOrientation", throwIfNotFound: true);
-            // Inventory
-            m_Inventory = asset.FindActionMap("Inventory", throwIfNotFound: true);
-            m_Inventory_Keyboard = m_Inventory.FindAction("Keyboard", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -1103,7 +1027,8 @@ namespace PlayerControlScript
         private readonly InputAction m_Player_PrimaryAttack;
         private readonly InputAction m_Player_SecondaryAttack;
         private readonly InputAction m_Player_Dash;
-        private readonly InputAction m_Player_KeyBoard;
+        private readonly InputAction m_Player_PrimaryWeaponPickup;
+        private readonly InputAction m_Player_SecondaryWeaponPickup;
         public struct PlayerActions
         {
             private @PlayerControls m_Wrapper;
@@ -1113,7 +1038,8 @@ namespace PlayerControlScript
             public InputAction @PrimaryAttack => m_Wrapper.m_Player_PrimaryAttack;
             public InputAction @SecondaryAttack => m_Wrapper.m_Player_SecondaryAttack;
             public InputAction @Dash => m_Wrapper.m_Player_Dash;
-            public InputAction @KeyBoard => m_Wrapper.m_Player_KeyBoard;
+            public InputAction @PrimaryWeaponPickup => m_Wrapper.m_Player_PrimaryWeaponPickup;
+            public InputAction @SecondaryWeaponPickup => m_Wrapper.m_Player_SecondaryWeaponPickup;
             public InputActionMap Get() { return m_Wrapper.m_Player; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -1138,9 +1064,12 @@ namespace PlayerControlScript
                 @Dash.started += instance.OnDash;
                 @Dash.performed += instance.OnDash;
                 @Dash.canceled += instance.OnDash;
-                @KeyBoard.started += instance.OnKeyBoard;
-                @KeyBoard.performed += instance.OnKeyBoard;
-                @KeyBoard.canceled += instance.OnKeyBoard;
+                @PrimaryWeaponPickup.started += instance.OnPrimaryWeaponPickup;
+                @PrimaryWeaponPickup.performed += instance.OnPrimaryWeaponPickup;
+                @PrimaryWeaponPickup.canceled += instance.OnPrimaryWeaponPickup;
+                @SecondaryWeaponPickup.started += instance.OnSecondaryWeaponPickup;
+                @SecondaryWeaponPickup.performed += instance.OnSecondaryWeaponPickup;
+                @SecondaryWeaponPickup.canceled += instance.OnSecondaryWeaponPickup;
             }
 
             private void UnregisterCallbacks(IPlayerActions instance)
@@ -1160,9 +1089,12 @@ namespace PlayerControlScript
                 @Dash.started -= instance.OnDash;
                 @Dash.performed -= instance.OnDash;
                 @Dash.canceled -= instance.OnDash;
-                @KeyBoard.started -= instance.OnKeyBoard;
-                @KeyBoard.performed -= instance.OnKeyBoard;
-                @KeyBoard.canceled -= instance.OnKeyBoard;
+                @PrimaryWeaponPickup.started -= instance.OnPrimaryWeaponPickup;
+                @PrimaryWeaponPickup.performed -= instance.OnPrimaryWeaponPickup;
+                @PrimaryWeaponPickup.canceled -= instance.OnPrimaryWeaponPickup;
+                @SecondaryWeaponPickup.started -= instance.OnSecondaryWeaponPickup;
+                @SecondaryWeaponPickup.performed -= instance.OnSecondaryWeaponPickup;
+                @SecondaryWeaponPickup.canceled -= instance.OnSecondaryWeaponPickup;
             }
 
             public void RemoveCallbacks(IPlayerActions instance)
@@ -1298,52 +1230,6 @@ namespace PlayerControlScript
             }
         }
         public UIActions @UI => new UIActions(this);
-
-        // Inventory
-        private readonly InputActionMap m_Inventory;
-        private List<IInventoryActions> m_InventoryActionsCallbackInterfaces = new List<IInventoryActions>();
-        private readonly InputAction m_Inventory_Keyboard;
-        public struct InventoryActions
-        {
-            private @PlayerControls m_Wrapper;
-            public InventoryActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
-            public InputAction @Keyboard => m_Wrapper.m_Inventory_Keyboard;
-            public InputActionMap Get() { return m_Wrapper.m_Inventory; }
-            public void Enable() { Get().Enable(); }
-            public void Disable() { Get().Disable(); }
-            public bool enabled => Get().enabled;
-            public static implicit operator InputActionMap(InventoryActions set) { return set.Get(); }
-            public void AddCallbacks(IInventoryActions instance)
-            {
-                if (instance == null || m_Wrapper.m_InventoryActionsCallbackInterfaces.Contains(instance)) return;
-                m_Wrapper.m_InventoryActionsCallbackInterfaces.Add(instance);
-                @Keyboard.started += instance.OnKeyboard;
-                @Keyboard.performed += instance.OnKeyboard;
-                @Keyboard.canceled += instance.OnKeyboard;
-            }
-
-            private void UnregisterCallbacks(IInventoryActions instance)
-            {
-                @Keyboard.started -= instance.OnKeyboard;
-                @Keyboard.performed -= instance.OnKeyboard;
-                @Keyboard.canceled -= instance.OnKeyboard;
-            }
-
-            public void RemoveCallbacks(IInventoryActions instance)
-            {
-                if (m_Wrapper.m_InventoryActionsCallbackInterfaces.Remove(instance))
-                    UnregisterCallbacks(instance);
-            }
-
-            public void SetCallbacks(IInventoryActions instance)
-            {
-                foreach (var item in m_Wrapper.m_InventoryActionsCallbackInterfaces)
-                    UnregisterCallbacks(item);
-                m_Wrapper.m_InventoryActionsCallbackInterfaces.Clear();
-                AddCallbacks(instance);
-            }
-        }
-        public InventoryActions @Inventory => new InventoryActions(this);
         private int m_KeyboardMouseSchemeIndex = -1;
         public InputControlScheme KeyboardMouseScheme
         {
@@ -1396,7 +1282,8 @@ namespace PlayerControlScript
             void OnPrimaryAttack(InputAction.CallbackContext context);
             void OnSecondaryAttack(InputAction.CallbackContext context);
             void OnDash(InputAction.CallbackContext context);
-            void OnKeyBoard(InputAction.CallbackContext context);
+            void OnPrimaryWeaponPickup(InputAction.CallbackContext context);
+            void OnSecondaryWeaponPickup(InputAction.CallbackContext context);
         }
         public interface IUIActions
         {
@@ -1410,10 +1297,6 @@ namespace PlayerControlScript
             void OnRightClick(InputAction.CallbackContext context);
             void OnTrackedDevicePosition(InputAction.CallbackContext context);
             void OnTrackedDeviceOrientation(InputAction.CallbackContext context);
-        }
-        public interface IInventoryActions
-        {
-            void OnKeyboard(InputAction.CallbackContext context);
         }
     }
 }

@@ -25,7 +25,9 @@ public class WeaponGenerator : MonoBehaviour
 
     [ContextMenu("Test Generate")]
     private void TestGenerate()
-    {GenerateWeapon(data);}
+    {
+        GenerateWeapon(data);
+    }
 
     public void GenerateWeapon(WeaponDataSO data)
     {

@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0f32951d5017de438a3bc793fded94f, type: 3}
   m_Name: Sword_1
   m_EditorClassIdentifier: 
+  <Icon>k__BackingField: {fileID: 21300000, guid: f88afecb88f56874993314fc88e7dfa0, type: 3}
+  <Name>k__BackingField: Sword_1
+  <Description>k__BackingField: Sword_1
   <AnimatorController>k__BackingField: {fileID: 9100000, guid: 6b07e1eadc85c6a4581de4dcb6a8901c, type: 2}
   <NumberOfAttacks>k__BackingField: 3
   <ComponentData>k__BackingField:

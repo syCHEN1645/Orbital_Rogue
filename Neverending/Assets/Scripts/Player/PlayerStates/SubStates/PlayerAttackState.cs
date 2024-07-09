@@ -78,13 +78,5 @@ public class PlayerAttackState : PlayerAbilityState
     public void SetFlipCheck(bool value)
     {
         CheckFlip = value;
-    }
-
-    /*public override void AnimationFinishTrigger()
-    {
-        base.AnimationFinishTrigger();
-
-        isAbilityDone = true;
-    }*/
-      
+    } 
 }

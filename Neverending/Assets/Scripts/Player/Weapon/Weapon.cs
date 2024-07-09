@@ -19,7 +19,8 @@ public class Weapon : MonoBehaviour
     protected Animator baseAnimator;
     public GameObject BaseGameObject { get; private set; }
     public GameObject WeaponSpriteGameObject { get; private set; }
-    public  AnimationEventHandler eventHandler { get; private set; }
+    public AnimationEventHandler eventHandler { get; private set; }
+    public WeaponGenerator weaponGenerator { get; private set; }
     protected PlayerAttackState state;
     private int currentAttackCounter;
 
@@ -31,6 +32,8 @@ public class Weapon : MonoBehaviour
         baseAnimator = BaseGameObject.GetComponent<Animator>();
 
         eventHandler = BaseGameObject.GetComponent<AnimationEventHandler>();
+
+        weaponGenerator = GetComponent<WeaponGenerator>();
 
         gameObject.SetActive(true);
     }
@@ -49,11 +52,18 @@ public class Weapon : MonoBehaviour
     public void SetData(WeaponDataSO data)
     {
         Data = data;
+
+        //weaponGenerator.GenerateWeapon(data);
             
         if(Data is null)
             return;
             
         ResetAttackCounter();
+    }
+
+    public void GenerateData(WeaponDataSO data) 
+    {
+        weaponGenerator.GenerateWeapon(data);
     }
 
     private void ResetAttackCounter()
