@@ -6,19 +6,18 @@ using UnityEngine;
 [RequireComponent(typeof(Collider2D))]
 public class InteractableDetector : MonoBehaviour
 {
-    private Player player;
-    private Weapon PrimaryWeapon;
-    private Weapon SecondaryWeapon;
+    [SerializeField] private PlayerData playerData;
+    //[SerializeField] public Weapon PrimaryWeapon { get; private set; }
+    //[SerializeField] public Weapon SecondaryWeapon { get; private set; }
     public Canvas indicator;
     public WeaponPickup weaponPickup { get; private set; }
-    //public WeaponDataSO newData { get; private set; }
     public bool isDetected { get; private set; } 
 
     void Awake()
     {
-        player = GetComponentInParent<Player>();
-        PrimaryWeapon = GameObject.Find("PrimaryWeapon").GetComponent<Weapon>();
-        SecondaryWeapon = GameObject.Find("SecondaryWeapon").GetComponent<Weapon>();
+        //player = GetComponentInParent<Player>();
+        //PrimaryWeapon = GameObject.Find("PrimaryWeapon").GetComponent<Weapon>();
+        //SecondaryWeapon = GameObject.Find("SecondaryWeapon").GetComponent<Weapon>();
         isDetected = false;
     }
 
@@ -35,6 +34,7 @@ public class InteractableDetector : MonoBehaviour
                 Debug.Log(weaponPickup.GetType() + " Enter");
                 //newData = weaponPickup.GetContext();
             } else if (other.name == "WeaponUpgrade") {
+                playerData.Upgrade();
                 //interactable = other.GetComponent<WeaponUpgrade>();
             }
             indicator.gameObject.SetActive(true);
@@ -50,6 +50,4 @@ public class InteractableDetector : MonoBehaviour
             //
         }
     }
-
-    //private void HandleWeaponPickup(){};
 }

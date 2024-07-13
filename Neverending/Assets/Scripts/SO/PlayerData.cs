@@ -6,5 +6,15 @@ using UnityEngine;
 public class PlayerData : ScriptableObject
 {
     [Header("Move State")]
-    public float movementVelocity = 10f;
+    public float MovementVelocity = 10f;
+    
+
+    [Header("Player Stats")]
+    public float Health = 100f;
+    public float Damage = 5f;
+
+    public void Upgrade()
+    {
+
+    }
 }

@@ -21,6 +21,7 @@ MonoBehaviour:
   - rid: 209949139837911040
   - rid: 209949139837911044
   - rid: 209949139837911043
+  - rid: 2191127927780802561
   references:
     version: 2
     RefIds:
@@ -102,3 +103,16 @@ MonoBehaviour:
         <DetectableLayers>k__BackingField:
           serializedVersion: 2
           m_Bits: 128
+    - rid: 2191127927780802561
+      type: {class: ProjectileSpawnerData, ns: , asm: Assembly-CSharp}
+      data:
+        name: ProjectileSpawnerData
+        repeatData: 0
+        attackData:
+        - name: Attack 1
+          <AttackDamage>k__BackingField: 0
+        - name: Attack 2
+          <AttackDamage>k__BackingField: 0
+        - name: Attack 3
+          <AttackDamage>k__BackingField: 0
+        <projectilePrefab>k__BackingField: {fileID: 0}

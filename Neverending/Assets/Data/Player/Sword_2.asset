@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0f32951d5017de438a3bc793fded94f, type: 3}
   m_Name: Sword_2
   m_EditorClassIdentifier: 
-  <Icon>k__BackingField: {fileID: 910262395, guid: 88375605d6cae3c41840b71f6cb52bf0, type: 3}
+  <Icon>k__BackingField: {fileID: 1907593904, guid: 6eb16e372762d6b4cb708c44ebfab931, type: 3}
   <Name>k__BackingField: Sword2
   <Description>k__BackingField: 
   <AnimatorController>k__BackingField: {fileID: 9100000, guid: 6b07e1eadc85c6a4581de4dcb6a8901c, type: 2}
@@ -21,6 +21,7 @@ MonoBehaviour:
   - rid: 209949139837911042
   - rid: 209949139837911045
   - rid: 209949139837911046
+  - rid: 2191127927780802562
   references:
     version: 2
     RefIds:
@@ -102,3 +103,16 @@ MonoBehaviour:
           <Amount>k__BackingField: 10
         - name: Attack 3
           <Amount>k__BackingField: 15
+    - rid: 2191127927780802562
+      type: {class: ProjectileSpawnerData, ns: , asm: Assembly-CSharp}
+      data:
+        name: ProjectileSpawnerData
+        repeatData: 0
+        attackData:
+        - name: Attack 1
+          <AttackDamage>k__BackingField: 0
+        - name: Attack 2
+          <AttackDamage>k__BackingField: 0
+        - name: Attack 3
+          <AttackDamage>k__BackingField: 0
+        <projectilePrefab>k__BackingField: {fileID: 0}

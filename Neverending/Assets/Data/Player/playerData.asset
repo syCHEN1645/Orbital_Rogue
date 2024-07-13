@@ -10,6 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ca21960e13b871942a45be2f12585615, type: 3}
-  m_Name: playerData
+  m_Name: PlayerData
   m_EditorClassIdentifier: 
-  movementVelocity: 7
+  MovementVelocity: 10
+  PlayerHealth: 100
+  PlayerDamage: 5

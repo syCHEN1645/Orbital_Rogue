@@ -12,7 +12,6 @@ public class WeaponDataSO : ScriptableObject
     [field: SerializeField] public string Description { get; private set; }
     [field: SerializeField] public RuntimeAnimatorController AnimatorController { get; private set; }
     [field: SerializeField] public int NumberOfAttacks { get; private set; }
-
     [field: SerializeReference] public List<ComponentData> ComponentData { get; private set; }
 
     public T GetData<T>()

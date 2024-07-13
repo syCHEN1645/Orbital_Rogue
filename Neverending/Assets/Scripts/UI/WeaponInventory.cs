@@ -17,12 +17,10 @@ public class WeaponInventory : MonoBehaviour
     private void Awake()
     {
         image = item.GetComponent<Image>();
-        
     }
 
     private void Start()
     {
         image.sprite = weapon.Data.Icon;
     }
-    
 }

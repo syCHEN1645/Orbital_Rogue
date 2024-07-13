@@ -22,9 +22,9 @@ public class Player : MonoBehaviour
     private Vector2 workspace;
     private Weapon primaryWeapon;
     private Weapon secondaryWeapon;
-
-    [SerializeField]
-    private PlayerData playerData;
+    
+    [field: SerializeField] public PlayerData playerData { get; private set; }
+    
 
     private void Awake()
     {
@@ -80,10 +80,10 @@ public class Player : MonoBehaviour
             direction,
             movementFilter,
             castCollisions,
-            playerData.movementVelocity * Time.fixedDeltaTime + collisionOffset);
+            playerData.MovementVelocity * Time.fixedDeltaTime + collisionOffset);
 
         if (count == 0) {
-            rb.MovePosition(rb.position + direction * playerData.movementVelocity * Time.fixedDeltaTime);
+            rb.MovePosition(rb.position + direction * playerData.MovementVelocity * Time.fixedDeltaTime);
             return true;
         } else {
             return false;
