@@ -16,6 +16,8 @@ public class Player : MonoBehaviour
     public int FacingDirection { get; private set; }
     public Vector2 CurrentVelocity { get; private set; }
     public PlayerInventory Inventory { get; private set; }
+
+    public NewPlayerHealth playerHealth;
     List<RaycastHit2D> castCollisions = new List<RaycastHit2D>();
     public ContactFilter2D movementFilter;
     public float collisionOffset = 0.05f;
