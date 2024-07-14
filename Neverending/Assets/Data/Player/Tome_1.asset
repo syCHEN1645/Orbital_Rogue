@@ -1,0 +1,155 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0f32951d5017de438a3bc793fded94f, type: 3}
+  m_Name: Tome_1
+  m_EditorClassIdentifier: 
+  <Icon>k__BackingField: {fileID: 1502452791, guid: e808605c39640d7459f25f9dfecf79ab, type: 3}
+  <Name>k__BackingField: 
+  <Description>k__BackingField: 
+  <AnimatorController>k__BackingField: {fileID: 9100000, guid: 5c520c2af09c61f408813198c02c67cf, type: 2}
+  <NumberOfAttacks>k__BackingField: 4
+  <ComponentData>k__BackingField:
+  - rid: 2191127987861323776
+  - rid: 2191127987861323777
+  - rid: 2191127987861323778
+  - rid: 2191127987861323779
+  references:
+    version: 2
+    RefIds:
+    - rid: 2191127987861323776
+      type: {class: ActionHitBoxData, ns: , asm: Assembly-CSharp}
+      data:
+        name: ActionHitBoxData
+        repeatData: 0
+        attackData:
+        - name: Attack 1
+          Debug: 0
+          <HitBox>k__BackingField:
+            serializedVersion: 2
+            x: 0
+            y: 0
+            width: 0
+            height: 0
+        - name: Attack 2
+          Debug: 0
+          <HitBox>k__BackingField:
+            serializedVersion: 2
+            x: 0
+            y: 0
+            width: 0
+            height: 0
+        - name: Attack 3
+          Debug: 0
+          <HitBox>k__BackingField:
+            serializedVersion: 2
+            x: 0
+            y: 0
+            width: 0
+            height: 0
+        - name: Attack 4
+          Debug: 0
+          <HitBox>k__BackingField:
+            serializedVersion: 2
+            x: 0
+            y: 0
+            width: 0
+            height: 0
+        <DetectableLayers>k__BackingField:
+          serializedVersion: 2
+          m_Bits: 0
+    - rid: 2191127987861323777
+      type: {class: DamageData, ns: , asm: Assembly-CSharp}
+      data:
+        name: DamageData
+        repeatData: 0
+        attackData:
+        - name: Attack 1
+          <Amount>k__BackingField: 0
+        - name: Attack 2
+          <Amount>k__BackingField: 0
+        - name: Attack 3
+          <Amount>k__BackingField: 0
+        - name: Attack 4
+          <Amount>k__BackingField: 0
+    - rid: 2191127987861323778
+      type: {class: ProjectileSpawnerData, ns: , asm: Assembly-CSharp}
+      data:
+        name: ProjectileSpawnerData
+        repeatData: 0
+        attackData:
+        - name: Attack 1
+          <Damage>k__BackingField: 0
+          <Range>k__BackingField: 0
+        - name: Attack 2
+          <Damage>k__BackingField: 0
+          <Range>k__BackingField: 0
+        - name: Attack 3
+          <Damage>k__BackingField: 0
+          <Range>k__BackingField: 0
+        - name: Attack 4
+          <Damage>k__BackingField: 0
+          <Range>k__BackingField: 0
+        <projectilePrefab>k__BackingField: {fileID: 0}
+    - rid: 2191127987861323779
+      type: {class: WeaponSpriteData, ns: , asm: Assembly-CSharp}
+      data:
+        name: WeaponSpriteData
+        repeatData: 0
+        attackData:
+        - name: Attack 1
+          <PhaseSprites>k__BackingField:
+          - <Phase>k__BackingField: 2
+            <Sprites>k__BackingField:
+            - {fileID: 1989515402, guid: ea664e6753d22384b823fdc05bd71d94, type: 3}
+            - {fileID: -1744566192, guid: ea664e6753d22384b823fdc05bd71d94, type: 3}
+            - {fileID: -563281927, guid: ea664e6753d22384b823fdc05bd71d94, type: 3}
+            - {fileID: 802890587, guid: ea664e6753d22384b823fdc05bd71d94, type: 3}
+            - {fileID: -869923012, guid: ea664e6753d22384b823fdc05bd71d94, type: 3}
+            - {fileID: -327426831, guid: ea664e6753d22384b823fdc05bd71d94, type: 3}
+            - {fileID: -1347289469, guid: ea664e6753d22384b823fdc05bd71d94, type: 3}
+            - {fileID: -2137963613, guid: ea664e6753d22384b823fdc05bd71d94, type: 3}
+            - {fileID: -28822160, guid: ea664e6753d22384b823fdc05bd71d94, type: 3}
+            - {fileID: -1624648991, guid: ea664e6753d22384b823fdc05bd71d94, type: 3}
+            - {fileID: -776678774, guid: ea664e6753d22384b823fdc05bd71d94, type: 3}
+            - {fileID: -79063389, guid: ea664e6753d22384b823fdc05bd71d94, type: 3}
+        - name: Attack 2
+          <PhaseSprites>k__BackingField:
+          - <Phase>k__BackingField: 0
+            <Sprites>k__BackingField:
+            - {fileID: 1115031671, guid: ea664e6753d22384b823fdc05bd71d94, type: 3}
+            - {fileID: 426135584, guid: ea664e6753d22384b823fdc05bd71d94, type: 3}
+            - {fileID: -2026743914, guid: ea664e6753d22384b823fdc05bd71d94, type: 3}
+            - {fileID: 1332268691, guid: ea664e6753d22384b823fdc05bd71d94, type: 3}
+            - {fileID: -210883327, guid: ea664e6753d22384b823fdc05bd71d94, type: 3}
+        - name: Attack 3
+          <PhaseSprites>k__BackingField:
+          - <Phase>k__BackingField: 0
+            <Sprites>k__BackingField:
+            - {fileID: 918316821, guid: ea664e6753d22384b823fdc05bd71d94, type: 3}
+            - {fileID: 1526331837, guid: ea664e6753d22384b823fdc05bd71d94, type: 3}
+            - {fileID: -1571758429, guid: ea664e6753d22384b823fdc05bd71d94, type: 3}
+            - {fileID: 0}
+            - {fileID: 0}
+        - name: Attack 4
+          <PhaseSprites>k__BackingField:
+          - <Phase>k__BackingField: 0
+            <Sprites>k__BackingField:
+            - {fileID: 199152060, guid: ea664e6753d22384b823fdc05bd71d94, type: 3}
+            - {fileID: 18802363, guid: ea664e6753d22384b823fdc05bd71d94, type: 3}
+            - {fileID: 1260940025, guid: ea664e6753d22384b823fdc05bd71d94, type: 3}
+            - {fileID: 2136570580, guid: ea664e6753d22384b823fdc05bd71d94, type: 3}
+            - {fileID: -1276261969, guid: ea664e6753d22384b823fdc05bd71d94, type: 3}
+            - {fileID: -24231322, guid: ea664e6753d22384b823fdc05bd71d94, type: 3}
+            - {fileID: -1705836767, guid: ea664e6753d22384b823fdc05bd71d94, type: 3}
+            - {fileID: 1723151908, guid: ea664e6753d22384b823fdc05bd71d94, type: 3}
+            - {fileID: -1805923233, guid: ea664e6753d22384b823fdc05bd71d94, type: 3}
+            - {fileID: -580050335, guid: ea664e6753d22384b823fdc05bd71d94, type: 3}

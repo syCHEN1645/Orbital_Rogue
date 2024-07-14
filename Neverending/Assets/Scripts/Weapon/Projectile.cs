@@ -13,7 +13,7 @@ public class Projectile : MonoBehaviour
     private void Start()
     {
         startPosition = transform.position;
-        isDataSet = false;
+        //isDataSet = false;
     }
 
     private void Update()
@@ -28,14 +28,14 @@ public class Projectile : MonoBehaviour
     {
         this.dataPackage = dataPackage;
         isDataSet = true;
+        
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         EnemyHealth enemyHealth = other.gameObject.GetComponent<EnemyHealth>();
-        Indestructable indestructable = other.gameObject.GetComponent<Indestructable>();
-        
-        if (!other.isTrigger && (enemyHealth || indestructable)) {
+        if (other.CompareTag("Enemy") || other.CompareTag("Indestructable")) {
+            Debug.Log("check");
             enemyHealth?.TakeDamage(dataPackage.AttackDamage);
             Instantiate(particalOnHitPrefabVFX, transform.position, transform.rotation);
             Destroy(gameObject);
@@ -54,5 +54,4 @@ public class Projectile : MonoBehaviour
     {
         transform.Translate(Vector3.right * Time.deltaTime * moveSpeed);
     }
-    
 }

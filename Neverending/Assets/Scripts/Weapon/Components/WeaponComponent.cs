@@ -24,6 +24,8 @@ public class WeaponComponent : MonoBehaviour
         if (weapon == null)
         {
             Debug.LogWarning("no weapon;");
+        } else {
+            Debug.Log("weapon" + weapon);
         }
         weapon.OnEnter += HandleEnter;
         weapon.OnExit += HandleExit;

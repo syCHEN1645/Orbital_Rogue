@@ -289,3 +289,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 22
+  particalOnHitPrefabVFX: {fileID: 7873856926122357909, guid: 6682e91a2e1d9b0488c954fb9d25bd3d, type: 3}

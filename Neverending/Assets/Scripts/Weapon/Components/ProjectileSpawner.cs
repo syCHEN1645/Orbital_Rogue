@@ -31,14 +31,10 @@ public class ProjectileSpawner : WeaponComponent<ProjectileSpawnerData, AttackPr
 
     private void HandleProjectileSpawn()
     {
-        Debug.Log("shoot");
         Quaternion newRotation = player.FacingDirection == 1 ? Quaternion.identity : Quaternion.Euler(0, 180, 0);
         if (data.projectilePrefab != null) {
             GameObject newArrow = Instantiate(data.projectilePrefab, 
             projectileSpawnPoint.position, newRotation);
-            Debug.Log(playerData.Damage);
-            Debug.Log(currentAttackData.Damage);
-            Debug.Log(currentAttackData.Range);
             newArrow.GetComponent<Projectile>().SetProjectileData(
                     new DataPackage(playerData.Damage
                     + currentAttackData.Damage, currentAttackData.Range));
