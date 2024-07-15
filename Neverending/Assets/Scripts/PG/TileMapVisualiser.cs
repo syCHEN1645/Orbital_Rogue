@@ -8,9 +8,11 @@ public class TileMapVisualiser: MonoBehaviour
     [SerializeField]
     private Tilemap floorTileMap, wallTileMap;
     [SerializeField]
-    private List<TileBase> floorTile, wallGenericTile, wallBottom, wallTop, 
+    private List<TileBase> floorTile, wallBottom, wallTop, 
         wallRight, wallLeft, wallBottomRight, wallBottomLeft, 
-        wallTopRight, wallTopLeft, cornerBottomLeft, cornerBottomRight, testTile;
+        wallTopRight, wallTopLeft, cornerBottomLeft, cornerBottomRight, 
+        wallTopBottom, wallLeftRight, wallOpenLeft, wallOpenRight,
+        wallOpenTop, wallOpenBottom, wallClosed, testTile;
 
     public void PaintFloorTiles(IEnumerable<Vector2Int> floorPositions) {
         foreach(var pos in floorPositions) {
@@ -32,7 +34,10 @@ public class TileMapVisualiser: MonoBehaviour
     }
 
     public TileBase GetRandomTile(List<TileBase> tileBases) {
-        return tileBases[UnityEngine.Random.Range(0, tileBases.Count)];
+        if (tileBases.Count != 0) {
+            return tileBases[UnityEngine.Random.Range(0, tileBases.Count)];
+        }
+        return null;
     }
 
     public void Clear()
@@ -44,7 +49,7 @@ public class TileMapVisualiser: MonoBehaviour
     public void PaintWallTiles(IEnumerable<Vector2Int> wallPositions)
     {
         foreach (var pos in wallPositions) {
-            PaintSingleTile(wallTileMap, GetRandomTile(wallGenericTile), pos);
+            PaintSingleTile(wallTileMap, GetRandomTile(testTile), pos);
         }
     }
 
@@ -74,10 +79,29 @@ public class TileMapVisualiser: MonoBehaviour
         } else if (WallTypes.bottomRightCorner.Contains(typeAsInt)) {
             tileBase = GetRandomTile(cornerBottomRight);
         } else {
-            tileBase = GetRandomTile(wallGenericTile);
+            //   2
+            // 3 # 1
+            //   4
+            // 0b1234
+            if (0b1010 == typeAsInt) {
+                tileBase = GetRandomTile(wallLeftRight);
+            } else if (0b0101 == typeAsInt) {
+                tileBase = GetRandomTile(wallTopBottom);
+            } else if (0b0111 == typeAsInt) {
+                tileBase = GetRandomTile(wallOpenRight);
+            } else if (0b1011 == typeAsInt) {
+                tileBase = GetRandomTile(wallOpenTop);
+            } else if (0b1101 == typeAsInt) {
+                tileBase = GetRandomTile(wallOpenLeft);
+            } else if (0b1110 == typeAsInt) {
+                tileBase = GetRandomTile(wallOpenBottom);
+            } else if (0b1111 == typeAsInt) {
+                tileBase = GetRandomTile(wallClosed);
+            }
         }
+        
         if (tileBase != null) {
             PaintSingleTile(wallTileMap, tileBase, pos);
-        }
+        } 
     }
 }

@@ -27,7 +27,31 @@ public static class WallTypes
                     wallBinaryType += "0";
                 }
             }
+            
             visualiser.PaintWallTile(pos, wallBinaryType);
+            
+
+            /*
+            1 2 3
+            8 # 4
+            7 6 5
+            
+            #: current tile
+            1: is a floor
+            0: is not a floor
+            0b12345678
+            */
+
+            /*
+              2
+            3 # 1
+              4
+            
+            #: current tile
+            1: is a floor
+            0: is not a floor
+            0b1234
+            */
 
             // draw corners
             // 0 1 1 1
@@ -36,7 +60,7 @@ public static class WallTypes
             // 1
             // if up is not a wall, right is a floor, up + right is a wall, then up is a corner
             // corner AT topleft
-            if (!wallPositions.Contains(pos + Vector2Int.up) &&
+            if (/*!wallPositions.Contains(pos + Vector2Int.up) &&*/
             wallPositions.Contains(pos + Vector2Int.up + Vector2Int.right) && 
             floorPositions.Contains(pos + Vector2Int.right)) {
                 cornerPositions.Add(pos + Vector2Int.up);
@@ -47,7 +71,7 @@ public static class WallTypes
             // 1
             // 1
             // 0 1 1 1
-            if (!wallPositions.Contains(pos + Vector2Int.down) &&
+            if (/*!wallPositions.Contains(pos + Vector2Int.down) &&*/
             wallPositions.Contains(pos + Vector2Int.down + Vector2Int.right) && 
             floorPositions.Contains(pos + Vector2Int.right)) {
                 cornerPositions.Add(pos + Vector2Int.down);
@@ -59,7 +83,7 @@ public static class WallTypes
             //     1
             //     1
             // corner AT topright
-            if (!wallPositions.Contains(pos + Vector2Int.up) &&
+            if (/*!wallPositions.Contains(pos + Vector2Int.up) &&*/
             wallPositions.Contains(pos + Vector2Int.up + Vector2Int.left) && 
             floorPositions.Contains(pos + Vector2Int.left)) {
                 cornerPositions.Add(pos + Vector2Int.up);
@@ -70,7 +94,7 @@ public static class WallTypes
             //     1
             //     1
             // 1 1 0
-            if (!wallPositions.Contains(pos + Vector2Int.down) &&
+            if (/*!wallPositions.Contains(pos + Vector2Int.down) &&*/
             wallPositions.Contains(pos + Vector2Int.down + Vector2Int.left) && 
             floorPositions.Contains(pos + Vector2Int.left)) {
                 cornerPositions.Add(pos + Vector2Int.down);
@@ -121,6 +145,9 @@ public static class WallTypes
         |______|
         |______|
 
+          2
+        3 # 1
+          4
     */
     public static HashSet<int> wallSideTop = new HashSet<int> {
         // tile 2 only is floor
