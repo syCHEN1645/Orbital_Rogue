@@ -1,10 +1,14 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class NewPlayerHealth : MonoBehaviour
 {
-    public Image healthBar;
+    [SerializeField]
+    private Image healthBar;
+    [SerializeField]
+    private TextMeshProUGUI healthPoint;
     [SerializeField]
     private float maxHealth;
     [SerializeField]
@@ -16,11 +20,14 @@ public class NewPlayerHealth : MonoBehaviour
         maxHealth = 100.0f;
         health = maxHealth;
         defense = 20.0f;
+        HealthBarUpdate();
     }
 
     public void HealthBarUpdate() {
-        // health bar bound with health points
+        // health bar changes
         healthBar.fillAmount = Mathf.Clamp(health / maxHealth, 0, 1);
+        // health point changes
+        healthPoint.text = "" + health;
     }
 
     public void TakeDamage(float attack) {

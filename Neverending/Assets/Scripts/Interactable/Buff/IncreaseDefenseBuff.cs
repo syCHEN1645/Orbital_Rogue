@@ -10,6 +10,6 @@ public class IncreaseDefenseBuff : PermanentBuff
     {
         // Debug.Log("Defense + " + defense);
         // increase player's defense by "amt"
-        player.GetComponent<NewPlayerHealth>().IncreaseDefense(defense);
+        player.playerHealth.IncreaseDefense(defense);
     }
 }
