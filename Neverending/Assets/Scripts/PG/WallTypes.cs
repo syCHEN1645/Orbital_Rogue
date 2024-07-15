@@ -30,7 +30,11 @@ public static class WallTypes
             visualiser.PaintWallTile(pos, wallBinaryType);
 
             // draw corners
-            // if up is not a wall, right is a floor, up + right is a wall, then there is a corner
+            // 0 1 1 1
+            // 1
+            // 1
+            // 1
+            // if up is not a wall, right is a floor, up + right is a wall, then up is a corner
             // corner AT topleft
             if (!wallPositions.Contains(pos + Vector2Int.up) &&
             wallPositions.Contains(pos + Vector2Int.up + Vector2Int.right) && 
@@ -40,14 +44,20 @@ public static class WallTypes
                 visualiser.PaintWallTile(pos + Vector2Int.up, "1000");
                 }
             // similarly, corner AT bottomleft
+            // 1
+            // 1
+            // 0 1 1 1
             if (!wallPositions.Contains(pos + Vector2Int.down) &&
             wallPositions.Contains(pos + Vector2Int.down + Vector2Int.right) && 
             floorPositions.Contains(pos + Vector2Int.right)) {
                 cornerPositions.Add(pos + Vector2Int.down);
                 // paint corner
-                visualiser.PaintWallTile(pos + Vector2Int.down, "0");
+                visualiser.PaintWallTile(pos + Vector2Int.down, "10000");
             }
-            // if up is not a wall, and up + left is a wall, then there is a corner
+            // if up is not a wall, and up + left is a wall, then up is a corner
+            // 1 1 0
+            //     1
+            //     1
             // corner AT topright
             if (!wallPositions.Contains(pos + Vector2Int.up) &&
             wallPositions.Contains(pos + Vector2Int.up + Vector2Int.left) && 
@@ -57,12 +67,15 @@ public static class WallTypes
                 visualiser.PaintWallTile(pos + Vector2Int.up, "0010");
                 }
             // similarly, corner AT bottomright
+            //     1
+            //     1
+            // 1 1 0
             if (!wallPositions.Contains(pos + Vector2Int.down) &&
             wallPositions.Contains(pos + Vector2Int.down + Vector2Int.left) && 
             floorPositions.Contains(pos + Vector2Int.left)) {
                 cornerPositions.Add(pos + Vector2Int.down);
                 // paint corner
-                visualiser.PaintWallTile(pos + Vector2Int.down, "0");
+                visualiser.PaintWallTile(pos + Vector2Int.down, "10001");
             }
         }
         // merge corners into walls
@@ -94,6 +107,7 @@ public static class WallTypes
         #: current tile
         1: is a floor
         0: is empty tile
+        whether 1/2/3/4 is a floor
 
         dir: the smooth side of the wall tile is on the "dir" side
         e.g. wallSideTop: 
@@ -139,5 +153,13 @@ public static class WallTypes
     public static HashSet<int> wallSideBottomRight = new HashSet<int> {
         // tiles 1 and 4 are floor
         0b1001
+    };
+    public static HashSet<int> bottomRightCorner = new HashSet<int> {
+        // tiles 1 and 4 are floor
+        0b10001
+    };
+    public static HashSet<int> bottomLeftCorner = new HashSet<int> {
+        // tiles 1 and 4 are floor
+        0b10000
     };
 }

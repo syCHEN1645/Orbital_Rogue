@@ -8,9 +8,10 @@ public class TileMapVisualiser: MonoBehaviour
     [SerializeField]
     private Tilemap floorTileMap, wallTileMap;
     [SerializeField]
-    private List<TileBase> floorTile, wallGenericTile, wallTop, wallBottom, 
-        wallLeft, wallRight, wallTopleft, wallTopRight, 
-        wallBottomLeft, wallBottomRight, testTile;
+    private List<TileBase> floorTile, wallGenericTile, wallBottom, wallTop, 
+        wallRight, wallLeft, wallBottomRight, wallBottomLeft, 
+        wallTopRight, wallTopLeft, cornerBottomLeft, cornerBottomRight, testTile;
+
     public void PaintFloorTiles(IEnumerable<Vector2Int> floorPositions) {
         foreach(var pos in floorPositions) {
             PaintSingleTile(floorTileMap, GetRandomTile(floorTile), pos);
@@ -31,8 +32,7 @@ public class TileMapVisualiser: MonoBehaviour
     }
 
     public TileBase GetRandomTile(List<TileBase> tileBases) {
-        int size = tileBases.Count;
-        return tileBases[UnityEngine.Random.Range(0, size - 1)];
+        return tileBases[UnityEngine.Random.Range(0, tileBases.Count)];
     }
 
     public void Clear()
@@ -66,9 +66,13 @@ public class TileMapVisualiser: MonoBehaviour
         } else if (WallTypes.wallSideBottomRight.Contains(typeAsInt)) {
             tileBase = GetRandomTile(wallBottomRight);
         } else if (WallTypes.wallSideTopLeft.Contains(typeAsInt)) {
-            tileBase = GetRandomTile(wallTopleft);
+            tileBase = GetRandomTile(wallTopLeft);
         } else if (WallTypes.wallSideTopRight.Contains(typeAsInt)) {
             tileBase = GetRandomTile(wallTopRight);
+        } else if (WallTypes.bottomLeftCorner.Contains(typeAsInt)) {
+            tileBase = GetRandomTile(cornerBottomLeft);
+        } else if (WallTypes.bottomRightCorner.Contains(typeAsInt)) {
+            tileBase = GetRandomTile(cornerBottomRight);
         } else {
             tileBase = GetRandomTile(wallGenericTile);
         }
