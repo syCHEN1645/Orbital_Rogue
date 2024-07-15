@@ -6,10 +6,10 @@ public class RecoverHealthBuff : PermanentBuff
 {
     [SerializeField]
     protected float amt = 10.0f;
-    protected override void BuffEffect(Player player)
+    protected override void BuffEffect(PlayerData playerData)
     {
         Debug.Log("Health + " + amt);
         // increase player's health by "recovery"
-        player.playerHealth.RecoverHealth(amt);
+        playerData.RecoverHealth(amt);
     }
 }

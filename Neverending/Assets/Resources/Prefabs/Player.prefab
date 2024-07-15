@@ -553,11 +553,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5184d032723410429d5aba13b4cd7a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthBar: {fileID: 1937134609520648244}
-  healthPoint: {fileID: 4404882817913188452}
-  maxHealth: 0
+  MovementVelocity: 10
+  healthBar: {fileID: 0}
+  healthPoint: {fileID: 0}
   health: 0
   defense: 0
+  Damage: 5
 --- !u!1 &6334858461049115383
 GameObject:
   m_ObjectHideFlags: 0
@@ -576,6 +577,7 @@ GameObject:
   - component: {fileID: 7570829949117961371}
   - component: {fileID: 8213557652412389556}
   - component: {fileID: 3208022557005108212}
+  - component: {fileID: 3763043851345930909}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -870,8 +872,12 @@ MonoBehaviour:
     m_ActionName: UI/TrackedDeviceOrientation
   - m_PersistentCalls:
       m_Calls: []
-    m_ActionId: 83927eba-dd9c-4c63-b3be-fa79316136bb
-    m_ActionName: Player/Interact[/Keyboard/f]
+    m_ActionId: a8384441-dbad-4df7-adf8-599011bd1597
+    m_ActionName: Player/PrimaryWeaponPickup[/Keyboard/q]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 84f9c966-c95e-479b-8eb5-708e2057242c
+    m_ActionName: Player/SecondaryWeaponPickup[/Keyboard/e]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -901,7 +907,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49a988fb6a9110b42a1a2a2d0ed02f5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerHealth: {fileID: 1770419869287115919}
   movementFilter:
     useTriggers: 0
     useLayerMask: 0
@@ -917,7 +922,6 @@ MonoBehaviour:
     minNormalAngle: 0
     maxNormalAngle: 0
   collisionOffset: 0.05
-  <playerData>k__BackingField: {fileID: 11400000, guid: 9d42948a59ee0a94782d8ede6704deff, type: 2}
 --- !u!114 &8213557652412389556
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -945,8 +949,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48d292a018969b645bf3e759fc08c3ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  primaryWeaponInventory: {fileID: 0}
-  secondaryWeaponInventory: {fileID: 0}
+  <PrimaryWeapon>k__BackingField: {fileID: 4197492260677667922}
+  <SecondaryWeapon>k__BackingField: {fileID: 2399643000388415645}
+  <primaryWeaponInventory>k__BackingField: {fileID: 0}
+  <secondaryWeaponInventory>k__BackingField: {fileID: 0}
+  <InteractableDetector>k__BackingField: {fileID: 0}
+--- !u!114 &3763043851345930909
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6334858461049115383}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5184d032723410429d5aba13b4cd7a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MovementVelocity: 10
+  healthBar: {fileID: 0}
+  healthPoint: {fileID: 0}
+  health: 100
+  defense: 20
+  Damage: 5
 --- !u!1 &7628109056793526536
 GameObject:
   m_ObjectHideFlags: 0

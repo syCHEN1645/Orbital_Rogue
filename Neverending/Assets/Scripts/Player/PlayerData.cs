@@ -3,23 +3,28 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
-public class NewPlayerHealth : MonoBehaviour
+public class PlayerData : MonoBehaviour
 {
+    [SerializeField]
+    public float MovementVelocity = 10f;
     [SerializeField]
     private Image healthBar;
     [SerializeField]
     private TextMeshProUGUI healthPoint;
     [SerializeField]
-    private float maxHealth;
-    [SerializeField]
     private float health;
     [SerializeField]
+    private float maxHealth = 100f;
+    [SerializeField]
     private float defense;
+    [SerializeField]
+    public float Damage;
+
     void Start()
     {
-        maxHealth = 100.0f;
         health = maxHealth;
         defense = 20.0f;
+        Damage = 5f;
         HealthBarUpdate();
     }
 
