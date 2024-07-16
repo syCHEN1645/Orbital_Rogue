@@ -8,9 +8,10 @@ public class TileMapVisualiser: MonoBehaviour
     [SerializeField]
     private Tilemap floorTileMap, wallTileMap;
     [SerializeField]
-    private List<TileBase> floorTile, wallBottom, wallTop, 
-        wallRight, wallLeft, wallBottomRight, wallBottomLeft, 
-        wallTopRight, wallTopLeft, cornerBottomLeft, cornerBottomRight, 
+    private List<TileBase> floorTile, 
+        wallBottom, wallTop, wallRight, wallLeft,
+        wallBottomRight, wallBottomLeft, wallTopRight, wallTopLeft, 
+        cornerBottomLeft, cornerBottomRight, cornerTopLeft, cornerTopRight, 
         wallTopBottom, wallLeftRight, wallOpenLeft, wallOpenRight,
         wallOpenTop, wallOpenBottom, wallClosed, testTile;
 
@@ -78,6 +79,10 @@ public class TileMapVisualiser: MonoBehaviour
             tileBase = GetRandomTile(cornerBottomLeft);
         } else if (WallTypes.bottomRightCorner.Contains(typeAsInt)) {
             tileBase = GetRandomTile(cornerBottomRight);
+        } else if (WallTypes.topLeftCorner.Contains(typeAsInt)) {
+            tileBase = GetRandomTile(cornerTopLeft);
+        } else if (WallTypes.topRightCorner.Contains(typeAsInt)) {
+            tileBase = GetRandomTile(cornerTopRight);
         } else {
             //   2
             // 3 # 1
