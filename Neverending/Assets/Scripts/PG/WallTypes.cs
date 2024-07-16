@@ -27,42 +27,83 @@ public static class WallTypes
                     wallBinaryType += "0";
                 }
             }
+            
             visualiser.PaintWallTile(pos, wallBinaryType);
+            
+
+            /*
+            1 2 3
+            8 # 4
+            7 6 5
+            
+            #: current tile
+            1: is a floor
+            0: is not a floor
+            0b12345678
+            */
+
+            /*
+              2
+            3 # 1
+              4
+            
+            #: current tile
+            1: is a floor
+            0: is not a floor
+            0b1234
+            */
 
             // draw corners
-            // if up is not a wall, right is a floor, up + right is a wall, then there is a corner
+            // 0 1 1 1
+            // 1
+            // 1
+            // 1
+            // if up is not a wall, right is a floor, up + right is a wall, then up is a corner
             // corner AT topleft
             if (!wallPositions.Contains(pos + Vector2Int.up) &&
+            !floorPositions.Contains(pos + Vector2Int.up) &&
             wallPositions.Contains(pos + Vector2Int.up + Vector2Int.right) && 
             floorPositions.Contains(pos + Vector2Int.right)) {
                 cornerPositions.Add(pos + Vector2Int.up);
                 // paint a corner
-                visualiser.PaintWallTile(pos + Vector2Int.up, "1000");
+                visualiser.PaintWallTile(pos + Vector2Int.up, "10010");
                 }
             // similarly, corner AT bottomleft
+            // 1
+            // 1
+            // 0 1 1 1
             if (!wallPositions.Contains(pos + Vector2Int.down) &&
+            !floorPositions.Contains(pos + Vector2Int.down) &&
             wallPositions.Contains(pos + Vector2Int.down + Vector2Int.right) && 
             floorPositions.Contains(pos + Vector2Int.right)) {
                 cornerPositions.Add(pos + Vector2Int.down);
                 // paint corner
-                visualiser.PaintWallTile(pos + Vector2Int.down, "0");
+                visualiser.PaintWallTile(pos + Vector2Int.down, "10000");
             }
-            // if up is not a wall, and up + left is a wall, then there is a corner
+            // if up is not a wall, and up + left is a wall, then up is a corner
+            // 1 1 0
+            //     1
+            //     1
             // corner AT topright
-            if (!wallPositions.Contains(pos + Vector2Int.up) &&
+            if (!wallPositions.Contains(pos + Vector2Int.up) && 
+            !floorPositions.Contains(pos + Vector2Int.up) &&
             wallPositions.Contains(pos + Vector2Int.up + Vector2Int.left) && 
             floorPositions.Contains(pos + Vector2Int.left)) {
                 cornerPositions.Add(pos + Vector2Int.up);
                 // paint corner
-                visualiser.PaintWallTile(pos + Vector2Int.up, "0010");
+                visualiser.PaintWallTile(pos + Vector2Int.up, "10011");
                 }
             // similarly, corner AT bottomright
+            //     1
+            //     1
+            // 1 1 0
             if (!wallPositions.Contains(pos + Vector2Int.down) &&
+            !floorPositions.Contains(pos + Vector2Int.down) &&
             wallPositions.Contains(pos + Vector2Int.down + Vector2Int.left) && 
             floorPositions.Contains(pos + Vector2Int.left)) {
                 cornerPositions.Add(pos + Vector2Int.down);
                 // paint corner
-                visualiser.PaintWallTile(pos + Vector2Int.down, "0");
+                visualiser.PaintWallTile(pos + Vector2Int.down, "10001");
             }
         }
         // merge corners into walls
@@ -94,6 +135,7 @@ public static class WallTypes
         #: current tile
         1: is a floor
         0: is empty tile
+        whether 1/2/3/4 is a floor
 
         dir: the smooth side of the wall tile is on the "dir" side
         e.g. wallSideTop: 
@@ -107,6 +149,9 @@ public static class WallTypes
         |______|
         |______|
 
+          2
+        3 # 1
+          4
     */
     public static HashSet<int> wallSideTop = new HashSet<int> {
         // tile 2 only is floor
@@ -139,5 +184,21 @@ public static class WallTypes
     public static HashSet<int> wallSideBottomRight = new HashSet<int> {
         // tiles 1 and 4 are floor
         0b1001
+    };
+    public static HashSet<int> bottomRightCorner = new HashSet<int> {
+        // tiles 1 and 4 are floor
+        0b10001
+    };
+    public static HashSet<int> bottomLeftCorner = new HashSet<int> {
+        // tiles 1 and 4 are floor
+        0b10000
+    };
+    public static HashSet<int> topLeftCorner = new HashSet<int> {
+        // tiles 1 and 4 are floor
+        0b10010
+    };
+    public static HashSet<int> topRightCorner = new HashSet<int> {
+        // tiles 1 and 4 are floor
+        0b10011
     };
 }
