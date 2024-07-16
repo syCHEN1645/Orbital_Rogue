@@ -31,11 +31,12 @@ public class Projectile : MonoBehaviour
         
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnCollisionEnter2D(Collision2D other)
     {
+        GameObject collider = other.gameObject;
         EnemyHealth enemyHealth = other.gameObject.GetComponent<EnemyHealth>();
-        if (other.CompareTag("Enemy") || other.CompareTag("Indestructable")) {
-            Debug.Log("check");
+        if (collider.CompareTag("Enemy") || collider.CompareTag("Indestructable")) {
+            //Debug.Log("check");
             enemyHealth?.TakeDamage(dataPackage.AttackDamage);
             Instantiate(particalOnHitPrefabVFX, transform.position, transform.rotation);
             Destroy(gameObject);

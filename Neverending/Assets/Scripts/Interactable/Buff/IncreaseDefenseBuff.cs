@@ -6,10 +6,10 @@ public class IncreaseDefenseBuff : PermanentBuff
 {
     [SerializeField]
     protected float defense = 10.0f;
-    protected override void BuffEffect(Player player)
+    protected override void BuffEffect(PlayerData playerData)
     {
         // Debug.Log("Defense + " + defense);
         // increase player's defense by "amt"
-        player.playerHealth.IncreaseDefense(defense);
+        playerData.IncreaseDefense(defense);
     }
 }

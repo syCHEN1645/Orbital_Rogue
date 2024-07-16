@@ -7,24 +7,23 @@ using UnityEngine;
 public class InteractableDetector : MonoBehaviour
 {
     [SerializeField] private PlayerData playerData;
-    //[SerializeField] public Weapon PrimaryWeapon { get; private set; }
-    //[SerializeField] public Weapon SecondaryWeapon { get; private set; }
     public Canvas indicator;
     public WeaponPickup weaponPickup { get; private set; }
     public bool isDetected { get; private set; } 
 
-    void Awake()
+    /*void Awake()
     {
         //player = GetComponentInParent<Player>();
         //PrimaryWeapon = GameObject.Find("PrimaryWeapon").GetComponent<Weapon>();
         //SecondaryWeapon = GameObject.Find("SecondaryWeapon").GetComponent<Weapon>();
         isDetected = false;
-    }
+    }*/
 
     void Start()
     {
         indicator.transform.position = gameObject.transform.position;
         indicator.gameObject.SetActive(false);
+        isDetected = false;
     }
 
     void OnTriggerEnter2D(Collider2D other) {
@@ -33,10 +32,10 @@ public class InteractableDetector : MonoBehaviour
                 weaponPickup = other.GetComponent<WeaponPickup>();
                 Debug.Log(weaponPickup.GetType() + " Enter");
                 //newData = weaponPickup.GetContext();
-            } else if (other.name == "WeaponUpgrade") {
+            } /*else if (other.name == "WeaponUpgrade") {
                 playerData.Upgrade();
                 //interactable = other.GetComponent<WeaponUpgrade>();
-            }
+            }*/
             indicator.gameObject.SetActive(true);
             isDetected = true;
         }
@@ -44,10 +43,9 @@ public class InteractableDetector : MonoBehaviour
 
     void OnTriggerExit2D(Collider2D other) {
         if (other.CompareTag("Interactable")) {
-            Debug.Log(weaponPickup.GetType() + " Exit");
+            //Debug.Log(weaponPickup.GetType() + " Exit");
             isDetected = false;
             indicator.gameObject.SetActive(false);
-            //
         }
     }
 }

@@ -16,20 +16,18 @@ public class Player : MonoBehaviour
     public int FacingDirection { get; private set; }
     public Vector2 CurrentVelocity { get; private set; }
     public PlayerInventory Inventory { get; private set; }
-
-    public NewPlayerHealth playerHealth;
     List<RaycastHit2D> castCollisions = new List<RaycastHit2D>();
     public ContactFilter2D movementFilter;
     public float collisionOffset = 0.05f;
     private Vector2 workspace;
     private Weapon primaryWeapon;
     private Weapon secondaryWeapon;
-    
-    [field: SerializeField] public PlayerData playerData { get; private set; }
+    public PlayerData playerData { get; private set; }
     
 
     private void Awake()
     {
+        playerData = GetComponent<PlayerData>();
         primaryWeapon = transform.Find("PrimaryWeapon").GetComponent<Weapon>();
         secondaryWeapon = transform.Find("SecondaryWeapon").GetComponent<Weapon>();
         StateMachine = new PlayerStateMachine();

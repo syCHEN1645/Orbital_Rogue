@@ -7,23 +7,20 @@ using PlayerControlScript;
 
 public class Interact : MonoBehaviour
 {
-    public WeaponInventory primaryWeaponInventory;
-    public WeaponInventory secondaryWeaponInventory;
-    public static Action<WeaponDataSO> OnSwitchPrimaryWeapon;
-    public static Action<WeaponDataSO> OnSwitchSecondaryWeapon;
-    private PlayerControls playerControls;   
-    public InteractableDetector InteractableDetector { get; private set; }
-    private Weapon PrimaryWeapon;
-    private Weapon SecondaryWeapon;
-    private InputAction playerAction;
+    [field:SerializeField] public Weapon PrimaryWeapon { get; private set; }
+    [field:SerializeField] public Weapon SecondaryWeapon { get; private set; }
+    [field:SerializeField] public WeaponInventory primaryWeaponInventory { get; private set; }
+    [field:SerializeField] public WeaponInventory secondaryWeaponInventory { get; private set; }
+    [field:SerializeField]public InteractableDetector InteractableDetector { get; private set; }
+    private PlayerControls playerControls;
     private WeaponPickup weaponPickup;
    
     
     private void Awake() 
     {
-        InteractableDetector = GameObject.Find("InteractableDetector").GetComponent<InteractableDetector>();
-        PrimaryWeapon = GameObject.Find("PrimaryWeapon").GetComponent<Weapon>();
-        SecondaryWeapon = GameObject.Find("SecondaryWeapon").GetComponent<Weapon>();
+        //InteractableDetector = GameObject.Find("InteractableDetector").GetComponent<InteractableDetector>();
+        //PrimaryWeapon = GameObject.Find("PrimaryWeapon").GetComponent<Weapon>();
+        //SecondaryWeapon = GameObject.Find("SecondaryWeapon").GetComponent<Weapon>();
         playerControls = new PlayerControls();
     }
 
