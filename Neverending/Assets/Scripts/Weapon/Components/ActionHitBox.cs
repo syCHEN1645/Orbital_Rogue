@@ -34,7 +34,7 @@ public class ActionHitBox : WeaponComponent<ActionHitBoxData, AttackActionHitBox
     protected override void Start()
     {
         base.Start();
-        player = GameObject.Find("Player").GetComponent<Player>();
+        player = GameObject.FindWithTag("Player").GetComponent<Player>();
         eventHandler.OnAttackAction += HandleAttackAction;
     }
 
