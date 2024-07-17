@@ -4,10 +4,8 @@ using UnityEngine.UI;
 public class EnemyHealth : MonoBehaviour
 {
     public Image healthBar;
-    public float offset = 1.0f;
-    private float maxHealth;
-    private float health;
-    private float defense;
+    [SerializeField]
+    private float maxHealth, health, defense, offset;
     private Enemy enemy;
     void Start()
     {
@@ -50,5 +48,9 @@ public class EnemyHealth : MonoBehaviour
         } else {
             return false;
         }
+    }
+
+    public float GetOffset() {
+        return offset;
     }
 }
