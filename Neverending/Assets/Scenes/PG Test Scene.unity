@@ -7312,8 +7312,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 520, y: 250}
-  m_SizeDelta: {x: 200, y: 10}
+  m_AnchoredPosition: {x: 362.56622, y: 238.75525}
+  m_SizeDelta: {x: 154.5713, y: 10.7616}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &571217079
 MonoBehaviour:
@@ -9084,7 +9084,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 423, y: 243}
+  m_AnchoredPosition: {x: 297.6, y: 233.8}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &780503393
@@ -11915,7 +11915,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 589, y: 260}
+  m_AnchoredPosition: {x: 451.6, y: 250.5}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1038945005
@@ -14884,7 +14884,7 @@ MonoBehaviour:
   <SecondaryWeapon>k__BackingField: {fileID: 1128532963}
   <primaryWeaponInventory>k__BackingField: {fileID: 0}
   <secondaryWeaponInventory>k__BackingField: {fileID: 0}
-  <InteractableDetector>k__BackingField: {fileID: 0}
+  <InteractableDetector>k__BackingField: {fileID: 569744607}
 --- !u!114 &1221716198
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15227,8 +15227,8 @@ Transform:
   m_GameObject: {fileID: 1221716195}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.5, y: 68.1, z: 0}
-  m_LocalScale: {x: 0.8, y: 0.7, z: 1}
+  m_LocalPosition: {x: 320, y: 131, z: 0}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2014448565}
