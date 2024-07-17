@@ -4,6 +4,8 @@ using UnityEngine;
 public class RoomFirstGenerator : SimpleRandomWalkGenerator
 {
     [SerializeField]
+    private int minRoomCount = 4;
+    [SerializeField]
     private int minWidth = 4, minHeight = 4;
     [SerializeField]
     private int width = 20, height = 20;
@@ -85,13 +87,13 @@ public class RoomFirstGenerator : SimpleRandomWalkGenerator
     private void CreateRooms()
     {
         List<BoundsInt> roomsBoundsList;
-        // create a list, and regenerate until the list has at least a size of 3.
+        // create a list, and regenerate until the list has at least a size of ? minRoomCount.
         do {
             roomsBoundsList = PGAlgorithm.BinarySpacePartitioning(
             new BoundsInt((Vector3Int)startPos, new Vector3Int(width, height, 0)), 
             minWidth,
             minHeight);
-        } while (roomsBoundsList.Count < 3);
+        } while (roomsBoundsList.Count < minRoomCount);
         
         if (useRandomWalk) {
             // create irregular rooms
@@ -127,6 +129,7 @@ public class RoomFirstGenerator : SimpleRandomWalkGenerator
         // for (int i = 0; i < roomsBoundsList.Count; i++) {
         //     Debug.Log(roomsBoundsList[i]);
         // }
+
         // floorPositions is a collection of all floor tiles
         HashSet<Vector2Int> floors = new HashSet<Vector2Int>();
         for (int i = 0; i < roomsBoundsList.Count; i++) {
@@ -170,23 +173,50 @@ public class RoomFirstGenerator : SimpleRandomWalkGenerator
     private HashSet<Vector2Int> CreateCorridor(Vector2Int start, Vector2Int des)
     {
         HashSet<Vector2Int> corridor = new HashSet<Vector2Int>();
-        var pos = start;
+        Vector2Int pos = start;
+        Vector2Int wid1;
+        Vector2Int wid2;
         corridor.Add(pos);
+        // yDir: 
+        // false: y pos do not match; 
+        // true: y pos do match
+        bool yDir = !(start.y == des.y);
         while (pos.y != des.y) {
             if (des.y > pos.y) {
-                pos += Vector2Int.up;
+                pos += Vector2Int.up;        
             } else if (des.y < pos.y) {
                 pos += Vector2Int.down;
             }
+            wid1 = pos + Vector2Int.left;
+            wid2 = pos + Vector2Int.right;
+            // widen corridor width to 3
             corridor.Add(pos);
+            corridor.Add(wid1);
+            corridor.Add(wid2);
         }
+        
+        // smoothe turning corners if there is any
+        if (yDir) {
+            corridor.Add(pos + Vector2Int.up);
+            corridor.Add(pos + Vector2Int.down);
+            corridor.Add(pos + Vector2Int.right + Vector2Int.up);
+            corridor.Add(pos + Vector2Int.right + Vector2Int.down);
+            corridor.Add(pos + Vector2Int.left + Vector2Int.up);
+            corridor.Add(pos + Vector2Int.left + Vector2Int.down);
+        }
+
         while (pos.x != des.x) {
             if (des.x > pos.x) {
                 pos += Vector2Int.right;
             } else if (des.x < pos.x) {
                 pos += Vector2Int.left;
             }
+            wid1 = pos + Vector2Int.down;
+            wid2 = pos + Vector2Int.up;
+            // widen corridor width to 3
             corridor.Add(pos);
+            corridor.Add(wid1);
+            corridor.Add(wid2);
         }
         // has just reached des here
         return corridor;
