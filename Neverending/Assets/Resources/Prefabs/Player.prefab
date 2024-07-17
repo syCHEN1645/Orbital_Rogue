@@ -1110,7 +1110,7 @@ PrefabInstance:
     - target: {fileID: 6436940525157045449, guid: 3b9ece43a54589543958c74559ec90db, type: 3}
       propertyPath: data
       value: 
-      objectReference: {fileID: 11400000, guid: ab1f5952b4be5eb488f80fcc89bfc986, type: 2}
+      objectReference: {fileID: 11400000, guid: c1f9e69f6a786b340bba633aa5b5e465, type: 2}
     - target: {fileID: 6436940525157045449, guid: 3b9ece43a54589543958c74559ec90db, type: 3}
       propertyPath: weapon
       value: 
@@ -1204,6 +1204,14 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 5c520c2af09c61f408813198c02c67cf, type: 2}
+    - target: {fileID: 4756556856908678172, guid: 3b9ece43a54589543958c74559ec90db, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.002
+      objectReference: {fileID: 0}
+    - target: {fileID: 4756556856908678172, guid: 3b9ece43a54589543958c74559ec90db, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.01
+      objectReference: {fileID: 0}
     - target: {fileID: 6320208882656571626, guid: 3b9ece43a54589543958c74559ec90db, type: 3}
       propertyPath: m_Name
       value: SecondaryWeapon

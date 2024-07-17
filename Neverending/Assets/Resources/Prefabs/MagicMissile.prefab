@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4670433007783191432}
   - component: {fileID: 4553704429812717578}
   - component: {fileID: 6616589808887793213}
+  - component: {fileID: 8574617171751910140}
   m_Layer: 0
   m_Name: MagicMissile
   m_TagString: Untagged
@@ -163,3 +164,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 22
   particalOnHitPrefabVFX: {fileID: 7166053395627342346, guid: b300a4d2d9f799040887ce2c1f257229, type: 3}
+--- !u!210 &8574617171751910140
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5705748209581078482}
+  m_Enabled: 1
+  m_SortingLayerID: 356758901
+  m_SortingLayer: 1
+  m_SortingOrder: 0
+  m_SortAtRoot: 0
