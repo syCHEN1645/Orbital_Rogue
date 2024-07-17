@@ -174,6 +174,7 @@ public class RoomFirstGenerator : SimpleRandomWalkGenerator
         Vector2Int wid1;
         Vector2Int wid2;
         corridor.Add(pos);
+        bool yDir = !(start.y == des.y);
         while (pos.y != des.y) {
             if (des.y > pos.y) {
                 pos += Vector2Int.up;        
@@ -186,6 +187,17 @@ public class RoomFirstGenerator : SimpleRandomWalkGenerator
             corridor.Add(wid1);
             corridor.Add(wid2);
         }
+        
+        // smoothe turning corners if there is any
+        if (yDir) {
+            corridor.Add(pos + Vector2Int.up);
+            corridor.Add(pos + Vector2Int.down);
+            corridor.Add(pos + Vector2Int.right + Vector2Int.up);
+            corridor.Add(pos + Vector2Int.right + Vector2Int.down);
+            corridor.Add(pos + Vector2Int.left + Vector2Int.up);
+            corridor.Add(pos + Vector2Int.left + Vector2Int.down);
+        }
+
         while (pos.x != des.x) {
             if (des.x > pos.x) {
                 pos += Vector2Int.right;
