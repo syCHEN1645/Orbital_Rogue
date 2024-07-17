@@ -170,15 +170,21 @@ public class RoomFirstGenerator : SimpleRandomWalkGenerator
     private HashSet<Vector2Int> CreateCorridor(Vector2Int start, Vector2Int des)
     {
         HashSet<Vector2Int> corridor = new HashSet<Vector2Int>();
-        var pos = start;
+        Vector2Int pos = start;
+        Vector2Int wid1;
+        Vector2Int wid2;
         corridor.Add(pos);
         while (pos.y != des.y) {
             if (des.y > pos.y) {
-                pos += Vector2Int.up;
+                pos += Vector2Int.up;        
             } else if (des.y < pos.y) {
                 pos += Vector2Int.down;
             }
+            wid1 = pos + Vector2Int.left;
+            wid2 = pos + Vector2Int.right;
             corridor.Add(pos);
+            corridor.Add(wid1);
+            corridor.Add(wid2);
         }
         while (pos.x != des.x) {
             if (des.x > pos.x) {
@@ -186,7 +192,11 @@ public class RoomFirstGenerator : SimpleRandomWalkGenerator
             } else if (des.x < pos.x) {
                 pos += Vector2Int.left;
             }
+            wid1 = pos + Vector2Int.down;
+            wid2 = pos + Vector2Int.up;
             corridor.Add(pos);
+            corridor.Add(wid1);
+            corridor.Add(wid2);
         }
         // has just reached des here
         return corridor;
