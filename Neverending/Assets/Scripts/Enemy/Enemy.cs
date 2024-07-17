@@ -62,7 +62,9 @@ public class Enemy : MonoBehaviour
     protected virtual IEnumerator AttackPlayer() {
         isAttacking = true;
         Attack();
-        player.GetComponent<PlayerHealth>().TakeDamage(attack);
+        if (player != null) {
+            player.GetComponent<PlayerHealth>().TakeDamage(attack);
+        }
         yield return new WaitForSeconds(attackInterval);
         isAttacking = false;
     }
