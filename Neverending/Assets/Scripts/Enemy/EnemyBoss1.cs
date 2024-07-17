@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class EnemyBoss1 : Enemy
@@ -5,9 +6,10 @@ public class EnemyBoss1 : Enemy
     [SerializeField]
     // enemy stops at a distance of stopMovingDistance away from Player
     // enemy starts hunting if Player is closer than huntRange
-    protected float healthBarOffset, stopMovingDistance, huntRange;
+    protected float healthBarOffset, stopMovingDistance, huntRange, rangedAttackRange;
     [SerializeField]
     protected float meleeAttack, rangedAttack;
+
     void Start()
     {
         InitialiseEnemy();
@@ -26,6 +28,7 @@ public class EnemyBoss1 : Enemy
     {
         base.InitialiseEnemy();
         speed = 2.0f;
+        // attack is by default referring to melee attack if both melee and ranged attacks exist
         attack = 15.0f;
         attackRange = 4.0f;
         attackInterval = 1.0f;
@@ -34,8 +37,8 @@ public class EnemyBoss1 : Enemy
         healthBarOffset = 1.4f;
         stopMovingDistance = 0.5f;
         huntRange = 15.0f;
-        meleeAttack = 60.0f;
         rangedAttack = 40.0f;
+        rangedAttackRange = 5.0f;
 
         enemyHealth.SetDefense(30);
         enemyHealth.SetMaxHealth(100);
@@ -61,7 +64,10 @@ public class EnemyBoss1 : Enemy
     }
 
     protected bool WithinHuntRange() {
-        return true;
+        if (Vector2.Distance(player.transform.position, gameObject.transform.position) <= huntRange) {
+            return true;
+        }
+        return false;
     }
 
     protected void HuntPlayer()
@@ -69,7 +75,7 @@ public class EnemyBoss1 : Enemy
         if (Vector2.Distance(player.transform.position, gameObject.transform.position) > stopMovingDistance) {
             MoveTowardsPlayer();
         }
-        if (WithinAttackRange()) {
+        if (WithinAttackRange(attackRange)) {
             Debug.Log("Attack");
             StartCoroutine(AttackPlayer());
         }
@@ -89,15 +95,16 @@ public class EnemyBoss1 : Enemy
         return Vector3.Normalize(player.transform.position - gameObject.transform.position);
     }
 
-    protected void Attack1() {
-        // melee attack
-        Attack();
-        
-    }
-
-    protected void Attack2() {
-        // ranged attack
+    protected IEnumerator RangedAttackPlayer() {
+        isAttacking = true;
+        // ranged attack animation
         Cast();
+
+        if (playerHealth != null) {
+            playerHealth.TakeDamage(rangedAttack);
+        }
+        yield return new WaitForSeconds(attackInterval);
+        isAttacking = false;
     }
 
     // protected void Attack3() {
