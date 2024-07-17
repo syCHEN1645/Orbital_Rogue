@@ -5,14 +5,17 @@ using UnityEngine;
 
 public class EnemyBandit1 : Enemy
 {
-    private float patrolRange = 3.0f;
+    [SerializeField]
+    protected float patrolRange, healthBarOffset;
     protected override void InitialiseEnemy() {
         base.InitialiseEnemy();
         speed = 0.7f;
         attack = 15.0f;
         attackRange = 1.0f;
         attackInterval = 1.0f;
-        spriteScale = 0.5f;
+        spriteScale = 1.0f;
+        patrolRange = 0.3f;
+        healthBarOffset = 1.4f;
     }
     void Start()
     {
@@ -23,7 +26,7 @@ public class EnemyBandit1 : Enemy
     // Update is called once per frame
     void Update()
     {
-        enemyHealth.healthBar.transform.position = transform.position + new Vector3(0, enemyHealth.offset, 0);
+        enemyHealth.healthBar.transform.position = transform.position + new Vector3(0, healthBarOffset, 0);
         if (enemyHealth.IsDead()) {
             Die();
         } else {

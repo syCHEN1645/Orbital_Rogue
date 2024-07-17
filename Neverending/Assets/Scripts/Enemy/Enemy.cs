@@ -12,14 +12,14 @@ public class Enemy : MonoBehaviour
     protected GameObject player;
     // originalPosition: where this enemy is spawned
     protected Vector2 originalPosition;
-    protected float speed;
-    protected float attack;
-    protected float attackRange;
+    [SerializeField]
     // attackInterval: time interval between attacks
-    protected float attackInterval;
-    // dir: enemy is facing this direction: l-left, r-right.
+    protected float speed, attack, attackRange, attackInterval;
+
+    // dir: enemy is facing this direction: l->left, r->right.
     protected char dir;
     protected bool isAttacking;
+    [SerializeField]
     protected float spriteScale;
 
     protected virtual void InitialiseEnemy() {
