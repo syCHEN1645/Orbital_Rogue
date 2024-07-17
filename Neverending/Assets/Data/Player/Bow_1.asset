@@ -80,4 +80,5 @@ MonoBehaviour:
         - name: Attack 1
           <Damage>k__BackingField: 5
           <Range>k__BackingField: 10
-        <projectilePrefab>k__BackingField: {fileID: 520525365201432645, guid: a77a6cbdcffc1214d9918598e30fa079, type: 3}
+        <SpawnPositionOffset>k__BackingField: {x: 0, y: 0, z: 0}
+        <ProjectilePrefab>k__BackingField: {fileID: 520525365201432645, guid: a77a6cbdcffc1214d9918598e30fa079, type: 3}
