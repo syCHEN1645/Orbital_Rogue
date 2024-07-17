@@ -4,7 +4,10 @@ public class EnemyBoss1 : Enemy
 {
     [SerializeField]
     // enemy stops at a distance of stopMovingDistance away from Player
-    protected float healthBarOffset, stopMovingDistance;
+    // enemy starts hunting if Player is closer than huntRange
+    protected float healthBarOffset, stopMovingDistance, huntRange;
+    [SerializeField]
+    protected float meleeAttack, rangedAttack;
     void Start()
     {
         InitialiseEnemy();
@@ -12,20 +15,30 @@ public class EnemyBoss1 : Enemy
 
     void Update()
     {
-        HuntPlayer();
-        
+        if (Vector2.Distance(player.transform.position, gameObject.transform.position) <= huntRange) {
+            HuntPlayer();
+        } else {
+            // idle around
+        }
     }
 
     protected override void InitialiseEnemy()
     {
         base.InitialiseEnemy();
-        speed = 0.7f;
+        speed = 2.0f;
         attack = 15.0f;
         attackRange = 4.0f;
         attackInterval = 1.0f;
         spriteScale = 1.0f;
+
         healthBarOffset = 1.4f;
         stopMovingDistance = 0.5f;
+        huntRange = 15.0f;
+        meleeAttack = 60.0f;
+        rangedAttack = 40.0f;
+
+        enemyHealth.SetDefense(30);
+        enemyHealth.SetMaxHealth(100);
     }
 
     public override void Attack()
@@ -39,13 +52,11 @@ public class EnemyBoss1 : Enemy
     protected void Spell() {
         animator.SetTrigger("Spell");
     }
-    public override void Die() {
-        animator.SetTrigger("Death");
-    }
+
     protected void Walk() {
         animator.SetTrigger("Walk");
     }
-    protected void Hurt() {
+    public override void Injure() {
         animator.SetTrigger("Hurt");
     }
 
@@ -77,6 +88,22 @@ public class EnemyBoss1 : Enemy
         // x = x, y = y, z = 0
         return Vector3.Normalize(player.transform.position - gameObject.transform.position);
     }
+
+    protected void Attack1() {
+        // melee attack
+        Attack();
+        
+    }
+
+    protected void Attack2() {
+        // ranged attack
+        Cast();
+    }
+
+    // protected void Attack3() {
+    //     // melee attack
+    //     Attack();
+    // }
 
     // void MoveRight() {
     //     // face right
