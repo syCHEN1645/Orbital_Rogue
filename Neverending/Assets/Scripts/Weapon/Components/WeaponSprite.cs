@@ -27,21 +27,25 @@ public class WeaponSprite : WeaponComponent<WeaponSpriteData, AttackSprites>
 
     private void HandleBaseSpriteChange(SpriteRenderer sr) 
     {
-        if (!isAttackActive)
-        {
-            weaponSpriteRenderer.sprite = null;
-            return;
-        }
+        if (currentPhaseSprites != null) {
+            Debug.Log("index: " + currentWeaponSpriteIndex);
+            Debug.Log("length: " + currentPhaseSprites.Length);
+            if (!isAttackActive)
+            {
+                weaponSpriteRenderer.sprite = null;
+                return;
+            }
 
-        if (currentWeaponSpriteIndex >= currentPhaseSprites.Length)
-        {
-            Debug.LogWarning($"{weapon.name} weapon sprites length mismatch");
-            return;
-        }
+            if (currentWeaponSpriteIndex >= currentPhaseSprites.Length)
+            {   
+                Debug.LogWarning($"{weapon.name} weapon sprites length mismatch");
+                return;
+            }
 
-        weaponSpriteRenderer.sprite = currentPhaseSprites[currentWeaponSpriteIndex];
+            weaponSpriteRenderer.sprite = currentPhaseSprites[currentWeaponSpriteIndex];
         
-        currentWeaponSpriteIndex++;
+            currentWeaponSpriteIndex++;
+        }   
     }
 
     protected override void Start()

@@ -97,7 +97,7 @@ public class CorridorFirstRoomGenerator : SimpleRandomWalkGenerator
 
         for (int i = 0; i < corridorCount; i++) {
             // generate a number of corridors
-            var corridor = PGAlgorithm.RandomWalkCorridor(currentPos, corridorLength);
+            var corridor = PGAlgorithm.RandomWalkCorridor(currentPos, corridorLength, 3);
             // currentPos = last tile of the corridor
             currentPos = corridor.ElementAt(corridor.Count - 1);
             potentialRoomPositions.Add(currentPos);

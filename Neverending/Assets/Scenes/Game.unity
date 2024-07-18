@@ -681,6 +681,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cfd9c661b837ef14ea0da85acb36deeb, type: 3}
+--- !u!114 &193509017 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1770419869287115919, guid: f1cfe5984b5449a4da294ebda7661c57, type: 3}
+  m_PrefabInstance: {fileID: 594516620}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5184d032723410429d5aba13b4cd7a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &198542326
 GameObject:
   m_ObjectHideFlags: 0
@@ -1213,7 +1224,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &487666423
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1346,6 +1357,10 @@ PrefabInstance:
       propertyPath: <secondaryWeaponInventory>k__BackingField
       value: 
       objectReference: {fileID: 1551012272}
+    - target: {fileID: 3279392197702079539, guid: f1cfe5984b5449a4da294ebda7661c57, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -522957825, guid: d29dffd733413184c870244f6772a00c, type: 3}
     - target: {fileID: 3763043851345930909, guid: f1cfe5984b5449a4da294ebda7661c57, type: 3}
       propertyPath: healthBar
       value: 
@@ -1354,6 +1369,10 @@ PrefabInstance:
       propertyPath: healthPoint
       value: 
       objectReference: {fileID: 649871665}
+    - target: {fileID: 3931642151363668220, guid: f1cfe5984b5449a4da294ebda7661c57, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -522957825, guid: d29dffd733413184c870244f6772a00c, type: 3}
     - target: {fileID: 4215972057778872437, guid: f1cfe5984b5449a4da294ebda7661c57, type: 3}
       propertyPath: m_Name
       value: InteractableDetector
@@ -1461,11 +1480,19 @@ PrefabInstance:
     - target: {fileID: 7570829949117961371, guid: f1cfe5984b5449a4da294ebda7661c57, type: 3}
       propertyPath: playerHealth
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 193509017}
     - target: {fileID: 7570829949117961371, guid: f1cfe5984b5449a4da294ebda7661c57, type: 3}
       propertyPath: <playerData>k__BackingField
       value: 
       objectReference: {fileID: 11400000, guid: 9d42948a59ee0a94782d8ede6704deff, type: 2}
+    - target: {fileID: 7968124835011567987, guid: f1cfe5984b5449a4da294ebda7661c57, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7968124835011567987, guid: f1cfe5984b5449a4da294ebda7661c57, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.4
+      objectReference: {fileID: 0}
     - target: {fileID: 7968124835011567987, guid: f1cfe5984b5449a4da294ebda7661c57, type: 3}
       propertyPath: m_LocalPosition.x
       value: 25.97
@@ -1506,9 +1533,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 1770419869287115919, guid: f1cfe5984b5449a4da294ebda7661c57, type: 3}
-    m_RemovedGameObjects: []
+    m_RemovedComponents: []
+    m_RemovedGameObjects:
+    - {fileID: 745423752186402011, guid: f1cfe5984b5449a4da294ebda7661c57, type: 3}
+    - {fileID: 5474140098548894793, guid: f1cfe5984b5449a4da294ebda7661c57, type: 3}
+    - {fileID: 5833655796704555142, guid: f1cfe5984b5449a4da294ebda7661c57, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f1cfe5984b5449a4da294ebda7661c57, type: 3}
@@ -1597,7 +1626,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!95 &681338692
 Animator:
   serializedVersion: 5
@@ -8070,6 +8099,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Projectile VFX
       objectReference: {fileID: 0}
+    - target: {fileID: 7873856926122357909, guid: 6682e91a2e1d9b0488c954fb9d25bd3d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8140,10 +8173,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 721215309915467055, guid: de3c2d0036bfe634bae36f57e3571570, type: 3}
-      propertyPath: dir
-      value: 85
-      objectReference: {fileID: 0}
     - target: {fileID: 1798473403073101752, guid: de3c2d0036bfe634bae36f57e3571570, type: 3}
       propertyPath: m_Name
       value: Enemy Bandit 1
@@ -8162,11 +8191,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8357819307025276853, guid: de3c2d0036bfe634bae36f57e3571570, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 32.81
+      value: 32.71
       objectReference: {fileID: 0}
     - target: {fileID: 8357819307025276853, guid: de3c2d0036bfe634bae36f57e3571570, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2
+      value: -6.75
       objectReference: {fileID: 0}
     - target: {fileID: 8357819307025276853, guid: de3c2d0036bfe634bae36f57e3571570, type: 3}
       propertyPath: m_LocalPosition.z
@@ -8288,7 +8317,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 520525365201432645, guid: a77a6cbdcffc1214d9918598e30fa079, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3800422296222210098, guid: a77a6cbdcffc1214d9918598e30fa079, type: 3}
       propertyPath: m_LocalPosition.x

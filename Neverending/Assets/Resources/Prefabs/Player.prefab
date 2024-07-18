@@ -75,6 +75,50 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &745423752186402011
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2460891764139957650}
+  - component: {fileID: 7829368717329977962}
+  m_Layer: 3
+  m_Name: ProjectileSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2460891764139957650
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 745423752186402011}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7968124835011567987}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7829368717329977962
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 745423752186402011}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58545b3bb0586c0449a16ed328ac5078, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &873557876382785270
 GameObject:
   m_ObjectHideFlags: 0
@@ -557,6 +601,7 @@ MonoBehaviour:
   healthBar: {fileID: 0}
   healthPoint: {fileID: 0}
   health: 0
+  maxHealth: 100
   defense: 0
   Damage: 5
 --- !u!1 &6334858461049115383
@@ -602,6 +647,7 @@ Transform:
   - {fileID: 5445279772461356914}
   - {fileID: 8509066257980037127}
   - {fileID: 4686844880913539007}
+  - {fileID: 2460891764139957650}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1487622247049384580
@@ -970,6 +1016,7 @@ MonoBehaviour:
   healthBar: {fileID: 0}
   healthPoint: {fileID: 0}
   health: 100
+  maxHealth: 100
   defense: 20
   Damage: 5
 --- !u!1 &7628109056793526536
