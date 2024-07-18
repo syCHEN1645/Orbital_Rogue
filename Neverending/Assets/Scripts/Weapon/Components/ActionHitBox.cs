@@ -25,16 +25,15 @@ public class ActionHitBox : WeaponComponent<ActionHitBoxData, AttackActionHitBox
         OnDetectedCollider2D?.Invoke(detected);        
     }
 
-    /*protected override void Awake()
+    protected override void Awake()
     {
         base.Awake();
-        
-    }*/
+        player = GameObject.Find("Player").GetComponent<Player>();
+    }
 
     protected override void Start()
     {
         base.Start();
-        player = GameObject.FindWithTag("Player").GetComponent<Player>();
         eventHandler.OnAttackAction += HandleAttackAction;
     }
 

@@ -6,7 +6,7 @@ using UnityEngine;
 
 public static class PGAlgorithm
 {
-    public static HashSet<Vector2Int> SimpleRandomWalk(Vector2Int startPos, int walkLength, int minStepEachTime, int walkWidth) {
+    public static HashSet<Vector2Int> SimpleRandomWalk(Vector2Int startPos, int walkLength) {
         HashSet<Vector2Int> path = new HashSet<Vector2Int>();
 
         path.Add(startPos);
@@ -15,30 +15,23 @@ public static class PGAlgorithm
         for (int i = 0; i < walkLength; i++) {
             // walk one step
             Vector2Int dir = Direction2D.GetRandomCardianlDirection();
-            for (int j = 0; j < minStepEachTime; j++) {
-                // walk at least ? steps before changing dir
-                var newPos = previousPos + dir;
-                path.Add(newPos);
-                // can adjust path width
-                AddWidthTo(path, newPos, dir, walkWidth);
-                previousPos = newPos;
-                // 1 step is walked
-                i++;
-            }
-            // 1 step overcount
-            i--;
+            var newPos = previousPos + dir;
+            path.Add(newPos);
+            // can adjust path width
+            AddWidthTo(path, newPos, dir, 2);
+            previousPos = newPos;
         }
         return path;
     }
 
-    public static HashSet<Vector2Int> RandomWalkCorridor(Vector2Int startPos, int corridorLength, int corridorWidth) {
+    public static HashSet<Vector2Int> RandomWalkCorridor(Vector2Int startPos, int corridorLength) {
         // return value is List, to get last element of corridor
         HashSet<Vector2Int> corridor = new HashSet<Vector2Int>();
         var dir = Direction2D.GetRandomCardianlDirection();
         var currentPos = startPos;
         for (int i = 0; i < corridorLength; i++) {
             currentPos += dir;
-            AddWidthTo(corridor, currentPos, dir, corridorWidth);
+            AddWidthTo(corridor, currentPos, dir, 2);
             corridor.Add(currentPos);
         }
         return corridor;
@@ -99,26 +92,11 @@ public static class PGAlgorithm
         roomsQueue.Enqueue(room2);
     }
 
-    private static void AddWidthTo(HashSet<Vector2Int> path, Vector2Int pos, Vector2Int dir, int width) {
+    private static void AddWidthTo(HashSet<Vector2Int> path, Vector2Int pos, Vector2Int dir, int x) {
         // widen path to x grids
-        int coe = 0;
-        for (int i = 0; i < width; i++) {
-            coe = i + coe * (-1);
-            var widenPos = pos + Direction2D.CCW90(dir) * coe;
+        for (int i = 0; i < x; i++) {
+            var widenPos = pos + Direction2D.CCW90(dir) * i;
             path.Add(widenPos);
-
-            /*
-            i
-            0 1  2 3  4 5
-            coe
-            0 1 -1 2 -2 3
-
-            0
-            0 + 1 = 1
-            1 - 2 = -1
-            -1 + 3 = 2
-            2 - 4 = -2
-            */
         }
     }
 }
