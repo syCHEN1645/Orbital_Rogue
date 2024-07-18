@@ -30,7 +30,7 @@ public class EnemyBandit1 : Enemy
         if (enemyHealth.IsDead()) {
             Die();
         } else {
-            if (WithinAttackRange() && !isAttacking) {
+            if (WithinAttackRange(attackRange) && !isAttacking) {
                 StartCoroutine(AttackPlayer());
             } else {
                 Patrol();
