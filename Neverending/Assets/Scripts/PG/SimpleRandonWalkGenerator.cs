@@ -28,8 +28,7 @@ public class SimpleRandomWalkGenerator: AbstractGenerator
         var currentPos = pos;
         HashSet<Vector2Int> floorPositions = new HashSet<Vector2Int>();
         for (int i = 0; i < randomWalkData.iterations; i++) {
-            var path = PGAlgorithm.SimpleRandomWalk(currentPos, randomWalkData.walkLength, 
-            randomWalkData.minStepEachTime, randomWalkData.walkWidth);
+            var path = PGAlgorithm.SimpleRandomWalk(currentPos, randomWalkData.walkLength);
             // copy everything non-duplicate and merge
             floorPositions.UnionWith(path);
             if (randomWalkData.startRandomlyEachGeneration) {

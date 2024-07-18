@@ -45,6 +45,7 @@ public class Projectile : MonoBehaviour
 
     private void DetectFireDistance()
     {
+        Debug.Log(dataPackage.Range);
         if (Vector3.Distance(transform.position, startPosition) > dataPackage.Range) {
             Destroy(gameObject);
         }

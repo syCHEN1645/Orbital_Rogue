@@ -5,6 +5,6 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "SimpleRandomWalkParameters_", menuName = "PG/SimpleRandomWalkData")]
 public class SimpleRandomWalkData : ScriptableObject
 {
-    public int iterations = 8, walkLength = 8, minStepEachTime = 3, walkWidth = 4;
+    public int iterations = 10, walkLength = 10;
     public bool startRandomlyEachGeneration = true;
 }

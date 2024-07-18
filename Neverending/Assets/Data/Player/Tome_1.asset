@@ -18,10 +18,10 @@ MonoBehaviour:
   <AnimatorController>k__BackingField: {fileID: 9100000, guid: 5c520c2af09c61f408813198c02c67cf, type: 2}
   <NumberOfAttacks>k__BackingField: 4
   <ComponentData>k__BackingField:
-  - rid: 2191127987861323779
   - rid: 2191127987861323776
   - rid: 2191127987861323777
   - rid: 2191127987861323778
+  - rid: 2191127987861323779
   references:
     version: 2
     RefIds:
@@ -121,36 +121,35 @@ MonoBehaviour:
             - {fileID: -1624648991, guid: ea664e6753d22384b823fdc05bd71d94, type: 3}
             - {fileID: -776678774, guid: ea664e6753d22384b823fdc05bd71d94, type: 3}
             - {fileID: -79063389, guid: ea664e6753d22384b823fdc05bd71d94, type: 3}
-            - {fileID: 1115031671, guid: ea664e6753d22384b823fdc05bd71d94, type: 3}
         - name: Attack 2
           <PhaseSprites>k__BackingField:
-          - <Phase>k__BackingField: 2
+          - <Phase>k__BackingField: 0
             <Sprites>k__BackingField:
+            - {fileID: 1115031671, guid: ea664e6753d22384b823fdc05bd71d94, type: 3}
             - {fileID: 426135584, guid: ea664e6753d22384b823fdc05bd71d94, type: 3}
             - {fileID: -2026743914, guid: ea664e6753d22384b823fdc05bd71d94, type: 3}
             - {fileID: 1332268691, guid: ea664e6753d22384b823fdc05bd71d94, type: 3}
             - {fileID: -210883327, guid: ea664e6753d22384b823fdc05bd71d94, type: 3}
-            - {fileID: 918316821, guid: ea664e6753d22384b823fdc05bd71d94, type: 3}
         - name: Attack 3
           <PhaseSprites>k__BackingField:
-          - <Phase>k__BackingField: 2
+          - <Phase>k__BackingField: 0
             <Sprites>k__BackingField:
+            - {fileID: 918316821, guid: ea664e6753d22384b823fdc05bd71d94, type: 3}
+            - {fileID: 1526331837, guid: ea664e6753d22384b823fdc05bd71d94, type: 3}
+            - {fileID: -1571758429, guid: ea664e6753d22384b823fdc05bd71d94, type: 3}
+            - {fileID: 0}
+            - {fileID: 0}
+        - name: Attack 4
+          <PhaseSprites>k__BackingField:
+          - <Phase>k__BackingField: 0
+            <Sprites>k__BackingField:
+            - {fileID: 199152060, guid: ea664e6753d22384b823fdc05bd71d94, type: 3}
+            - {fileID: 18802363, guid: ea664e6753d22384b823fdc05bd71d94, type: 3}
+            - {fileID: 1260940025, guid: ea664e6753d22384b823fdc05bd71d94, type: 3}
+            - {fileID: 2136570580, guid: ea664e6753d22384b823fdc05bd71d94, type: 3}
+            - {fileID: -1276261969, guid: ea664e6753d22384b823fdc05bd71d94, type: 3}
+            - {fileID: -24231322, guid: ea664e6753d22384b823fdc05bd71d94, type: 3}
             - {fileID: -1705836767, guid: ea664e6753d22384b823fdc05bd71d94, type: 3}
             - {fileID: 1723151908, guid: ea664e6753d22384b823fdc05bd71d94, type: 3}
             - {fileID: -1805923233, guid: ea664e6753d22384b823fdc05bd71d94, type: 3}
             - {fileID: -580050335, guid: ea664e6753d22384b823fdc05bd71d94, type: 3}
-            - {fileID: 1186528788, guid: ea664e6753d22384b823fdc05bd71d94, type: 3}
-        - name: Attack 4
-          <PhaseSprites>k__BackingField:
-          - <Phase>k__BackingField: 2
-            <Sprites>k__BackingField:
-            - {fileID: -1744695206, guid: ea664e6753d22384b823fdc05bd71d94, type: 3}
-            - {fileID: 1923787341, guid: ea664e6753d22384b823fdc05bd71d94, type: 3}
-            - {fileID: 801032827, guid: ea664e6753d22384b823fdc05bd71d94, type: 3}
-            - {fileID: 1460173742, guid: ea664e6753d22384b823fdc05bd71d94, type: 3}
-            - {fileID: -742374459, guid: ea664e6753d22384b823fdc05bd71d94, type: 3}
-            - {fileID: -75287969, guid: ea664e6753d22384b823fdc05bd71d94, type: 3}
-            - {fileID: -1415591435, guid: ea664e6753d22384b823fdc05bd71d94, type: 3}
-            - {fileID: -683521487, guid: ea664e6753d22384b823fdc05bd71d94, type: 3}
-            - {fileID: 1353741470, guid: ea664e6753d22384b823fdc05bd71d94, type: 3}
-            - {fileID: -1268467230, guid: ea664e6753d22384b823fdc05bd71d94, type: 3}

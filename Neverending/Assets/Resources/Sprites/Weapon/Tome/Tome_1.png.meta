@@ -113,7 +113,7 @@ TextureImporter:
       name: Tome_1_0
       rect:
         serializedVersion: 2
-        x: 0
+        x: 64
         y: 192
         width: 64
         height: 64
@@ -134,7 +134,7 @@ TextureImporter:
       name: Tome_1_1
       rect:
         serializedVersion: 2
-        x: 64
+        x: 128
         y: 192
         width: 64
         height: 64
@@ -155,7 +155,7 @@ TextureImporter:
       name: Tome_1_2
       rect:
         serializedVersion: 2
-        x: 128
+        x: 192
         y: 192
         width: 64
         height: 64
@@ -176,7 +176,7 @@ TextureImporter:
       name: Tome_1_3
       rect:
         serializedVersion: 2
-        x: 192
+        x: 256
         y: 192
         width: 64
         height: 64
@@ -197,7 +197,7 @@ TextureImporter:
       name: Tome_1_4
       rect:
         serializedVersion: 2
-        x: 256
+        x: 320
         y: 192
         width: 64
         height: 64
@@ -218,7 +218,7 @@ TextureImporter:
       name: Tome_1_5
       rect:
         serializedVersion: 2
-        x: 320
+        x: 384
         y: 192
         width: 64
         height: 64
@@ -239,7 +239,7 @@ TextureImporter:
       name: Tome_1_6
       rect:
         serializedVersion: 2
-        x: 384
+        x: 448
         y: 192
         width: 64
         height: 64
@@ -260,7 +260,7 @@ TextureImporter:
       name: Tome_1_7
       rect:
         serializedVersion: 2
-        x: 448
+        x: 512
         y: 192
         width: 64
         height: 64
@@ -281,7 +281,7 @@ TextureImporter:
       name: Tome_1_8
       rect:
         serializedVersion: 2
-        x: 512
+        x: 576
         y: 192
         width: 64
         height: 64
@@ -302,7 +302,7 @@ TextureImporter:
       name: Tome_1_9
       rect:
         serializedVersion: 2
-        x: 576
+        x: 640
         y: 192
         width: 64
         height: 64
@@ -323,7 +323,7 @@ TextureImporter:
       name: Tome_1_10
       rect:
         serializedVersion: 2
-        x: 640
+        x: 704
         y: 192
         width: 64
         height: 64
@@ -344,7 +344,7 @@ TextureImporter:
       name: Tome_1_11
       rect:
         serializedVersion: 2
-        x: 704
+        x: 768
         y: 192
         width: 64
         height: 64
@@ -365,8 +365,8 @@ TextureImporter:
       name: Tome_1_12
       rect:
         serializedVersion: 2
-        x: 768
-        y: 192
+        x: 0
+        y: 128
         width: 64
         height: 64
       alignment: 0
@@ -386,7 +386,7 @@ TextureImporter:
       name: Tome_1_13
       rect:
         serializedVersion: 2
-        x: 0
+        x: 64
         y: 128
         width: 64
         height: 64
@@ -407,7 +407,7 @@ TextureImporter:
       name: Tome_1_14
       rect:
         serializedVersion: 2
-        x: 64
+        x: 128
         y: 128
         width: 64
         height: 64
@@ -428,7 +428,7 @@ TextureImporter:
       name: Tome_1_15
       rect:
         serializedVersion: 2
-        x: 128
+        x: 192
         y: 128
         width: 64
         height: 64
@@ -449,7 +449,7 @@ TextureImporter:
       name: Tome_1_16
       rect:
         serializedVersion: 2
-        x: 192
+        x: 256
         y: 128
         width: 64
         height: 64
@@ -470,8 +470,8 @@ TextureImporter:
       name: Tome_1_17
       rect:
         serializedVersion: 2
-        x: 256
-        y: 128
+        x: 0
+        y: 64
         width: 64
         height: 64
       alignment: 0
@@ -491,8 +491,8 @@ TextureImporter:
       name: Tome_1_18
       rect:
         serializedVersion: 2
-        x: 320
-        y: 128
+        x: 64
+        y: 64
         width: 64
         height: 64
       alignment: 0
@@ -512,8 +512,8 @@ TextureImporter:
       name: Tome_1_19
       rect:
         serializedVersion: 2
-        x: 384
-        y: 128
+        x: 128
+        y: 64
         width: 64
         height: 64
       alignment: 0
@@ -533,8 +533,8 @@ TextureImporter:
       name: Tome_1_20
       rect:
         serializedVersion: 2
-        x: 448
-        y: 128
+        x: 0
+        y: 0
         width: 64
         height: 64
       alignment: 0
@@ -554,8 +554,8 @@ TextureImporter:
       name: Tome_1_21
       rect:
         serializedVersion: 2
-        x: 512
-        y: 128
+        x: 64
+        y: 0
         width: 64
         height: 64
       alignment: 0
@@ -575,8 +575,8 @@ TextureImporter:
       name: Tome_1_22
       rect:
         serializedVersion: 2
-        x: 576
-        y: 128
+        x: 128
+        y: 0
         width: 64
         height: 64
       alignment: 0
@@ -596,8 +596,8 @@ TextureImporter:
       name: Tome_1_23
       rect:
         serializedVersion: 2
-        x: 640
-        y: 128
+        x: 192
+        y: 0
         width: 64
         height: 64
       alignment: 0
@@ -617,8 +617,8 @@ TextureImporter:
       name: Tome_1_24
       rect:
         serializedVersion: 2
-        x: 704
-        y: 128
+        x: 256
+        y: 0
         width: 64
         height: 64
       alignment: 0
@@ -638,8 +638,8 @@ TextureImporter:
       name: Tome_1_25
       rect:
         serializedVersion: 2
-        x: 768
-        y: 128
+        x: 320
+        y: 0
         width: 64
         height: 64
       alignment: 0
@@ -659,8 +659,8 @@ TextureImporter:
       name: Tome_1_26
       rect:
         serializedVersion: 2
-        x: 0
-        y: 64
+        x: 384
+        y: 0
         width: 64
         height: 64
       alignment: 0
@@ -680,8 +680,8 @@ TextureImporter:
       name: Tome_1_27
       rect:
         serializedVersion: 2
-        x: 64
-        y: 64
+        x: 448
+        y: 0
         width: 64
         height: 64
       alignment: 0
@@ -701,8 +701,8 @@ TextureImporter:
       name: Tome_1_28
       rect:
         serializedVersion: 2
-        x: 128
-        y: 64
+        x: 512
+        y: 0
         width: 64
         height: 64
       alignment: 0
@@ -722,8 +722,8 @@ TextureImporter:
       name: Tome_1_29
       rect:
         serializedVersion: 2
-        x: 192
-        y: 64
+        x: 576
+        y: 0
         width: 64
         height: 64
       alignment: 0
@@ -735,468 +735,6 @@ TextureImporter:
       bones: []
       spriteID: 1a3117fd7b719d2488af2a823753ae7f
       internalID: -580050335
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Tome_1_30
-      rect:
-        serializedVersion: 2
-        x: 256
-        y: 64
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: cd6985f55f7f0f8488b069f6d392f168
-      internalID: 1186528788
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Tome_1_31
-      rect:
-        serializedVersion: 2
-        x: 320
-        y: 64
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 60e5b5d006b2086469ad7e1766421690
-      internalID: -593390938
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Tome_1_32
-      rect:
-        serializedVersion: 2
-        x: 384
-        y: 64
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2ed6effd0958791458cf6c974cfcb531
-      internalID: 11147391
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Tome_1_33
-      rect:
-        serializedVersion: 2
-        x: 448
-        y: 64
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c6715bc1ba82a824f86dd0ec99b8e60a
-      internalID: 136183053
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Tome_1_34
-      rect:
-        serializedVersion: 2
-        x: 512
-        y: 64
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ed387984c130a4a46a2499ca3706f9a2
-      internalID: -877133353
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Tome_1_35
-      rect:
-        serializedVersion: 2
-        x: 576
-        y: 64
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 733f5569d5ad51f4498c52db56e4dc81
-      internalID: -581021593
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Tome_1_36
-      rect:
-        serializedVersion: 2
-        x: 640
-        y: 64
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 647090d3d3cd3654896b53f25fe00ed4
-      internalID: -1166671946
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Tome_1_37
-      rect:
-        serializedVersion: 2
-        x: 704
-        y: 64
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3c09af0b9aebcf5498509973f3b2a10a
-      internalID: -1097853364
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Tome_1_38
-      rect:
-        serializedVersion: 2
-        x: 768
-        y: 64
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2f39d0644621e6446bbccfbc69306a85
-      internalID: 915656950
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Tome_1_39
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c3467c6da7c51cb4c9761b010afd78e0
-      internalID: -1744695206
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Tome_1_40
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 40ea8792001b59d49914977a4dc3f26d
-      internalID: 1923787341
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Tome_1_41
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 182daea4816975849b9f2a0e37d6b4ea
-      internalID: 801032827
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Tome_1_42
-      rect:
-        serializedVersion: 2
-        x: 192
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 12dac960d5a4ab34380e532a9b5ae330
-      internalID: 1460173742
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Tome_1_43
-      rect:
-        serializedVersion: 2
-        x: 256
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b2cf5fac439214340b6141d166801c35
-      internalID: -742374459
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Tome_1_44
-      rect:
-        serializedVersion: 2
-        x: 320
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 84603b8b9e0ef4e43bbbfdeb93384b95
-      internalID: -75287969
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Tome_1_45
-      rect:
-        serializedVersion: 2
-        x: 384
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: aa0b804d6858ffa4cbe5503cdbd3a521
-      internalID: -1415591435
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Tome_1_46
-      rect:
-        serializedVersion: 2
-        x: 448
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5bba1e1b7b99c274d8550ad465ac650d
-      internalID: -683521487
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Tome_1_47
-      rect:
-        serializedVersion: 2
-        x: 512
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0e5a3c6c93cddbe47bed81e749cc5c31
-      internalID: 1353741470
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Tome_1_48
-      rect:
-        serializedVersion: 2
-        x: 576
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b5401593f35381a499610fd9786c4272
-      internalID: -1268467230
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Tome_1_49
-      rect:
-        serializedVersion: 2
-        x: 640
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: fa188389626e97940855ae1a33b29adf
-      internalID: 564615998
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Tome_1_50
-      rect:
-        serializedVersion: 2
-        x: 704
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7616ecb3e7191c14db40070eb8d40e3d
-      internalID: 1246658183
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Tome_1_51
-      rect:
-        serializedVersion: 2
-        x: 768
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7a7e2f172b8fdfb41a028888ee4076e1
-      internalID: 1054903146
       vertices: []
       indices: 
       edges: []
@@ -1236,30 +774,8 @@ TextureImporter:
       Tome_1_28: -1805923233
       Tome_1_29: -580050335
       Tome_1_3: 802890587
-      Tome_1_30: 1186528788
-      Tome_1_31: -593390938
-      Tome_1_32: 11147391
-      Tome_1_33: 136183053
-      Tome_1_34: -877133353
-      Tome_1_35: -581021593
-      Tome_1_36: -1166671946
-      Tome_1_37: -1097853364
-      Tome_1_38: 915656950
-      Tome_1_39: -1744695206
       Tome_1_4: -869923012
-      Tome_1_40: 1923787341
-      Tome_1_41: 801032827
-      Tome_1_42: 1460173742
-      Tome_1_43: -742374459
-      Tome_1_44: -75287969
-      Tome_1_45: -1415591435
-      Tome_1_46: -683521487
-      Tome_1_47: 1353741470
-      Tome_1_48: -1268467230
-      Tome_1_49: 564615998
       Tome_1_5: -327426831
-      Tome_1_50: 1246658183
-      Tome_1_51: 1054903146
       Tome_1_6: -1347289469
       Tome_1_7: -2137963613
       Tome_1_8: -28822160

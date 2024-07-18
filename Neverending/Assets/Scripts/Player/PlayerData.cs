@@ -25,9 +25,7 @@ public class PlayerData : MonoBehaviour
         health = maxHealth;
         defense = 20.0f;
         Damage = 5f;
-        if (healthBar != null) {
-            HealthBarUpdate();
-        }
+        HealthBarUpdate();
     }
 
     public void HealthBarUpdate() {
@@ -35,7 +33,6 @@ public class PlayerData : MonoBehaviour
         healthBar.fillAmount = Mathf.Clamp(health / maxHealth, 0, 1);
         // health point changes
         healthPoint.text = "" + health;
-        Debug.Log("healthbar updated");
     }
 
     public void TakeDamage(float attack) {

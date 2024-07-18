@@ -12,9 +12,9 @@ public class ProjectileSpawner : WeaponComponent<ProjectileSpawnerData, AttackPr
     protected override void Awake()
     {
         base.Awake();
-        player = GameObject.FindWithTag("Player").GetComponent<Player>();
-        projectileSpawnPoint = player.GetComponent<Transform>();
-        playerData = player.GetComponent<PlayerData>();
+        projectileSpawnPoint = GetComponent<Transform>();
+        player = GetComponentInParent<Player>();
+        playerData = player.playerData;
     }
 
     protected override void Start()
