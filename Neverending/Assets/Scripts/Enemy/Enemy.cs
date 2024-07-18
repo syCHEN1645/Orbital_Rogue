@@ -10,6 +10,7 @@ public class Enemy : MonoBehaviour
     public Animator animator;
     protected EnemyHealth enemyHealth;
     protected GameObject player;
+    protected PlayerData playerHealth;
     // originalPosition: where this enemy is spawned
     protected Vector2 originalPosition;
     [SerializeField]
@@ -27,6 +28,8 @@ public class Enemy : MonoBehaviour
             enemyList = new List<Enemy>();
         }
         player = GameObject.FindGameObjectWithTag("Player");
+        playerHealth = player.GetComponent<PlayerData>();
+
         enemyHealth = gameObject.GetComponent<EnemyHealth>();
         originalPosition = transform.position;
         isAttacking = false;
@@ -53,16 +56,18 @@ public class Enemy : MonoBehaviour
         RemoveThis();
         StartCoroutine(BodyDisappear());
     }
-    protected virtual bool WithinAttackRange() {
+    protected virtual bool WithinAttackRange(float range) {
         if (player == null) {
             return false;
         }
-        return Vector2.Distance(player.transform.position, gameObject.transform.position) <= attackRange;
+        return Vector2.Distance(player.transform.position, gameObject.transform.position) <= range;
     }
     protected virtual IEnumerator AttackPlayer() {
         isAttacking = true;
         Attack();
-        player.GetComponent<PlayerHealth>().TakeDamage(attack);
+        if (playerHealth != null) {
+            playerHealth.TakeDamage(attack);
+        }
         yield return new WaitForSeconds(attackInterval);
         isAttacking = false;
     }
