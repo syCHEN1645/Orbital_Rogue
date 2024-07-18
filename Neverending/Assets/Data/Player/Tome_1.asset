@@ -20,8 +20,8 @@ MonoBehaviour:
   <ComponentData>k__BackingField:
   - rid: 2191127987861323779
   - rid: 2191127987861323776
-  - rid: 2191127987861323777
-  - rid: 2191127987861323778
+  - rid: 2191128056108417024
+  - rid: 2191128056108417025
   references:
     version: 2
     RefIds:
@@ -42,25 +42,6 @@ MonoBehaviour:
         <DetectableLayers>k__BackingField:
           serializedVersion: 2
           m_Bits: 0
-    - rid: 2191127987861323777
-      type: {class: DamageData, ns: , asm: Assembly-CSharp}
-      data:
-        name: DamageData
-        repeatData: 0
-        attackData:
-        - name: Attack 1
-          <Amount>k__BackingField: 0
-    - rid: 2191127987861323778
-      type: {class: ProjectileSpawnerData, ns: , asm: Assembly-CSharp}
-      data:
-        name: ProjectileSpawnerData
-        repeatData: 0
-        attackData:
-        - name: Attack 1
-          <Damage>k__BackingField: 0
-          <Range>k__BackingField: 0
-        <SpawnPositionOffset>k__BackingField: {x: 0, y: 0, z: 0}
-        <ProjectilePrefab>k__BackingField: {fileID: 0}
     - rid: 2191127987861323779
       type: {class: WeaponSpriteData, ns: , asm: Assembly-CSharp}
       data:
@@ -86,16 +67,31 @@ MonoBehaviour:
             - {fileID: 1115031671, guid: ea664e6753d22384b823fdc05bd71d94, type: 3}
           - <Phase>k__BackingField: 2
             <Sprites>k__BackingField:
-            - {fileID: 1989515402, guid: ea664e6753d22384b823fdc05bd71d94, type: 3}
-            - {fileID: -1744566192, guid: ea664e6753d22384b823fdc05bd71d94, type: 3}
+            - {fileID: -1744695206, guid: ea664e6753d22384b823fdc05bd71d94, type: 3}
+            - {fileID: 1923787341, guid: ea664e6753d22384b823fdc05bd71d94, type: 3}
+            - {fileID: 801032827, guid: ea664e6753d22384b823fdc05bd71d94, type: 3}
+            - {fileID: 1460173742, guid: ea664e6753d22384b823fdc05bd71d94, type: 3}
+            - {fileID: -742374459, guid: ea664e6753d22384b823fdc05bd71d94, type: 3}
+            - {fileID: -75287969, guid: ea664e6753d22384b823fdc05bd71d94, type: 3}
+            - {fileID: -1415591435, guid: ea664e6753d22384b823fdc05bd71d94, type: 3}
             - {fileID: -563281927, guid: ea664e6753d22384b823fdc05bd71d94, type: 3}
-            - {fileID: 802890587, guid: ea664e6753d22384b823fdc05bd71d94, type: 3}
-            - {fileID: -869923012, guid: ea664e6753d22384b823fdc05bd71d94, type: 3}
-            - {fileID: -327426831, guid: ea664e6753d22384b823fdc05bd71d94, type: 3}
-            - {fileID: -1347289469, guid: ea664e6753d22384b823fdc05bd71d94, type: 3}
-            - {fileID: -2137963613, guid: ea664e6753d22384b823fdc05bd71d94, type: 3}
-            - {fileID: -28822160, guid: ea664e6753d22384b823fdc05bd71d94, type: 3}
-            - {fileID: -1624648991, guid: ea664e6753d22384b823fdc05bd71d94, type: 3}
-            - {fileID: -776678774, guid: ea664e6753d22384b823fdc05bd71d94, type: 3}
-            - {fileID: -79063389, guid: ea664e6753d22384b823fdc05bd71d94, type: 3}
-            - {fileID: 1115031671, guid: ea664e6753d22384b823fdc05bd71d94, type: 3}
+            - {fileID: -1744566192, guid: ea664e6753d22384b823fdc05bd71d94, type: 3}
+    - rid: 2191128056108417024
+      type: {class: DamageData, ns: , asm: Assembly-CSharp}
+      data:
+        name: DamageData
+        repeatData: 0
+        attackData:
+        - name: Attack 1
+          <Amount>k__BackingField: 0
+    - rid: 2191128056108417025
+      type: {class: ProjectileSpawnerData, ns: , asm: Assembly-CSharp}
+      data:
+        name: ProjectileSpawnerData
+        repeatData: 0
+        attackData:
+        - name: Attack 1
+          <Damage>k__BackingField: 5
+          <Range>k__BackingField: 10
+        <SpawnPositionOffset>k__BackingField: {x: -0.37, y: 0.32, z: 0}
+        <ProjectilePrefab>k__BackingField: {fileID: 5705748209581078482, guid: a4f4394cfbd113d44981d3daf09b5cba, type: 3}

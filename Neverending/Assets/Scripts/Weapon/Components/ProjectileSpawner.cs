@@ -30,13 +30,17 @@ public class ProjectileSpawner : WeaponComponent<ProjectileSpawnerData, AttackPr
     protected override void Start()
     {
         base.Start();
-        eventHandler.OnProjectileSpawn += HandleProjectileSpawn;
+        if (eventHandler != null) {
+            eventHandler.OnProjectileSpawn += HandleProjectileSpawn;
+        }
     }
 
     protected override void OnDestroy()
     {
         base.OnDestroy();
-        eventHandler.OnProjectileSpawn -= HandleProjectileSpawn;
+        if (eventHandler != null) {
+            eventHandler.OnProjectileSpawn -= HandleProjectileSpawn;
+        }
     }
 
     private void HandleProjectileSpawn()
