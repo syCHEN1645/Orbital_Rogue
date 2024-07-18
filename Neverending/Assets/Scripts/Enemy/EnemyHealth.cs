@@ -53,4 +53,12 @@ public class EnemyHealth : MonoBehaviour
     public float GetOffset() {
         return offset;
     }
+
+    public void SetDefense(float val) {
+        this.defense = val;
+    }
+
+    public void SetMaxHealth(float val) {
+        this.defense = val;
+    }
 }
