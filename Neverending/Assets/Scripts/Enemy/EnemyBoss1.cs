@@ -13,6 +13,13 @@ public class EnemyBoss1 : Enemy
     void Start()
     {
         InitialiseEnemy();
+        
+        // Attack();
+        Cast();
+        // Spell();
+        // Walk();
+        // Injure();
+        
     }
 
     void Update()
@@ -22,6 +29,7 @@ public class EnemyBoss1 : Enemy
         } else {
             // idle around
         }
+        // Walk();
     }
 
     protected override void InitialiseEnemy()
@@ -30,9 +38,9 @@ public class EnemyBoss1 : Enemy
         speed = 2.0f;
         // attack is by default referring to melee attack if both melee and ranged attacks exist
         attack = 15.0f;
-        attackRange = 4.0f;
+        attackRange = 1.0f;
         attackInterval = 1.0f;
-        spriteScale = 1.0f;
+        spriteScale = 4.0f;
 
         healthBarOffset = 1.4f;
         stopMovingDistance = 0.5f;
@@ -47,6 +55,7 @@ public class EnemyBoss1 : Enemy
     public override void Attack()
     {
         animator.SetTrigger("Attack");
+        // animator.ResetTrigger("Attack");
     }
 
     protected void Cast() {
@@ -57,7 +66,7 @@ public class EnemyBoss1 : Enemy
     }
 
     protected void Walk() {
-        animator.SetTrigger("Walk");
+        animator.SetBool("Walk", true);
     }
     public override void Injure() {
         animator.SetTrigger("Hurt");
@@ -72,7 +81,7 @@ public class EnemyBoss1 : Enemy
 
     protected void HuntPlayer()
     {
-        if (Vector2.Distance(player.transform.position, gameObject.transform.position) > stopMovingDistance) {
+        if (Vector2.Distance(player.transform.position, gameObject.transform.position) > 0) {
             MoveTowardsPlayer();
         }
         if (WithinAttackRange(attackRange)) {
@@ -83,11 +92,22 @@ public class EnemyBoss1 : Enemy
 
     protected void MoveTowardsPlayer()
     {
+        // vector pointing to Player
         var unitVector = GetUnitVectorTowardsPlayer();
         gameObject.transform.Translate(
             speed * Time.deltaTime * unitVector.x, 
             speed * Time.deltaTime * unitVector.y, 
             0);
+        // left / right
+        // if (unitVector.x > 0) {
+        //     dir = 'r';
+        //     animator.transform.localScale = new Vector3(spriteScale, spriteScale, spriteScale);
+        // } else {
+        //     dir = 'l';
+        //     animator.transform.localScale = new Vector3(-spriteScale, spriteScale, spriteScale);
+        // }
+        // animation
+        Walk();
     }
 
     protected Vector3 GetUnitVectorTowardsPlayer() {
