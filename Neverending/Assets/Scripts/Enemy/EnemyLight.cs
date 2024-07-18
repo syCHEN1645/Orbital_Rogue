@@ -28,7 +28,7 @@ public class EnemyLight : Enemy
         if (enemyHealth.IsDead()) {
             Die();
         } else {
-            if (WithinAttackRange(attackRange) && !isAttacking) {
+            if (WithinAttackRange() && !isAttacking) {
                 StartCoroutine(AttackPlayer());
             } else {
                 Patrol();
