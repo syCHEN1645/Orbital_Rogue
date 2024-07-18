@@ -1,4 +1,6 @@
+using System;
 using System.Collections;
+using UnityEditor.Tilemaps;
 using UnityEngine;
 
 public class EnemyBoss1 : Enemy
@@ -10,20 +12,26 @@ public class EnemyBoss1 : Enemy
     [SerializeField]
     protected float meleeAttack, rangedAttack;
 
+    protected Vector3 previousVector;
+    
+    // an empty object indicating centre of boss
+    public GameObject centre;
+    protected float centreOffset;
+
     void Start()
     {
         InitialiseEnemy();
         
         // Attack();
-        Cast();
+        // Cast();
         // Spell();
         // Walk();
         // Injure();
-        
     }
 
     void Update()
     {
+        
         if (Vector2.Distance(player.transform.position, gameObject.transform.position) <= huntRange) {
             HuntPlayer();
         } else {
@@ -43,13 +51,16 @@ public class EnemyBoss1 : Enemy
         spriteScale = 4.0f;
 
         healthBarOffset = 1.4f;
-        stopMovingDistance = 0.5f;
+        stopMovingDistance = 0.2f;
         huntRange = 15.0f;
         rangedAttack = 40.0f;
         rangedAttackRange = 5.0f;
 
         enemyHealth.SetDefense(30);
         enemyHealth.SetMaxHealth(100);
+
+        previousVector = GetUnitVectorTowardsPlayer();
+        
     }
 
     public override void Attack()
@@ -73,7 +84,7 @@ public class EnemyBoss1 : Enemy
     }
 
     protected bool WithinHuntRange() {
-        if (Vector2.Distance(player.transform.position, gameObject.transform.position) <= huntRange) {
+        if (Vector2.Distance(player.transform.position, centre.transform.position) <= huntRange) {
             return true;
         }
         return false;
@@ -81,7 +92,7 @@ public class EnemyBoss1 : Enemy
 
     protected void HuntPlayer()
     {
-        if (Vector2.Distance(player.transform.position, gameObject.transform.position) > 0) {
+        if (Vector2.Distance(player.transform.position, centre.transform.position) > stopMovingDistance) {
             MoveTowardsPlayer();
         }
         if (WithinAttackRange(attackRange)) {
@@ -93,26 +104,54 @@ public class EnemyBoss1 : Enemy
     protected void MoveTowardsPlayer()
     {
         // vector pointing to Player
+        // Debug.Log("pos " + centre.transform.position.x);
+        // Debug.Log("local " + centre.transform.localPosition.x);
         var unitVector = GetUnitVectorTowardsPlayer();
         gameObject.transform.Translate(
             speed * Time.deltaTime * unitVector.x, 
             speed * Time.deltaTime * unitVector.y, 
             0);
-        // left / right
-        // if (unitVector.x > 0) {
-        //     dir = 'r';
-        //     animator.transform.localScale = new Vector3(spriteScale, spriteScale, spriteScale);
-        // } else {
-        //     dir = 'l';
-        //     animator.transform.localScale = new Vector3(-spriteScale, spriteScale, spriteScale);
-        // }
+        
+        // flip
+        if (unitVector.x * previousVector.x < 0) {
+            // dir has changed
+            Flip();
+            // left / right
+            if (unitVector.x > 0) {
+                dir = 'r';
+            } else {
+                dir = 'l';
+            }
+        }
+
         // animation
         Walk();
+        // current vector becomes previous vector
+        previousVector = unitVector;
+    }
+
+    private void Flip()
+    {
+        animator.transform.localScale = new Vector3(
+            -animator.transform.localScale.x, 
+            animator.transform.localScale.y, 
+            animator.transform.localScale.z);
+        // this line if put in Start() will return 0, maybe due to
+        centreOffset = Mathf.Abs(gameObject.transform.position.x - centre.transform.position.x);
+        if (animator.transform.localScale.x < 0) {
+            // if now x < 0 i.e. face left, shift left
+            gameObject.transform.Translate(-2 * centreOffset, 0 , 0);
+            Debug.Log(-2 * centreOffset);
+        } else {
+            // if now x > 0 i.e. face right, shift right
+            gameObject.transform.Translate(2 * centreOffset, 0 , 0);
+            Debug.Log(2 * centreOffset);
+        }
     }
 
     protected Vector3 GetUnitVectorTowardsPlayer() {
         // x = x, y = y, z = 0
-        return Vector3.Normalize(player.transform.position - gameObject.transform.position);
+        return Vector3.Normalize(player.transform.position - centre.transform.position);
     }
 
     protected IEnumerator RangedAttackPlayer() {
