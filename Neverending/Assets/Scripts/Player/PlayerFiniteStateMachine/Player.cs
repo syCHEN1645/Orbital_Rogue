@@ -28,8 +28,8 @@ public class Player : MonoBehaviour
     private void Awake()
     {
         playerData = GetComponent<PlayerData>();
-        primaryWeapon = GameObject.Find("PrimaryWeapon").GetComponent<Weapon>();
-        secondaryWeapon = GameObject.Find("SecondaryWeapon").GetComponent<Weapon>();
+        primaryWeapon = transform.Find("PrimaryWeapon").GetComponent<Weapon>();
+        secondaryWeapon = transform.Find("SecondaryWeapon").GetComponent<Weapon>();
         StateMachine = new PlayerStateMachine();
         IdleState = new PlayerIdleState(this, StateMachine, playerData, "Idle");
         MoveState = new PlayerMoveState(this, StateMachine, playerData, "Move");
