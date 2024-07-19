@@ -21,14 +21,10 @@ public class WeaponComponent : MonoBehaviour
 
     protected virtual void Start()
     {
-        /*if (weapon == null)
-        {
-            Debug.LogWarning("no weapon;");
-        } else {
-            Debug.Log("weapon" + weapon);
-        }*/
-        weapon.OnEnter += HandleEnter;
-        weapon.OnExit += HandleExit;
+        if (weapon != null) {
+            weapon.OnEnter += HandleEnter;
+            weapon.OnExit += HandleExit;
+        }       
     }
 
     protected virtual void HandleEnter()
@@ -43,8 +39,10 @@ public class WeaponComponent : MonoBehaviour
 
     protected virtual void OnDestroy()
     {
-        weapon.OnEnter -= HandleEnter;
-        weapon.OnExit -= HandleExit;
+        if (weapon != null) {
+            weapon.OnEnter -= HandleEnter;
+            weapon.OnExit -= HandleExit;
+        }
     }
 }
 

@@ -19,7 +19,9 @@ public class Weapon : MonoBehaviour
     protected Animator baseAnimator;
     public GameObject BaseGameObject { get; private set; }
     public GameObject WeaponSpriteGameObject { get; private set; }
-    public AnimationEventHandler eventHandler { get; private set; }
+    public SpriteRenderer BaseSpriteRenderer { get; private set; }
+    public SpriteRenderer WeaponSpriteRenderer { get; private set; }
+    public AnimationEventHandler EventHandler { get; private set; }
     public WeaponGenerator weaponGenerator { get; private set; }
     protected PlayerAttackState state;
     private int currentAttackCounter;
@@ -29,9 +31,12 @@ public class Weapon : MonoBehaviour
         BaseGameObject = transform.Find("Base").gameObject;
         WeaponSpriteGameObject = transform.Find("WeaponSprite").gameObject;
 
+        BaseSpriteRenderer = BaseGameObject.GetComponent<SpriteRenderer>();
+        WeaponSpriteRenderer = WeaponSpriteGameObject.GetComponent<SpriteRenderer>();
+        
         baseAnimator = BaseGameObject.GetComponent<Animator>();
 
-        eventHandler = BaseGameObject.GetComponent<AnimationEventHandler>();
+        EventHandler = BaseGameObject.GetComponent<AnimationEventHandler>();
 
         weaponGenerator = GetComponent<WeaponGenerator>();
 
@@ -72,6 +77,12 @@ public class Weapon : MonoBehaviour
         CurrentAttackCounter = 0;
     }
 
+    public void WeaponFlip(bool value) 
+    {
+        BaseSpriteRenderer.flipX = value;
+        WeaponSpriteRenderer.flipX = value;
+    }
+
     public void Exit()
     {
         baseAnimator.SetBool("Attack", false);
@@ -85,14 +96,14 @@ public class Weapon : MonoBehaviour
 
     private void OnEnable() 
     {
-        eventHandler.OnUseInput += HandleUseInput;
-        eventHandler.OnFinish += Exit;
+        EventHandler.OnUseInput += HandleUseInput;
+        EventHandler.OnFinish += Exit;
     }
 
     private void OnDisable() 
     {
-        eventHandler.OnUseInput -= HandleUseInput;
-        eventHandler.OnFinish -= Exit;
+        EventHandler.OnUseInput -= HandleUseInput;
+        EventHandler.OnFinish -= Exit;
     }
 
     private void HandleUseInput() => OnUseInput?.Invoke();

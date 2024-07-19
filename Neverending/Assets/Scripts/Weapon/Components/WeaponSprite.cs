@@ -28,8 +28,8 @@ public class WeaponSprite : WeaponComponent<WeaponSpriteData, AttackSprites>
     private void HandleBaseSpriteChange(SpriteRenderer sr) 
     {
         if (currentPhaseSprites != null) {
-            Debug.Log("index: " + currentWeaponSpriteIndex);
-            Debug.Log("length: " + currentPhaseSprites.Length);
+            //Debug.Log("index: " + currentWeaponSpriteIndex);
+            //Debug.Log("length: " + currentPhaseSprites.Length);
             if (!isAttackActive)
             {
                 weaponSpriteRenderer.sprite = null;

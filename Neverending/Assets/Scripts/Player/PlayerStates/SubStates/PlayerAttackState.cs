@@ -8,7 +8,9 @@ public class PlayerAttackState : PlayerAbilityState
     private int xInput;
     private float velocityToSet;
     private bool setVelocity;
-    private bool CheckFlip;
+    private bool checkFlip;
+    private SpriteRenderer baseSpriteRenderer;
+    private Camera mainCam;
 
     public PlayerAttackState(
         Player player,
@@ -18,7 +20,7 @@ public class PlayerAttackState : PlayerAbilityState
         Weapon weapon) : base(player, stateMachine, playerData, animBoolName) 
         {
             this.weapon = weapon;
-
+            mainCam = Camera.main;
             weapon.OnExit += ExitHandler;
         }
 
@@ -26,21 +28,21 @@ public class PlayerAttackState : PlayerAbilityState
     {
         base.Enter();
 
+        checkFlip = true;
         setVelocity = false;
-
         weapon.Enter();
+        LockAttackDirection();
     }
 
     public override void Exit()
     {
         base.Exit();
-
         weapon.Exit();
+        player.SetFacingDirection();
     }
 
     private void ExitHandler()
-    {
-        //AnimationFinishTrigger();
+    {   
         isAbilityDone = true;
     }
 
@@ -49,15 +51,31 @@ public class PlayerAttackState : PlayerAbilityState
         base.LogicUpdate();
 
         xInput = player.InputHandler.NormInputX;
-
-        if (CheckFlip) 
-        {
-            player.Flip(xInput);
-        }
-
+            
         if (setVelocity)
         {
             player.SetVelocityX(velocityToSet * player.FacingDirection);
+        }
+    }
+    private void LockAttackDirection()
+    {
+        if (checkFlip) {
+            Vector3 mousePosition = mainCam.ScreenToWorldPoint(Input.mousePosition);
+            float playerPositionX = player.transform.position.x;
+
+            // Determine if the mouse is to the left or right of the player
+            if (mousePosition.x > playerPositionX) 
+            {
+                player.FacingDirection = 1;
+                weapon.WeaponFlip(false);
+            } 
+            else if (mousePosition.x < playerPositionX) 
+            {
+                player.FacingDirection = -1;
+                weapon.WeaponFlip(true);
+            }
+            
+            checkFlip = false; // Lock the attack direction
         }
     }
 
@@ -75,8 +93,8 @@ public class PlayerAttackState : PlayerAbilityState
         setVelocity = true;
     }
     
-    public void SetFlipCheck(bool value)
+    private void HandleFlipSetActive(bool value)
     {
-        CheckFlip = value;
-    } 
+        checkFlip = value;
+    }
 }
