@@ -1,6 +1,4 @@
-using System;
 using System.Collections;
-using UnityEditor.Tilemaps;
 using UnityEngine;
 
 public class EnemyBoss1 : Enemy
@@ -46,8 +44,8 @@ public class EnemyBoss1 : Enemy
         speed = 2.0f;
         // attack is by default referring to melee attack if both melee and ranged attacks exist
         attack = 15.0f;
-        attackRange = 1.0f;
-        attackInterval = 1.0f;
+        attackRange = 2.0f;
+        attackInterval = 0.75f;
         spriteScale = 4.0f;
 
         healthBarOffset = 1.4f;
@@ -66,9 +64,8 @@ public class EnemyBoss1 : Enemy
     public override void Attack()
     {
         animator.SetTrigger("Attack");
-        // animator.ResetTrigger("Attack");
     }
-
+    
     protected void Cast() {
         animator.SetTrigger("Cast");
     }
@@ -79,6 +76,11 @@ public class EnemyBoss1 : Enemy
     protected void Walk() {
         animator.SetBool("Walk", true);
     }
+
+    protected void StopWalk() {
+        animator.SetBool("Walk", false);
+    }
+
     public override void Injure() {
         animator.SetTrigger("Hurt");
     }
@@ -92,13 +94,21 @@ public class EnemyBoss1 : Enemy
 
     protected void HuntPlayer()
     {
-        if (Vector2.Distance(player.transform.position, centre.transform.position) > stopMovingDistance) {
-            MoveTowardsPlayer();
+        if (isAttacking) {
+            // if attacking, do not move
+            StopWalk();
+        } else {
+            // if not attacking, move towards Player
+            if (Vector2.Distance(player.transform.position, centre.transform.position) > stopMovingDistance) {
+                MoveTowardsPlayer();
+            }
+            if (WithinAttackRange(attackRange)) {
+                Debug.Log("Attack");
+                StopWalk();
+                StartCoroutine(AttackPlayer());
+            }
         }
-        if (WithinAttackRange(attackRange)) {
-            Debug.Log("Attack");
-            StartCoroutine(AttackPlayer());
-        }
+        
     }
 
     protected void MoveTowardsPlayer()
