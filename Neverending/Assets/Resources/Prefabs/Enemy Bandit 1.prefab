@@ -196,6 +196,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthBar: {fileID: 5579774862975879937}
+  maxHealth: 20
+  health: 0
+  defense: 5
   offset: 0.6
 --- !u!114 &721215309915467055
 MonoBehaviour:
@@ -210,6 +213,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 9174664838646333538}
+  speed: 0
+  attack: 0
+  attackRange: 0
+  attackInterval: 0
+  spriteScale: 0
+  patrolRange: 0
+  healthBarOffset: 0
 --- !u!1 &2542953204549662379
 GameObject:
   m_ObjectHideFlags: 0

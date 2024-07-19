@@ -9,11 +9,11 @@ public class EnemyHealth : MonoBehaviour
     private Enemy enemy;
     void Start()
     {
-        maxHealth = 10.0f;
+        // maxHealth = 10.0f;
         // defence is a percentage, "20" means 20% of attacker's attack point is fended off
         // health = maxHealth;
         health = maxHealth;
-        defense = 20.0f;
+        // defense = 20.0f;
         enemy = gameObject.GetComponent<Enemy>();
         // health bar slightly above enemy sprite
         // healthBar.transform.position = enemy.transform.position + new Vector3(0, offset, 0);
