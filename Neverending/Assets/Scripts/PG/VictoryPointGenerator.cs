@@ -15,7 +15,12 @@ public class VictoryPointGenerator : GameObjectGenerator
             floors.Add(floor);
         }
         // instantiate player at a random tile
-        Vector2Int portalPos = floors[Random.Range(0, room.Count - 1)];
+        Vector2Int portalPos;
+        do {
+            portalPos = floors[Random.Range(0, room.Count - 1)];
+        } 
+        while (!SpawnPosCheck(portalPos, room));
+
         if (portal != null) {
             GameObject.Instantiate(portal, new Vector3(portalPos.x + spawnOffsetX, portalPos.y + spawnOffsetY, 0), Quaternion.identity);
         } else {

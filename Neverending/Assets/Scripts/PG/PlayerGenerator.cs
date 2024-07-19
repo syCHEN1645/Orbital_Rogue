@@ -5,6 +5,7 @@ public class PlayerGenerator : GameObjectGenerator
 {
     public GameObject player = PGPararmeters.player;
 
+
     public override void GenerateOneRoom(HashSet<Vector2Int> room)
     {
         // player is spawned in this room
@@ -16,7 +17,11 @@ public class PlayerGenerator : GameObjectGenerator
             floors.Add(floor);
         }
         // instantiate player at a random tile
-        Vector2Int spawnPos = floors[Random.Range(0, room.Count - 1)];
+        Vector2Int spawnPos;
+        do {
+            spawnPos = floors[Random.Range(0, room.Count - 1)];
+        } while (!SpawnPosCheck(spawnPos, room));
+
         if (player != null) {
             GameObject.Instantiate(player, new Vector3(spawnPos.x + spawnOffsetX, spawnPos.y + spawnOffsetY, 0), Quaternion.identity);
         } else {

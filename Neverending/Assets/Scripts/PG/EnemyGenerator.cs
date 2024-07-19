@@ -10,13 +10,14 @@ public class EnemyGenerator : GameObjectGenerator
         // set parameters here
         this.roomsList = roomsList;
         this.floorPositions = floorPositions;
-        this.typesOfEnemies = PGPararmeters.typesOfEnemies;
-        // level = ??;
+        // this.wallPositions = wallPositions;
+        typesOfEnemies = PGPararmeters.typesOfEnemies;
     }
+
     public override void GenerateOneRoom(HashSet<Vector2Int> room)
     {
         foreach (var pos in room) {
-            if (RandomBool(5)) {
+            if (SpawnPosCheck(pos, room) && RandomBool(5)) {
                 // 5% chance being true
                 GameObject.Instantiate(
                     typesOfEnemies[RandomInt(0, typesOfEnemies.Length - 1)], 
