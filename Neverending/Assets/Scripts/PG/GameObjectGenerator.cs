@@ -7,16 +7,10 @@ public class GameObjectGenerator
 {
     protected List<HashSet<Vector2Int>> roomsList;
     protected HashSet<Vector2Int> floorPositions;
+    protected HashSet<Vector2Int> wallPositions;
     protected float spawnOffsetX = PGPararmeters.spawnOffsetX;
     protected float spawnOffsetY = PGPararmeters.spawnOffsetY;
     protected int level;
-    public GameObjectGenerator() {
-    }
-
-    public GameObjectGenerator(int level) {
-        this.level = level;
-        // set parameters here
-    }
 
     public virtual void GenerateOneRoom(HashSet<Vector2Int> room) {
 
@@ -33,5 +27,12 @@ public class GameObjectGenerator
     protected int RandomInt(int min, int max) {
         // randomly generate an int
         return Random.Range(min, max + 1);
+    }    
+    
+    protected bool SpawnPosCheck(Vector2Int pos, HashSet<Vector2Int> room) {
+        // if 4 neighbouring tiles are all floor, then most likely not going to stuck in wall
+        // can refine this condition
+        return room.Contains(pos + Vector2Int.up) && room.Contains(pos + Vector2Int.down) &&
+            room.Contains(pos + Vector2Int.left) && room.Contains(pos + Vector2Int.right);
     }
 }
