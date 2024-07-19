@@ -55,7 +55,9 @@ public class EnemyBoss1 : Enemy
         rangedAttackRange = 5.0f;
 
         enemyHealth.SetDefense(30);
+        enemyHealth.SetHealth(100);
         enemyHealth.SetMaxHealth(100);
+        enemyHealth.HealthBarUpdate();
 
         previousVector = GetUnitVectorTowardsPlayer();
         

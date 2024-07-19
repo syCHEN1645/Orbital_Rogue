@@ -21,6 +21,9 @@ public class EnemyHealth : MonoBehaviour
     }
 
     public void HealthBarUpdate() {
+        if (health > maxHealth) {
+            health = maxHealth;
+        }
         // health bar bound with health points
         healthBar.fillAmount = Mathf.Clamp(health / maxHealth, 0, 1);
     }
@@ -59,6 +62,10 @@ public class EnemyHealth : MonoBehaviour
     }
 
     public void SetMaxHealth(float val) {
-        this.defense = val;
+        this.maxHealth = val;
+    }
+
+    public void SetHealth(float val) {
+        this.health = val;
     }
 }
