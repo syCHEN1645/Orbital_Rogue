@@ -13,7 +13,6 @@ public class PlayerIdleState : PlayerGroundedState {
 	public override void Enter() {
 		base.Enter();
 		player.SetVelocityX(0);
-		
 	}
 
 	public override void Exit() {
@@ -24,7 +23,6 @@ public class PlayerIdleState : PlayerGroundedState {
 		base.LogicUpdate();
 
 		if (movementInput != Vector2.zero) {
-			//Debug.Log(movementInput.x);
 			stateMachine.ChangeState(player.MoveState);
 		} 
 

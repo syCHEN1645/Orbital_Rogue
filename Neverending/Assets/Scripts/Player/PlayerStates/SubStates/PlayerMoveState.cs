@@ -39,7 +39,7 @@ public class PlayerMoveState : PlayerGroundedState
             stateMachine.ChangeState(player.IdleState);
         }
             
-        player.Flip(xInput);
+        player.Flip(player.PlayerSpriteRenderer, xInput);
 	}
 
 	public override void PhysicsUpdate() {

@@ -24,6 +24,7 @@ public class PlayerGroundedState : PlayerState
     public override void Enter()
     {
         base.Enter();
+        //CheckFacingDirection();
     }
 
     public override void Exit()
@@ -52,5 +53,10 @@ public class PlayerGroundedState : PlayerState
     public override void PhysicsUpdate()
     {
         base.PhysicsUpdate();
+    }
+
+    private void CheckFacingDirection()
+    {   
+        player.Flip(player.PlayerSpriteRenderer, player.FacingDirection);
     }
 }

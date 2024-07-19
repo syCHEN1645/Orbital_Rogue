@@ -13,16 +13,17 @@ public class Player : MonoBehaviour
     public Animator Anim { get; private set; }
     public PlayerInputHandler InputHandler { get; private set; }
     public Rigidbody2D rb { get; private set; }
-    public int FacingDirection { get; private set; }
+    
     public Vector2 CurrentVelocity { get; private set; }
-    public SpriteRenderer spriteRenderer { get; private set; }
+    public SpriteRenderer PlayerSpriteRenderer { get; private set; }
     public PlayerInventory Inventory { get; private set; }
     List<RaycastHit2D> castCollisions = new List<RaycastHit2D>();
-    public ContactFilter2D movementFilter;
-    public float collisionOffset = 0.05f;
+    private ContactFilter2D movementFilter;
+    private float collisionOffset = 0.05f;
     private Vector2 workspace;
     private Weapon primaryWeapon;
     private Weapon secondaryWeapon;
+    public int FacingDirection;
     public PlayerData playerData { get; private set; }
     
 
@@ -41,7 +42,7 @@ public class Player : MonoBehaviour
     private void Start() 
     {
         rb = GetComponent<Rigidbody2D>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        PlayerSpriteRenderer = GetComponent<SpriteRenderer>();
         Anim = GetComponent<Animator>();
         InputHandler = GetComponent<PlayerInputHandler>();
         Inventory = GetComponent<PlayerInventory>();
@@ -72,9 +73,9 @@ public class Player : MonoBehaviour
         CurrentVelocity = workspace;
     }
 
-    public int getFacingDirection()
+    public void SetFacingDirection()
     {
-        return FacingDirection;
+        Flip(PlayerSpriteRenderer, FacingDirection);
     }
 
     public bool TryMove(Vector2 direction) {
@@ -92,14 +93,13 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void Flip(int xInput)
+    public void Flip(SpriteRenderer spriteRenderer, int xInput)
     {
         Debug.Log("face" + FacingDirection);
-        if (xInput != 0 && xInput != FacingDirection)
+        if (xInput != 0)
         {
-            //FacingDirection *= -1;
-            //rb.transform.Rotate(0.0f, 180.0f, 0.0f);
-            FacingDirection = xInput; // Update the facing direction
+            // Update the facing direction
+            FacingDirection = xInput; 
             spriteRenderer.flipX = (FacingDirection == -1);
         }
     }
