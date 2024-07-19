@@ -54,8 +54,8 @@ public class EnemyBoss1 : Enemy
         rangedAttack = 40.0f;
         rangedAttackRange = 5.0f;
 
-        // enemyHealth.SetDefense(30);
-        // enemyHealth.SetMaxHealth(100);
+        enemyHealth.SetDefense(30);
+        enemyHealth.SetMaxHealth(100);
 
         previousVector = GetUnitVectorTowardsPlayer();
         
@@ -65,7 +65,7 @@ public class EnemyBoss1 : Enemy
     {
         animator.SetTrigger("Attack");
     }
-
+    
     protected void Cast() {
         animator.SetTrigger("Cast");
     }

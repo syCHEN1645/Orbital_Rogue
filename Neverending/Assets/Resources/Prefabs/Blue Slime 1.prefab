@@ -373,9 +373,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthBar: {fileID: 2927598182853021096}
-  maxHealth: 25
-  health: 0
-  defense: 10
   offset: 0
 --- !u!114 &4781945920849989523
 MonoBehaviour:
@@ -390,8 +387,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 8815782357077279452}
-  speed: 0
-  attack: 0
-  attackRange: 0
-  attackInterval: 0
-  spriteScale: 0
