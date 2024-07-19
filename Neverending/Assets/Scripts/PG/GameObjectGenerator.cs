@@ -7,6 +7,7 @@ public class GameObjectGenerator
 {
     protected List<HashSet<Vector2Int>> roomsList;
     protected HashSet<Vector2Int> floorPositions;
+    protected HashSet<Vector2Int> wallPositions;
     protected float spawnOffsetX = PGPararmeters.spawnOffsetX;
     protected float spawnOffsetY = PGPararmeters.spawnOffsetY;
     protected int level;
@@ -33,5 +34,9 @@ public class GameObjectGenerator
     protected int RandomInt(int min, int max) {
         // randomly generate an int
         return Random.Range(min, max + 1);
+    }    
+    
+    protected bool SpawnPosCheck() {
+        return false;
     }
 }
