@@ -29,13 +29,15 @@ public class EnemyBoss1 : Enemy
 
     void Update()
     {
-        
-        if (Vector2.Distance(player.transform.position, gameObject.transform.position) <= huntRange) {
-            HuntPlayer();
+        if (enemyHealth.IsDead()) {
+            Die();
         } else {
-            // idle around
+            if (Vector2.Distance(player.transform.position, gameObject.transform.position) <= huntRange) {
+                HuntPlayer();
+            } else {
+                // idle around
+            }
         }
-        // Walk();
     }
 
     protected override void InitialiseEnemy()
@@ -85,6 +87,12 @@ public class EnemyBoss1 : Enemy
 
     public override void Injure() {
         animator.SetTrigger("Hurt");
+    }
+
+    public override void Die() {
+        base.Die();
+        // animate death
+        animator.SetTrigger("Death");
     }
 
     protected bool WithinHuntRange() {
