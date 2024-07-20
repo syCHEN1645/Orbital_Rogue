@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
     public int level;
     // need to get all keys to enter portal
     // 1 key in 1 room
-    private int keyCount;
+    public static int keyCount;
     private int keyTotal;
 
     void Start()
@@ -48,8 +48,8 @@ public class GameManager : MonoBehaviour
     }
 
     void Update() {
-        // if player is at victory point, and key F is pressed
-        if (portal.atVictoryPoint && Input.GetKeyDown(KeyCode.F)) {
+        // if player is at victory point, and key F is pressed, and all keys are found
+        if (portal.atVictoryPoint && Input.GetKeyDown(KeyCode.F) && keyCount >= keyTotal) {
             // press F to enter portal
             if (level == ManagerParameters.MAX_LEVEL) {
                 // this level is the last level, player wins, game ends
@@ -83,5 +83,9 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene(ManagerParameters.MENU_SCENE);
         Debug.Log("You Win!");
+    }
+
+    public int GetKeyTotal() {
+        return keyTotal;
     }
 }

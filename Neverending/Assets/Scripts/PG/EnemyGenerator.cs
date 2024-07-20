@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemyGenerator : GameObjectGenerator
 {
+    protected bool keyGenerated = false;
     protected GameObject[] typesOfEnemies;
     // tile pos is the coordinates of bottom left corner of the tile, spawn locations need x, y offsets
     public EnemyGenerator(List<HashSet<Vector2Int>> roomsList, HashSet<Vector2Int> floorPositions) {
@@ -23,6 +24,10 @@ public class EnemyGenerator : GameObjectGenerator
                     typesOfEnemies[RandomInt(0, typesOfEnemies.Length - 1)], 
                     new Vector3(pos.x + spawnOffsetX, pos.y + spawnOffsetY, 0), 
                     Quaternion.identity);
+                // pass key to the 1st enemy generated
+                if (!keyGenerated) {
+                    
+                }
             }
         }
     }
