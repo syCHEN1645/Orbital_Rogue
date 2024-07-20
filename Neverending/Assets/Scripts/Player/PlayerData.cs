@@ -48,7 +48,7 @@ public class PlayerData : MonoBehaviour
     }
 
     public void TakeDamage(float attack) {
-        Debug.Log("player movement speed" + MovementVelocity);
+        // Debug.Log("player movement speed" + MovementVelocity);
         // attack value will be sent by the dealer
 
         if (!IsDead()) {

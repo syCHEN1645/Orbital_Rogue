@@ -200,8 +200,8 @@ public class EnemyBoss1 : Enemy
         isAttacking = false;
         Quaternion rot = Quaternion.Euler(0, 0, 0);
         Vector3 position = new Vector3(0, spellPositionOffset, 0) + player.transform.position;
-        StartCoroutine(playerData.Slow(0.5f, 2.0f));
-        Debug.Log(playerData.MovementVelocity);
+        StartCoroutine(playerData.Slow(0.2f, 2.0f));
+        Debug.Log(spellPrefab == null);
         GameObject spell = Instantiate(spellPrefab, position, rot);
         spell.GetComponent<Spell>().SetDamage(rangedAttackDamage);
     }

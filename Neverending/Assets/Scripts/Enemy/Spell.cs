@@ -5,21 +5,30 @@ using UnityEngine;
 public class Spell : MonoBehaviour
 {
     private float damage;
+    private PlayerData playerData;
     public void SetDamage(float damage)
     {
         this.damage = damage;
     }
 
-    private void OnCollisionEnter2D(Collision2D other)
+    void OnTriggerEnter2D(Collider2D other) {
+        if (other.gameObject.CompareTag("Player")) {
+            playerData = other.gameObject.GetComponent<PlayerData>();
+            // Buff disappears upon collection
+            Debug.Log("Deal Damage");
+            playerData?.TakeDamage(damage);
+        }
+    }
+
+    /*private void OnCollisionEnter2D(Collision2D other)
     {
         GameObject collider = other.gameObject;
         Quaternion rot = Quaternion.Euler(0, 0, 0);
         if (collider.CompareTag("Player")) {
             Debug.Log("Deal Damage");
             PlayerData playerData = collider.GetComponent<PlayerData>();
-            playerData?.TakeDamage(damage);
         }
-    }
+    }*/
 
     public void AnimationFinishedTrigger()
     {
