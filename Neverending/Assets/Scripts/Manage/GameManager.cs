@@ -11,9 +11,13 @@ public class GameManager : MonoBehaviour
     public CinemachineVirtualCamera virtualCamera;
     public GameObject player;
     public List<GameObject> enemies;
-    public AbstractGenerator generator;
+    public RoomFirstGenerator generator;
     public VictoryPoint portal;
     public int level;
+    // need to get all keys to enter portal
+    // 1 key in 1 room
+    private int keyCount;
+    private int keyNum;
 
     void Start()
     {
@@ -22,6 +26,10 @@ public class GameManager : MonoBehaviour
         level += 1;
         // generate Map, enemies, interactables and Player
         generator.GenerateMap(true);
+
+        // map has been generated
+        keyCount = 0;
+        keyNum = generator.GetRoomCount();
 
         // find and assign gameobjects
         player = GameObject.FindGameObjectWithTag("Player");

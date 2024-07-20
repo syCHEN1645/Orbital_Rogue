@@ -236,4 +236,8 @@ public class RoomFirstGenerator : SimpleRandomWalkGenerator
         }
         return nearestCentre;
     }
+
+    public int GetRoomCount() {
+        return roomsList.Count;
+    }
 }
