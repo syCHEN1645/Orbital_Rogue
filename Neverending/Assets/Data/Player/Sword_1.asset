@@ -77,32 +77,32 @@ MonoBehaviour:
         repeatData: 0
         attackData:
         - name: Attack 1
-          Debug: 0
+          Debug: 1
           <HitBox>k__BackingField:
             serializedVersion: 2
             x: 0.11
             y: -0.9
-            width: 1.94
-            height: 1.41
+            width: 1.4
+            height: 1
         - name: Attack 2
-          Debug: 0
+          Debug: 1
           <HitBox>k__BackingField:
             serializedVersion: 2
             x: 0.11
             y: -0.9
-            width: 1.94
-            height: 1.41
+            width: 1.4
+            height: 1
         - name: Attack 3
-          Debug: 0
+          Debug: 1
           <HitBox>k__BackingField:
             serializedVersion: 2
             x: 0
-            y: -0.99
-            width: 1.61
-            height: 2.51
+            y: -1
+            width: 1.2
+            height: 2
         <DetectableLayers>k__BackingField:
           serializedVersion: 2
-          m_Bits: 128
+          m_Bits: 4294967295
     - rid: 2191127927780802561
       type: {class: ProjectileSpawnerData, ns: , asm: Assembly-CSharp}
       data:
@@ -118,4 +118,5 @@ MonoBehaviour:
         - name: Attack 3
           <Damage>k__BackingField: 0
           <Range>k__BackingField: 0
-        <projectilePrefab>k__BackingField: {fileID: 0}
+        <SpawnPositionOffset>k__BackingField: {x: 0, y: 0, z: 0}
+        <ProjectilePrefab>k__BackingField: {fileID: 0}

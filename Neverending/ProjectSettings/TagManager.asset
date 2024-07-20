@@ -18,7 +18,7 @@ TagManager:
   - UI
   - Ground
   - Damageable
-  - 
+  - Minimap
   - 
   - 
   - 
@@ -51,4 +51,7 @@ TagManager:
     locked: 0
   - name: GamePlay
     uniqueID: 356758901
+    locked: 0
+  - name: Minimap
+    uniqueID: 34418589
     locked: 0
