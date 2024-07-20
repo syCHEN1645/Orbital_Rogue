@@ -10,7 +10,7 @@ public class Enemy : MonoBehaviour
     public Animator animator;
     protected EnemyHealth enemyHealth;
     protected GameObject player;
-    protected PlayerData playerHealth;
+    protected PlayerData playerData;
     // originalPosition: where this enemy is spawned
     protected Vector2 originalPosition;
     [SerializeField]
@@ -20,15 +20,14 @@ public class Enemy : MonoBehaviour
     // dir: enemy is facing this direction: l->left, r->right.
     protected char dir;
     protected bool isAttacking;
-    [SerializeField]
-    protected float spriteScale;
+    [SerializeField] protected float spriteScale;
 
     protected virtual void InitialiseEnemy() {
         if (enemyList == null) {
             enemyList = new List<Enemy>();
         }
         player = GameObject.FindGameObjectWithTag("Player");
-        playerHealth = player.GetComponent<PlayerData>();
+        playerData = player.GetComponent<PlayerData>();
 
         enemyHealth = gameObject.GetComponent<EnemyHealth>();
         originalPosition = transform.position;
@@ -60,12 +59,13 @@ public class Enemy : MonoBehaviour
         if (player == null) {
             return false;
         }
-        return Vector2.Distance(player.transform.position, gameObject.transform.position) <= range;
+        return Vector2.Distance(player.transform.position, 
+                gameObject.transform.position) <= range;
     }
     protected virtual IEnumerator AttackPlayer() {
         isAttacking = true;
         Attack();
-        playerHealth.TakeDamage(attack);
+        playerData.TakeDamage(attack);
         yield return new WaitForSeconds(attackInterval);
         isAttacking = false;
     }

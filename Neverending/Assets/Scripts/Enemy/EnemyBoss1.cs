@@ -3,18 +3,19 @@ using UnityEngine;
 
 public class EnemyBoss1 : Enemy
 {
-    [SerializeField]
     // enemy stops at a distance of stopMovingDistance away from Player
     // enemy starts hunting if Player is closer than huntRange
-    protected float healthBarOffset, stopMovingDistance, huntRange, rangedAttackRange;
-    [SerializeField]
-    protected float meleeAttack, rangedAttack;
-
-    protected Vector3 previousVector;
+    [SerializeField] protected float healthBarOffset, stopMovingDistance, huntRange, rangedAttackRange;
+    [SerializeField] protected float meleeAttackDamage, rangedAttackDamage;
+    [SerializeField] protected float rangedAttackInterval;
+    [SerializeField] private GameObject spellPrefab;
     
     // an empty object indicating centre of boss
     public GameObject centre;
+    private float spellPositionOffset;
     protected float centreOffset;
+    protected Vector3 previousVector;
+    private bool canRangedAttack;
 
     void Start()
     {
@@ -45,15 +46,18 @@ public class EnemyBoss1 : Enemy
         base.InitialiseEnemy();
         speed = 2.0f;
         // attack is by default referring to melee attack if both melee and ranged attacks exist
-        attack = 15.0f;
-        attackRange = 2.0f;
-        attackInterval = 0.75f;
+        meleeAttackDamage = 15.0f;
+        attackRange = 1.5f;
+
+        attackInterval = 1.5f;
+        
         spriteScale = 4.0f;
 
         healthBarOffset = 1.4f;
         stopMovingDistance = 0.2f;
         huntRange = 15.0f;
-        rangedAttack = 40.0f;
+        rangedAttackInterval = 15.0f;
+        rangedAttackDamage = 10.0f;
         rangedAttackRange = 5.0f;
 
         enemyHealth.SetDefense(30);
@@ -61,6 +65,8 @@ public class EnemyBoss1 : Enemy
         enemyHealth.SetMaxHealth(100);
         enemyHealth.HealthBarUpdate();
 
+        canRangedAttack = true;
+        spellPositionOffset = 1.24f;
         previousVector = GetUnitVectorTowardsPlayer();
         
     }
@@ -103,7 +109,7 @@ public class EnemyBoss1 : Enemy
     }
 
     protected void HuntPlayer()
-    {
+    {   
         if (isAttacking) {
             // if attacking, do not move
             StopWalk();
@@ -111,15 +117,15 @@ public class EnemyBoss1 : Enemy
             // if not attacking, move towards Player
             if (Vector2.Distance(player.transform.position, centre.transform.position) > stopMovingDistance) {
                 MoveTowardsPlayer();
-            }
-            if (WithinAttackRange(attackRange)) {
+            } if (WithinAttackRange(attackRange)) {
                 Debug.Log("Attack");
                 StopWalk();
-                //StartCoroutine(AttackPlayer());
+                StartCoroutine(AttackPlayer());
+            } else if (canRangedAttack && (WithinAttackRange(rangedAttackRange))) {
+                StopWalk();
                 StartCoroutine(RangedAttackPlayer());
             }
         }
-        
     }
 
     protected void MoveTowardsPlayer()
@@ -162,11 +168,11 @@ public class EnemyBoss1 : Enemy
         if (animator.transform.localScale.x < 0) {
             // if now x < 0 i.e. face left, shift left
             gameObject.transform.Translate(-2 * centreOffset, 0 , 0);
-            Debug.Log(-2 * centreOffset);
+            //Debug.Log(-2 * centreOffset);
         } else {
             // if now x > 0 i.e. face right, shift right
             gameObject.transform.Translate(2 * centreOffset, 0 , 0);
-            Debug.Log(2 * centreOffset);
+            //Debug.Log(2 * centreOffset);
         }
     }
 
@@ -177,15 +183,27 @@ public class EnemyBoss1 : Enemy
 
     protected IEnumerator RangedAttackPlayer() {
         isAttacking = true;
+        canRangedAttack = false;
         // ranged attack animation
         Cast();
 
-        if (playerHealth != null) {
-            playerHealth.TakeDamage(rangedAttack);
-        }
-        Instantiate(spellEffect, transform.position, rot);
-        yield return new WaitForSeconds(attackInterval);
+        /*if (playerData != null) {
+            playerData.TakeDamage(rangedAttackDamage);
+        }*/
+
+        yield return new WaitForSeconds(rangedAttackInterval);
+        canRangedAttack = true;
+    }
+
+    public void OnRangedAttack() {
+        Debug.Log("ranged attack");
         isAttacking = false;
+        Quaternion rot = Quaternion.Euler(0, 0, 0);
+        Vector3 position = new Vector3(0, spellPositionOffset, 0) + player.transform.position;
+        StartCoroutine(playerData.Slow(0.5f, 2.0f));
+        Debug.Log(playerData.MovementVelocity);
+        GameObject spell = Instantiate(spellPrefab, position, rot);
+        spell.GetComponent<Spell>().SetDamage(rangedAttackDamage);
     }
 
     // protected void Attack3() {

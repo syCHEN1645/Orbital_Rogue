@@ -95,7 +95,7 @@ public class Player : MonoBehaviour
 
     public void Flip(SpriteRenderer spriteRenderer, int xInput)
     {
-        Debug.Log("face" + FacingDirection);
+        //Debug.Log("face" + FacingDirection);
         if (xInput != 0)
         {
             // Update the facing direction

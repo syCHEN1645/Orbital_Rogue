@@ -1,5 +1,7 @@
 using TMPro;
 using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
@@ -38,7 +40,15 @@ public class PlayerData : MonoBehaviour
         Debug.Log("healthbar updated");
     }
 
+    public IEnumerator Slow(float amount, float duration) {
+        float temp = MovementVelocity;
+        MovementVelocity *= amount;
+        yield return new WaitForSeconds(duration);
+        MovementVelocity = temp;
+    }
+
     public void TakeDamage(float attack) {
+        Debug.Log("player movement speed" + MovementVelocity);
         // attack value will be sent by the dealer
 
         if (!IsDead()) {

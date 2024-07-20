@@ -136,6 +136,7 @@ MonoBehaviour:
   rangedAttackRange: 0
   meleeAttack: 0
   rangedAttack: 0
+  spellVFX: {fileID: 0}
   centre: {fileID: 2416712395219500968}
 --- !u!114 &4666944144878237869
 MonoBehaviour:

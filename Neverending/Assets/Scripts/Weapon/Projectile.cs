@@ -28,14 +28,13 @@ public class Projectile : MonoBehaviour
     {
         this.dataPackage = dataPackage;
         isDataSet = true;
-        
     }
 
     private void OnCollisionEnter2D(Collision2D other)
     {
         GameObject collider = other.gameObject;
         Quaternion rot = Quaternion.Euler(0, 0, 0);
-        EnemyHealth enemyHealth = other.gameObject.GetComponent<EnemyHealth>();
+        EnemyHealth enemyHealth = collider.GetComponent<EnemyHealth>();
         if (collider.CompareTag("Enemy") || collider.CompareTag("Indestructable")) {
             //Debug.Log("check");
             enemyHealth?.TakeDamage(dataPackage.AttackDamage);
