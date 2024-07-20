@@ -23,10 +23,18 @@ public class GameManager : MonoBehaviour
     {
         LoadGame();
         // increase level by 1 at the start of the level
-        level += 1;
+        
+        // Debug.Log(PGPararmeters.visualisers[0]);
         // generate Map, enemies, interactables and Player
-        generator.GenerateMap(true);
+        // instantiate and set visualiser for different map arts
+        Instantiate(PGPararmeters.visualisers[level], Vector3.zero, Quaternion.identity);
+        generator.visualiser = FindObjectOfType<TileMapVisualiser>();
+        if (generator != null) {
+            generator.GenerateMap(true);
+        }
 
+        level += 1;
+        
         // map has been generated
         keyCount = 0;
         keyTotal = generator.GetRoomCount();

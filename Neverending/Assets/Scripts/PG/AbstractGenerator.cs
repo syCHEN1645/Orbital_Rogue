@@ -5,12 +5,12 @@ using UnityEngine;
 
 public abstract class AbstractGenerator : MonoBehaviour
 {
-    [SerializeField]
-    protected TileMapVisualiser visualiser = null;
+    public TileMapVisualiser visualiser = null;
     [SerializeField]
     protected Vector2Int startPos = Vector2Int.zero;
 
     public void GenerateMap(bool editor) {
+        // clear tiles
         visualiser.Clear();
         ClearOldMap(editor);
         RunPG();
