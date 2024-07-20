@@ -34,11 +34,12 @@ public class Projectile : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D other)
     {
         GameObject collider = other.gameObject;
+        Quaternion rot = Quaternion.Euler(0, 0, 0);
         EnemyHealth enemyHealth = other.gameObject.GetComponent<EnemyHealth>();
         if (collider.CompareTag("Enemy") || collider.CompareTag("Indestructable")) {
             //Debug.Log("check");
             enemyHealth?.TakeDamage(dataPackage.AttackDamage);
-            Instantiate(particalOnHitPrefabVFX, transform.position, transform.rotation);
+            Instantiate(particalOnHitPrefabVFX, transform.position, rot);
             Destroy(gameObject);
         }
     }

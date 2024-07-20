@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4516274142283227738}
   - component: {fileID: 5232406131424175683}
   - component: {fileID: 2800536486699448235}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -113,7 +113,7 @@ GameObject:
   - component: {fileID: 3766501171677504784}
   - component: {fileID: 2221882691620266666}
   - component: {fileID: 2927598182853021096}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Enemy Health Bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -192,7 +192,7 @@ GameObject:
   - component: {fileID: 1090661508225160262}
   - component: {fileID: 4679054454607156218}
   - component: {fileID: 4781945920849989523}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Blue Slime 1
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -373,6 +373,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthBar: {fileID: 2927598182853021096}
+  maxHealth: 0
+  health: 0
+  defense: 0
   offset: 0
 --- !u!114 &4781945920849989523
 MonoBehaviour:
@@ -387,3 +390,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 8815782357077279452}
+  speed: 0
+  attack: 0
+  attackRange: 0
+  attackInterval: 0
+  spriteScale: 0

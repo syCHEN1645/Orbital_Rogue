@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7817878119471555221}
   - component: {fileID: 5814087343190203649}
   - component: {fileID: 7002959371737094117}
-  m_Layer: 13
+  m_Layer: 8
   m_Name: WeaponPickup
   m_TagString: Interactable
   m_Icon: {fileID: 0}
@@ -182,7 +182,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6116563809520796555}
-  m_Layer: 13
+  m_Layer: 8
   m_Name: Indicator
   m_TagString: Untagged
   m_Icon: {fileID: 0}

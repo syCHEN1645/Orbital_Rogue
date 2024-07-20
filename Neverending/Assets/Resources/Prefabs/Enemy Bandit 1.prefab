@@ -14,8 +14,8 @@ GameObject:
   - component: {fileID: 2594106292670546463}
   - component: {fileID: 7849622085910232665}
   - component: {fileID: 1690805576261955965}
-  - component: {fileID: 721215309915467055}
-  m_Layer: 0
+  - component: {fileID: 2324470297126900727}
+  m_Layer: 7
   m_Name: Enemy Bandit 1
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -196,8 +196,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthBar: {fileID: 5579774862975879937}
+  maxHealth: 0
+  health: 0
+  defense: 0
   offset: 0.6
---- !u!114 &721215309915467055
+--- !u!114 &2324470297126900727
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -210,6 +213,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 9174664838646333538}
+  speed: 0
+  attack: 0
+  attackRange: 0
+  attackInterval: 0
+  spriteScale: 0
+  patrolRange: 0
+  healthBarOffset: 0
 --- !u!1 &2542953204549662379
 GameObject:
   m_ObjectHideFlags: 0
@@ -221,7 +231,7 @@ GameObject:
   - component: {fileID: 2031896672836346153}
   - component: {fileID: 6637434016484964564}
   - component: {fileID: 5579774862975879937}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Enemy Health Bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -297,7 +307,7 @@ GameObject:
   - component: {fileID: 8484120044889839839}
   - component: {fileID: 6822669012011901798}
   - component: {fileID: 1809331095463215639}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}

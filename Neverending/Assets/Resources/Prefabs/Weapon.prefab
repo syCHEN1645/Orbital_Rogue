@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1000724349375381938}
   - component: {fileID: 3834052145260651970}
   - component: {fileID: 3193153125493203360}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -130,7 +130,7 @@ GameObject:
   - component: {fileID: 8141720672373882428}
   - component: {fileID: 1882936007209654739}
   - component: {fileID: 6436940525157045449}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Weapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -191,7 +191,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2005809958960139600}
   - component: {fileID: 3681242815676739843}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: ProjectileSpawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -225,8 +225,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58545b3bb0586c0449a16ed328ac5078, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerData: {fileID: 11400000, guid: 9d42948a59ee0a94782d8ede6704deff, type: 2}
-  projectileSpawnPoint: {fileID: 2005809958960139600}
 --- !u!1 &8534799332613681727
 GameObject:
   m_ObjectHideFlags: 0
@@ -237,7 +235,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1830686072856413645}
   - component: {fileID: 5818921139073894879}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: WeaponSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}

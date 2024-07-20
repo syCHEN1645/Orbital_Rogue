@@ -115,7 +115,8 @@ public class EnemyBoss1 : Enemy
             if (WithinAttackRange(attackRange)) {
                 Debug.Log("Attack");
                 StopWalk();
-                StartCoroutine(AttackPlayer());
+                //StartCoroutine(AttackPlayer());
+                StartCoroutine(RangedAttackPlayer());
             }
         }
         
@@ -182,6 +183,7 @@ public class EnemyBoss1 : Enemy
         if (playerHealth != null) {
             playerHealth.TakeDamage(rangedAttack);
         }
+        Instantiate(spellEffect, transform.position, rot);
         yield return new WaitForSeconds(attackInterval);
         isAttacking = false;
     }

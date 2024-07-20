@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4666944144878237869}
   - component: {fileID: 8563604651193330954}
   - component: {fileID: 1000691385331741058}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Enemy Boss 1
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -237,7 +237,7 @@ GameObject:
   - component: {fileID: 6130908934648495369}
   - component: {fileID: 4572806028022640225}
   - component: {fileID: 3498978482398652617}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Enemy Health Bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -260,7 +260,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.366, y: 0.2}
+  m_AnchoredPosition: {x: -0.005, y: 0.41}
   m_SizeDelta: {x: 0.4, y: 0.03}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4572806028022640225
@@ -310,7 +310,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5182776861911587084}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Boss Centre
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -344,7 +344,7 @@ GameObject:
   - component: {fileID: 4824059530416226380}
   - component: {fileID: 3149141547579212343}
   - component: {fileID: 3189344403039811698}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -368,7 +368,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -0.36, y: -0.17}
   m_SizeDelta: {x: 2, y: 2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &4824059530416226380
