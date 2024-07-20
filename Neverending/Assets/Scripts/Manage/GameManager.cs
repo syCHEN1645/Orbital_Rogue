@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
     // need to get all keys to enter portal
     // 1 key in 1 room
     private int keyCount;
-    private int keyNum;
+    private int keyTotal;
 
     void Start()
     {
@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour
 
         // map has been generated
         keyCount = 0;
-        keyNum = generator.GetRoomCount();
+        keyTotal = generator.GetRoomCount();
 
         // find and assign gameobjects
         player = GameObject.FindGameObjectWithTag("Player");
