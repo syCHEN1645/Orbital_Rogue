@@ -131,6 +131,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53888f68fc3946f4dba230efa987b65f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  art: {fileID: 647451912807937691}
+  collide: {fileID: 0}
+  traj: {fileID: 327174230677107002}
   amt: 20
 --- !u!61 &1579553071978333432
 BoxCollider2D:
@@ -227,3 +231,4 @@ MonoBehaviour:
   x: 0
   drag: 0
   absorb: 0
+  dir: 0

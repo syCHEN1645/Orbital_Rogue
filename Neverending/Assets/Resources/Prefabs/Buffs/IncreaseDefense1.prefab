@@ -176,6 +176,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a129383f43bb164ab07a38b7fda16b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  art: {fileID: 1102498498690107766}
+  collide: {fileID: 0}
+  traj: {fileID: 2854902736996544274}
   defense: 20
 --- !u!1 &8264674967550410374
 GameObject:
@@ -227,3 +231,4 @@ MonoBehaviour:
   x: 0
   drag: 0
   absorb: 0
+  dir: 0

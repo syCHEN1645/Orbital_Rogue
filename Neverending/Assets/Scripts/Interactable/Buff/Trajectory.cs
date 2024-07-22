@@ -9,7 +9,7 @@ public class Trajectory : MonoBehaviour
     [SerializeField]
     protected float coe, speed, x, drag, absorb;
     protected Vector3 originalPos;
-    protected float dir;
+    public float dir;
 
     // Start is called before the first frame update
     void Start()
