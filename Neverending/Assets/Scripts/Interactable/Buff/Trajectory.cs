@@ -15,7 +15,7 @@ public class Trajectory : MonoBehaviour
     void Start()
     {
         // coefficient for formula
-        coe = Random.Range(3.5f, 4.5f);
+        coe = Random.Range(2.0f, 3.0f);
         // speed of x component
         speed = 2.0f;
         x = 0;
