@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -21,6 +22,10 @@ public class Enemy : MonoBehaviour
     protected char dir;
     protected bool isAttacking;
     [SerializeField] protected float spriteScale;
+
+    [SerializeField]
+    // this list contains all rewards to be dropped after enemy is defeated
+    protected List<GameObject> itemsToDrop;
 
     protected virtual void InitialiseEnemy() {
         if (enemyList == null) {
@@ -74,5 +79,12 @@ public class Enemy : MonoBehaviour
         yield return new WaitForSeconds(2);
         // remove sprite
         Destroy(gameObject);
+    }
+
+    protected void DropItems() {
+        for (int i = 0; i < itemsToDrop.Count; i++) {
+            // instantiate items at enemy's pos
+            Instantiate(itemsToDrop[i], gameObject.transform.position, Quaternion.identity);
+        }
     }
 }

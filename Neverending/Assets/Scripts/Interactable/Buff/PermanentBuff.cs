@@ -1,12 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
-public abstract class PermanentBuff : MonoBehaviour
+public abstract class PermanentBuff : Buff
 {
-    private PlayerData playerData;
-
     void OnTriggerEnter2D(Collider2D other) {
         if (other.gameObject.CompareTag("Player")) {
             playerData = other.gameObject.GetComponent<PlayerData>();
@@ -15,6 +10,12 @@ public abstract class PermanentBuff : MonoBehaviour
             BuffEffect(playerData);
             // Remove buff from game
             Destroy(gameObject);
+        }
+        if (other.gameObject.CompareTag("Ground")) {
+            // if bouncing out of map
+            if (traj != null) {
+                traj.dir *= -1;
+            }
         }
     }
 
