@@ -6,6 +6,7 @@ public class Spell : MonoBehaviour
 {
     private float damage;
     private PlayerData playerData;
+    
     public void SetDamage(float damage)
     {
         this.damage = damage;
