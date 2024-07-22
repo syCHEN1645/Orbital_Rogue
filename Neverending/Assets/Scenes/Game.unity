@@ -1206,7 +1206,7 @@ Transform:
   m_GameObject: {fileID: 472751132}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 25.97, y: -1.84, z: -10}
+  m_LocalPosition: {x: 22, y: -1.84, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1305,7 +1305,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7968124835011567987, guid: f1cfe5984b5449a4da294ebda7661c57, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 25.97
+      value: 22
       objectReference: {fileID: 0}
     - target: {fileID: 7968124835011567987, guid: f1cfe5984b5449a4da294ebda7661c57, type: 3}
       propertyPath: m_LocalPosition.y
@@ -4094,7 +4094,7 @@ Transform:
   m_GameObject: {fileID: 1860916284}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 25.97, y: -1.84, z: -10}
+  m_LocalPosition: {x: 22, y: -1.84, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7637,6 +7637,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Evil Wizard
       objectReference: {fileID: 0}
+    - target: {fileID: 2750308796340829778, guid: ace4e22de7c7e46469ce1a0c6110cf01, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2750308796340829778, guid: ace4e22de7c7e46469ce1a0c6110cf01, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.25
+      objectReference: {fileID: 0}
     - target: {fileID: 4417537055049022002, guid: ace4e22de7c7e46469ce1a0c6110cf01, type: 3}
       propertyPath: animator
       value: 
@@ -7679,6 +7687,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8355947447172959028, guid: ace4e22de7c7e46469ce1a0c6110cf01, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8534351294688715928, guid: ace4e22de7c7e46469ce1a0c6110cf01, type: 3}
+      propertyPath: m_FlipX
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
