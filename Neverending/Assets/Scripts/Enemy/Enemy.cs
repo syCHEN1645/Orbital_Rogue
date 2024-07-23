@@ -27,6 +27,7 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     // how many items to drop
     protected int itemsCount;
+    protected bool stop = false;
 
     protected virtual void InitialiseEnemy() {
         if (enemyList == null) {
@@ -65,6 +66,7 @@ public class Enemy : MonoBehaviour
     public virtual void Die() {
         DropItems();
         RemoveThis();
+        stop = true;
         StartCoroutine(BodyDisappear());
     }
     protected virtual bool WithinAttackRange(float range) {

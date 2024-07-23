@@ -26,14 +26,16 @@ public class EnemyBandit1 : Enemy
     // Update is called once per frame
     void Update()
     {
-        enemyHealth.healthBar.transform.position = transform.position + new Vector3(0, healthBarOffset, 0);
-        if (enemyHealth.IsDead()) {
-            Die();
-        } else {
-            if (WithinAttackRange(attackRange) && !isAttacking) {
-                StartCoroutine(AttackPlayer());
+        // enemyHealth.healthBar.transform.position = transform.position + new Vector3(0, healthBarOffset, 0);
+        if (!stop) {
+            if (enemyHealth.IsDead()) {
+                Die();
             } else {
-                Patrol();
+                if (WithinAttackRange(attackRange) && !isAttacking) {
+                    StartCoroutine(AttackPlayer());
+                } else {
+                    Patrol();
+                }
             }
         }
     }

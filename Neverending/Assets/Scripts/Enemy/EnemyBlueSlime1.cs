@@ -21,8 +21,10 @@ public class EnemyBlueSlime1 : Enemy
     // Update is called once per frame
     void Update()
     {
-        if (enemyHealth.IsDead()) {
-            Die();
+        if (!stop) {
+            if (enemyHealth.IsDead()) {
+                Die();
+            }
         }
     }
 

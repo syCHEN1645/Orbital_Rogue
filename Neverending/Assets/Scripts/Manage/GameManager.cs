@@ -117,7 +117,9 @@ public class GameManager : MonoBehaviour
 
     public static void PickKey() {
         // key symbol changes to a bright colour
-        keySymbols[keyCount].GetComponent<Image>().color = bright;
-        keyCount++;
+        if (keyCount < keySymbols.Count) {
+            keySymbols[keyCount].GetComponent<Image>().color = bright;
+            keyCount++;
+        }
     }
 }
