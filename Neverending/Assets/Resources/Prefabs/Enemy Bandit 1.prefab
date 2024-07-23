@@ -218,6 +218,8 @@ MonoBehaviour:
   attackRange: 0
   attackInterval: 0
   spriteScale: 0
+  itemsToDrop: []
+  itemsCount: 1
   patrolRange: 0
   healthBarOffset: 0
 --- !u!1 &2542953204549662379

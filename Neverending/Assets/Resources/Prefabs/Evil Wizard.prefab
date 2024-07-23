@@ -294,11 +294,14 @@ MonoBehaviour:
   attackRange: 0
   attackInterval: 0
   spriteScale: 0
+  itemsToDrop: []
+  itemsCount: 4
   healthBarOffset: 0
   stopMovingDistance: 0
   huntRange: 0
-  meleeAttackDamage: 0
+  attackDamage: 0
   centre: {fileID: 5946082864559276131}
+  workspace: 0
 --- !u!1 &2946880071215948533
 GameObject:
   m_ObjectHideFlags: 0

@@ -7,7 +7,7 @@ using UnityEngine.UIElements;
 public class VictoryPointGenerator : GameObjectGenerator
 {
     // this generator generates everything in the last room (vectory point, boss, etc.)
-    
+    protected bool keyGenerated = false;
     protected GameObject portal = PGPararmeters.portal;
 
     public override void GenerateOneRoom(HashSet<Vector2Int> room)
@@ -34,17 +34,25 @@ public class VictoryPointGenerator : GameObjectGenerator
             pos = floors[Random.Range(0, room.Count - 1)];
         } 
         while (!SpawnPosCheck(pos, room));
+
+        // different boss by level
+        GameObject obj;
         if (level > PGPararmeters.typesOfBosses.Length - 1) {
-            GameObject.Instantiate(PGPararmeters.typesOfBosses[PGPararmeters.typesOfBosses.Length - 1], 
+            obj = GameObject.Instantiate(PGPararmeters.typesOfBosses[PGPararmeters.typesOfBosses.Length - 1], 
                 new Vector3(pos.x + spawnOffsetX, pos.y + spawnOffsetY, 0), 
                 Quaternion.identity
             );
         } else {
-            GameObject.Instantiate(
+            obj = GameObject.Instantiate(
                 PGPararmeters.typesOfBosses[level], 
                 new Vector3(pos.x + spawnOffsetX, pos.y + spawnOffsetY, 0), 
                 Quaternion.identity
             );
+        }
+        // boss drops a key
+        if (!keyGenerated) {
+            obj.GetComponent<Enemy>().AddKey();
+            keyGenerated = true;
         }
     }
 }

@@ -395,3 +395,5 @@ MonoBehaviour:
   attackRange: 0
   attackInterval: 0
   spriteScale: 0
+  itemsToDrop: []
+  itemsCount: 1

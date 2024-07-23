@@ -1,7 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.Mathematics;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
@@ -26,6 +24,9 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     // this list contains all rewards to be dropped after enemy is defeated
     protected List<GameObject> itemsToDrop;
+    [SerializeField]
+    // how many items to drop
+    protected int itemsCount;
 
     protected virtual void InitialiseEnemy() {
         if (enemyList == null) {
@@ -41,6 +42,11 @@ public class Enemy : MonoBehaviour
         dir = 'l';
         // add to enemyList
         AddThis();
+
+        for (int i = 0; i < itemsCount; i++) {
+            int index = Random.Range(0, PGPararmeters.itemList.Length);
+            itemsToDrop.Add(PGPararmeters.itemList[index]);
+        }
     }
 
     protected void AddThis() {
@@ -57,6 +63,7 @@ public class Enemy : MonoBehaviour
     }
 
     public virtual void Die() {
+        DropItems();
         RemoveThis();
         StartCoroutine(BodyDisappear());
     }
@@ -86,5 +93,9 @@ public class Enemy : MonoBehaviour
             // instantiate items at enemy's pos
             Instantiate(itemsToDrop[i], gameObject.transform.position, Quaternion.identity);
         }
+    }
+
+    public void AddKey() {
+        itemsToDrop.Add(PGPararmeters.portalKey);
     }
 }

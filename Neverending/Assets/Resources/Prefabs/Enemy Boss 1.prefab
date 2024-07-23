@@ -130,13 +130,16 @@ MonoBehaviour:
   attackRange: 0
   attackInterval: 0
   spriteScale: 4
+  itemsToDrop: []
+  itemsCount: 3
   healthBarOffset: 0
   stopMovingDistance: 0
   huntRange: 0
   rangedAttackRange: 0
-  meleeAttack: 0
-  rangedAttack: 0
-  spellVFX: {fileID: 0}
+  meleeAttackDamage: 0
+  rangedAttackDamage: 0
+  rangedAttackInterval: 0
+  spellPrefab: {fileID: 0}
   centre: {fileID: 2416712395219500968}
 --- !u!114 &4666944144878237869
 MonoBehaviour:
