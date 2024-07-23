@@ -20,13 +20,14 @@ public class EnemyGenerator : GameObjectGenerator
         foreach (var pos in room) {
             if (SpawnPosCheck(pos, room) && RandomBool(5)) {
                 // 5% chance being true
-                GameObject.Instantiate(
+                GameObject obj = GameObject.Instantiate(
                     typesOfEnemies[RandomInt(0, typesOfEnemies.Length - 1)], 
                     new Vector3(pos.x + spawnOffsetX, pos.y + spawnOffsetY, 0), 
                     Quaternion.identity);
                 // pass key to the 1st enemy generated
                 if (!keyGenerated) {
-                    
+                    obj.GetComponent<Enemy>().AddKey();
+                    keyGenerated = true;
                 }
             }
         }

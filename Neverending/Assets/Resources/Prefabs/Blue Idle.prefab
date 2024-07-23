@@ -373,6 +373,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 0}
+  speed: 0
+  attack: 0
+  attackRange: 0
+  attackInterval: 0
+  spriteScale: 0
+  itemsToDrop:
+  - {fileID: 0}
+  itemsCount: 0
 --- !u!114 &760943114577822577
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -386,4 +394,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthBar: {fileID: 5616802668667897923}
+  maxHealth: 0
+  health: 0
+  defense: 0
   offset: 1

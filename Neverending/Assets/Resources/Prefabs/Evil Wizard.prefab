@@ -294,6 +294,8 @@ MonoBehaviour:
   attackRange: 0
   attackInterval: 0
   spriteScale: 0
+  itemsToDrop: []
+  itemsCount: 4
   healthBarOffset: 0
   stopMovingDistance: 0
   huntRange: 0

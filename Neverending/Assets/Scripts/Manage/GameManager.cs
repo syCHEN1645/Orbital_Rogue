@@ -3,6 +3,7 @@ using UnityEngine.SceneManagement;
 using Cinemachine;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.VFX;
 
 public class GameManager : MonoBehaviour
 {
@@ -12,7 +13,7 @@ public class GameManager : MonoBehaviour
     public List<GameObject> enemies;
     public RoomFirstGenerator generator;
     public VictoryPoint portal;
-    public int level;
+    public static int level;
     // need to get all keys to enter portal
     // 1 key in 1 room
     public GameObject keys;
@@ -27,6 +28,12 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         LoadGame();
+        
+        generator.visualiser = Instantiate(PGPararmeters.visualisers[level], Vector3.zero, Quaternion.identity);
+        if (generator != null && generator.visualiser != null) {
+            generator.GenerateMap(true);
+        }
+
         keySymbols = new List<GameObject>();
         // increase level by 1 at the start of the level
         level += 1;
@@ -36,6 +43,7 @@ public class GameManager : MonoBehaviour
         // map has been generated
         keyCount = 0;
         keyTotal = generator.GetRoomCount();
+        // keyCount = keyTotal;
         for (int i = 0; i < keyTotal; i++) {
             Debug.Log("key " + i);
             // instantiate a number of key symbols
@@ -109,7 +117,9 @@ public class GameManager : MonoBehaviour
 
     public static void PickKey() {
         // key symbol changes to a bright colour
-        keySymbols[keyCount].GetComponent<Image>().color = bright;
-        keyCount++;
+        if (keyCount < keySymbols.Count) {
+            keySymbols[keyCount].GetComponent<Image>().color = bright;
+            keyCount++;
+        }
     }
 }

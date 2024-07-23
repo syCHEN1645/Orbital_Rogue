@@ -30,13 +30,15 @@ public class EnemyBoss1 : Enemy
 
     void Update()
     {
-        if (enemyHealth.IsDead()) {
-            Die();
-        } else {
-            if (Vector2.Distance(player.transform.position, gameObject.transform.position) <= huntRange) {
-                HuntPlayer();
+        if (!stop) {
+            if (enemyHealth.IsDead()) {
+                Die();
             } else {
-                // idle around
+                if (Vector2.Distance(player.transform.position, gameObject.transform.position) <= huntRange) {
+                    HuntPlayer();
+                } else {
+                    // idle around
+                }
             }
         }
     }

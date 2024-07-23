@@ -21,6 +21,9 @@ public class MenuManager : MonoBehaviour
     // }
 
     public void NewGameButton() {
+        // clear old level, start new game from level 1
+        PlayerPrefs.DeleteKey(ManagerParameters.LEVEL);
+        PlayerPrefs.SetInt(ManagerParameters.LEVEL, 0);
         SceneManager.LoadScene(ManagerParameters.GAME_SCENE);
     }
 

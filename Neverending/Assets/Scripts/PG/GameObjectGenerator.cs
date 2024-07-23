@@ -10,7 +10,7 @@ public class GameObjectGenerator
     protected HashSet<Vector2Int> wallPositions;
     protected float spawnOffsetX = PGPararmeters.spawnOffsetX;
     protected float spawnOffsetY = PGPararmeters.spawnOffsetY;
-    protected int level;
+    protected int level = GameManager.level;
 
     public virtual void GenerateOneRoom(HashSet<Vector2Int> room) {
 

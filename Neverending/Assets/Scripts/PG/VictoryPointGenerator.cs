@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class VictoryPointGenerator : GameObjectGenerator
 {
     // this generator generates everything in the last room (vectory point, boss, etc.)
-    
+    protected bool keyGenerated = false;
     protected GameObject portal = PGPararmeters.portal;
 
     public override void GenerateOneRoom(HashSet<Vector2Int> room)
@@ -14,17 +16,43 @@ public class VictoryPointGenerator : GameObjectGenerator
         foreach (Vector2Int floor in room) {
             floors.Add(floor);
         }
-        // instantiate player at a random tile
-        Vector2Int portalPos;
+        // instantiate portal at a random tile
+        Vector2Int pos;
         do {
-            portalPos = floors[Random.Range(0, room.Count - 1)];
+            pos = floors[Random.Range(0, room.Count - 1)];
         } 
-        while (!SpawnPosCheck(portalPos, room));
+        while (!SpawnPosCheck(pos, room));
 
         if (portal != null) {
-            GameObject.Instantiate(portal, new Vector3(portalPos.x + spawnOffsetX, portalPos.y + spawnOffsetY, 0), Quaternion.identity);
+            GameObject.Instantiate(portal, new Vector3(pos.x + spawnOffsetX, pos.y + spawnOffsetY, 0), Quaternion.identity);
         } else {
-            Debug.Log("Portal is empty, spawn at " + new Vector3(portalPos.x, portalPos.y, 0));
+            Debug.Log("Portal is empty, spawn at " + new Vector3(pos.x, pos.y, 0));
+        }
+        
+        // instantiate boss
+        do {
+            pos = floors[Random.Range(0, room.Count - 1)];
+        } 
+        while (!SpawnPosCheck(pos, room));
+
+        // different boss by level
+        GameObject obj;
+        if (level > PGPararmeters.typesOfBosses.Length - 1) {
+            obj = GameObject.Instantiate(PGPararmeters.typesOfBosses[PGPararmeters.typesOfBosses.Length - 1], 
+                new Vector3(pos.x + spawnOffsetX, pos.y + spawnOffsetY, 0), 
+                Quaternion.identity
+            );
+        } else {
+            obj = GameObject.Instantiate(
+                PGPararmeters.typesOfBosses[level], 
+                new Vector3(pos.x + spawnOffsetX, pos.y + spawnOffsetY, 0), 
+                Quaternion.identity
+            );
+        }
+        // boss drops a key
+        if (!keyGenerated) {
+            obj.GetComponent<Enemy>().AddKey();
+            keyGenerated = true;
         }
     }
 }

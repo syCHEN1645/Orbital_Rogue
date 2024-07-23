@@ -6,7 +6,7 @@ using UnityEngine;
 public abstract class AbstractGenerator : MonoBehaviour
 {
     [SerializeField]
-    protected TileMapVisualiser visualiser = null;
+    public TileMapVisualiser visualiser = null;
     [SerializeField]
     protected Vector2Int startPos = Vector2Int.zero;
 
