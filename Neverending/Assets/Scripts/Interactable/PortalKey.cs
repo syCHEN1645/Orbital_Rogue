@@ -12,7 +12,7 @@ public class PortalKey : MonoBehaviour
     
     void OnTriggerEnter2D(Collider2D other) {
         if (other.gameObject.CompareTag("Player")) {
-            GameManager.keyCount ++;
+            GameManager.PickKey();
             // can add some buff also
             Debug.Log(GameManager.keyCount);
             Destroy(gameObject);
