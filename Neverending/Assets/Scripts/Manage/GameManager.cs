@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
     public List<GameObject> enemies;
     public RoomFirstGenerator generator;
     public VictoryPoint portal;
-    public int level;
+    public static int level;
     // need to get all keys to enter portal
     // 1 key in 1 room
     public GameObject keys;

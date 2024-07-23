@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class VictoryPointGenerator : GameObjectGenerator
 {
@@ -32,6 +34,17 @@ public class VictoryPointGenerator : GameObjectGenerator
             pos = floors[Random.Range(0, room.Count - 1)];
         } 
         while (!SpawnPosCheck(pos, room));
-        GameObject.Instantiate(PGPararmeters.typesOfBosses[level], new Vector3(pos.x + spawnOffsetX, pos.y + spawnOffsetY, 0), Quaternion.identity);
+        if (level > PGPararmeters.typesOfBosses.Length - 1) {
+            GameObject.Instantiate(PGPararmeters.typesOfBosses[PGPararmeters.typesOfBosses.Length - 1], 
+                new Vector3(pos.x + spawnOffsetX, pos.y + spawnOffsetY, 0), 
+                Quaternion.identity
+            );
+        } else {
+            GameObject.Instantiate(
+                PGPararmeters.typesOfBosses[level], 
+                new Vector3(pos.x + spawnOffsetX, pos.y + spawnOffsetY, 0), 
+                Quaternion.identity
+            );
+        }
     }
 }
