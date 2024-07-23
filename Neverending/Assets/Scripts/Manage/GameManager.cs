@@ -1,9 +1,8 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using Cinemachine;
 using UnityEngine;
-using System;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -16,12 +15,19 @@ public class GameManager : MonoBehaviour
     public int level;
     // need to get all keys to enter portal
     // 1 key in 1 room
+    public GameObject keys;
+    public GameObject symbol;
+    public static List<GameObject> keySymbols;
     public static int keyCount;
     private int keyTotal;
+    [SerializeField]
+    private static Color bright = new Color(1, 1, 1), 
+    dark = new Color(100f / 255f, 100f / 255f, 100f / 255f);
 
     void Start()
     {
         LoadGame();
+        keySymbols = new List<GameObject>();
         // increase level by 1 at the start of the level
         level += 1;
         // generate Map, enemies, interactables and Player
@@ -30,6 +36,18 @@ public class GameManager : MonoBehaviour
         // map has been generated
         keyCount = 0;
         keyTotal = generator.GetRoomCount();
+        for (int i = 0; i < keyTotal; i++) {
+            Debug.Log("key " + i);
+            // instantiate a number of key symbols
+            GameObject keySymbol = Instantiate(symbol, keys.transform.position + new Vector3(50 * i, 0, -1), Quaternion.identity);
+            // key as a child of keys
+            keySymbol.transform.SetParent(keys.transform);
+            keySymbols.Add(keySymbol);
+            // set to dark colour
+            Debug.Log(keySymbol.GetComponent<Image>().color);
+            keySymbol.GetComponent<Image>().color = dark;
+            Debug.Log(keySymbol.GetComponent<Image>().color);
+        }
 
         // find and assign gameobjects
         player = GameObject.FindGameObjectWithTag("Player");
@@ -40,11 +58,11 @@ public class GameManager : MonoBehaviour
 
         // camera follows Player
         // Debug.Log(player == null);
-        virtualCamera.LookAt = player.transform;
-        virtualCamera.Follow = player.transform;
+        // virtualCamera.LookAt = player.transform;
+        // virtualCamera.Follow = player.transform;
 
         // set portal
-        portal = GameObject.FindObjectOfType<VictoryPoint>();
+        portal = FindObjectOfType<VictoryPoint>();
     }
 
     void Update() {
@@ -87,5 +105,11 @@ public class GameManager : MonoBehaviour
 
     public int GetKeyTotal() {
         return keyTotal;
+    }
+
+    public static void PickKey() {
+        // key symbol changes to a bright colour
+        keySymbols[keyCount].GetComponent<Image>().color = bright;
+        keyCount++;
     }
 }
