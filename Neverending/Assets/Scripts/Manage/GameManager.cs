@@ -36,6 +36,7 @@ public class GameManager : MonoBehaviour
         // map has been generated
         keyCount = 0;
         keyTotal = generator.GetRoomCount();
+        keyCount = keyTotal;
         for (int i = 0; i < keyTotal; i++) {
             Debug.Log("key " + i);
             // instantiate a number of key symbols
