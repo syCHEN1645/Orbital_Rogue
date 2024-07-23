@@ -3,6 +3,7 @@ using UnityEngine.SceneManagement;
 using Cinemachine;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.VFX;
 
 public class GameManager : MonoBehaviour
 {
@@ -27,6 +28,12 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         LoadGame();
+        
+        generator.visualiser = Instantiate(PGPararmeters.visualisers[level], Vector3.zero, Quaternion.identity);
+        if (generator != null && generator.visualiser != null) {
+            generator.GenerateMap(true);
+        }
+
         keySymbols = new List<GameObject>();
         // increase level by 1 at the start of the level
         level += 1;

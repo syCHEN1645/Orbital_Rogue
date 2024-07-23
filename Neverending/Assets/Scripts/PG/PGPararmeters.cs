@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -26,6 +27,14 @@ public static class PGPararmeters
     };
 
     public static GameObject portalKey = Resources.Load("Keys/Key 1") as GameObject;
+
+    // list of visualisers
+    public static TileMapVisualiser[] visualisers = {
+        Resources.Load("Visualisers/Visualiser1").GetComponent<TileMapVisualiser>() as TileMapVisualiser, 
+        Resources.Load("Visualisers/Visualiser2").GetComponent<TileMapVisualiser>() as TileMapVisualiser, 
+        Resources.Load("Visualisers/Visualiser3").GetComponent<TileMapVisualiser>() as TileMapVisualiser, 
+        Resources.Load("Visualisers/Visualiser4").GetComponent<TileMapVisualiser>() as TileMapVisualiser
+    };
 
     public static float spawnOffsetX = 0.5f;
     public static float spawnOffsetY = 0.1f;
