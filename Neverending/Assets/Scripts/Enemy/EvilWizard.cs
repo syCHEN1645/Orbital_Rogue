@@ -14,18 +14,24 @@ public class EvilWizard : Enemy
     protected float centreOffset;
     protected Vector3 previousVector;
     private bool canAttack;
-    public float workspace;
+    private float workspace;
     private bool DealingDamage;
+    private Collider2D collider;
+
+    private void Awake()
+    {
+        collider = gameObject.GetComponent<Collider2D>();
+    }
 
     protected override void InitialiseEnemy()
     {
         base.InitialiseEnemy();
-        speed = 5f;
+        speed = 20f;
         // attack is by default referring to melee attack if both melee and ranged attacks exist
         attackDamage = 15.0f;
-        attackRange = 1.5f;
+        attackRange = 1f;
 
-        attackInterval = 5f;
+        attackInterval = 3f;
         
         spriteScale = 4.0f;
 
@@ -33,7 +39,7 @@ public class EvilWizard : Enemy
         stopMovingDistance = 0.2f;
         huntRange = 15.0f;
 
-        enemyHealth.SetDefense(30);
+        enemyHealth.SetDefense(80);
         enemyHealth.SetHealth(100);
         enemyHealth.SetMaxHealth(100);
         enemyHealth.HealthBarUpdate();
@@ -47,13 +53,11 @@ public class EvilWizard : Enemy
     public override void Attack()
     {
         animator.SetBool("Attack", true);
-        isAttacking = true;
     }
 
     public void CancelAttack()
     {
         animator.SetBool("Attack", false);
-        isAttacking = false;
     }
     
     protected void Cast() {
@@ -111,23 +115,79 @@ public class EvilWizard : Enemy
     }
 
     protected void HuntPlayer()
-    {   
-        if (!canAttack) {
-            // if cannot attack, do not move
+    {  
+        if (!canAttack || isAttacking) {
             StopWalk();
         } else {
-            // if not attacking, move towards Player
-            if (Vector2.Distance(player.transform.position, centre.transform.position) > stopMovingDistance) {
-                MoveTowardsPlayer();
-            } if (WithinAttackRange(attackRange)) {
+            if (WithinAttackRange(attackRange)) {
                 Debug.Log("Attack");
-                StopWalk();
+                isAttacking = true;
+                LockMovement();
                 Attack();
+            } else {
+                //(Vector2.Distance(player.transform.position, centre.transform.position) > stopMovingDistance) 
+                MoveTowardsPlayer();  
             }
+        }
+    } 
+
+    void OnTriggerEnter2D(Collider2D other) {
+        if (other.gameObject.CompareTag("Player")) {
+            playerData = other.gameObject.GetComponent<PlayerData>();
+            DealingDamage = true;
+            playerData.Slow(2.0f);
         }
     }
 
-    protected bool WithinHuntRange() {
+    void OnTriggerExit2D(Collider2D other) {
+        if (other.gameObject.CompareTag("Player")) {
+            playerData = other.gameObject.GetComponent<PlayerData>();
+            DealingDamage = false;
+            playerData.RecoverSpeed();
+        }
+    }
+
+    public IEnumerator AttackCooldown()
+    {
+        canAttack = false;
+        yield return new WaitForSeconds(attackInterval);
+        canAttack = true;
+        Debug.Log("isAttacking" + isAttacking + ", canAttack" + canAttack);
+    }
+
+    public void AttackTrigger()
+    {
+        collider.enabled = true;
+        Debug.Log("Boss Attack");
+    }
+
+    public void LockMovement()
+    {
+        StopWalk();
+        if (speed != 0) {
+            workspace = speed;
+        }
+        this.speed = 0;
+        Debug.Log(workspace);
+    }
+
+    public void UnlockMovement()
+    {
+        speed = workspace;
+        //Debug.Log("Speed Unlocked");
+    }
+
+    public void AttackEnd()
+    {
+        if (!DealingDamage) {
+            CancelAttack();
+            UnlockMovement();
+            isAttacking = false;
+            StartCoroutine(AttackCooldown()); 
+        }
+    }
+
+       protected bool WithinHuntRange() {
         if (Vector2.Distance(player.transform.position, centre.transform.position) <= huntRange) {
             return true;
         }
@@ -187,69 +247,5 @@ public class EvilWizard : Enemy
         // x = x, y = y, z = 0
         return Vector3.Normalize(player.transform.position - centre.transform.position);
     }
-
-    void OnTriggerEnter2D(Collider2D other) {
-        if (other.gameObject.CompareTag("Player")) {
-            playerData = other.gameObject.GetComponent<PlayerData>();
-            DealingDamage = true;
-        }
-    }
-
-    void OnTriggerExit2D(Collider2D other) {
-        if (other.gameObject.CompareTag("Player")) {
-            playerData = other.gameObject.GetComponent<PlayerData>();
-            CancelAttack();
-            DealingDamage = true;
-            StartCoroutine(AttackCooldown());
-        }
-    }
-
-    public IEnumerator AttackCooldown()
-    {
-        canAttack = false;
-        yield return new WaitForSeconds(attackInterval);
-        canAttack = true;
-    }
-
-    public void AttackTrigger()
-    {
-        Collider2D collider = this.GetComponent<Collider2D>();
-        collider.enabled = true;
-    }
-
-    public void LockMovement()
-    {
-        workspace = speed;
-        this.speed = 0;
-    }
-
-    public void UnlockMovement()
-    {
-        speed = workspace;
-    }
 }
-    /*protected IEnumerator RangedAttackPlayer() {
-        isAttacking = true;
-        canRangedAttack = false;
-        // ranged attack animation
-        Cast();
-
-        if (playerData != null) {
-            playerData.TakeDamage(rangedAttackDamage);
-        }
-
-        yield return new WaitForSeconds(rangedAttackInterval);
-        canRangedAttack = true;
-    }*/
-
-    /*public void OnRangedAttack() {
-        Debug.Log("ranged attack");
-        isAttacking = false;
-        Quaternion rot = Quaternion.Euler(0, 0, 0);
-        Vector3 position = new Vector3(0, spellPositionOffset, 0) + player.transform.position;
-        StartCoroutine(playerData.Slow(0.2f, 2.0f));
-        Debug.Log(spellPrefab == null);
-        GameObject spell = Instantiate(spellPrefab, position, rot);
-        spell.GetComponent<Spell>().SetDamage(rangedAttackDamage);
-    }*/
 

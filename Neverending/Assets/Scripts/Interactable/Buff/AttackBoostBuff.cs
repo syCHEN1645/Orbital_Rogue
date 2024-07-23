@@ -12,7 +12,7 @@ public class AttackBoostBuff : TemporaryBuff
         // buff effect
         // Debug.Log("Attack+");
         // Debug.Log(player.GetPlayerData().baseAttack);
-        playerData.Damage += attackBonus;
+        playerData.AttackBoost(attackBonus);
         // Debug.Log(player.GetPlayerData().baseAttack);
         yield return new WaitForSeconds(duration);
         // remove buff effect
@@ -25,6 +25,6 @@ public class AttackBoostBuff : TemporaryBuff
     protected override void RemoveBuffEffect(PlayerData playerData)
     {
         // Debug.Log("Attack-");
-        playerData.Damage -= attackBonus;
+        playerData.RecoverAttack(attackBonus);
     }
 }

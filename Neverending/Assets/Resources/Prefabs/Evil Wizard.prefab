@@ -288,7 +288,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3098d4b3e228aa4ab311e713f5b35b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 0}
+  animator: {fileID: 976550350713032047}
   speed: 0
   attack: 0
   attackRange: 0
@@ -297,8 +297,9 @@ MonoBehaviour:
   healthBarOffset: 0
   stopMovingDistance: 0
   huntRange: 0
-  meleeAttackDamage: 0
+  attackDamage: 0
   centre: {fileID: 5946082864559276131}
+  workspace: 0
 --- !u!1 &2946880071215948533
 GameObject:
   m_ObjectHideFlags: 0

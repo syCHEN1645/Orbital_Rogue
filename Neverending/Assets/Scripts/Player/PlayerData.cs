@@ -20,7 +20,8 @@ public class PlayerData : MonoBehaviour
     [SerializeField]
     private float defense;
     [SerializeField]
-    public float Damage;
+    public float Damage { get; private set; }
+    private float workspace;
 
     void Start()
     {
@@ -40,11 +41,24 @@ public class PlayerData : MonoBehaviour
         Debug.Log("healthbar updated");
     }
 
-    public IEnumerator Slow(float amount, float duration) {
+    public IEnumerator TemporarySlow(float value, float duration) {
         float temp = MovementVelocity;
-        MovementVelocity *= amount;
+        MovementVelocity = value;
         yield return new WaitForSeconds(duration);
         MovementVelocity = temp;
+    }
+
+    public void Slow (float value) 
+    {
+        if (MovementVelocity != 0) {
+            workspace = MovementVelocity;
+        }
+        MovementVelocity = value;
+    }
+
+    public void RecoverSpeed()
+    {
+        MovementVelocity = workspace;
     }
 
     public void TakeDamage(float attack) {
@@ -67,6 +81,14 @@ public class PlayerData : MonoBehaviour
         } else {
             return false;
         }
+    }
+
+    public void AttackBoost(float amt) {
+        Damage += amt;
+    }
+
+    public void RecoverAttack(float amt) {
+        Damage -= amt;
     }
 
     public void IncreaseDefense(float amt) {

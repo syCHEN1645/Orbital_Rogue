@@ -21,16 +21,6 @@ public class Spell : MonoBehaviour
         }
     }
 
-    /*private void OnCollisionEnter2D(Collision2D other)
-    {
-        GameObject collider = other.gameObject;
-        Quaternion rot = Quaternion.Euler(0, 0, 0);
-        if (collider.CompareTag("Player")) {
-            Debug.Log("Deal Damage");
-            PlayerData playerData = collider.GetComponent<PlayerData>();
-        }
-    }*/
-
     public void AnimationFinishedTrigger()
     {
         Destroy(gameObject);

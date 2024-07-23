@@ -187,10 +187,6 @@ public class EnemyBoss1 : Enemy
         // ranged attack animation
         Cast();
 
-        /*if (playerData != null) {
-            playerData.TakeDamage(rangedAttackDamage);
-        }*/
-
         yield return new WaitForSeconds(rangedAttackInterval);
         canRangedAttack = true;
     }
@@ -200,7 +196,7 @@ public class EnemyBoss1 : Enemy
         isAttacking = false;
         Quaternion rot = Quaternion.Euler(0, 0, 0);
         Vector3 position = new Vector3(0, spellPositionOffset, 0) + player.transform.position;
-        StartCoroutine(playerData.Slow(0.2f, 2.0f));
+        StartCoroutine(playerData.TemporarySlow(2.0f, 2.0f));
         Debug.Log(spellPrefab == null);
         GameObject spell = Instantiate(spellPrefab, position, rot);
         spell.GetComponent<Spell>().SetDamage(rangedAttackDamage);
