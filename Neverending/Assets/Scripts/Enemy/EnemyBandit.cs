@@ -10,9 +10,9 @@ public class EnemyBandit : Enemy
     protected float stepLen;
 
     [SerializeField]
-    protected float patrolRange, healthBarOffset;
-    private float workspace;
     protected float patrolRange, healthBarOffset, huntRange;
+    private float workspace;
+    
     protected override void InitialiseEnemy() {
         base.InitialiseEnemy();
         speed = 0.7f;
@@ -120,6 +120,7 @@ public class EnemyBandit : Enemy
     public void UnlockMovement()
     {
         speed = workspace;
+    }
     protected void RandomPatrol() {
         bool withinPatrolRange = Vector3.Distance(gameObject.transform.position, originalPosition) <= patrolRange;
         if (stepLen <= 0) {
