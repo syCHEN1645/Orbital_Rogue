@@ -11,7 +11,7 @@ public class Enemy : MonoBehaviour
     protected GameObject player;
     protected PlayerData playerData;
     // originalPosition: where this enemy is spawned
-    protected Vector2 originalPosition;
+    protected Vector3 originalPosition;
     [SerializeField]
     // attackInterval: time interval between attacks
     protected float speed, attack, attackRange, attackInterval;
