@@ -14,6 +14,18 @@ public class Enemy : MonoBehaviour
     protected char dir;
     private Collider2D weaponCollider;
     // originalPosition: where this enemy is spawned
+    protected Vector3 originalPosition;
+    // how many items to drop
+    [SerializeField] protected int itemsCount;
+    // this list contains all rewards to be dropped after enemy is defeated
+    [SerializeField] protected List<GameObject> itemsToDrop;
+    // attackInterval: time interval between attacks
+    protected float speed, attack, attackRange, attackInterval;
+
+    // dir: enemy is facing this direction: l->left, r->right.
+    protected char dir;
+    private Collider2D weaponCollider;
+    // originalPosition: where this enemy is spawned
     protected Vector2 originalPosition;
     // how many items to drop
     [SerializeField] protected int itemsCount;
