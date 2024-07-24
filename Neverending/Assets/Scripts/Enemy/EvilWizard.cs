@@ -21,7 +21,7 @@ public class EvilWizard : Enemy
         base.InitialiseEnemy();
         speed = 20f;
         // attack is by default referring to melee attack if both melee and ranged attacks exist
-        attackDamage = 15.0f;
+        attackDamage = 0.5f;
         attackRange = 1f;
 
         attackInterval = 3f;
@@ -104,12 +104,15 @@ public class EvilWizard : Enemy
                 } else {
                     // idle around
                 }
-            }
+            }           
+        }
+    }
 
-            if (DealingDamage && playerData != null) {
-                Debug.Log("deal damage");
-                playerData.TakeDamage(attackDamage);
-            }
+    void FixedUpdate()
+    {
+        if (DealingDamage && playerData != null) {
+            Debug.Log("deal damage");
+            playerData.TakeDamage(attackDamage);
         }
     }
 

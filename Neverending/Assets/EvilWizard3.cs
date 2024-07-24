@@ -1,11 +1,12 @@
 using System.Collections;
 using UnityEngine;
 
-public class EvilWizard2 : Enemy
+public class EvilWizard3 : Enemy
 {
     // enemy stops at a distance of stopMovingDistance away from Player
     // enemy starts hunting if Player is closer than huntRange
     [SerializeField] protected float healthBarOffset, stopMovingDistance, huntRange;
+    [SerializeField] protected float attackDamage;
     
     // an empty object indicating centre of boss
     public GameObject centre;
@@ -45,10 +46,10 @@ public class EvilWizard2 : Enemy
         base.InitialiseEnemy();
         speed = 7f;
         // attack is by default referring to melee attack if both melee and ranged attacks exist
-        attack = 15.0f;
-        attackRange = 1.5f;
+        attackDamage = 15.0f;
+        attackRange = 20f;
 
-        attackInterval = 5f;
+        attackInterval = 1.5f;
         
         spriteScale = 4.0f;
 

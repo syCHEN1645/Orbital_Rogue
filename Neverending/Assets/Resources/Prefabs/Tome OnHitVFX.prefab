@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7166053395627342348}
   - component: {fileID: 7166053395627342347}
   m_Layer: 0
-  m_Name: Green Death
+  m_Name: Tome OnHitVFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

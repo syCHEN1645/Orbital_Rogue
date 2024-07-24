@@ -6,7 +6,7 @@ public class EnemyBoss1 : Enemy
     // enemy stops at a distance of stopMovingDistance away from Player
     // enemy starts hunting if Player is closer than huntRange
     [SerializeField] protected float healthBarOffset, stopMovingDistance, huntRange, rangedAttackRange;
-    [SerializeField] protected float meleeAttackDamage, rangedAttackDamage;
+    [SerializeField] protected float rangedAttackDamage;
     [SerializeField] protected float rangedAttackInterval;
     [SerializeField] private GameObject spellPrefab;
     
@@ -49,9 +49,8 @@ public class EnemyBoss1 : Enemy
         base.InitialiseEnemy();
         speed = 2.0f;
         // attack is by default referring to melee attack if both melee and ranged attacks exist
-        meleeAttackDamage = 15.0f;
+        attack = 15.0f;
         attackRange = 1.5f;
-
         attackInterval = 1.5f;
         
         spriteScale = 4.0f;

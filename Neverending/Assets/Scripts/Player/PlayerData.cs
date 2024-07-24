@@ -7,22 +7,21 @@ using UnityEngine.UI;
 
 public class PlayerData : MonoBehaviour
 {
-    [SerializeField]
-    public float MovementVelocity = 10f;
-    [SerializeField]
-    private Image healthBar;
-    [SerializeField]
-    private TextMeshProUGUI healthPoint;
-    [SerializeField]
-    private float health;
-    [SerializeField]
-    private float maxHealth = 100f;
-    [SerializeField]
-    private float defense;
-    [SerializeField]
-    public float Damage { get; private set; }
+    [SerializeField] private Player player;
+    [SerializeField] public float MovementVelocity = 7f;
+    [SerializeField] private Image healthBar;
+    [SerializeField] private TextMeshProUGUI healthPoint;
+    [SerializeField] private float health;
+    [SerializeField] private float maxHealth = 100f;
+    [SerializeField] private float defense;
+    [SerializeField] public float Damage { get; private set; }
+    [SerializeField] public float stunTime = 0.001f;
+    [SerializeField] public float dashTime = 2.0f;
+    [SerializeField] public float dashVelocity = 15.0f;
+    private float stunInterval = 0.5f;
     private float workspace;
-    public bool isSLowed;
+    private bool canBeStunned;
+    public bool isSLowed { get; private set; }
 
     void Start()
     {
@@ -32,6 +31,8 @@ public class PlayerData : MonoBehaviour
         if (healthBar != null) {
             HealthBarUpdate();
         }
+        player = gameObject.GetComponent<Player>();
+        canBeStunned = true;
     }
 
     public void HealthBarUpdate() {
@@ -68,7 +69,11 @@ public class PlayerData : MonoBehaviour
     public void TakeDamage(float attack) {
         Debug.Log("player take damage: " + attack);
         // attack value will be sent by the dealer
-
+        if (canBeStunned) {
+            player.StateMachine.ChangeState(player.StunState);
+            StartCoroutine(StunCoolDown());
+        }
+        
         if (!IsDead()) {
             // take damage animation
             // health decreases
@@ -77,6 +82,13 @@ public class PlayerData : MonoBehaviour
             // health bar decreases
             HealthBarUpdate();
         }        
+    }
+
+    private IEnumerator StunCoolDown()
+    {
+        canBeStunned = false;
+        yield return new WaitForSeconds(stunInterval);
+        canBeStunned = true;
     }
 
     public bool IsDead() {

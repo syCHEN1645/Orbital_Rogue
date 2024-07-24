@@ -7,8 +7,10 @@ public class Player : MonoBehaviour
     public PlayerStateMachine StateMachine { get; private set; }
     public PlayerIdleState IdleState { get; private set; }
     public PlayerMoveState MoveState { get; private set; }
+    public PlayerDashState DashState { get; private set; }
     public PlayerAttackState PrimaryAttackState { get; private set; }
     public PlayerAttackState SecondaryAttackState { get; private set; }
+    public PlayerStunState StunState { get; private set; }
 
     public Animator Anim { get; private set; }
     public PlayerInputHandler InputHandler { get; private set; }
@@ -35,8 +37,10 @@ public class Player : MonoBehaviour
         StateMachine = new PlayerStateMachine();
         IdleState = new PlayerIdleState(this, StateMachine, playerData, "Idle");
         MoveState = new PlayerMoveState(this, StateMachine, playerData, "Move");
+        DashState = new PlayerDashState(this, StateMachine, playerData, "Dash");
         PrimaryAttackState = new PlayerAttackState(this, StateMachine, playerData, "Attack", primaryWeapon);
         SecondaryAttackState = new PlayerAttackState(this, StateMachine, playerData, "Attack", secondaryWeapon);
+        StunState = new PlayerStunState(this, StateMachine, playerData, "Stun");
     }
 
     private void Start() 

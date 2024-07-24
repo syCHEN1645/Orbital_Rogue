@@ -3,21 +3,14 @@ using UnityEngine.UI;
 
 public class EnemyHealth : MonoBehaviour
 {
+    
     public Image healthBar;
-    [SerializeField]
-    private float maxHealth, health, defense, offset;
+    // defence is a percentage, "20" means 20% of attacker's attack point is fended off
+    [SerializeField] private float maxHealth, health, defense, offset;
     private Enemy enemy;
     void Start()
     {
-        maxHealth = 10.0f;
-        // defence is a percentage, "20" means 20% of attacker's attack point is fended off
-        // health = maxHealth;
-        health = maxHealth;
-        defense = 20.0f;
         enemy = gameObject.GetComponent<Enemy>();
-        // health bar slightly above enemy sprite
-        // healthBar.transform.position = enemy.transform.position + new Vector3(0, offset, 0);
-        // Debug.Log(healthBar.transform.position);
     }
 
     public void HealthBarUpdate() {
