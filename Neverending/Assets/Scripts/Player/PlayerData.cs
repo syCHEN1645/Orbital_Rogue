@@ -22,6 +22,7 @@ public class PlayerData : MonoBehaviour
     [SerializeField]
     public float Damage { get; private set; }
     private float workspace;
+    public bool isSLowed;
 
     void Start()
     {
@@ -46,6 +47,7 @@ public class PlayerData : MonoBehaviour
         MovementVelocity = value;
         yield return new WaitForSeconds(duration);
         MovementVelocity = temp;
+        isSLowed = true;
     }
 
     public void Slow (float value) 
@@ -54,15 +56,17 @@ public class PlayerData : MonoBehaviour
             workspace = MovementVelocity;
         }
         MovementVelocity = value;
+        isSLowed = true;
     }
 
     public void RecoverSpeed()
     {
         MovementVelocity = workspace;
+        isSLowed = false;
     }
 
     public void TakeDamage(float attack) {
-        // Debug.Log("player movement speed" + MovementVelocity);
+        Debug.Log("player take damage: " + attack);
         // attack value will be sent by the dealer
 
         if (!IsDead()) {

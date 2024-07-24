@@ -1,22 +1,19 @@
 using System.Collections;
 using UnityEngine;
 
-public class EnemyBoss1 : Enemy
+public class EvilWizard2 : Enemy
 {
     // enemy stops at a distance of stopMovingDistance away from Player
     // enemy starts hunting if Player is closer than huntRange
-    [SerializeField] protected float healthBarOffset, stopMovingDistance, huntRange, rangedAttackRange;
-    [SerializeField] protected float meleeAttackDamage, rangedAttackDamage;
-    [SerializeField] protected float rangedAttackInterval;
-    [SerializeField] private GameObject spellPrefab;
+    [SerializeField] protected float healthBarOffset, stopMovingDistance, huntRange;
+    [SerializeField] protected float attackDamage;
     
     // an empty object indicating centre of boss
     public GameObject centre;
-    private float spellPositionOffset;
+    //private float spellPositionOffset;
     protected float centreOffset;
     protected Vector3 previousVector;
-    private bool canRangedAttack;
-    private float workspace;
+    //private bool canAttack;
 
     void Start()
     {
@@ -47,29 +44,25 @@ public class EnemyBoss1 : Enemy
     protected override void InitialiseEnemy()
     {
         base.InitialiseEnemy();
-        speed = 2.0f;
+        speed = 7f;
         // attack is by default referring to melee attack if both melee and ranged attacks exist
-        meleeAttackDamage = 15.0f;
+        attackDamage = 15.0f;
         attackRange = 1.5f;
 
-        attackInterval = 1.5f;
+        attackInterval = 5f;
         
         spriteScale = 4.0f;
 
         healthBarOffset = 1.4f;
         stopMovingDistance = 0.2f;
         huntRange = 15.0f;
-        rangedAttackInterval = 15.0f;
-        rangedAttackDamage = 10.0f;
-        rangedAttackRange = 5.0f;
 
         enemyHealth.SetDefense(30);
         enemyHealth.SetHealth(100);
         enemyHealth.SetMaxHealth(100);
         enemyHealth.HealthBarUpdate();
 
-        canRangedAttack = true;
-        spellPositionOffset = 1.24f;
+        //canAttack = true;
         previousVector = GetUnitVectorTowardsPlayer();
         
     }
@@ -95,8 +88,6 @@ public class EnemyBoss1 : Enemy
     }
 
     public override void Injure() {
-        StartCoroutine(LockMovement());
-        isAttacking = false;
         animator.SetTrigger("Hurt");
     }
 
@@ -126,9 +117,8 @@ public class EnemyBoss1 : Enemy
                 Debug.Log("Attack");
                 StopWalk();
                 StartCoroutine(AttackPlayer());
-            } else if (canRangedAttack && (WithinAttackRange(rangedAttackRange))) {
-                StopWalk();
-                StartCoroutine(RangedAttackPlayer());
+            } else {
+                
             }
         }
     }
@@ -185,43 +175,5 @@ public class EnemyBoss1 : Enemy
         // x = x, y = y, z = 0
         return Vector3.Normalize(player.transform.position - centre.transform.position);
     }
-
-    protected IEnumerator RangedAttackPlayer() {
-        isAttacking = true;
-        canRangedAttack = false;
-        // ranged attack animation
-        Cast();
-
-        yield return new WaitForSeconds(rangedAttackInterval);
-        canRangedAttack = true;
-    }
-
-    public void OnRangedAttack() {
-        Debug.Log("ranged attack");
-        isAttacking = false;
-        Quaternion rot = Quaternion.Euler(0, 0, 0);
-        Vector3 position = new Vector3(0, spellPositionOffset, 0) + player.transform.position;
-        StartCoroutine(playerData.TemporarySlow(2.0f, 2.0f));
-        GameObject spell = Instantiate(spellPrefab, position, rot);
-        spell.GetComponent<Spell>().SetDamage(rangedAttackDamage);
-    }
-
-    protected IEnumerator LockMovement()
-    {
-        float stopDuration = 0.3f;
-        StopWalk();
-        if (speed != 0) {
-            workspace = speed;
-        }
-        this.speed = 0;
-        yield return new WaitForSeconds(stopDuration);
-        speed = workspace;
-    }
-
-    /*public void UnlockMovement()
-    {
-        speed = workspace;
-        Debug.Log(speed);
-    }*/
 }
 

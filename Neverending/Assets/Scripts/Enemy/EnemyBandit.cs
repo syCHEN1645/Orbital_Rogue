@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class EnemyBandit1 : Enemy
+public class EnemyBandit : Enemy
 {
     [SerializeField]
     protected float patrolRange, healthBarOffset;
+    private float workspace;
     protected override void InitialiseEnemy() {
         base.InitialiseEnemy();
         speed = 0.7f;
@@ -93,6 +94,20 @@ public class EnemyBandit1 : Enemy
                 MoveRight();
             }
         }
+    }
+
+    public void LockMovement()
+    {
+        animator.SetInteger("AnimState", 0);
+        if (speed != 0) {
+            workspace = speed;
+        }
+        this.speed = 0;
+    }
+
+    public void UnlockMovement()
+    {
+        speed = workspace;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

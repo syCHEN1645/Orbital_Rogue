@@ -15,8 +15,6 @@ public class Spell : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other) {
         if (other.gameObject.CompareTag("Player")) {
             playerData = other.gameObject.GetComponent<PlayerData>();
-            // Buff disappears upon collection
-            Debug.Log("Deal Damage");
             playerData?.TakeDamage(damage);
         }
     }

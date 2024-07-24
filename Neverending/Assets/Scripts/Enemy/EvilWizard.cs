@@ -10,18 +10,11 @@ public class EvilWizard : Enemy
     
     // an empty object indicating centre of boss
     public GameObject centre;
-    //private float spellPositionOffset;
     protected float centreOffset;
     protected Vector3 previousVector;
     private bool canAttack;
     private float workspace;
     private bool DealingDamage;
-    private Collider2D collider;
-
-    private void Awake()
-    {
-        collider = gameObject.GetComponent<Collider2D>();
-    }
 
     protected override void InitialiseEnemy()
     {
@@ -100,6 +93,10 @@ public class EvilWizard : Enemy
     {
         if (!stop) {
             if (enemyHealth.IsDead()) {
+                if (playerData.isSLowed) {
+                    playerData.RecoverSpeed();
+                }
+                CancelAttack();
                 Die();
             } else {
                 if (Vector2.Distance(player.transform.position, gameObject.transform.position) <= huntRange) {
@@ -157,12 +154,6 @@ public class EvilWizard : Enemy
         Debug.Log("isAttacking" + isAttacking + ", canAttack" + canAttack);
     }
 
-    public void AttackTrigger()
-    {
-        collider.enabled = true;
-        Debug.Log("Boss Attack");
-    }
-
     public void LockMovement()
     {
         StopWalk();
@@ -176,7 +167,6 @@ public class EvilWizard : Enemy
     public void UnlockMovement()
     {
         speed = workspace;
-        //Debug.Log("Speed Unlocked");
     }
 
     public void AttackEnd()

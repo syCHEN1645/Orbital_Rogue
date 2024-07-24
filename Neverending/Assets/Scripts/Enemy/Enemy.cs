@@ -10,23 +10,19 @@ public class Enemy : MonoBehaviour
     protected EnemyHealth enemyHealth;
     protected GameObject player;
     protected PlayerData playerData;
-    // originalPosition: where this enemy is spawned
-    protected Vector2 originalPosition;
-    [SerializeField]
-    // attackInterval: time interval between attacks
-    protected float speed, attack, attackRange, attackInterval;
-
     // dir: enemy is facing this direction: l->left, r->right.
     protected char dir;
-    protected bool isAttacking;
-    [SerializeField] protected float spriteScale;
-
-    [SerializeField]
-    // this list contains all rewards to be dropped after enemy is defeated
-    protected List<GameObject> itemsToDrop;
-    [SerializeField]
+    private Collider2D weaponCollider;
+    // originalPosition: where this enemy is spawned
+    protected Vector2 originalPosition;
     // how many items to drop
-    protected int itemsCount;
+    [SerializeField] protected int itemsCount;
+    // this list contains all rewards to be dropped after enemy is defeated
+    [SerializeField] protected List<GameObject> itemsToDrop;
+    // attackInterval: time interval between attacks
+    [SerializeField] protected float speed, attack, attackRange, attackInterval;  
+    [SerializeField] protected float spriteScale;   
+    protected bool isAttacking;
     protected bool stop = false;
 
     protected virtual void InitialiseEnemy() {
@@ -37,6 +33,8 @@ public class Enemy : MonoBehaviour
         playerData = player.GetComponent<PlayerData>();
 
         enemyHealth = gameObject.GetComponent<EnemyHealth>();
+        weaponCollider = GameObject.Find("AttackRange").GetComponent<Collider2D>();
+        // Debug.Log(weaponCollider == null);
         originalPosition = transform.position;
         isAttacking = false;
         // set initial dir being left
@@ -79,10 +77,30 @@ public class Enemy : MonoBehaviour
     protected virtual IEnumerator AttackPlayer() {
         isAttacking = true;
         Attack();
-        playerData.TakeDamage(attack);
+        //playerData.TakeDamage(attack);
         yield return new WaitForSeconds(attackInterval);
         isAttacking = false;
     }
+
+    public void AttackTrigger() {
+        weaponCollider.enabled = true;
+    }
+
+    void OnTriggerEnter2D(Collider2D other) {
+        if (other.gameObject.CompareTag("Player")) {
+            playerData = other.gameObject.GetComponent<PlayerData>();
+            //Debug.Log("Deal Damage");
+            playerData?.TakeDamage(attack);
+        }
+    }
+
+    public void AttackFinishedTrigger()
+    {
+        weaponCollider.enabled = false;
+    }
+
+    
+
     protected virtual IEnumerator BodyDisappear() {
         // wait for 2 seconds then body will disappear.
         yield return new WaitForSeconds(2);
