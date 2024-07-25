@@ -7,27 +7,32 @@ using UnityEngine.UI;
 
 public class PlayerData : MonoBehaviour
 {
-    [SerializeField] private Player player;
-    [SerializeField] public float MovementVelocity = 7f;
     [SerializeField] private Image healthBar;
     [SerializeField] private TextMeshProUGUI healthPoint;
+    [field: SerializeField] public float MovementVelocity { get; private set; }
+    [field: SerializeField] public float MaxHealth { get; private set; }
+    [field: SerializeField] public float Defense { get; private set; }
+    [field: SerializeField] public float Attack { get; private set; }
+    [field: SerializeField] public float StunTime { get; private set; }
+    [field: SerializeField] public float DashTime { get; private set; }
+    [field: SerializeField] public float DashVelocity { get; private set; }
+    [field: SerializeField] public float DashCooldown { get; private set; }
+    [field: SerializeField] public float MaxHoldTime { get; private set; }
+    [field: SerializeField] public float HoldTimeScale { get; private set; } 
+    [field: SerializeField] public float Drag { get; private set; }
+    [field: SerializeField] public float DashEndYMultiplier { get; private set; }
+    [field: SerializeField] public float DistBetweenAfterImages { get; private set; }
     [SerializeField] private float health;
-    [SerializeField] private float maxHealth = 100f;
-    [SerializeField] private float defense;
-    [SerializeField] public float Damage { get; private set; }
-    [SerializeField] public float stunTime = 0.001f;
-    [SerializeField] public float dashTime = 2.0f;
-    [SerializeField] public float dashVelocity = 15.0f;
-    private float stunInterval = 0.5f;
+    [SerializeField] private float stunInterval = 0.5f;
+    private Player player;
     private float workspace;
     private bool canBeStunned;
+
     public bool isSLowed { get; private set; }
 
     void Start()
     {
-        health = maxHealth;
-        defense = 20.0f;
-        Damage = 5f;
+        health = MaxHealth;
         if (healthBar != null) {
             HealthBarUpdate();
         }
@@ -37,7 +42,7 @@ public class PlayerData : MonoBehaviour
 
     public void HealthBarUpdate() {
         // health bar changes
-        healthBar.fillAmount = Mathf.Clamp(health / maxHealth, 0, 1);
+        healthBar.fillAmount = Mathf.Clamp(health / MaxHealth, 0, 1);
         // health point changes
         healthPoint.text = "" + health;
         Debug.Log("healthbar updated");
@@ -66,8 +71,8 @@ public class PlayerData : MonoBehaviour
         isSLowed = false;
     }
 
-    public void TakeDamage(float attack) {
-        Debug.Log("player take damage: " + attack);
+    public void TakeDamage(float damage) {
+        Debug.Log("player take damage: " + damage);
         // attack value will be sent by the dealer
         if (canBeStunned) {
             player.StateMachine.ChangeState(player.StunState);
@@ -77,7 +82,7 @@ public class PlayerData : MonoBehaviour
         if (!IsDead()) {
             // take damage animation
             // health decreases
-            float finalDamage = attack * (100.0f - defense) / 100.0f;
+            float finalDamage = damage * (100.0f - Defense) / 100.0f;
             health -= finalDamage;
             // health bar decreases
             HealthBarUpdate();
@@ -100,15 +105,15 @@ public class PlayerData : MonoBehaviour
     }
 
     public void AttackBoost(float amt) {
-        Damage += amt;
+        Attack += amt;
     }
 
     public void RecoverAttack(float amt) {
-        Damage -= amt;
+        Attack -= amt;
     }
 
     public void IncreaseDefense(float amt) {
-        defense += amt;
+        Defense += amt;
     }
 
     public void RecoverHealth(float amt) {
@@ -117,7 +122,7 @@ public class PlayerData : MonoBehaviour
     }
 
     public void IncreaseMaxHealth(float amt) {
-        maxHealth += amt;
+        MaxHealth += amt;
         health += amt;
         HealthBarUpdate();
     }

@@ -91,6 +91,15 @@ namespace PlayerControlScript
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""DashDirection"",
+                    ""type"": ""Value"",
+                    ""id"": ""579eee28-1b97-4604-99e9-027fcb5b51d6"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -357,6 +366,61 @@ namespace PlayerControlScript
                     ""action"": ""SecondaryWeaponPickup"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""2D Vector"",
+                    ""id"": ""779f16f1-ac9f-4d7a-8f48-746e1c5919a7"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""DashDirection"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""c495161c-07ed-445d-a732-a05600f3134f"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""DashDirection"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""5b0628b1-b3df-4e13-99c6-dedd67d8ef9f"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""DashDirection"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""0aac5252-6f23-4f44-a7d8-5255cb1fdc4f"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""DashDirection"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""7e585064-5bf8-4622-9d72-8cb0ab446a47"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""DashDirection"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         },
@@ -949,6 +1013,7 @@ namespace PlayerControlScript
             m_Player_Dash = m_Player.FindAction("Dash", throwIfNotFound: true);
             m_Player_PrimaryWeaponPickup = m_Player.FindAction("PrimaryWeaponPickup", throwIfNotFound: true);
             m_Player_SecondaryWeaponPickup = m_Player.FindAction("SecondaryWeaponPickup", throwIfNotFound: true);
+            m_Player_DashDirection = m_Player.FindAction("DashDirection", throwIfNotFound: true);
             // UI
             m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
             m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1029,6 +1094,7 @@ namespace PlayerControlScript
         private readonly InputAction m_Player_Dash;
         private readonly InputAction m_Player_PrimaryWeaponPickup;
         private readonly InputAction m_Player_SecondaryWeaponPickup;
+        private readonly InputAction m_Player_DashDirection;
         public struct PlayerActions
         {
             private @PlayerControls m_Wrapper;
@@ -1040,6 +1106,7 @@ namespace PlayerControlScript
             public InputAction @Dash => m_Wrapper.m_Player_Dash;
             public InputAction @PrimaryWeaponPickup => m_Wrapper.m_Player_PrimaryWeaponPickup;
             public InputAction @SecondaryWeaponPickup => m_Wrapper.m_Player_SecondaryWeaponPickup;
+            public InputAction @DashDirection => m_Wrapper.m_Player_DashDirection;
             public InputActionMap Get() { return m_Wrapper.m_Player; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -1070,6 +1137,9 @@ namespace PlayerControlScript
                 @SecondaryWeaponPickup.started += instance.OnSecondaryWeaponPickup;
                 @SecondaryWeaponPickup.performed += instance.OnSecondaryWeaponPickup;
                 @SecondaryWeaponPickup.canceled += instance.OnSecondaryWeaponPickup;
+                @DashDirection.started += instance.OnDashDirection;
+                @DashDirection.performed += instance.OnDashDirection;
+                @DashDirection.canceled += instance.OnDashDirection;
             }
 
             private void UnregisterCallbacks(IPlayerActions instance)
@@ -1095,6 +1165,9 @@ namespace PlayerControlScript
                 @SecondaryWeaponPickup.started -= instance.OnSecondaryWeaponPickup;
                 @SecondaryWeaponPickup.performed -= instance.OnSecondaryWeaponPickup;
                 @SecondaryWeaponPickup.canceled -= instance.OnSecondaryWeaponPickup;
+                @DashDirection.started -= instance.OnDashDirection;
+                @DashDirection.performed -= instance.OnDashDirection;
+                @DashDirection.canceled -= instance.OnDashDirection;
             }
 
             public void RemoveCallbacks(IPlayerActions instance)
@@ -1284,6 +1357,7 @@ namespace PlayerControlScript
             void OnDash(InputAction.CallbackContext context);
             void OnPrimaryWeaponPickup(InputAction.CallbackContext context);
             void OnSecondaryWeaponPickup(InputAction.CallbackContext context);
+            void OnDashDirection(InputAction.CallbackContext context);
         }
         public interface IUIActions
         {

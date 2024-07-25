@@ -68,7 +68,7 @@ public class ProjectileSpawner : WeaponComponent<ProjectileSpawnerData, AttackPr
             Debug.Log(rotZ);
             GameObject newArrow = Instantiate(data.ProjectilePrefab, projectileSpawnPoint.position + data.SpawnPositionOffset, newRotation);
             newArrow.GetComponent<Projectile>().SetProjectileData(
-                new DataPackage(playerData.Damage + currentAttackData.Damage, currentAttackData.Range));
+                new DataPackage(playerData.Attack + currentAttackData.Damage, currentAttackData.Range));
         }
     }
 }

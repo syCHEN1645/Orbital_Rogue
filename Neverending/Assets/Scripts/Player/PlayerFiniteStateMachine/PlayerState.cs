@@ -7,10 +7,9 @@ public class PlayerState
     protected Player player;
     protected PlayerStateMachine stateMachine;
     protected PlayerData playerData;
-
     protected bool isAnimationFinished;
+    protected bool isExitingState;
     protected float startTime;
-
     private string animBoolName;
 
     public PlayerState(Player player, PlayerStateMachine stateMachine, PlayerData playerData, string animBoolName)
@@ -53,6 +52,4 @@ public class PlayerState
     { 
 
     }
-
-    //public virtual void AnimationFinishTrigger() => isAnimationFinished = true;
 }

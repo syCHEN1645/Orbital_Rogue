@@ -17,11 +17,11 @@ public class PlayerStunState : PlayerState
     {
         base.LogicUpdate();
 
-        Debug.Log(playerData.stunTime);
+        //Debug.Log(playerData.StunTime);
 
-        player.SetVelocityX(0f);
+        player.SetVelocity(0f);
 
-        if (Time.time >= startTime + playerData.stunTime)
+        if (Time.time >= startTime + playerData.StunTime)
         {
             stateMachine.ChangeState(player.IdleState);
         }

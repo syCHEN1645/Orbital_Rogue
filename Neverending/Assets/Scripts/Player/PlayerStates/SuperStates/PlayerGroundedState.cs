@@ -7,6 +7,7 @@ public class PlayerGroundedState : PlayerState
     protected Vector2 movementInput;
     protected int xInput;
     protected int yInput;
+    private bool dashInput;
 
     public PlayerGroundedState(
         Player player,
@@ -39,14 +40,18 @@ public class PlayerGroundedState : PlayerState
         movementInput = player.InputHandler.MovementInput;
         xInput = player.InputHandler.NormInputX;
         yInput = player.InputHandler.NormInputY;
-
+        dashInput = player.InputHandler.DashInput;
+        
         if (player.InputHandler.AttackInputs[(int)CombatInputs.primary])
         {
             stateMachine.ChangeState(player.PrimaryAttackState);
-        }
-        else if (player.InputHandler.AttackInputs[(int)CombatInputs.secondary])
+        } else if (player.InputHandler.AttackInputs[(int)CombatInputs.secondary])
         {
             stateMachine.ChangeState(player.SecondaryAttackState);
+        } else if (dashInput && player.DashState.CheckIfCanDash())
+        {
+            Debug.Log("check: " + dashInput);
+            stateMachine.ChangeState(player.DashState);
         }
     }
 

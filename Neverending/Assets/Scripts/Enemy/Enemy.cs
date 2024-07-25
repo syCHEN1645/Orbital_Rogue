@@ -33,7 +33,7 @@ public class Enemy : MonoBehaviour
         playerData = player.GetComponent<PlayerData>();
 
         enemyHealth = gameObject.GetComponent<EnemyHealth>();
-        weaponCollider = GameObject.Find("AttackRange").GetComponent<Collider2D>();
+        weaponCollider = GameObject.Find("AttackRange")?.GetComponent<Collider2D>();
         // Debug.Log(weaponCollider == null);
         originalPosition = transform.position;
         isAttacking = false;

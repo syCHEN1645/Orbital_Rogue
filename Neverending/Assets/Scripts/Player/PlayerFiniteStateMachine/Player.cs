@@ -14,7 +14,7 @@ public class Player : MonoBehaviour
 
     public Animator Anim { get; private set; }
     public PlayerInputHandler InputHandler { get; private set; }
-    public Rigidbody2D rb { get; private set; }
+    public Rigidbody2D RB { get; private set; }
     
     public Vector2 CurrentVelocity { get; private set; }
     public SpriteRenderer PlayerSpriteRenderer { get; private set; }
@@ -45,7 +45,7 @@ public class Player : MonoBehaviour
 
     private void Start() 
     {
-        rb = GetComponent<Rigidbody2D>();
+        RB = GetComponent<Rigidbody2D>();
         PlayerSpriteRenderer = GetComponent<SpriteRenderer>();
         Anim = GetComponent<Animator>();
         InputHandler = GetComponent<PlayerInputHandler>();
@@ -61,7 +61,7 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        CurrentVelocity = rb.velocity;
+        CurrentVelocity = RB.velocity;
         StateMachine.CurrentState.LogicUpdate();
     }
 
@@ -70,11 +70,33 @@ public class Player : MonoBehaviour
         StateMachine.CurrentState.PhysicsUpdate();
     }
 
+    public void SetVelocity(float velocity, Vector2 direction)
+    {
+        workspace = direction * velocity;
+        RB.velocity = workspace;
+        CurrentVelocity = workspace;
+    }
+
     public void SetVelocityX(float xInput) 
     {
         workspace.Set(xInput, CurrentVelocity.y);
-        rb.velocity = workspace;
+        RB.velocity = workspace;
         CurrentVelocity = workspace;
+    }
+
+    public void SetVelocity(float Input) 
+    {
+        Vector2 direction = CurrentVelocity.normalized;
+        workspace.Set(Input * direction.x, Input * direction.y);
+        RB.velocity = workspace;
+        CurrentVelocity = workspace;
+    }
+
+    public void DashComplete()
+    {
+        SetVelocity(0);
+        StateMachine.ChangeState(IdleState);
+        //DashState.DashComplete();
     }
 
     public void SetFacingDirection()
@@ -83,14 +105,14 @@ public class Player : MonoBehaviour
     }
 
     public bool TryMove(Vector2 direction) {
-        int count = rb.Cast(
+        int count = RB.Cast(
             direction,
             movementFilter,
             castCollisions,
             playerData.MovementVelocity * Time.fixedDeltaTime + collisionOffset);
 
         if (count == 0) {
-            rb.MovePosition(rb.position + direction * playerData.MovementVelocity * Time.fixedDeltaTime);
+            RB.MovePosition(RB.position + direction * playerData.MovementVelocity * Time.fixedDeltaTime);
             return true;
         } else {
             return false;

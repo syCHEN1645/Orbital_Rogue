@@ -32,9 +32,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 4686844880913539007}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 327.2, y: 244.5}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -139, y: -71}
   m_SizeDelta: {x: 200, y: 10}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7760733111025630785
@@ -107,9 +107,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 4686844880913539007}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 327.7, y: 260}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -139, y: -56}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2265604248441883641
@@ -241,9 +241,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 4686844880913539007}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 233.9, y: 249.4}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -251, y: -77}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7678012829584331659
@@ -512,10 +512,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -808,7 +808,19 @@ MonoBehaviour:
     m_ActionId: 2942e273-ee2b-4212-8e9b-ac177b0dd4c9
     m_ActionName: Player/Secondary Attack[/Mouse/rightButton]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6575778204207031428}
+        m_TargetAssemblyTypeName: PlayerInputHandler, Assembly-CSharp
+        m_MethodName: OnDashInput
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 2b0eeebf-c063-4fe2-9476-583af7673f92
     m_ActionName: Player/Dash[/Keyboard/leftShift]
   - m_PersistentCalls:
@@ -859,6 +871,22 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 84f9c966-c95e-479b-8eb5-708e2057242c
     m_ActionName: Player/SecondaryWeaponPickup[/Keyboard/e]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6575778204207031428}
+        m_TargetAssemblyTypeName: PlayerInputHandler, Assembly-CSharp
+        m_MethodName: OnDashDirectionInput
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 579eee28-1b97-4604-99e9-027fcb5b51d6
+    m_ActionName: Player/DashDirection[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -876,6 +904,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcbccdd98a553f9439eece6e7a373bfc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inputHoldTime: 0.2
 --- !u!114 &7570829949117961371
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -933,13 +962,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5184d032723410429d5aba13b4cd7a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MovementVelocity: 10
   healthBar: {fileID: 1937134609520648244}
   healthPoint: {fileID: 4404882817913188452}
+  <MovementVelocity>k__BackingField: 5
+  <MaxHealth>k__BackingField: 100
+  <Defense>k__BackingField: 20
+  <Attack>k__BackingField: 5
+  <StunTime>k__BackingField: 0.1
+  <DashTime>k__BackingField: 0.5
+  <DashVelocity>k__BackingField: 7
+  <DashCooldown>k__BackingField: 0.5
+  <MaxHoldTime>k__BackingField: 1
+  <HoldTimeScale>k__BackingField: 0.25
+  <Drag>k__BackingField: 10
+  <DashEndYMultiplier>k__BackingField: 0.2
+  <DistBetweenAfterImages>k__BackingField: 0.5
   health: 100
-  maxHealth: 100
-  defense: 20
-  isSLowed: 0
+  stunInterval: 0.3
 --- !u!1 &7628109056793526536
 GameObject:
   m_ObjectHideFlags: 0
