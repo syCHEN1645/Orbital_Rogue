@@ -62,7 +62,7 @@ public class Player : MonoBehaviour
     private void Update()
     {
         CurrentVelocity = RB.velocity;
-        StateMachine.CurrentState.LogicUpdate();
+        StateMachine.CurrentState.FixedUpdate();
     }
 
     private void FixedUpdate()

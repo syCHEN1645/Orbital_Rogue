@@ -29,8 +29,8 @@ public class PlayerAbilityState : PlayerState {
 		base.Exit();
 	}
 
-	public override void LogicUpdate() {
-		base.LogicUpdate();
+	public override void FixedUpdate() {
+		base.FixedUpdate();
 
 		if (isAbilityDone) {
 			stateMachine.ChangeState(player.IdleState);

@@ -46,9 +46,9 @@ public class PlayerAttackState : PlayerAbilityState
         isAbilityDone = true;
     }
 
-    public override void LogicUpdate()
+    public override void FixedUpdate()
     {
-        base.LogicUpdate();
+        base.FixedUpdate();
 
         xInput = player.InputHandler.NormInputX;
             

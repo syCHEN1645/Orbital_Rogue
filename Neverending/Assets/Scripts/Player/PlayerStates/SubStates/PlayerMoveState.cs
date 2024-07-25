@@ -19,8 +19,8 @@ public class PlayerMoveState : PlayerGroundedState
 		base.Exit();
 	}
 
-	public override void LogicUpdate() {
-		base.LogicUpdate();
+	public override void FixedUpdate() {
+		base.FixedUpdate();
 
         if (movementInput != Vector2.zero) {
 

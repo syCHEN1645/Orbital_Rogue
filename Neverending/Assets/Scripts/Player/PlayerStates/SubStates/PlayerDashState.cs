@@ -18,24 +18,22 @@ public class PlayerDashState : PlayerAbilityState {
 
 	public override void Enter() {
 		base.Enter();
-
+		Debug.Log("velocity" + player.CurrentVelocity);
 		CanDash = false;
 		player.DashState.ResetCanDash();
 		player.InputHandler.UseDashInput();
 
 		dashDirection = Vector2.right * player.FacingDirection;
-
-		//startTime = Time.unscaledTime;
 	}
 
 	public override void Exit() {
 		base.Exit();
-		//Debug.Log(player.CurrentVelocity);
-		player.SetVelocity(0, player.CurrentVelocity.normalized);
+		Debug.Log("velocity" + player.CurrentVelocity);
+		player.SetVelocity(playerData.DashVelocity, player.CurrentVelocity.normalized);
 	}
 
-	public override void LogicUpdate() {
-		base.LogicUpdate();
+	public override void FixedUpdate() {
+		base.FixedUpdate();
 		dashDirectionInput = player.InputHandler.DashDirectionInput;
 		dashInputStop = player.InputHandler.DashInputStop;
 
@@ -46,16 +44,9 @@ public class PlayerDashState : PlayerAbilityState {
 		} else {
 			dashDirection = player.CurrentVelocity.normalized;
 		}
-    
-		player.SetVelocity(playerData.DashVelocity, dashDirection);
-    	player.Flip(player.PlayerSpriteRenderer, Mathf.RoundToInt(dashDirection.x));
-		//CheckIfShouldPlaceAfterImage();
 
-		/*if (Time.time >= startTime + playerData.DashTime) {
-			player.RB.drag = 0f;
-			isAbilityDone = true;
-			lastDashTime = Time.time;		
-		}*/
+		player.TryMove(dashDirection);
+    	player.Flip(player.PlayerSpriteRenderer, Mathf.RoundToInt(dashDirection.x));
 	}
 
 	public void DashComplete()

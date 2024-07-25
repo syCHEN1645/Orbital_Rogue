@@ -88,7 +88,6 @@ public class PlayerInputHandler : MonoBehaviour
      public void OnDashDirectionInput(InputAction.CallbackContext context)
     {
         RawDashDirectionInput = context.ReadValue<Vector2>();
-        //RawDashDirectionInput = cam.ScreenToWorldPoint((Vector3)RawDashDirectionInput) - transform.position;
         DashDirectionInput = Vector2Int.RoundToInt(RawDashDirectionInput.normalized);
         //Debug.Log("dashdirectioninput is null: " + DashDirectionInput == null);
     }

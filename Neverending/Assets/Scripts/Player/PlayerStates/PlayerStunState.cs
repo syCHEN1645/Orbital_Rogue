@@ -13,9 +13,9 @@ public class PlayerStunState : PlayerState
     {
     }
 
-    public override void LogicUpdate()
+    public override void FixedUpdate()
     {
-        base.LogicUpdate();
+        base.FixedUpdate();
 
         //Debug.Log(playerData.StunTime);
 

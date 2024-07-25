@@ -33,9 +33,9 @@ public class PlayerGroundedState : PlayerState
         base.Exit();
     }
 
-    public override void LogicUpdate()
+    public override void FixedUpdate()
     {
-        base.LogicUpdate();
+        base.FixedUpdate();
 
         movementInput = player.InputHandler.MovementInput;
         xInput = player.InputHandler.NormInputX;

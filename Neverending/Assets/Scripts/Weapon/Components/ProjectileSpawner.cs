@@ -48,9 +48,10 @@ public class ProjectileSpawner : WeaponComponent<ProjectileSpawnerData, AttackPr
         Vector3 direction = (mousePos - projectileSpawnPoint.position).normalized;
         float rotZ = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
 
-        if (player.FacingDirection == 1) { // Facing right
+        if (rotZ <= 90 && rotZ >= -90) { // Facing right
+            Debug.Log("rotZ: " + rotZ);
             rotZ = Mathf.Clamp(rotZ, -45f, 45f);
-        } else if (player.FacingDirection == -1) { // Facing left
+        } else if (rotZ <= 180 && rotZ >= -180) { // Facing left
             if (rotZ > 135f) {
                 rotZ = Mathf.Clamp(rotZ, 135f, 180f);
             } else if (rotZ < -135f) {

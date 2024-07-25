@@ -128,28 +128,28 @@ public class PlayerData : MonoBehaviour
     }
 
     public float GetMaxHealth() {
-        return maxHealth;
+        return MaxHealth;
     }
 
     public float GetDefense() {
-        return defense;
+        return Defense;
     }
 
     public float GetAttack() {
-        return Damage;
+        return Attack;
     }
     public float GetHealth() {
         return health;
     }
 
     public void SetMaxHealth(float val) {
-        this.maxHealth = val;
+        this.MaxHealth = val;
     }
     public void SetDefense(float val) {
-        this.defense = val;
+        this.Defense = val;
     }
     public void SetAttack(float val) {
-        this.Damage = val;
+        this.Attack= val;
     }
     public void SetHealth(float val) {
         this.health = val;

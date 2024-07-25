@@ -1267,10 +1267,6 @@ PrefabInstance:
       propertyPath: <secondaryWeaponInventory>k__BackingField
       value: 
       objectReference: {fileID: 1551012272}
-    - target: {fileID: 5073235222459958390, guid: f1cfe5984b5449a4da294ebda7661c57, type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6334858461049115383, guid: f1cfe5984b5449a4da294ebda7661c57, type: 3}
       propertyPath: m_Name
       value: Player
