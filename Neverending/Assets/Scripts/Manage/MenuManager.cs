@@ -21,9 +21,14 @@ public class MenuManager : MonoBehaviour
     // }
 
     public void NewGameButton() {
-        // clear old level, start new game from level 1
-        PlayerPrefs.DeleteKey(ManagerParameters.LEVEL);
-        PlayerPrefs.SetInt(ManagerParameters.LEVEL, 0);
+        // clear old level, start new game from level 1, set all current data to 0
+        for (int i = 0; i < ManagerParameters.CURRENT.Length; i++) {
+            if (i >= ManagerParameters.CURRENT.Length - 3) {
+                PlayerPrefs.SetFloat(ManagerParameters.CURRENT[i], 0);
+            } else {
+                PlayerPrefs.SetInt(ManagerParameters.CURRENT[i], 0);
+            }
+        }
         SceneManager.LoadScene(ManagerParameters.GAME_SCENE);
     }
 

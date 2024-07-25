@@ -6,6 +6,6 @@ public class AttackBoostBuff1 : AttackBoostBuff
 {
     AttackBoostBuff1() {
         duration = 5.0f;
-        attackBonus = 10.0f;
+        attackBonus = 3.0f;
     }
 }

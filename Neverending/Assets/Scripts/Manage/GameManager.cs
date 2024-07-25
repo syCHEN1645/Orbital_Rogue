@@ -75,6 +75,9 @@ public class GameManager : MonoBehaviour
         // set portal
         portal = FindObjectOfType<VictoryPoint>();
 
+        // load player stats
+        LoadPlayer();
+
         // set text
         killCountText.text = "Kill Count: " + killCount;
         levelText.text = "Level: " + level;
@@ -106,42 +109,75 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void LoadGame() {
-        if (PlayerPrefs.HasKey(ManagerParameters.LEVEL)) {
-            // if there is a saved level
-            level = PlayerPrefs.GetInt(ManagerParameters.LEVEL);
-        } else {
-            // if there is no saved level
-            PlayerPrefs.SetInt(ManagerParameters.LEVEL, 0);
-        }
+    private void LoadPlayer() {
+        player.playerData.SetAttack(PlayerPrefs.GetFloat(ManagerParameters.CURRNET_ATTACK));
+        player.playerData.SetDefense(PlayerPrefs.GetFloat(ManagerParameters.CURRNET_DEFENSE));
+        player.playerData.SetMaxHealth(PlayerPrefs.GetFloat(ManagerParameters.CURRNET_MAX_HEALTH));
+        player.playerData.SetHealth(PlayerPrefs.GetFloat(ManagerParameters.CURRNET_MAX_HEALTH));
+        player.playerData.HealthBarUpdate();
+    }
 
-        if (PlayerPrefs.HasKey(ManagerParameters.LEVEL)) {
-            // if there is a saved kill count
-            killCount = PlayerPrefs.GetInt(ManagerParameters.KILL_COUNT);
+    private void LoadGame() {
+        if (PlayerPrefs.HasKey(ManagerParameters.CURRNET_LEVEL)) {
+            // if there is a saved level, load from there
+            level = PlayerPrefs.GetInt(ManagerParameters.CURRNET_LEVEL);
+            killCount = PlayerPrefs.GetInt(ManagerParameters.CURRNET_KILL);
         } else {
-            // if there is no saved kill count
-            PlayerPrefs.SetInt(ManagerParameters.KILL_COUNT, 0);
+            // if there is no saved level, load 0
+            PlayerPrefs.SetInt(ManagerParameters.CURRNET_LEVEL, 0);
+            PlayerPrefs.SetInt(ManagerParameters.CURRNET_KILL, 0);
+            for (int i = ManagerParameters.CURRENT.Length - 3; i < ManagerParameters.CURRENT.Length; i++) {
+                PlayerPrefs.SetFloat(ManagerParameters.CURRENT[i], 0);
+            }
+            // PlayerPrefs.SetFloat(ManagerParameters.CURRNET_ATTACK, 0);
+            // PlayerPrefs.SetFloat(ManagerParameters.CURRNET_DEFENSE, 0);
+            // PlayerPrefs.SetFloat(ManagerParameters.CURRNET_MAX_HEALTH, 0);
+            
+            // this is a new game, record is not broken
+            PlayerPrefs.SetInt(ManagerParameters.BREAK_LEVEL_RECORD, 0);
+            PlayerPrefs.SetInt(ManagerParameters.BREAK_KILL_RECORD, 0);
         }
+    }
+
+    private float[] GetPlayerStats() {
+        float[] stats = {
+            player.playerData.GetAttack(),
+            player.playerData.GetDefense(), 
+            player.playerData.GetMaxHealth()
+        };
+        return stats;
     }
 
     private void SaveGame()
     {
         // level
         // save current level
-        PlayerPrefs.SetInt(ManagerParameters.LEVEL, level);
+        float[] stats = GetPlayerStats();
+        PlayerPrefs.SetInt(ManagerParameters.CURRNET_LEVEL, level);
+        PlayerPrefs.SetInt(ManagerParameters.CURRNET_KILL, killCount);
+        for (int i = ManagerParameters.CURRENT.Length - 3, j = 0; i < ManagerParameters.CURRENT.Length && j < 3; i++, j++) {
+            PlayerPrefs.SetFloat(ManagerParameters.CURRENT[i], stats[j]);
+        }
+        // PlayerPrefs.SetFloat(ManagerParameters.CURRNET_ATTACK, stats[0]);
+        // PlayerPrefs.SetFloat(ManagerParameters.CURRNET_DEFENSE, stats[1]);
+        // PlayerPrefs.SetFloat(ManagerParameters.CURRNET_MAX_HEALTH, stats[2]);
+
         // if current level breaks record
-        if (!PlayerPrefs.HasKey(ManagerParameters.LEVEL_RECORD) || 
-            level >= PlayerPrefs.GetInt(ManagerParameters.LEVEL_RECORD)) {
-            // if there is no record, or current level >= record level, record current level
-            PlayerPrefs.SetInt(ManagerParameters.LEVEL_RECORD, level);
+        if (!PlayerPrefs.HasKey(ManagerParameters.LEVEL_RECORD_LEVEL) || 
+            level >= PlayerPrefs.GetInt(ManagerParameters.LEVEL_RECORD_LEVEL)) {
+            // if there is no record, or current level >= record level, record is broken
+            // 1: break
+            // 0: not break
+            PlayerPrefs.SetInt(ManagerParameters.BREAK_LEVEL_RECORD, 1);
         }
         
-        // kill count
-        PlayerPrefs.SetInt(ManagerParameters.KILL_COUNT, killCount);
-        if (!PlayerPrefs.HasKey(ManagerParameters.KILL_RECORD) || 
-            killCount >= PlayerPrefs.GetInt(ManagerParameters.KILL_RECORD)) {
-            // if there is no record, or current level >= record level, record current level
-            PlayerPrefs.SetInt(ManagerParameters.KILL_RECORD, killCount);
+        // if current kill count breaks record
+        if (!PlayerPrefs.HasKey(ManagerParameters.KILL_RECORD_KILL) || 
+            killCount >= PlayerPrefs.GetInt(ManagerParameters.KILL_RECORD_KILL)) {
+            // if there is no record, or current level >= record level, record is broken
+            // 1: break
+            // 0: not break
+            PlayerPrefs.SetInt(ManagerParameters.BREAK_LEVEL_RECORD, 1);
         }
     }
 
