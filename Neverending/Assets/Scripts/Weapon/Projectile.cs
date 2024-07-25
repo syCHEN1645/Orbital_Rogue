@@ -30,7 +30,7 @@ public class Projectile : MonoBehaviour
         isDataSet = true;
     }
 
-    private void OnCollisionEnter2D(Collision2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         GameObject collider = other.gameObject;
         Quaternion rot = Quaternion.Euler(0, 0, 0);

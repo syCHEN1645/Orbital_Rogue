@@ -14,21 +14,16 @@ public class PlayerData : MonoBehaviour
     [field: SerializeField] public float Defense { get; private set; }
     [field: SerializeField] public float Attack { get; private set; }
     [field: SerializeField] public float StunTime { get; private set; }
-    [field: SerializeField] public float DashTime { get; private set; }
+    //[field: SerializeField] public float DashTime { get; private set; }
     [field: SerializeField] public float DashVelocity { get; private set; }
     [field: SerializeField] public float DashCooldown { get; private set; }
-    [field: SerializeField] public float MaxHoldTime { get; private set; }
-    [field: SerializeField] public float HoldTimeScale { get; private set; } 
-    [field: SerializeField] public float Drag { get; private set; }
-    [field: SerializeField] public float DashEndYMultiplier { get; private set; }
-    [field: SerializeField] public float DistBetweenAfterImages { get; private set; }
     [SerializeField] private float health;
     [SerializeField] private float stunInterval = 0.5f;
     private Player player;
     private float workspace;
     private bool canBeStunned;
-
     public bool isSLowed { get; private set; }
+    private bool immune = false;
 
     void Start()
     {
@@ -72,21 +67,27 @@ public class PlayerData : MonoBehaviour
     }
 
     public void TakeDamage(float damage) {
-        Debug.Log("player take damage: " + damage);
-        // attack value will be sent by the dealer
-        if (canBeStunned) {
-            player.StateMachine.ChangeState(player.StunState);
-            StartCoroutine(StunCoolDown());
-        }
+        if (!immune) {
+            Debug.Log("player take damage: " + damage);
+            // attack value will be sent by the dealer
+            if (canBeStunned) {
+                player.StateMachine.ChangeState(player.StunState);
+                StartCoroutine(StunCoolDown());
+            }
         
-        if (!IsDead()) {
-            // take damage animation
-            // health decreases
-            float finalDamage = damage * (100.0f - Defense) / 100.0f;
-            health -= finalDamage;
-            // health bar decreases
-            HealthBarUpdate();
-        }        
+            if (IsDead()) {
+                player.StateMachine.ChangeState(player.DeathState);
+                immune = true;
+                //player.Death();
+            } else {
+                // take damage animation
+                // health decreases
+                float finalDamage = damage * (100.0f - Defense) / 100.0f;
+                health -= finalDamage;
+                // health bar decreases
+                HealthBarUpdate();
+            } 
+        }
     }
 
     private IEnumerator StunCoolDown()

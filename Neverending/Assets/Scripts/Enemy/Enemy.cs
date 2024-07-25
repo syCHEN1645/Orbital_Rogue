@@ -12,7 +12,7 @@ public class Enemy : MonoBehaviour
     protected PlayerData playerData;
     // dir: enemy is facing this direction: l->left, r->right.
     protected char dir;
-    private Collider2D weaponCollider;
+    [SerializeField] private Collider2D weaponCollider;
     // originalPosition: where this enemy is spawned
     protected Vector3 originalPosition;
     // how many items to drop

@@ -1259,6 +1259,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1172882200011194340, guid: f1cfe5984b5449a4da294ebda7661c57, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3208022557005108212, guid: f1cfe5984b5449a4da294ebda7661c57, type: 3}
       propertyPath: <primaryWeaponInventory>k__BackingField
       value: 
@@ -1267,6 +1271,14 @@ PrefabInstance:
       propertyPath: <secondaryWeaponInventory>k__BackingField
       value: 
       objectReference: {fileID: 1551012272}
+    - target: {fileID: 3763043851345930909, guid: f1cfe5984b5449a4da294ebda7661c57, type: 3}
+      propertyPath: stunInterval
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3763043851345930909, guid: f1cfe5984b5449a4da294ebda7661c57, type: 3}
+      propertyPath: <StunTime>k__BackingField
+      value: 0.3
+      objectReference: {fileID: 0}
     - target: {fileID: 6334858461049115383, guid: f1cfe5984b5449a4da294ebda7661c57, type: 3}
       propertyPath: m_Name
       value: Player
@@ -7391,6 +7403,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3951294298138460019, guid: 0478b658009470c4b84d64df6738ae72, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6625331534605502637, guid: 0478b658009470c4b84d64df6738ae72, type: 3}
       propertyPath: m_Name
       value: Evil Wizard 3
@@ -7572,7 +7588,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 20513445841940316, guid: fe79955aa927e0f4f9644b431c2f07d3, type: 3}
       propertyPath: m_Name
-      value: Enemy Boss 1
+      value: Bringer Of Death
       objectReference: {fileID: 0}
     - target: {fileID: 20513445841940316, guid: fe79955aa927e0f4f9644b431c2f07d3, type: 3}
       propertyPath: m_IsActive
@@ -7698,7 +7714,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1798473403073101752, guid: de3c2d0036bfe634bae36f57e3571570, type: 3}
       propertyPath: m_Name
-      value: Enemy Bandit 1
+      value: Light Bandit
       objectReference: {fileID: 0}
     - target: {fileID: 1798473403073101752, guid: de3c2d0036bfe634bae36f57e3571570, type: 3}
       propertyPath: m_IsActive
@@ -7757,6 +7773,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1090661508225160262, guid: d1afdbd154d7d4c46ac121a2a10eef07, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3638033026831073008, guid: d1afdbd154d7d4c46ac121a2a10eef07, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -7826,10 +7846,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1182710831223136374, guid: ace4e22de7c7e46469ce1a0c6110cf01, type: 3}
-      propertyPath: m_CollisionDetection
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1773432263801435348, guid: ace4e22de7c7e46469ce1a0c6110cf01, type: 3}
       propertyPath: m_Name
       value: Evil Wizard
@@ -7883,7 +7899,7 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ace4e22de7c7e46469ce1a0c6110cf01, type: 3}
---- !u!1001 &8917949372181498732
+--- !u!1001 &6898596422621746449
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -7891,59 +7907,59 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1798473403073101752, guid: 1eb8d4b7d4851024998cc382ccebfa8f, type: 3}
-      propertyPath: m_Name
-      value: Enemy Bandit 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1798473403073101752, guid: 1eb8d4b7d4851024998cc382ccebfa8f, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8357819307025276853, guid: 1eb8d4b7d4851024998cc382ccebfa8f, type: 3}
+    - target: {fileID: 289219403333812431, guid: 42071961280ae9b44b8a62a394e336ab, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 18.99
+      value: 19.04
       objectReference: {fileID: 0}
-    - target: {fileID: 8357819307025276853, guid: 1eb8d4b7d4851024998cc382ccebfa8f, type: 3}
+    - target: {fileID: 289219403333812431, guid: 42071961280ae9b44b8a62a394e336ab, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.63
+      value: -2.876
       objectReference: {fileID: 0}
-    - target: {fileID: 8357819307025276853, guid: 1eb8d4b7d4851024998cc382ccebfa8f, type: 3}
+    - target: {fileID: 289219403333812431, guid: 42071961280ae9b44b8a62a394e336ab, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8357819307025276853, guid: 1eb8d4b7d4851024998cc382ccebfa8f, type: 3}
+    - target: {fileID: 289219403333812431, guid: 42071961280ae9b44b8a62a394e336ab, type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 8357819307025276853, guid: 1eb8d4b7d4851024998cc382ccebfa8f, type: 3}
+    - target: {fileID: 289219403333812431, guid: 42071961280ae9b44b8a62a394e336ab, type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8357819307025276853, guid: 1eb8d4b7d4851024998cc382ccebfa8f, type: 3}
+    - target: {fileID: 289219403333812431, guid: 42071961280ae9b44b8a62a394e336ab, type: 3}
       propertyPath: m_LocalRotation.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8357819307025276853, guid: 1eb8d4b7d4851024998cc382ccebfa8f, type: 3}
+    - target: {fileID: 289219403333812431, guid: 42071961280ae9b44b8a62a394e336ab, type: 3}
       propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8357819307025276853, guid: 1eb8d4b7d4851024998cc382ccebfa8f, type: 3}
+    - target: {fileID: 289219403333812431, guid: 42071961280ae9b44b8a62a394e336ab, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8357819307025276853, guid: 1eb8d4b7d4851024998cc382ccebfa8f, type: 3}
+    - target: {fileID: 289219403333812431, guid: 42071961280ae9b44b8a62a394e336ab, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8357819307025276853, guid: 1eb8d4b7d4851024998cc382ccebfa8f, type: 3}
+    - target: {fileID: 289219403333812431, guid: 42071961280ae9b44b8a62a394e336ab, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2265463054896614190, guid: 42071961280ae9b44b8a62a394e336ab, type: 3}
+      propertyPath: m_Name
+      value: Heavy Bandit
+      objectReference: {fileID: 0}
+    - target: {fileID: 2265463054896614190, guid: 42071961280ae9b44b8a62a394e336ab, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 1eb8d4b7d4851024998cc382ccebfa8f, type: 3}
+  m_SourcePrefab: {fileID: 100100000, guid: 42071961280ae9b44b8a62a394e336ab, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -7966,8 +7982,8 @@ SceneRoots:
   - {fileID: 651796350}
   - {fileID: 5330494675083507630}
   - {fileID: 4821078357706384621}
+  - {fileID: 6898596422621746449}
   - {fileID: 3944546111126497371}
-  - {fileID: 8917949372181498732}
   - {fileID: 200877934}
   - {fileID: 1641637309}
   - {fileID: 6375903293209902232}

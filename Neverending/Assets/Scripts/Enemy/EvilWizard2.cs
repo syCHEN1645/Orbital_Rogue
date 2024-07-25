@@ -12,7 +12,7 @@ public class EvilWizard2 : Enemy
     //private float spellPositionOffset;
     protected float centreOffset;
     protected Vector3 previousVector;
-    //private bool canAttack;
+    private float workspace;
 
     void Start()
     {
@@ -120,6 +120,20 @@ public class EvilWizard2 : Enemy
                 
             }
         }
+    }
+
+    public void LockMovement()
+    {
+        StopWalk();
+        if (speed != 0) {
+            workspace = speed;
+        }
+        this.speed = 0;
+    }
+
+    public void UnlockMovement()
+    {
+        speed = workspace;
     }
 
     protected void MoveTowardsPlayer()

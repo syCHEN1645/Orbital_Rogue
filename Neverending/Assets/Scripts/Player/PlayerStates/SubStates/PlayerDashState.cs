@@ -9,7 +9,6 @@ public class PlayerDashState : PlayerAbilityState {
 	private float lastDashTime;
 	private Vector2 dashDirection;
 	private Vector2 dashDirectionInput;
-	private Vector2 lastAIPos;
 
 	public PlayerDashState(Player player, PlayerStateMachine stateMachine, PlayerData playerData, string animBoolName) 
 		: base(player, stateMachine, playerData, animBoolName) {
@@ -47,11 +46,6 @@ public class PlayerDashState : PlayerAbilityState {
 
 		player.TryMove(dashDirection);
     	player.Flip(player.PlayerSpriteRenderer, Mathf.RoundToInt(dashDirection.x));
-	}
-
-	public void DashComplete()
-	{
-		isAbilityDone = true;
 	}
 
 	public bool CheckIfCanDash() {

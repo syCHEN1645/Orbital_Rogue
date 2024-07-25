@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
     public PlayerAttackState PrimaryAttackState { get; private set; }
     public PlayerAttackState SecondaryAttackState { get; private set; }
     public PlayerStunState StunState { get; private set; }
+    public PlayerDeathState DeathState { get; private set; }
 
     public Animator Anim { get; private set; }
     public PlayerInputHandler InputHandler { get; private set; }
@@ -41,13 +42,14 @@ public class Player : MonoBehaviour
         PrimaryAttackState = new PlayerAttackState(this, StateMachine, playerData, "Attack", primaryWeapon);
         SecondaryAttackState = new PlayerAttackState(this, StateMachine, playerData, "Attack", secondaryWeapon);
         StunState = new PlayerStunState(this, StateMachine, playerData, "Stun");
+        DeathState = new PlayerDeathState(this, StateMachine, playerData, "Death");
     }
 
     private void Start() 
     {
         RB = GetComponent<Rigidbody2D>();
-        PlayerSpriteRenderer = GetComponent<SpriteRenderer>();
         Anim = GetComponent<Animator>();
+        PlayerSpriteRenderer = GetComponent<SpriteRenderer>();
         InputHandler = GetComponent<PlayerInputHandler>();
         Inventory = GetComponent<PlayerInventory>();
 
@@ -129,5 +131,4 @@ public class Player : MonoBehaviour
             spriteRenderer.flipX = (FacingDirection == -1);
         }
     }
-        
 }

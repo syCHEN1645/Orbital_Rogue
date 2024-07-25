@@ -99,10 +99,12 @@ public class EvilWizard : Enemy
                 CancelAttack();
                 Die();
             } else {
-                if (Vector2.Distance(player.transform.position, gameObject.transform.position) <= huntRange) {
-                    HuntPlayer();
-                } else {
-                    // idle around
+                if (player != null) {
+                    if (Vector2.Distance(player.transform.position, gameObject.transform.position) <= huntRange) {
+                        HuntPlayer();
+                    } else {
+                        // idle around
+                    }
                 }
             }           
         }
