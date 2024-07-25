@@ -18,8 +18,8 @@ public class EnemyGenerator : GameObjectGenerator
     public override void GenerateOneRoom(HashSet<Vector2Int> room)
     {
         foreach (var pos in room) {
-            if (SpawnPosCheck(pos, room) && RandomBool(5)) {
-                // 5% chance being true
+            if (SpawnPosCheck(pos, room) && RandomBool(3 + level)) {
+                // (3 + level)% chance being true
                 GameObject obj = GameObject.Instantiate(
                     typesOfEnemies[RandomInt(0, typesOfEnemies.Length - 1)], 
                     new Vector3(pos.x + spawnOffsetX, pos.y + spawnOffsetY, 0), 

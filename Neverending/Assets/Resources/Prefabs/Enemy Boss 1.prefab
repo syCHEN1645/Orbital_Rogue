@@ -137,7 +137,6 @@ MonoBehaviour:
   stopMovingDistance: 0
   huntRange: 0
   rangedAttackRange: 0
-  meleeAttackDamage: 0
   rangedAttackDamage: 0
   rangedAttackInterval: 0
   spellPrefab: {fileID: 5496785054971903007, guid: 38be711c04aa76e45b40d5ce3594fc85, type: 3}
@@ -155,9 +154,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthBar: {fileID: 3498978482398652617}
-  maxHealth: 0
-  health: 0
-  defense: 0
+  maxHealth: 200
+  health: 200
+  defense: 20
   offset: 0
 --- !u!50 &8563604651193330954
 Rigidbody2D:
@@ -218,8 +217,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.35447145, y: -0.17521802}
-  m_Size: {x: 0.41660357, y: 0.5764814}
+  m_Offset: {x: -0.3544714, y: -0.175218}
+  m_Size: {x: 0.4166036, y: 0.5764814}
   m_Direction: 0
 --- !u!1 &390307227223981946
 GameObject:
