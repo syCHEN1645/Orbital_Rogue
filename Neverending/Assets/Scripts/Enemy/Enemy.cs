@@ -64,6 +64,7 @@ public class Enemy : MonoBehaviour
     public virtual void Die() {
         DropItems();
         RemoveThis();
+        GameManager.killCount++;
         stop = true;
         StartCoroutine(BodyDisappear());
     }
