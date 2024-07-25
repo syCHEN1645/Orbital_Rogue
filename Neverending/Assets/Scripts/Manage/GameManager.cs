@@ -81,6 +81,9 @@ public class GameManager : MonoBehaviour
     }
 
     void Update() {
+        // update kill
+        killCountText.text = "Kill Count: " + killCount;
+
         // if player is at victory point, and key F is pressed, and all keys are found
         if (player.playerData.IsDead()) {
             // if player is dead, end game
