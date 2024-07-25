@@ -110,11 +110,14 @@ public class GameManager : MonoBehaviour
     }
 
     private void LoadPlayer() {
-        player.playerData.SetAttack(PlayerPrefs.GetFloat(ManagerParameters.CURRNET_ATTACK));
-        player.playerData.SetDefense(PlayerPrefs.GetFloat(ManagerParameters.CURRNET_DEFENSE));
-        player.playerData.SetMaxHealth(PlayerPrefs.GetFloat(ManagerParameters.CURRNET_MAX_HEALTH));
-        player.playerData.SetHealth(PlayerPrefs.GetFloat(ManagerParameters.CURRNET_MAX_HEALTH));
-        player.playerData.HealthBarUpdate();
+        // load only if this is not the 1st level
+        if (level > 1) {
+            player.playerData.SetAttack(PlayerPrefs.GetFloat(ManagerParameters.CURRNET_ATTACK));
+            player.playerData.SetDefense(PlayerPrefs.GetFloat(ManagerParameters.CURRNET_DEFENSE));
+            player.playerData.SetMaxHealth(PlayerPrefs.GetFloat(ManagerParameters.CURRNET_MAX_HEALTH));
+            player.playerData.SetHealth(PlayerPrefs.GetFloat(ManagerParameters.CURRNET_MAX_HEALTH));
+            player.playerData.HealthBarUpdate();
+        }
     }
 
     private void LoadGame() {
