@@ -5,7 +5,7 @@ using UnityEngine;
 public class IncreaseDefenseBuff : PermanentBuff
 {
     [SerializeField]
-    protected float defense = 10.0f;
+    protected float defense = 0.3f;
     protected override void BuffEffect(PlayerData playerData)
     {
         // Debug.Log("Defense + " + defense);

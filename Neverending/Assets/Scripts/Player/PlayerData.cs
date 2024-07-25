@@ -121,4 +121,32 @@ public class PlayerData : MonoBehaviour
         health += amt;
         HealthBarUpdate();
     }
+
+    public float GetMaxHealth() {
+        return maxHealth;
+    }
+
+    public float GetDefense() {
+        return defense;
+    }
+
+    public float GetAttack() {
+        return Damage;
+    }
+    public float GetHealth() {
+        return health;
+    }
+
+    public void SetMaxHealth(float val) {
+        this.maxHealth = val;
+    }
+    public void SetDefense(float val) {
+        this.defense = val;
+    }
+    public void SetAttack(float val) {
+        this.Damage = val;
+    }
+    public void SetHealth(float val) {
+        this.health = val;
+    }
 }
