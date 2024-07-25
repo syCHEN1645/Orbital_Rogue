@@ -36,23 +36,17 @@ public class VictoryPointGenerator : GameObjectGenerator
         while (!SpawnPosCheck(pos, room));
 
         // different boss by level
-        GameObject obj;
-        if (level > PGPararmeters.typesOfBosses.Length - 1) {
-            obj = GameObject.Instantiate(PGPararmeters.typesOfBosses[PGPararmeters.typesOfBosses.Length - 1], 
+        for (int i = 0; i < 1 + level / 3; i++) {
+            GameObject obj = GameObject.Instantiate(
+                PGPararmeters.typesOfBosses[Random.Range(0, PGPararmeters.typesOfBosses.Length)], 
                 new Vector3(pos.x + spawnOffsetX, pos.y + spawnOffsetY, 0), 
                 Quaternion.identity
             );
-        } else {
-            obj = GameObject.Instantiate(
-                PGPararmeters.typesOfBosses[level], 
-                new Vector3(pos.x + spawnOffsetX, pos.y + spawnOffsetY, 0), 
-                Quaternion.identity
-            );
-        }
-        // boss drops a key
-        if (!keyGenerated) {
-            obj.GetComponent<Enemy>().AddKey();
-            keyGenerated = true;
-        }
+            // boss drops a key
+            if (!keyGenerated) {
+                obj.GetComponent<Enemy>().AddKey();
+                keyGenerated = true;
+            }
+        }  
     }
 }

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using UnityEditor.PackageManager;
 using UnityEngine;
 
 public class RoomFirstGenerator : SimpleRandomWalkGenerator
@@ -86,6 +87,9 @@ public class RoomFirstGenerator : SimpleRandomWalkGenerator
 
     private void CreateRooms()
     {
+        // increasing the min number of rooms as level increases
+        minRoomCount += GameManager.level / 2;
+
         List<BoundsInt> roomsBoundsList;
         // create a list, and regenerate until the list has at least a size of ? minRoomCount.
         do {

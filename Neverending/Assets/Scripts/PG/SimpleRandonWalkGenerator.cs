@@ -2,7 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEditor;
+using UnityEditor.PackageManager;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class SimpleRandomWalkGenerator: AbstractGenerator
 {
@@ -10,6 +12,10 @@ public class SimpleRandomWalkGenerator: AbstractGenerator
     protected SimpleRandomWalkData randomWalkData;
 
     protected override void RunPG() {
+        // increasing map sizes
+        randomWalkData.iterations += GameManager.level / 3;
+        randomWalkData.walkLength += GameManager.level - 1;
+        
         HashSet<Vector2Int> floorPositions = RunRandomWalk(randomWalkData, startPos);
         visualiser.Clear();
         // paint floors
