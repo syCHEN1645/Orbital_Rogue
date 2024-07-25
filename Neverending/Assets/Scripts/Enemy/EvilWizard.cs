@@ -6,15 +6,16 @@ public class EvilWizard : Enemy
     // enemy stops at a distance of stopMovingDistance away from Player
     // enemy starts hunting if Player is closer than huntRange
     [SerializeField] protected float healthBarOffset, stopMovingDistance, huntRange;
-    [SerializeField] protected float attackDamage;
+    [SerializeField] protected float attackDamage, damageInterval;
     
     // an empty object indicating centre of boss
     public GameObject centre;
     protected float centreOffset;
     protected Vector3 previousVector;
-    private bool canAttack;
+    private bool canAttack = true;
+    private bool dealingDamage = false;
+    private bool damageCooldown = false;
     private float workspace;
-    private bool DealingDamage;
 
     protected override void InitialiseEnemy()
     {
@@ -23,13 +24,13 @@ public class EvilWizard : Enemy
         // attack is by default referring to melee attack if both melee and ranged attacks exist
         attackDamage = 0.5f;
         attackRange = 1f;
-
         attackInterval = 3f;
-        
+        damageInterval = 0.5f;
+
         spriteScale = 4.0f;
 
         healthBarOffset = 1.4f;
-        stopMovingDistance = 0.2f;
+        stopMovingDistance = 0.5f;
         huntRange = 15.0f;
 
         enemyHealth.SetDefense(80);
@@ -37,8 +38,6 @@ public class EvilWizard : Enemy
         enemyHealth.SetMaxHealth(100);
         enemyHealth.HealthBarUpdate();
 
-        canAttack = true;
-        DealingDamage = false;
         previousVector = GetUnitVectorTowardsPlayer();
         
     }
@@ -112,10 +111,19 @@ public class EvilWizard : Enemy
 
     void FixedUpdate()
     {
-        if (DealingDamage && playerData != null) {
+        if (dealingDamage && !damageCooldown && playerData != null) {
             Debug.Log("deal damage");
             playerData.TakeDamage(attackDamage);
+            StartCoroutine(DamageInterval());
+            StartCoroutine(playerData.TemporarySlow(2.0f, 0.5f));
         }
+    }
+
+    private IEnumerator DamageInterval()
+    {
+        damageCooldown = true;
+        yield return new WaitForSeconds(damageInterval);
+        damageCooldown = false;
     }
 
     protected void HuntPlayer()
@@ -138,16 +146,14 @@ public class EvilWizard : Enemy
     void OnTriggerEnter2D(Collider2D other) {
         if (other.gameObject.CompareTag("Player")) {
             playerData = other.gameObject.GetComponent<PlayerData>();
-            DealingDamage = true;
-            playerData.Slow(2.0f);
+            dealingDamage = true;
         }
     }
 
     void OnTriggerExit2D(Collider2D other) {
         if (other.gameObject.CompareTag("Player")) {
             playerData = other.gameObject.GetComponent<PlayerData>();
-            DealingDamage = false;
-            playerData.RecoverSpeed();
+            dealingDamage = false;
         }
     }
 
@@ -176,11 +182,12 @@ public class EvilWizard : Enemy
 
     public void AttackEnd()
     {
-        if (!DealingDamage) {
+        if (!dealingDamage) {
             CancelAttack();
             UnlockMovement();
             isAttacking = false;
             StartCoroutine(AttackCooldown()); 
+            AttackFinishedTrigger();
         }
     }
 

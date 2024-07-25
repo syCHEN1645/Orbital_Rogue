@@ -30,13 +30,13 @@ public class Projectile : MonoBehaviour
         isDataSet = true;
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnCollisionEnter2D(Collision2D other)
     {
         GameObject collider = other.gameObject;
         Quaternion rot = Quaternion.Euler(0, 0, 0);
         EnemyHealth enemyHealth = collider.GetComponent<EnemyHealth>();
         if (collider.CompareTag("Enemy") || collider.CompareTag("Indestructable")) {
-            //Debug.Log("check");
+            Debug.Log(collider.name);
             enemyHealth?.TakeDamage(dataPackage.AttackDamage);
             Instantiate(particalOnHitPrefabVFX, transform.position, rot);
             Destroy(gameObject);

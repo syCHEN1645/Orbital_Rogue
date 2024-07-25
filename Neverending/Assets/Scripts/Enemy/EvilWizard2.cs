@@ -53,7 +53,7 @@ public class EvilWizard2 : Enemy
         spriteScale = 4.0f;
 
         healthBarOffset = 1.4f;
-        stopMovingDistance = 0.2f;
+        stopMovingDistance = 0.5f;
         huntRange = 15.0f;
 
         enemyHealth.SetDefense(30);

@@ -8,14 +8,16 @@ public static class PGPararmeters
     // list of enemies
     // may consider split into separate lists for different levels
     public static GameObject[] typesOfEnemies = {
-        Resources.Load("Prefabs/Enemy Bandit 1") as GameObject,
+        Resources.Load("Prefabs/Heavy Bandit") as GameObject,
+        Resources.Load("Prefabs/Light Bandit") as GameObject,
         Resources.Load("Prefabs/Blue Slime 1") as GameObject
     };
 
     // list of bosses
     public static GameObject[] typesOfBosses = {
-        Resources.Load("Prefabs/Enemy Boss 1") as GameObject,
-        Resources.Load("Prefabs/Evil Wizard") as GameObject
+        Resources.Load("Prefabs/Bringer Of Death") as GameObject,
+        Resources.Load("Prefabs/Evil Wizard 1") as GameObject, 
+        Resources.Load("Prefabs/Evil Wizard 2") as GameObject,
     };
     
     // list of rewards

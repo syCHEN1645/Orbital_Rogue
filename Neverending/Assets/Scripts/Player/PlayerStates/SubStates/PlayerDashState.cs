@@ -17,7 +17,7 @@ public class PlayerDashState : PlayerAbilityState {
 
 	public override void Enter() {
 		base.Enter();
-		Debug.Log("velocity" + player.CurrentVelocity);
+		//Debug.Log("velocity" + player.CurrentVelocity);
 		CanDash = false;
 		player.DashState.ResetCanDash();
 		player.InputHandler.UseDashInput();
@@ -27,7 +27,7 @@ public class PlayerDashState : PlayerAbilityState {
 
 	public override void Exit() {
 		base.Exit();
-		Debug.Log("velocity" + player.CurrentVelocity);
+		//Debug.Log("velocity" + player.CurrentVelocity);
 		player.SetVelocity(playerData.DashVelocity, player.CurrentVelocity.normalized);
 	}
 

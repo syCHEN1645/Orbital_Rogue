@@ -88,10 +88,10 @@ GameObject:
   - component: {fileID: 8534351294688715928}
   - component: {fileID: 9173047636152973676}
   - component: {fileID: 1182710831223136374}
-  - component: {fileID: 100733205022998537}
+  - component: {fileID: 8861462091457024361}
   - component: {fileID: 4417537055049022002}
   m_Layer: 7
-  m_Name: Evil Wizard
+  m_Name: Evil Wizard 1
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -174,8 +174,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 356758901
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 4723107735738678597, guid: 6fc66c021eec74942b4e71a3fde4dc04, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -232,8 +232,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!61 &100733205022998537
-BoxCollider2D:
+--- !u!70 &8861462091457024361
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -244,7 +244,7 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -261,22 +261,12 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0033111572, y: -0.0018099546}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.5, y: 1.5}
-    newSize: {x: 1.4, y: 0.93}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.28317118, y: 0.5172913}
-  m_EdgeRadius: 0
+  m_Offset: {x: -0.0134574175, y: -0.014803171}
+  m_Size: {x: 0.23499846, y: 0.47992432}
+  m_Direction: 0
 --- !u!114 &4417537055049022002
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -302,6 +292,7 @@ MonoBehaviour:
   stopMovingDistance: 0
   huntRange: 0
   attackDamage: 0
+  damageInterval: 0
   centre: {fileID: 5946082864559276131}
 --- !u!1 &1807292569678984935
 GameObject:

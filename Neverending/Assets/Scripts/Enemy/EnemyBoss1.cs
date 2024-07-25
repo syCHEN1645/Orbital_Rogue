@@ -56,7 +56,7 @@ public class EnemyBoss1 : Enemy
         spriteScale = 4.0f;
 
         healthBarOffset = 1.4f;
-        stopMovingDistance = 0.2f;
+        stopMovingDistance = 0.5f;
         huntRange = 15.0f;
         rangedAttackInterval = 15.0f;
         rangedAttackDamage = 10.0f;

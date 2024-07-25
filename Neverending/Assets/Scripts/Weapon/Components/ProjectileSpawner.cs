@@ -47,26 +47,22 @@ public class ProjectileSpawner : WeaponComponent<ProjectileSpawnerData, AttackPr
     {
         Vector3 direction = (mousePos - projectileSpawnPoint.position).normalized;
         float rotZ = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        
 
-        if (rotZ <= 90 && rotZ >= -90) { // Facing right
-            Debug.Log("rotZ: " + rotZ);
+        if (rotZ <= 90f && rotZ >= -90f) { // Facing right
             rotZ = Mathf.Clamp(rotZ, -45f, 45f);
-        } else if (rotZ <= 180 && rotZ >= -180) { // Facing left
-            if (rotZ > 135f) {
-                rotZ = Mathf.Clamp(rotZ, 135f, 180f);
-            } else if (rotZ < -135f) {
-                rotZ = Mathf.Clamp(rotZ, -180f, -135f);
-            } else { 
-                // If the angle is between -135 and 135, force it to the closest edge
-                rotZ = rotZ > 0 ? 135f : -135f;
+        } else { // Facing left
+            if (rotZ > 135f || rotZ < -135f) {
+                rotZ = Mathf.Clamp(rotZ, 135f, 180f) * Mathf.Sign(rotZ);;
             }
+                // If the angle is between -135 and 135, force it to the closest edge
+                //rotZ = rotZ > 0 ? 135f : -135f;
         }
-
+        Debug.Log("rotZ: " + rotZ);
         Quaternion newRotation = Quaternion.Euler(0, 0, rotZ);
-
+        Debug.Log(newRotation);
         if (data.ProjectilePrefab != null)
         {   
-            Debug.Log(rotZ);
             GameObject newArrow = Instantiate(data.ProjectilePrefab, projectileSpawnPoint.position + data.SpawnPositionOffset, newRotation);
             newArrow.GetComponent<Projectile>().SetProjectileData(
                 new DataPackage(playerData.Attack + currentAttackData.Damage, currentAttackData.Range));

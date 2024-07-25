@@ -125,7 +125,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0.5
+  m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -168,11 +168,11 @@ CapsuleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.02955151, y: 0.6425413}
-  m_Size: {x: 0.5489902, y: 1.18837}
+  m_Offset: {x: -0.018269539, y: 0.6481674}
+  m_Size: {x: 0.26206017, y: 1.1996222}
   m_Direction: 0
 --- !u!114 &4874045251304047868
 MonoBehaviour:
@@ -402,7 +402,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1313579841487452714}
   - component: {fileID: 2581048354094836721}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: AttackRange
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -436,7 +436,7 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 4294967295
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -456,7 +456,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.14980698, y: 0.7613906}
+  m_Offset: {x: -0.2439146, y: 0.7613906}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -467,5 +467,5 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.2328606, y: 1.3572034}
+  m_Size: {x: 1.4210758, y: 1.3572034}
   m_EdgeRadius: 0

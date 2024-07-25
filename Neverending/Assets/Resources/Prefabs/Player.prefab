@@ -434,7 +434,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 475dddb827f244f4aa3ea29cbf02816a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerData: {fileID: 11400000, guid: 9d42948a59ee0a94782d8ede6704deff, type: 2}
+  playerData: {fileID: 0}
   indicator: {fileID: 748864145307105725}
 --- !u!1 &4425994641923384220
 GameObject:
@@ -552,7 +552,7 @@ GameObject:
   - component: {fileID: 1487622247049384580}
   - component: {fileID: 5325104003915064346}
   - component: {fileID: 4065359511836550195}
-  - component: {fileID: 1172882200011194340}
+  - component: {fileID: 1640359263437753467}
   - component: {fileID: 4660705436445906422}
   - component: {fileID: 6575778204207031428}
   - component: {fileID: 7570829949117961371}
@@ -685,8 +685,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!61 &1172882200011194340
-BoxCollider2D:
+--- !u!70 &1640359263437753467
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -714,22 +714,12 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.001147985, y: -0.7187245}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 4, y: 4}
-    newSize: {x: 4, y: 4}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.6388164, y: 0.2090927}
-  m_EdgeRadius: 0
+  m_Offset: {x: 0.0001348768, y: -0.17582127}
+  m_Size: {x: 1.007775, y: 1.6488955}
+  m_Direction: 0
 --- !u!114 &4660705436445906422
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -964,21 +954,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthBar: {fileID: 1937134609520648244}
   healthPoint: {fileID: 4404882817913188452}
-  <MovementVelocity>k__BackingField: 5
+  <MovementVelocity>k__BackingField: 7
   <MaxHealth>k__BackingField: 100
   <Defense>k__BackingField: 20
   <Attack>k__BackingField: 5
-  <StunTime>k__BackingField: 0.1
-  <DashTime>k__BackingField: 0.5
-  <DashVelocity>k__BackingField: 7
+  <StunTime>k__BackingField: 0.3
+  <DashVelocity>k__BackingField: 10
   <DashCooldown>k__BackingField: 0.5
-  <MaxHoldTime>k__BackingField: 1
-  <HoldTimeScale>k__BackingField: 0.25
-  <Drag>k__BackingField: 10
-  <DashEndYMultiplier>k__BackingField: 0.2
-  <DistBetweenAfterImages>k__BackingField: 0.5
   health: 100
-  stunInterval: 0.3
+  stunInterval: 0.8
 --- !u!1 &7628109056793526536
 GameObject:
   m_ObjectHideFlags: 0

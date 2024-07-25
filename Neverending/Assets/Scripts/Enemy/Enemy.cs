@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
@@ -33,7 +34,8 @@ public class Enemy : MonoBehaviour
         playerData = player.GetComponent<PlayerData>();
 
         enemyHealth = gameObject.GetComponent<EnemyHealth>();
-        weaponCollider = GameObject.Find("AttackRange")?.GetComponent<Collider2D>();
+        weaponCollider = GetComponentsInChildren<Collider2D>()
+                .FirstOrDefault(collider => collider.gameObject != this.gameObject);
         // Debug.Log(weaponCollider == null);
         originalPosition = transform.position;
         isAttacking = false;
@@ -84,23 +86,23 @@ public class Enemy : MonoBehaviour
     }
 
     public void AttackTrigger() {
+        Debug.Log("collider: " + weaponCollider == null);
         weaponCollider.enabled = true;
     }
 
     void OnTriggerEnter2D(Collider2D other) {
         if (other.gameObject.CompareTag("Player")) {
             playerData = other.gameObject.GetComponent<PlayerData>();
-            //Debug.Log("Deal Damage");
-            playerData?.TakeDamage(attack);
+            Debug.Log("player enter");
+            //Debug.Log(playerData == null);
+            playerData.TakeDamage(attack);
         }
     }
 
     public void AttackFinishedTrigger()
     {
         weaponCollider.enabled = false;
-    }
-
-    
+    }    
 
     protected virtual IEnumerator BodyDisappear() {
         // wait for 2 seconds then body will disappear.

@@ -51,7 +51,7 @@ public class PlayerData : MonoBehaviour
         isSLowed = true;
     }
 
-    public void Slow (float value) 
+    public void Slow(float value) 
     {
         if (MovementVelocity != 0) {
             workspace = MovementVelocity;
@@ -62,6 +62,7 @@ public class PlayerData : MonoBehaviour
 
     public void RecoverSpeed()
     {
+        Debug.Log("workspace: " + workspace);
         MovementVelocity = workspace;
         isSLowed = false;
     }
@@ -74,19 +75,16 @@ public class PlayerData : MonoBehaviour
                 player.StateMachine.ChangeState(player.StunState);
                 StartCoroutine(StunCoolDown());
             }
-        
-            if (IsDead()) {
+            // take damage animation
+            // health decreases  
+            // health bar decreases
+            float finalDamage = damage * (100.0f - Defense) / 100.0f;
+            health -= finalDamage;
+            if (health <= 0) {
                 player.StateMachine.ChangeState(player.DeathState);
                 immune = true;
-                //player.Death();
-            } else {
-                // take damage animation
-                // health decreases
-                float finalDamage = damage * (100.0f - Defense) / 100.0f;
-                health -= finalDamage;
-                // health bar decreases
-                HealthBarUpdate();
-            } 
+            }
+            HealthBarUpdate();
         }
     }
 
