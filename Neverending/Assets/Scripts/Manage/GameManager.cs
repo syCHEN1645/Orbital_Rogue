@@ -4,20 +4,22 @@ using Cinemachine;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.VFX;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
     [SerializeField]
     public CinemachineVirtualCamera virtualCamera;
-    public GameObject player;
+    public Player player;
     public List<GameObject> enemies;
     public RoomFirstGenerator generator;
     public VictoryPoint portal;
-    public static int level;
+    public static int level, killCount;
     // need to get all keys to enter portal
     // 1 key in 1 room
     public GameObject keys;
     public GameObject symbol;
+    public TextMeshProUGUI levelText, killCountText;
     public static List<GameObject> keySymbols;
     public static int keyCount;
     private int keyTotal;
@@ -28,8 +30,9 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         LoadGame();
-        
-        generator.visualiser = Instantiate(PGPararmeters.visualisers[level], Vector3.zero, Quaternion.identity);
+
+        // get a random visualiser
+        generator.visualiser = Instantiate(PGPararmeters.visualisers[Random.Range(0, 4)], Vector3.zero, Quaternion.identity);
         if (generator != null && generator.visualiser != null) {
             generator.GenerateMap(true);
         }
@@ -58,7 +61,7 @@ public class GameManager : MonoBehaviour
         }
 
         // find and assign gameobjects
-        player = GameObject.FindGameObjectWithTag("Player");
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         foreach (GameObject enemy in GameObject.FindGameObjectsWithTag("Enemy")) {
             enemies.Add(enemy);
             Debug.Log(enemy);
@@ -71,22 +74,32 @@ public class GameManager : MonoBehaviour
 
         // set portal
         portal = FindObjectOfType<VictoryPoint>();
+
+        // set text
+        killCountText.text = "Kill Count: " + killCount;
+        levelText.text = "Level: " + level;
     }
 
     void Update() {
         // if player is at victory point, and key F is pressed, and all keys are found
+        if (player.playerData.IsDead()) {
+            // if player is dead, end game
+            SceneManager.LoadScene(ManagerParameters.END_SCENE);
+        }
         if (portal.atVictoryPoint && Input.GetKeyDown(KeyCode.F) && keyCount >= keyTotal) {
             // press F to enter portal
-            if (level == ManagerParameters.MAX_LEVEL) {
-                // this level is the last level, player wins, game ends
-                // reset level to 0
-                PlayerPrefs.SetInt(ManagerParameters.LEVEL, 0);
-                PlayerWins();
-            } else {
-                // not the last level, go to transition scene and then next level
-                SaveGame();
-                SceneManager.LoadScene(ManagerParameters.TRANSITION_SCENE);
-            }
+            // if (level == ManagerParameters.MAX_LEVEL) {
+            //     // this level is the last level, player wins, game ends
+            //     // reset level to 0
+            //     PlayerPrefs.SetInt(ManagerParameters.LEVEL, 0);
+            //     PlayerWins();
+            // } else {
+            //     // not the last level, go to transition scene and then next level
+            //     SaveGame();
+            //     SceneManager.LoadScene(ManagerParameters.TRANSITION_SCENE);
+            // }
+            SaveGame();
+            SceneManager.LoadScene(ManagerParameters.TRANSITION_SCENE);
         }
     }
 
@@ -98,11 +111,35 @@ public class GameManager : MonoBehaviour
             // if there is no saved level
             PlayerPrefs.SetInt(ManagerParameters.LEVEL, 0);
         }
+
+        if (PlayerPrefs.HasKey(ManagerParameters.LEVEL)) {
+            // if there is a saved kill count
+            killCount = PlayerPrefs.GetInt(ManagerParameters.KILL_COUNT);
+        } else {
+            // if there is no saved kill count
+            PlayerPrefs.SetInt(ManagerParameters.KILL_COUNT, 0);
+        }
     }
 
     private void SaveGame()
     {
+        // level
+        // save current level
         PlayerPrefs.SetInt(ManagerParameters.LEVEL, level);
+        // if current level breaks record
+        if (!PlayerPrefs.HasKey(ManagerParameters.LEVEL_RECORD) || 
+            level >= PlayerPrefs.GetInt(ManagerParameters.LEVEL_RECORD)) {
+            // if there is no record, or current level >= record level, record current level
+            PlayerPrefs.SetInt(ManagerParameters.LEVEL_RECORD, level);
+        }
+        
+        // kill count
+        PlayerPrefs.SetInt(ManagerParameters.KILL_COUNT, killCount);
+        if (!PlayerPrefs.HasKey(ManagerParameters.KILL_RECORD) || 
+            killCount >= PlayerPrefs.GetInt(ManagerParameters.KILL_RECORD)) {
+            // if there is no record, or current level >= record level, record current level
+            PlayerPrefs.SetInt(ManagerParameters.KILL_RECORD, killCount);
+        }
     }
 
     private void PlayerWins()
