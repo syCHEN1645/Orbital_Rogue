@@ -21,7 +21,8 @@ public class EnemyBoss1 : Enemy
     void Start()
     {
         InitialiseEnemy();
-        
+        // correct dir
+        Flip();
         // Attack();
         // Cast();
         // Spell();

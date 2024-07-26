@@ -80,7 +80,7 @@ public class EvilWizard : Enemy
     void Start()
     {
         InitialiseEnemy();
-        
+        Flip();
         // Attack();
         // Cast();
         // Spell();
