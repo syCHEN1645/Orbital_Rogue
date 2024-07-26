@@ -175,6 +175,9 @@ public class EnemyBandit : Enemy
             // go opposite if into a wall
             patrolDir *= -1;
             dirUpdate();
+        } else if (collision.gameObject.CompareTag("Player")) {
+            patrolDir *= -1;
+            dirUpdate();
         }
     }
 

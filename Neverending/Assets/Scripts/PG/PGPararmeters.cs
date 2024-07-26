@@ -28,6 +28,17 @@ public static class PGPararmeters
         Resources.Load("Prefabs/Buffs/AttackBoost1") as GameObject
     };
 
+    // list of weapons
+    public static GameObject[] weaponList = {
+        // Resources.Load("Prefabs/Buffs/AttackBoost1") as GameObject, 
+        Resources.Load("Prefabs/WeaponPickup/WeaponPickup_Bow1") as GameObject, 
+        Resources.Load("Prefabs/WeaponPickup/WeaponPickup_Sword1") as GameObject,
+        Resources.Load("Prefabs/WeaponPickup/WeaponPickup_Sword2") as GameObject,
+        Resources.Load("Prefabs/WeaponPickup/WeaponPickup_Tome1") as GameObject
+    };
+
+
+
     public static GameObject portalKey = Resources.Load("Prefabs/Keys/Key 1") as GameObject;
 
     // list of visualisers
