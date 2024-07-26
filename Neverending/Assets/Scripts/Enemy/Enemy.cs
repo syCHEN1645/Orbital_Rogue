@@ -70,6 +70,8 @@ public class Enemy : MonoBehaviour
         stop = true;
         StartCoroutine(BodyDisappear());
     }
+
+    
     protected virtual bool WithinAttackRange(float range) {
         if (player == null) {
             return false;
@@ -77,6 +79,7 @@ public class Enemy : MonoBehaviour
         return Vector2.Distance(player.transform.position, 
                 gameObject.transform.position) <= range;
     }
+
     protected virtual IEnumerator AttackPlayer() {
         isAttacking = true;
         Attack();

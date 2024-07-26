@@ -99,7 +99,21 @@ AnimationClip:
     intParameter: 0
     messageOptions: 0
   - time: 0.4
+    functionName: ColliderOffset
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.4
     functionName: AttackTrigger
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.9
+    functionName: UnlockMovement
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
@@ -113,7 +127,7 @@ AnimationClip:
     intParameter: 0
     messageOptions: 0
   - time: 1
-    functionName: UnlockMovement
+    functionName: RecoverColliderOffset
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

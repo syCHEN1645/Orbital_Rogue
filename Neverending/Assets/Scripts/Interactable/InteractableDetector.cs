@@ -27,12 +27,11 @@ public class InteractableDetector : MonoBehaviour
     }
 
     void OnTriggerEnter2D(Collider2D other) {
-        if (other.CompareTag("Interactable")) {
-            if (other.name == "WeaponPickup") {
-                weaponPickup = other.GetComponent<WeaponPickup>();
-                Debug.Log(weaponPickup.GetType() + " Enter");
+        if (other.CompareTag("WeaponPickup")) {
+            weaponPickup = other.GetComponent<WeaponPickup>();
+            Debug.Log(weaponPickup.GetType() + " Enter");
                 //newData = weaponPickup.GetContext();
-            } /*else if (other.name == "WeaponUpgrade") {
+                /*else if (other.name == "WeaponUpgrade") {
                 playerData.Upgrade();
                 //interactable = other.GetComponent<WeaponUpgrade>();
             }*/

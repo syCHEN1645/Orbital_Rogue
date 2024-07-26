@@ -48,16 +48,16 @@ public class ProjectileSpawner : WeaponComponent<ProjectileSpawnerData, AttackPr
         Vector3 direction = (mousePos - projectileSpawnPoint.position).normalized;
         float rotZ = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         
-
+        Debug.Log("rotZbefore: " + rotZ);
         if (rotZ <= 90f && rotZ >= -90f) { // Facing right
             rotZ = Mathf.Clamp(rotZ, -45f, 45f);
-        } else { // Facing left
-            if (rotZ > 135f || rotZ < -135f) {
-                rotZ = Mathf.Clamp(rotZ, 135f, 180f) * Mathf.Sign(rotZ);;
-            }
-                // If the angle is between -135 and 135, force it to the closest edge
-                //rotZ = rotZ > 0 ? 135f : -135f;
+        } else if (rotZ < 180f && rotZ > 90f) { // Facing left
+            rotZ = Mathf.Clamp(rotZ, 135f, 180f);
+        } else {
+            rotZ = Mathf.Clamp(rotZ, -180f, -135f);
         }
+        // If the angle is between -135 and 135, force it to the closest edge
+        //rotZ = rotZ > 0 ? 135f : -135f;
         Debug.Log("rotZ: " + rotZ);
         Quaternion newRotation = Quaternion.Euler(0, 0, rotZ);
         Debug.Log(newRotation);

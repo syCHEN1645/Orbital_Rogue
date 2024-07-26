@@ -342,49 +342,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: Light Bandit
       objectReference: {fileID: 0}
-    - target: {fileID: 2594106292670546463, guid: de3c2d0036bfe634bae36f57e3571570, type: 3}
-      propertyPath: m_BodyType
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2594106292670546463, guid: de3c2d0036bfe634bae36f57e3571570, type: 3}
-      propertyPath: m_ExcludeLayers.m_Bits
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2594106292670546463, guid: de3c2d0036bfe634bae36f57e3571570, type: 3}
-      propertyPath: m_IncludeLayers.m_Bits
-      value: 4294967295
-      objectReference: {fileID: 0}
-    - target: {fileID: 2640123042450269181, guid: de3c2d0036bfe634bae36f57e3571570, type: 3}
-      propertyPath: m_SortingLayer
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2640123042450269181, guid: de3c2d0036bfe634bae36f57e3571570, type: 3}
-      propertyPath: m_SortingLayerID
-      value: 356758901
-      objectReference: {fileID: 0}
-    - target: {fileID: 5232826968551791758, guid: de3c2d0036bfe634bae36f57e3571570, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -0.01
-      objectReference: {fileID: 0}
-    - target: {fileID: 5232826968551791758, guid: de3c2d0036bfe634bae36f57e3571570, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0.07
-      objectReference: {fileID: 0}
-    - target: {fileID: 5788359743248198111, guid: de3c2d0036bfe634bae36f57e3571570, type: 3}
-      propertyPath: m_CallbackLayers.m_Bits
-      value: 4294967295
-      objectReference: {fileID: 0}
-    - target: {fileID: 5788359743248198111, guid: de3c2d0036bfe634bae36f57e3571570, type: 3}
-      propertyPath: m_ContactCaptureLayers.m_Bits
-      value: 4294967295
-      objectReference: {fileID: 0}
     - target: {fileID: 8357819307025276853, guid: de3c2d0036bfe634bae36f57e3571570, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 20.69
+      value: 17.321
       objectReference: {fileID: 0}
     - target: {fileID: 8357819307025276853, guid: de3c2d0036bfe634bae36f57e3571570, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.54
+      value: -0.748
       objectReference: {fileID: 0}
     - target: {fileID: 8357819307025276853, guid: de3c2d0036bfe634bae36f57e3571570, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1341,6 +1305,106 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1640359263437753467, guid: f1cfe5984b5449a4da294ebda7661c57, type: 3}
+      propertyPath: m_Size.x
+      value: 0.62602454
+      objectReference: {fileID: 0}
+    - target: {fileID: 1640359263437753467, guid: f1cfe5984b5449a4da294ebda7661c57, type: 3}
+      propertyPath: m_Size.y
+      value: 1.6247705
+      objectReference: {fileID: 0}
+    - target: {fileID: 1640359263437753467, guid: f1cfe5984b5449a4da294ebda7661c57, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.0057138717
+      objectReference: {fileID: 0}
+    - target: {fileID: 1640359263437753467, guid: f1cfe5984b5449a4da294ebda7661c57, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.18788417
+      objectReference: {fileID: 0}
+    - target: {fileID: 1640359263437753467, guid: f1cfe5984b5449a4da294ebda7661c57, type: 3}
+      propertyPath: m_CallbackLayers.m_Bits
+      value: 1024
+      objectReference: {fileID: 0}
+    - target: {fileID: 1640359263437753467, guid: f1cfe5984b5449a4da294ebda7661c57, type: 3}
+      propertyPath: m_ContactCaptureLayers.m_Bits
+      value: 1024
+      objectReference: {fileID: 0}
+    - target: {fileID: 4431196188817996160, guid: f1cfe5984b5449a4da294ebda7661c57, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4431196188817996160, guid: f1cfe5984b5449a4da294ebda7661c57, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4431196188817996160, guid: f1cfe5984b5449a4da294ebda7661c57, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4431196188817996160, guid: f1cfe5984b5449a4da294ebda7661c57, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4431196188817996160, guid: f1cfe5984b5449a4da294ebda7661c57, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4431196188817996160, guid: f1cfe5984b5449a4da294ebda7661c57, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5073235222459958390, guid: f1cfe5984b5449a4da294ebda7661c57, type: 3}
+      propertyPath: m_Size.x
+      value: 0.6144033
+      objectReference: {fileID: 0}
+    - target: {fileID: 5073235222459958390, guid: f1cfe5984b5449a4da294ebda7661c57, type: 3}
+      propertyPath: m_Size.y
+      value: 1.6267201
+      objectReference: {fileID: 0}
+    - target: {fileID: 5073235222459958390, guid: f1cfe5984b5449a4da294ebda7661c57, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.01382938
+      objectReference: {fileID: 0}
+    - target: {fileID: 5073235222459958390, guid: f1cfe5984b5449a4da294ebda7661c57, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.1970715
+      objectReference: {fileID: 0}
+    - target: {fileID: 5073235222459958390, guid: f1cfe5984b5449a4da294ebda7661c57, type: 3}
+      propertyPath: m_IncludeLayers.m_Bits
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 5073235222459958390, guid: f1cfe5984b5449a4da294ebda7661c57, type: 3}
+      propertyPath: m_CallbackLayers.m_Bits
+      value: 256
+      objectReference: {fileID: 0}
+    - target: {fileID: 5073235222459958390, guid: f1cfe5984b5449a4da294ebda7661c57, type: 3}
+      propertyPath: m_ContactCaptureLayers.m_Bits
+      value: 256
+      objectReference: {fileID: 0}
+    - target: {fileID: 5242111651681027135, guid: f1cfe5984b5449a4da294ebda7661c57, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5242111651681027135, guid: f1cfe5984b5449a4da294ebda7661c57, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5242111651681027135, guid: f1cfe5984b5449a4da294ebda7661c57, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5242111651681027135, guid: f1cfe5984b5449a4da294ebda7661c57, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5242111651681027135, guid: f1cfe5984b5449a4da294ebda7661c57, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5242111651681027135, guid: f1cfe5984b5449a4da294ebda7661c57, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6334858461049115383, guid: f1cfe5984b5449a4da294ebda7661c57, type: 3}
       propertyPath: m_Name
       value: Player
@@ -2485,10 +2549,6 @@ PrefabInstance:
     - target: {fileID: 2265463054896614190, guid: 42071961280ae9b44b8a62a394e336ab, type: 3}
       propertyPath: m_Name
       value: Heavy Bandit
-      objectReference: {fileID: 0}
-    - target: {fileID: 2265463054896614190, guid: 42071961280ae9b44b8a62a394e336ab, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

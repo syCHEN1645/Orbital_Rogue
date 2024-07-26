@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class EnemyLight : Enemy
+public class LightBandit : Enemy
 {
     public EnemyGroundSensor groundSensor;
     public EnemyLeftSensor leftSensor;

@@ -8,22 +8,26 @@ public class EnemyBandit : Enemy
     protected bool stepFinished;
     // distance to travel before change dir, i.e. step length
     protected float stepLen;
+    private Collider2D collider;
 
     [SerializeField]
-    protected float patrolRange, healthBarOffset, huntRange, separationForce;
+    protected float patrolRange, healthBarOffset, huntRange;
+    private Vector2 idleColliderOffset;
+    private Vector2 attackColliderOffset;
     private float workspace;
     
     protected override void InitialiseEnemy() {
         base.InitialiseEnemy();
         speed = 0.7f;
         attack = 15.0f;
-        attackRange = 1.0f;
+        attackRange = 1f;
         attackInterval = 1.0f;
         spriteScale = 1.0f;
         patrolRange = 5.0f;
         healthBarOffset = 1.4f;
         huntRange = 2.0f;
-        separationForce = 0.5f;
+        idleColliderOffset = new Vector2(-0.1f, 0.1f);
+        attackColliderOffset = new Vector2(0.225f, -0.145f);
 
         originalPosition = gameObject.transform.position;
         patrolDir = Vector3.zero;
@@ -33,6 +37,7 @@ public class EnemyBandit : Enemy
     {
         InitialiseEnemy();      
         animator.transform.localScale = new Vector3(-spriteScale, spriteScale, spriteScale);
+        collider = GetComponent<Collider2D>();
     }
 
     // Update is called once per frame
@@ -111,6 +116,16 @@ public class EnemyBandit : Enemy
         }
     }
 
+    public void ColliderOffset()
+    {       
+        collider.offset = attackColliderOffset;
+    }
+
+    public void RecoverColliderOffset()
+    {
+        collider.offset = idleColliderOffset;
+    }
+
     public void LockMovement()
     {
         animator.SetInteger("AnimState", 0);
@@ -124,6 +139,14 @@ public class EnemyBandit : Enemy
     {
         speed = workspace;
     }
+
+    /*protected virtual bool WithinAttackRange(float range) 
+    {
+        if (player == null) {
+            return false;
+        }
+        return Mathf.Abs(player.transform.position.x - gameObject.transform.position.x) <= range;
+    }*/
 
     protected void RandomPatrol() {
         bool withinPatrolRange = Vector3.Distance(gameObject.transform.position, originalPosition) <= patrolRange;
@@ -179,11 +202,11 @@ public class EnemyBandit : Enemy
             // go opposite if into a wall
             patrolDir *= -1;
             dirUpdate();
-        } else if (collision.gameObject.CompareTag("Player")) {
+        } /*else if (collision.gameObject.CompareTag("Player")) {
             patrolDir *= -1;
             dirUpdate();
         }
-        Debug.Log(collision.gameObject.name);
+        Debug.Log(collision.gameObject.name);*/
     }
 
     private void ChangeDir() {
