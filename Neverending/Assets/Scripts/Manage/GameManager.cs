@@ -175,7 +175,7 @@ public class GameManager : MonoBehaviour
             // if there is no record, or current level >= record level, record is broken
             // 1: break
             // 0: not break
-            PlayerPrefs.SetInt(ManagerParameters.BREAK_LEVEL_RECORD, 1);
+            PlayerPrefs.SetInt(ManagerParameters.BREAK_KILL_RECORD, 1);
         }
     }
 
