@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class PlayerGenerator : GameObjectGenerator
@@ -26,6 +27,20 @@ public class PlayerGenerator : GameObjectGenerator
             GameObject.Instantiate(player, new Vector3(spawnPos.x + spawnOffsetX, spawnPos.y + spawnOffsetY, 0), Quaternion.identity);
         } else {
             Debug.Log("Player is empty, spawn at " + new Vector3(spawnPos.x, spawnPos.y, 0));
+        }
+        
+        for (int i = 0; i < PGPararmeters.weaponList.Length; i++) {
+            GameObject weapon = PGPararmeters.weaponList[i];
+            do {
+                spawnPos = floors[Random.Range(0, floors.Count - 1)];
+            } while (!SpawnPosCheck(spawnPos, room));
+            if (weapon != null) {
+                GameObject.Instantiate(
+                    weapon,
+                    new Vector3(spawnPos.x, spawnPos.y, 0), 
+                    Quaternion.identity
+                );
+            }
         }
     }
 }
