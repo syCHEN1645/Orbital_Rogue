@@ -36,7 +36,7 @@ public class VictoryPointGenerator : GameObjectGenerator
         while (!SpawnPosCheck(pos, room));
 
         // different boss by level
-        for (int i = 0; i < 1 + level / 3; i++) {
+        for (int i = 0; i < 1 + (level / 3); i++) {
             GameObject obj = GameObject.Instantiate(
                 PGPararmeters.typesOfBosses[Random.Range(0, PGPararmeters.typesOfBosses.Length)], 
                 new Vector3(pos.x + spawnOffsetX, pos.y + spawnOffsetY, 0), 

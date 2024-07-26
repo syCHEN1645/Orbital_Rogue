@@ -46,9 +46,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25a73f08997a27440911c235bfd0efa9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collide: {fileID: 0}
-  duration: 2
+  player: {fileID: 0}
   art: {fileID: 5946539387082918606}
+  collide: {fileID: 0}
+  traj: {fileID: 0}
+  duration: 2
   attackBonus: 10
 --- !u!61 &2227174404273614604
 BoxCollider2D:
@@ -82,7 +84,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0000009536743, y: 0.0025322586}
+  m_Offset: {x: -0.0000009536743, y: 0.002532259}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -93,7 +95,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.38213158, y: 0.478357}
+  m_Size: {x: 0.3821316, y: 0.478357}
   m_EdgeRadius: 0
 --- !u!1 &5946539387082918606
 GameObject:
