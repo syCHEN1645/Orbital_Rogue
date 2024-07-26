@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0f32951d5017de438a3bc793fded94f, type: 3}
   m_Name: Tome_1
   m_EditorClassIdentifier: 
-  <Icon>k__BackingField: {fileID: 1502452791, guid: e808605c39640d7459f25f9dfecf79ab, type: 3}
+  <Icon>k__BackingField: {fileID: -1782052813, guid: e808605c39640d7459f25f9dfecf79ab, type: 3}
   <Name>k__BackingField: 
   <Description>k__BackingField: 
   <AnimatorController>k__BackingField: {fileID: 9100000, guid: 5c520c2af09c61f408813198c02c67cf, type: 2}

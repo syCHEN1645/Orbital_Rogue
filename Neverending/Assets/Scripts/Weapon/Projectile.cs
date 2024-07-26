@@ -35,7 +35,7 @@ public class Projectile : MonoBehaviour
         GameObject collider = other.gameObject;
         Quaternion rot = Quaternion.Euler(0, 0, 0);
         EnemyHealth enemyHealth = collider.GetComponent<EnemyHealth>();
-        if (collider.CompareTag("Enemy") || collider.CompareTag("Indestructable")) {
+        if (collider.CompareTag("Enemy") || collider.CompareTag("Indestructable") || collider.CompareTag("Wall")) {
             Debug.Log(collider.name);
             enemyHealth?.TakeDamage(dataPackage.AttackDamage);
             Instantiate(particalOnHitPrefabVFX, transform.position, rot);

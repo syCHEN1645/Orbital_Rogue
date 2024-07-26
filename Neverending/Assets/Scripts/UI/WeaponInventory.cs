@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class WeaponInventory : MonoBehaviour
 {
-    public Weapon weapon;
-    public GameObject item;
+    [field: SerializeField] private Weapon weapon;
+    [field: SerializeField] private GameObject item;
     private Image image;
 
     public void SwitchWeapon(WeaponDataSO weaponData)
@@ -17,8 +17,8 @@ public class WeaponInventory : MonoBehaviour
     private void Awake()
     {
         image = item.GetComponent<Image>();
+        //weapon = transform.Find()
     }
-
     private void Start()
     {
         image.sprite = weapon.Data.Icon;
