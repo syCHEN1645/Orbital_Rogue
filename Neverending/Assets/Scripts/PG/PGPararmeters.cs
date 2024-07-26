@@ -28,7 +28,7 @@ public static class PGPararmeters
         Resources.Load("Prefabs/Buffs/AttackBoost1") as GameObject
     };
 
-    public static GameObject portalKey = Resources.Load("Keys/Key 1") as GameObject;
+    public static GameObject portalKey = Resources.Load("Prefabs/Keys/Key 1") as GameObject;
 
     // list of visualisers
     public static TileMapVisualiser[] visualisers = {
