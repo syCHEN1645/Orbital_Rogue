@@ -7795,7 +7795,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 20513445841940316, guid: fe79955aa927e0f4f9644b431c2f07d3, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1503263957560794474, guid: fe79955aa927e0f4f9644b431c2f07d3, type: 3}
       propertyPath: m_LocalPosition.x
@@ -7996,6 +7996,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Evil Wizard
       objectReference: {fileID: 0}
+    - target: {fileID: 1773432263801435348, guid: ace4e22de7c7e46469ce1a0c6110cf01, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4417537055049022002, guid: ace4e22de7c7e46469ce1a0c6110cf01, type: 3}
+      propertyPath: dir
+      value: 67
+      objectReference: {fileID: 0}
     - target: {fileID: 8355947447172959028, guid: ace4e22de7c7e46469ce1a0c6110cf01, type: 3}
       propertyPath: m_LocalPosition.x
       value: 11.78
@@ -8038,19 +8046,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8861462091457024361, guid: ace4e22de7c7e46469ce1a0c6110cf01, type: 3}
       propertyPath: m_Size.x
-      value: 0.15168452
+      value: 0.1516845
       objectReference: {fileID: 0}
     - target: {fileID: 8861462091457024361, guid: ace4e22de7c7e46469ce1a0c6110cf01, type: 3}
       propertyPath: m_Size.y
-      value: 0.46843272
+      value: 0.4684327
       objectReference: {fileID: 0}
     - target: {fileID: 8861462091457024361, guid: ace4e22de7c7e46469ce1a0c6110cf01, type: 3}
       propertyPath: m_Offset.x
-      value: -0.023512721
+      value: -0.02351272
       objectReference: {fileID: 0}
     - target: {fileID: 8861462091457024361, guid: ace4e22de7c7e46469ce1a0c6110cf01, type: 3}
       propertyPath: m_Offset.y
-      value: -0.032040566
+      value: -0.03204057
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
