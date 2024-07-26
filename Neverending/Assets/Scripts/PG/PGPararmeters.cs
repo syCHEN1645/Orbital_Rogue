@@ -30,7 +30,6 @@ public static class PGPararmeters
 
     // list of weapons
     public static GameObject[] weaponList = {
-        // Resources.Load("Prefabs/Buffs/AttackBoost1") as GameObject, 
         Resources.Load("Prefabs/WeaponPickup/WeaponPickup_Bow1") as GameObject, 
         Resources.Load("Prefabs/WeaponPickup/WeaponPickup_Sword1") as GameObject,
         Resources.Load("Prefabs/WeaponPickup/WeaponPickup_Sword2") as GameObject,

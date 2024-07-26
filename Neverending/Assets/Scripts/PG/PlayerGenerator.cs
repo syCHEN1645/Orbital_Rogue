@@ -30,16 +30,17 @@ public class PlayerGenerator : GameObjectGenerator
         }
         
         for (int i = 0; i < PGPararmeters.weaponList.Length; i++) {
-            GameObject weapon = PGPararmeters.weaponList[i];
             do {
                 spawnPos = floors[Random.Range(0, floors.Count - 1)];
             } while (!SpawnPosCheck(spawnPos, room));
-            if (weapon != null) {
+            if (PGPararmeters.weaponList[i] != null) {
                 GameObject.Instantiate(
-                    weapon,
+                    PGPararmeters.weaponList[i],
                     new Vector3(spawnPos.x, spawnPos.y, 0), 
                     Quaternion.identity
                 );
+            } else {
+                Debug.Log("weapon " + i + " is null");
             }
         }
     }
