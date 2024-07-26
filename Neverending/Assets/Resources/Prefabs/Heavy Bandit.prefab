@@ -151,7 +151,7 @@ CapsuleCollider2D:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 4294967295
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -171,8 +171,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.018269539, y: 0.6481674}
-  m_Size: {x: 0.26206017, y: 1.1996222}
+  m_Offset: {x: -0.014887333, y: 0.6481674}
+  m_Size: {x: 0.47173977, y: 1.1996222}
   m_Direction: 0
 --- !u!114 &4874045251304047868
 MonoBehaviour:
@@ -215,6 +215,7 @@ MonoBehaviour:
   patrolRange: 0
   healthBarOffset: 0
   huntRange: 0
+  separationForce: 0
 --- !u!1 &4482550205115203436
 GameObject:
   m_ObjectHideFlags: 0

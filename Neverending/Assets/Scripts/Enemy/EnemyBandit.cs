@@ -10,7 +10,7 @@ public class EnemyBandit : Enemy
     protected float stepLen;
 
     [SerializeField]
-    protected float patrolRange, healthBarOffset, huntRange;
+    protected float patrolRange, healthBarOffset, huntRange, separationForce;
     private float workspace;
     
     protected override void InitialiseEnemy() {
@@ -23,6 +23,7 @@ public class EnemyBandit : Enemy
         patrolRange = 5.0f;
         healthBarOffset = 1.4f;
         huntRange = 2.0f;
+        separationForce = 0.5f;
 
         originalPosition = gameObject.transform.position;
         patrolDir = Vector3.zero;
@@ -49,6 +50,8 @@ public class EnemyBandit : Enemy
                     // is not attacking, then attack
                     StartCoroutine(AttackPlayer());
                 }
+
+                //SeperateFromPlayer();
             }
         }
     }
@@ -121,6 +124,7 @@ public class EnemyBandit : Enemy
     {
         speed = workspace;
     }
+
     protected void RandomPatrol() {
         bool withinPatrolRange = Vector3.Distance(gameObject.transform.position, originalPosition) <= patrolRange;
         if (stepLen <= 0) {
@@ -179,6 +183,7 @@ public class EnemyBandit : Enemy
             patrolDir *= -1;
             dirUpdate();
         }
+        Debug.Log(collision.gameObject.name);
     }
 
     private void ChangeDir() {
@@ -188,4 +193,12 @@ public class EnemyBandit : Enemy
             MoveLeft();
         }
     }
+
+    /*private void SeperateFromPlayer() {
+        float distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
+        if (distanceToPlayer < attackRange) {
+            Vector3 separationDir = (transform.position - player.transform.position).normalized;
+            transform.position += separationDir * separationForce * Time.deltaTime;
+        }
+    }*/
 }

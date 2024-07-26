@@ -98,7 +98,6 @@ public class Player : MonoBehaviour
     {
         SetVelocity(0);
         StateMachine.ChangeState(IdleState);
-        //DashState.DashComplete();
     }
 
     public void SetFacingDirection()

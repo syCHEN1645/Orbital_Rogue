@@ -86,14 +86,14 @@ public class Enemy : MonoBehaviour
     }
 
     public void AttackTrigger() {
-        Debug.Log("collider: " + weaponCollider == null);
+        //Debug.Log("collider: " + weaponCollider == null);
         weaponCollider.enabled = true;
     }
 
     void OnTriggerEnter2D(Collider2D other) {
         if (other.gameObject.CompareTag("Player")) {
             playerData = other.gameObject.GetComponent<PlayerData>();
-            Debug.Log("player enter");
+            //Debug.Log("player enter");
             //Debug.Log(playerData == null);
             playerData.TakeDamage(attack);
         }

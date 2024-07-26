@@ -50,7 +50,7 @@ public class PlayerGroundedState : PlayerState
             stateMachine.ChangeState(player.SecondaryAttackState);
         } else if (dashInput && player.DashState.CheckIfCanDash())
         {
-            Debug.Log("check: " + dashInput);
+            //Debug.Log("check: " + dashInput);
             stateMachine.ChangeState(player.DashState);
         }
     }
