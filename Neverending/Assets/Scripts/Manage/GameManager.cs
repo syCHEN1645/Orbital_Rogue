@@ -142,20 +142,15 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private float[] GetPlayerStats() {
+    private void SaveGame()
+    {
+        // level
+        // save current level
         float[] stats = {
             player.playerData.GetAttack(),
             player.playerData.GetDefense(), 
             player.playerData.GetMaxHealth()
         };
-        return stats;
-    }
-
-    private void SaveGame()
-    {
-        // level
-        // save current level
-        float[] stats = GetPlayerStats();
         PlayerPrefs.SetInt(ManagerParameters.CURRNET_LEVEL, level);
         PlayerPrefs.SetInt(ManagerParameters.CURRNET_KILL, killCount);
         for (int i = ManagerParameters.CURRENT.Length - 3, j = 0; i < ManagerParameters.CURRENT.Length && j < 3; i++, j++) {
