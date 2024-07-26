@@ -47,7 +47,7 @@ public class GameManager : MonoBehaviour
         keyCount = 0;
         keyTotal = generator.GetRoomCount();
         // keyCount = keyTotal;
-        for (int i = 0; i < keyTotal; i++) {
+        for (int i = 0; i < keyTotal - 1; i++) {
             Debug.Log("key " + i);
             // instantiate a number of key symbols
             GameObject keySymbol = Instantiate(symbol, keys.transform.position + new Vector3(50 * i, 0, -1), Quaternion.identity);

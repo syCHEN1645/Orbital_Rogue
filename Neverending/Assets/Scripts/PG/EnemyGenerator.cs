@@ -17,18 +17,26 @@ public class EnemyGenerator : GameObjectGenerator
 
     public override void GenerateOneRoom(HashSet<Vector2Int> room)
     {
+        keyGenerated = false;
         foreach (var pos in room) {
-            if (SpawnPosCheck(pos, room) && RandomBool(3 + level)) {
-                // (3 + level)% chance being true
-                GameObject obj = GameObject.Instantiate(
+            GameObject obj;
+            // make sure has at least one enemy with a key
+            // pass key to the 1st enemy generated
+            if (!keyGenerated) {
+                obj = GameObject.Instantiate(
                     typesOfEnemies[RandomInt(0, typesOfEnemies.Length - 1)], 
                     new Vector3(pos.x + spawnOffsetX, pos.y + spawnOffsetY, 0), 
-                    Quaternion.identity);
-                // pass key to the 1st enemy generated
-                if (!keyGenerated) {
-                    obj.GetComponent<Enemy>().AddKey();
-                    keyGenerated = true;
-                }
+                    Quaternion.identity
+                );
+                obj.GetComponent<Enemy>().AddKey();
+                keyGenerated = true;
+            } else if (SpawnPosCheck(pos, room) && RandomBool(4 + level)) {
+                // (4 + level)% chance being true
+                obj = GameObject.Instantiate(
+                    typesOfEnemies[RandomInt(0, typesOfEnemies.Length - 1)], 
+                    new Vector3(pos.x + spawnOffsetX, pos.y + spawnOffsetY, 0), 
+                    Quaternion.identity
+                );
             }
         }
     }
