@@ -6,7 +6,7 @@ public class TransitionMenuManager : MonoBehaviour
 {
     public TextMeshProUGUI stats;
     void Start() {
-        string[] strings = {"Level: ", "Kill Count: ", "Attack: ", "Defense: ", "Max Health: "};
+        string[] strings = {"Kill Count: ", "Level: ", "Attack: ", "Defense: ", "Max Health: "};
         stats.text = "";
         for (int i = 0; i < ManagerParameters.CURRENT.Length; i++) {    
             if (i >= ManagerParameters.CURRENT.Length - 3) {

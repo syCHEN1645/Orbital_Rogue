@@ -2,12 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class EndSceneManager : MonoBehaviour
 {
     public TextMeshProUGUI curKill, curLevel, curStats,
         levelRecordKill, levelRecordLevel, levelRecordStats, 
         killRecordKill, killRecordLevel, killRecordStats;
+    public Button mainMenuButton;
+    
     void Start()
     {
         // load all stats (3 sets: current, kill-record, level-record)
@@ -50,5 +54,9 @@ public class EndSceneManager : MonoBehaviour
         for (int i = data.Length - 3; i < data.Length; i++) {
             stats.text += "" + PlayerPrefs.GetFloat(data[i]) + "\n";
         }
+    }
+
+    public void MainMenuButton() {
+        SceneManager.LoadScene(ManagerParameters.MENU_SCENE);
     }
 }
