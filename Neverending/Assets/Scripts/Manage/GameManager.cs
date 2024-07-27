@@ -167,6 +167,8 @@ public class GameManager : MonoBehaviour
             // 1: break
             // 0: not break
             PlayerPrefs.SetInt(ManagerParameters.BREAK_LEVEL_RECORD, 1);
+        } else {
+            PlayerPrefs.SetInt(ManagerParameters.BREAK_LEVEL_RECORD, 0);
         }
         
         // if current kill count breaks record
@@ -176,6 +178,8 @@ public class GameManager : MonoBehaviour
             // 1: break
             // 0: not break
             PlayerPrefs.SetInt(ManagerParameters.BREAK_KILL_RECORD, 1);
+        } else {
+            PlayerPrefs.SetInt(ManagerParameters.BREAK_KILL_RECORD, 0);
         }
     }
 
