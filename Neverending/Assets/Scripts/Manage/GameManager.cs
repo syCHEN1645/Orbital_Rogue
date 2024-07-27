@@ -162,7 +162,7 @@ public class GameManager : MonoBehaviour
 
         // if current level breaks record
         if (!PlayerPrefs.HasKey(ManagerParameters.LEVEL_RECORD_LEVEL) || 
-            level >= PlayerPrefs.GetInt(ManagerParameters.LEVEL_RECORD_LEVEL)) {
+            level > PlayerPrefs.GetInt(ManagerParameters.LEVEL_RECORD_LEVEL)) {
             // if there is no record, or current level >= record level, record is broken
             // 1: break
             // 0: not break
