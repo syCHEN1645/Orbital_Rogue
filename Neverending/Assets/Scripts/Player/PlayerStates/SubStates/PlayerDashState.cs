@@ -39,7 +39,7 @@ public class PlayerDashState : PlayerAbilityState {
 		if (dashDirectionInput != Vector2.zero) {
 			dashDirection = dashDirectionInput;
 			dashDirection.Normalize();
-			Debug.Log(dashDirection);
+			//Debug.Log(dashDirection);
 		} else {
 			dashDirection = player.CurrentVelocity.normalized;
 		}

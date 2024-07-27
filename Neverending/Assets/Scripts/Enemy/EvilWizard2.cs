@@ -5,7 +5,7 @@ public class EvilWizard2 : Enemy
 {
     // enemy stops at a distance of stopMovingDistance away from Player
     // enemy starts hunting if Player is closer than huntRange
-    [SerializeField] protected float healthBarOffset, stopMovingDistance, huntRange;
+    [SerializeField] protected float healthBarOffset, attackOffsetX, huntRange, newStunTime, attackOffsetY;
     
     // an empty object indicating centre of boss
     public GameObject centre;
@@ -17,7 +17,7 @@ public class EvilWizard2 : Enemy
     void Start()
     {
         InitialiseEnemy();
-        
+        // Flip();
         // Attack();
         // Cast();
         // Spell();
@@ -46,14 +46,16 @@ public class EvilWizard2 : Enemy
         speed = 7f;
         // attack is by default referring to melee attack if both melee and ranged attacks exist
         attack = 15.0f;
-        attackRange = 1.5f;
+        attackRange = 3f;
 
         attackInterval = 5f;
+        newStunTime = 1f;
         
         spriteScale = 4.0f;
 
         healthBarOffset = 1.4f;
-        stopMovingDistance = 0.5f;
+        //attackOffsetX = 0.1f;
+        attackOffsetY = 1.5f;
         huntRange = 15.0f;
 
         enemyHealth.SetDefense(30);
@@ -110,14 +112,15 @@ public class EvilWizard2 : Enemy
             StopWalk();
         } else {
             // if not attacking, move towards Player
-            if (Vector2.Distance(player.transform.position, centre.transform.position) > stopMovingDistance) {
-                MoveTowardsPlayer();
-            } if (WithinAttackRange(attackRange)) {
+            Debug.Log("attackrange: " + attackRange + "  offset: " + Mathf.Abs(player.transform.position.x - centre.transform.position.x));
+            
+            if (Mathf.Abs(player.transform.position.x - centre.transform.position.x) < attackRange
+                    && Mathf.Abs(player.transform.position.y - centre.transform.position.y) < attackOffsetY) {
                 Debug.Log("Attack");
                 StopWalk();
                 StartCoroutine(AttackPlayer());
             } else {
-                
+                MoveTowardsPlayer();
             }
         }
     }
@@ -134,6 +137,11 @@ public class EvilWizard2 : Enemy
     public void UnlockMovement()
     {
         speed = workspace;
+    }
+
+    public void IncreaseStunDuration()
+    {
+        StartCoroutine(playerData.TemporarySetStunDuration(newStunTime));
     }
 
     protected void MoveTowardsPlayer()

@@ -88,8 +88,8 @@ GameObject:
   - component: {fileID: 7599560317498076638}
   - component: {fileID: 1746803419428548422}
   - component: {fileID: 3071778471163175145}
-  - component: {fileID: 7869734213652654253}
   - component: {fileID: 6042310964292071510}
+  - component: {fileID: 3861909109233015947}
   m_Layer: 7
   m_Name: Evil Wizard 2
   m_TagString: Enemy
@@ -176,7 +176,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 356758901
   m_SortingLayer: 1
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: -803321122, guid: 836ba81373ddf664c8a192783efe0ecd, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -232,8 +232,35 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!61 &7869734213652654253
-BoxCollider2D:
+--- !u!114 &6042310964292071510
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2380780615382019110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b9908b2c24c4244a9fecb6a1397451f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 8542052377754857354}
+  weaponCollider: {fileID: 0}
+  itemsCount: 0
+  itemsToDrop: []
+  speed: 0
+  attack: 0
+  attackRange: 0
+  attackInterval: 0
+  spriteScale: 0
+  healthBarOffset: 0
+  attackOffsetX: 0
+  huntRange: 0
+  newStunTime: 0
+  attackOffsetY: 0
+  centre: {fileID: 2502818608145067638}
+--- !u!70 &3861909109233015947
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -264,44 +291,9 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.01098794, y: -0.1490701}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.5, y: 2.5}
-    newSize: {x: 1.4, y: 0.93}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.3939956, y: 0.5603269}
-  m_EdgeRadius: 0
---- !u!114 &6042310964292071510
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2380780615382019110}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b9908b2c24c4244a9fecb6a1397451f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 8542052377754857354}
-  weaponCollider: {fileID: 0}
-  itemsCount: 0
-  itemsToDrop: []
-  speed: 0
-  attack: 0
-  attackRange: 0
-  attackInterval: 0
-  spriteScale: 0
-  healthBarOffset: 0
-  stopMovingDistance: 0
-  huntRange: 0
-  centre: {fileID: 2502818608145067638}
+  m_Offset: {x: -0.00926733, y: -0.14873171}
+  m_Size: {x: 0.10601807, y: 0.5094719}
+  m_Direction: 0
 --- !u!1 &2502818608145067638
 GameObject:
   m_ObjectHideFlags: 0
@@ -327,7 +319,7 @@ Transform:
   m_GameObject: {fileID: 2502818608145067638}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.173, y: -0.139, z: 0}
+  m_LocalPosition: {x: 0.009, y: -0.159, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -397,8 +389,8 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0028529167, y: 0.019970536}
-  m_Size: {x: 1.1333516, y: 1.382293}
+  m_Offset: {x: -0.004777968, y: 0.07002044}
+  m_Size: {x: 1.1295015, y: 1.310451}
   m_Direction: 0
 --- !u!1 &5165024559131870816
 GameObject:
@@ -436,7 +428,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0.008, y: 0.007}
+  m_AnchoredPosition: {x: 0, y: -0.158}
   m_SizeDelta: {x: 2, y: 2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &2608002827484013664
@@ -459,7 +451,7 @@ Canvas:
   m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
-  m_SortingLayerID: 0
+  m_SortingLayerID: 356758901
   m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!114 &5699318021979096479

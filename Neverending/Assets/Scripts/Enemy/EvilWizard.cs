@@ -5,11 +5,12 @@ public class EvilWizard : Enemy
 {
     // enemy stops at a distance of stopMovingDistance away from Player
     // enemy starts hunting if Player is closer than huntRange
-    [SerializeField] protected float healthBarOffset, stopMovingDistance, huntRange;
-    [SerializeField] protected float attackDamage, damageInterval;
+    [SerializeField] protected float healthBarOffset, attackOffsetX, attackOffsetY, huntRange;
+    [SerializeField] protected float attackDamage, damageInterval, maxAttackDuration;
     
     // an empty object indicating centre of boss
     public GameObject centre;
+    public GameObject AttackMarker;
     protected float centreOffset;
     protected Vector3 previousVector;
     private bool canAttack = true;
@@ -22,15 +23,17 @@ public class EvilWizard : Enemy
         base.InitialiseEnemy();
         speed = 20f;
         // attack is by default referring to melee attack if both melee and ranged attacks exist
-        attackDamage = 0.5f;
-        attackRange = 1f;
+        attackDamage = 3f;
+        attackRange = 2.5f;
         attackInterval = 3f;
+        maxAttackDuration = 5f;
         damageInterval = 0.5f;
 
         spriteScale = 4.0f;
 
         healthBarOffset = 1.4f;
-        stopMovingDistance = 0.5f;
+        attackOffsetX = 0.1f;
+        attackOffsetY = 0.1f;
         huntRange = 15.0f;
 
         enemyHealth.SetDefense(80);
@@ -80,7 +83,7 @@ public class EvilWizard : Enemy
     void Start()
     {
         InitialiseEnemy();
-        Flip();
+        // Flip();
         // Attack();
         // Cast();
         // Spell();
@@ -131,7 +134,8 @@ public class EvilWizard : Enemy
         if (!canAttack || isAttacking) {
             StopWalk();
         } else {
-            if (WithinAttackRange(attackRange)) {
+            if (Mathf.Abs(player.transform.position.x - centre.transform.position.x) < attackOffsetX
+                    && Mathf.Abs(player.transform.position.y - centre.transform.position.y) < attackOffsetY) {
                 Debug.Log("Attack");
                 isAttacking = true;
                 LockMovement();
@@ -140,8 +144,8 @@ public class EvilWizard : Enemy
                 //(Vector2.Distance(player.transform.position, centre.transform.position) > stopMovingDistance) 
                 MoveTowardsPlayer();  
             }
-        }
-    } 
+        }   
+    }
 
     void OnTriggerEnter2D(Collider2D other) {
         if (other.gameObject.CompareTag("Player")) {
@@ -210,7 +214,7 @@ public class EvilWizard : Enemy
             0);
         
         // flip
-        if (unitVector.x * previousVector.x < 0) {
+        if (unitVector.x * previousVector.x < -0.2) {
             // dir has changed
             Flip();
             // left / right

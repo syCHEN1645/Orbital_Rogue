@@ -22,7 +22,7 @@ public class BringerOfDeath : Enemy
     {
         InitialiseEnemy();
         // correct dir
-        Flip();
+        // Flip();
         // Attack();
         // Cast();
         // Spell();
@@ -51,7 +51,7 @@ public class BringerOfDeath : Enemy
         speed = 2.0f;
         // attack is by default referring to melee attack if both melee and ranged attacks exist
         attack = 15.0f;
-        attackRange = 1.5f;
+        attackRange = 2f;
         attackInterval = 1.5f;
         
         spriteScale = 4.0f;
@@ -59,9 +59,9 @@ public class BringerOfDeath : Enemy
         healthBarOffset = 1.4f;
         stopMovingDistance = 0.5f;
         huntRange = 15.0f;
-        rangedAttackInterval = 15.0f;
+        rangedAttackInterval = 10.0f;
         rangedAttackDamage = 10.0f;
-        rangedAttackRange = 5.0f;
+        rangedAttackRange = 10.0f;
 
         enemyHealth.SetDefense(30);
         enemyHealth.SetHealth(100);
@@ -120,15 +120,15 @@ public class BringerOfDeath : Enemy
             StopWalk();
         } else {
             // if not attacking, move towards Player
-            if (Vector2.Distance(player.transform.position, centre.transform.position) > stopMovingDistance) {
-                MoveTowardsPlayer();
-            } if (WithinAttackRange(attackRange)) {
+            if (Vector2.Distance(player.transform.position, centre.transform.position) < stopMovingDistance) {
                 Debug.Log("Attack");
                 StopWalk();
                 StartCoroutine(AttackPlayer());
             } else if (canRangedAttack && (WithinAttackRange(rangedAttackRange))) {
                 StopWalk();
-                StartCoroutine(RangedAttackPlayer());
+                StartCoroutine(RangedAttackPlayer());  
+            } else {
+                MoveTowardsPlayer();
             }
         }
     }
@@ -145,8 +145,9 @@ public class BringerOfDeath : Enemy
             0);
         
         // flip
-        if (unitVector.x * previousVector.x < 0) {
+        if (unitVector.x * previousVector.x < -0.2) {
             // dir has changed
+            Debug.Log("Flip");
             Flip();
             // left / right
             if (unitVector.x > 0) {

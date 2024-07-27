@@ -111,7 +111,8 @@ public class EvilWizard3 : Enemy
             StopWalk();
         } else {
             // if not attacking, move towards Player
-            if (Vector2.Distance(player.transform.position, centre.transform.position) > stopMovingDistance) {
+            if (Mathf.Abs(player.transform.position.x - centre.transform.position.x) < 0.1 
+                    && Mathf.Abs(player.transform.position.y - centre.transform.position.y) < 0.1) {
                 MoveTowardsPlayer();
             } if (WithinAttackRange(attackRange)) {
                 Debug.Log("Attack");

@@ -67,6 +67,14 @@ public class PlayerData : MonoBehaviour
         isSLowed = false;
     }
 
+    public IEnumerator TemporarySetStunDuration(float duration)
+    {
+        float temp = StunTime;
+        StunTime = duration;
+        yield return new WaitForSeconds(duration);
+        StunTime = temp;
+    }
+
     public void TakeDamage(float damage) {
         if (!immune) {
             Debug.Log("player take damage: " + damage);
