@@ -46,9 +46,9 @@ public static class ManagerParameters
     public static string[] CURRENT = {
         CURRNET_KILL,
         CURRNET_LEVEL,
-        CURRNET_MAX_HEALTH,
         CURRNET_ATTACK,
-        CURRNET_DEFENSE
+        CURRNET_DEFENSE,
+        CURRNET_MAX_HEALTH,
     };
 
     public const string BREAK_KILL_RECORD = "break kill record";

@@ -153,8 +153,8 @@ public class GameManager : MonoBehaviour
         };
         PlayerPrefs.SetInt(ManagerParameters.CURRNET_LEVEL, level);
         PlayerPrefs.SetInt(ManagerParameters.CURRNET_KILL, killCount);
-        for (int i = ManagerParameters.CURRENT.Length - 3, j = 0; i < ManagerParameters.CURRENT.Length && j < 3; i++, j++) {
-            PlayerPrefs.SetFloat(ManagerParameters.CURRENT[i], stats[j]);
+        for (int i = ManagerParameters.CURRENT.Length - 3; i < ManagerParameters.CURRENT.Length; i++) {
+            PlayerPrefs.SetFloat(ManagerParameters.CURRENT[i], stats[i - 2]);
         }
         // PlayerPrefs.SetFloat(ManagerParameters.CURRNET_ATTACK, stats[0]);
         // PlayerPrefs.SetFloat(ManagerParameters.CURRNET_DEFENSE, stats[1]);
