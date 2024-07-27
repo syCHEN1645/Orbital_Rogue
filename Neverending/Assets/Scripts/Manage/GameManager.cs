@@ -153,8 +153,8 @@ public class GameManager : MonoBehaviour
         };
         PlayerPrefs.SetInt(ManagerParameters.CURRNET_LEVEL, level);
         PlayerPrefs.SetInt(ManagerParameters.CURRNET_KILL, killCount);
-        for (int i = ManagerParameters.CURRENT.Length - 3, j = 0; i < ManagerParameters.CURRENT.Length && j < 3; i++, j++) {
-            PlayerPrefs.SetFloat(ManagerParameters.CURRENT[i], stats[j]);
+        for (int i = ManagerParameters.CURRENT.Length - 3; i < ManagerParameters.CURRENT.Length; i++) {
+            PlayerPrefs.SetFloat(ManagerParameters.CURRENT[i], stats[i - 2]);
         }
         // PlayerPrefs.SetFloat(ManagerParameters.CURRNET_ATTACK, stats[0]);
         // PlayerPrefs.SetFloat(ManagerParameters.CURRNET_DEFENSE, stats[1]);
@@ -162,11 +162,13 @@ public class GameManager : MonoBehaviour
 
         // if current level breaks record
         if (!PlayerPrefs.HasKey(ManagerParameters.LEVEL_RECORD_LEVEL) || 
-            level >= PlayerPrefs.GetInt(ManagerParameters.LEVEL_RECORD_LEVEL)) {
+            level > PlayerPrefs.GetInt(ManagerParameters.LEVEL_RECORD_LEVEL)) {
             // if there is no record, or current level >= record level, record is broken
             // 1: break
             // 0: not break
             PlayerPrefs.SetInt(ManagerParameters.BREAK_LEVEL_RECORD, 1);
+        } else {
+            PlayerPrefs.SetInt(ManagerParameters.BREAK_LEVEL_RECORD, 0);
         }
         
         // if current kill count breaks record
@@ -176,6 +178,8 @@ public class GameManager : MonoBehaviour
             // 1: break
             // 0: not break
             PlayerPrefs.SetInt(ManagerParameters.BREAK_KILL_RECORD, 1);
+        } else {
+            PlayerPrefs.SetInt(ManagerParameters.BREAK_KILL_RECORD, 0);
         }
     }
 

@@ -56,6 +56,7 @@ public class RoomFirstGenerator : SimpleRandomWalkGenerator
         GameObject[] oldEnemies = GameObject.FindGameObjectsWithTag("Enemy");
         GameObject[] oldPlayers = GameObject.FindGameObjectsWithTag("Player");
         GameObject[] oldInteractables = GameObject.FindGameObjectsWithTag("Interactable");
+        GameObject[] oldWeapons = GameObject.FindGameObjectsWithTag("WeaponPickup");
         foreach (GameObject enemy in oldEnemies) {
             // Debug.Log("found");
             if (editor) {
@@ -78,6 +79,14 @@ public class RoomFirstGenerator : SimpleRandomWalkGenerator
                 DestroyImmediate(interactable);
             } else {
                 Destroy(interactable);
+            }
+        }
+        foreach (GameObject weapon in oldWeapons) {
+            // Debug.Log("found");
+            if (editor) {
+                DestroyImmediate(weapon);
+            } else {
+                Destroy(weapon);
             }
         }
         roomsList.Clear();
