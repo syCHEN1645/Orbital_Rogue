@@ -11,7 +11,9 @@ public class PortalKey : MonoBehaviour
     }
     
     void OnTriggerEnter2D(Collider2D other) {
+        Debug.Log(other.name);
         if (other.gameObject.CompareTag("Player")) {
+            Debug.Log("check");
             GameManager.PickKey();
             // can add some buff also
             Debug.Log(GameManager.keyCount);
@@ -19,6 +21,7 @@ public class PortalKey : MonoBehaviour
             // gameObject.SetActive(false);
         }
         if (other.gameObject.CompareTag("Ground")) {
+            Debug.Log("ground");
             // if bouncing out of map
             if (traj != null) {
                 traj.dir *= -1;

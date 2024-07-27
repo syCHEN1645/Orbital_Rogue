@@ -109,7 +109,7 @@ public class Enemy : MonoBehaviour
 
     protected virtual IEnumerator BodyDisappear() {
         // wait for 2 seconds then body will disappear.
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1.2f);
         // remove sprite
         Destroy(gameObject);
     }

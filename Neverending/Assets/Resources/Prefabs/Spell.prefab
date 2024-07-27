@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5003600311148047853}
   - component: {fileID: 5502401003263915583}
   - component: {fileID: 8482599130006753491}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Spell
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -132,7 +132,7 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 4294967295
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0

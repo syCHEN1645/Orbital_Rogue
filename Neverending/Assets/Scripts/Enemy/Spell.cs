@@ -6,6 +6,13 @@ public class Spell : MonoBehaviour
 {
     private float damage;
     private PlayerData playerData;
+    private Collider2D collider;
+
+    private void Start()
+    {   
+        collider = this.GetComponent<Collider2D>();
+        collider.enabled = false;
+    }
     
     public void SetDamage(float damage)
     {
@@ -26,7 +33,6 @@ public class Spell : MonoBehaviour
 
     public void InflictDamageTrigger()
     {
-        Collider2D collider = this.GetComponent<Collider2D>();
         collider.enabled = true;
     }
 }
