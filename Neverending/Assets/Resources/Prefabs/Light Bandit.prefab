@@ -207,10 +207,10 @@ MonoBehaviour:
   weaponCollider: {fileID: 0}
   itemsCount: 1
   itemsToDrop: []
-  speed: 0
-  attack: 0
-  attackRange: 0
-  attackInterval: 0
+  speed: 0.8
+  attack: 15
+  attackRange: 1
+  attackInterval: 1
   spriteScale: 0
   patrolRange: 0
   healthBarOffset: 0

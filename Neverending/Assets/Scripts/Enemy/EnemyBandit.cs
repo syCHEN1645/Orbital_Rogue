@@ -18,10 +18,10 @@ public class EnemyBandit : Enemy
     
     protected override void InitialiseEnemy() {
         base.InitialiseEnemy();
-        speed = 0.7f;
-        attack = 15.0f;
-        attackRange = 1f;
-        attackInterval = 1.0f;
+        // speed = 0.7f;
+        // attack = 15.0f;
+        // attackRange = 1f;
+        // attackInterval = 1.0f;
         spriteScale = 1.0f;
         patrolRange = 5.0f;
         healthBarOffset = 1.4f;

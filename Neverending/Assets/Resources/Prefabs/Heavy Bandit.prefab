@@ -187,9 +187,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthBar: {fileID: 1066044080427908957}
-  maxHealth: 30
-  health: 30
-  defense: 5
+  maxHealth: 50
+  health: 50
+  defense: 20
   offset: 0.6
 --- !u!114 &4814092144883424763
 MonoBehaviour:
@@ -207,10 +207,10 @@ MonoBehaviour:
   weaponCollider: {fileID: 0}
   itemsCount: 1
   itemsToDrop: []
-  speed: 0
-  attack: 0
-  attackRange: 0
-  attackInterval: 0
+  speed: 0.7
+  attack: 18
+  attackRange: 1
+  attackInterval: 1
   spriteScale: 0
   patrolRange: 0
   healthBarOffset: 0

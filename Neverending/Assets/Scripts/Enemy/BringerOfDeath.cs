@@ -50,7 +50,7 @@ public class BringerOfDeath : Enemy
         base.InitialiseEnemy();
         speed = 2.0f;
         // attack is by default referring to melee attack if both melee and ranged attacks exist
-        attack = 15.0f;
+        attack = 30.0f;
         attackRange = 1.5f;
         attackInterval = 1.5f;
         
@@ -59,8 +59,8 @@ public class BringerOfDeath : Enemy
         healthBarOffset = 1.4f;
         stopMovingDistance = 0.5f;
         huntRange = 15.0f;
-        rangedAttackInterval = 15.0f;
-        rangedAttackDamage = 10.0f;
+        rangedAttackInterval = 12.0f;
+        rangedAttackDamage = 50.0f;
         rangedAttackRange = 5.0f;
 
         enemyHealth.SetDefense(30);
