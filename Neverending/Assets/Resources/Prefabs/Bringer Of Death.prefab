@@ -38,6 +38,7 @@ Transform:
   - {fileID: 8498387632267031006}
   - {fileID: 8116842919387813940}
   - {fileID: 5182776861911587084}
+  - {fileID: 2214630123153456909}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &1514997166350694870
@@ -142,6 +143,7 @@ MonoBehaviour:
   rangedAttackInterval: 0
   spellPrefab: {fileID: 5496785054971903007, guid: 38be711c04aa76e45b40d5ce3594fc85, type: 3}
   centre: {fileID: 2416712395219500968}
+  attackMarker: {fileID: 7675100585081466592}
 --- !u!114 &4666944144878237869
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -321,7 +323,7 @@ Transform:
   m_GameObject: {fileID: 2416712395219500968}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.541, y: -0.184, z: 0}
+  m_LocalPosition: {x: -0.363, y: -0.154, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -512,3 +514,34 @@ PolygonCollider2D:
       - {x: 0.33446896, y: -0.46996146}
       - {x: 0.6977391, y: -0.28725272}
   m_UseDelaunayMesh: 0
+--- !u!1 &7675100585081466592
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2214630123153456909}
+  m_Layer: 7
+  m_Name: AttackMarker
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2214630123153456909
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7675100585081466592}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1503263957560794474}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

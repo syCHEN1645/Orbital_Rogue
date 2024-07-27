@@ -10,12 +10,13 @@ public class EvilWizard : Enemy
     
     // an empty object indicating centre of boss
     public GameObject centre;
-    public GameObject AttackMarker;
+    public GameObject attackMarker;
     protected float centreOffset;
-    protected Vector3 previousVector;
+    // protected Vector3 previousVector;
     private bool canAttack = true;
     private bool dealingDamage = false;
     private bool damageCooldown = false;
+    private int facingDirection;
     private float workspace;
 
     protected override void InitialiseEnemy()
@@ -32,7 +33,7 @@ public class EvilWizard : Enemy
         spriteScale = 4.0f;
 
         healthBarOffset = 1.4f;
-        attackOffsetX = 0.1f;
+        attackOffsetX = 0.5f;
         attackOffsetY = 0.1f;
         huntRange = 15.0f;
 
@@ -41,7 +42,7 @@ public class EvilWizard : Enemy
         enemyHealth.SetMaxHealth(100);
         enemyHealth.HealthBarUpdate();
 
-        previousVector = GetUnitVectorTowardsPlayer();
+        //previousVector = GetUnitVectorTowardsPlayer();
         
     }
 
@@ -134,9 +135,9 @@ public class EvilWizard : Enemy
         if (!canAttack || isAttacking) {
             StopWalk();
         } else {
-            if (Mathf.Abs(player.transform.position.x - centre.transform.position.x) < attackOffsetX
-                    && Mathf.Abs(player.transform.position.y - centre.transform.position.y) < attackOffsetY) {
-                Debug.Log("Attack");
+            if (Mathf.Abs(player.transform.position.x - attackMarker.transform.position.x) < attackOffsetX
+                    && Mathf.Abs(player.transform.position.y - attackMarker.transform.position.y) < attackOffsetY) {
+                //Debug.Log("Boss Attack");
                 isAttacking = true;
                 LockMovement();
                 Attack();
@@ -212,9 +213,13 @@ public class EvilWizard : Enemy
             speed * Time.deltaTime * unitVector.x, 
             speed * Time.deltaTime * unitVector.y, 
             0);
-        
+
+        facingDirection = (int)Mathf.Sign(animator.transform.localScale.x);
+        var directionVector = player.transform.position - centre.transform.position;
+        // Debug.Log(directionVector.x);
+        // Debug.Log("facingDirection: " + facingDirection);
         // flip
-        if (unitVector.x * previousVector.x < -0.2) {
+        if (directionVector.x * facingDirection < -1) {
             // dir has changed
             Flip();
             // left / right
@@ -228,7 +233,7 @@ public class EvilWizard : Enemy
         // animation
         Walk();
         // current vector becomes previous vector
-        previousVector = unitVector;
+        // previousVector = directionVector;
     }
 
     private void Flip()
@@ -253,7 +258,7 @@ public class EvilWizard : Enemy
     protected Vector3 GetUnitVectorTowardsPlayer() 
     {
         // x = x, y = y, z = 0
-        return Vector3.Normalize(player.transform.position - centre.transform.position);
+        return Vector3.Normalize(player.transform.position - attackMarker.transform.position);
     }
 }
 

@@ -113,6 +113,7 @@ Transform:
   - {fileID: 9135833589913884958}
   - {fileID: 5040120625098565170}
   - {fileID: 5781719510841851693}
+  - {fileID: 8407134922704662558}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &8542052377754857354
@@ -259,6 +260,7 @@ MonoBehaviour:
   newStunTime: 0
   attackOffsetY: 0
   centre: {fileID: 2502818608145067638}
+  attackMarker: {fileID: 8822918704270183600}
 --- !u!70 &3861909109233015947
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -494,3 +496,34 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!1 &8822918704270183600
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8407134922704662558}
+  m_Layer: 7
+  m_Name: AttackMarker
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8407134922704662558
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8822918704270183600}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.883, y: 0.134, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2940752524156290060}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

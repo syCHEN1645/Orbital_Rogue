@@ -7201,17 +7201,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: Evil Wizard 2
       objectReference: {fileID: 0}
-    - target: {fileID: 2380780615382019110, guid: 8c4f8465e259c3145b959991e0ce1b9e, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2940752524156290060, guid: 8c4f8465e259c3145b959991e0ce1b9e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 14.799
+      value: 14.27
       objectReference: {fileID: 0}
     - target: {fileID: 2940752524156290060, guid: 8c4f8465e259c3145b959991e0ce1b9e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.956
+      value: 0.53
       objectReference: {fileID: 0}
     - target: {fileID: 2940752524156290060, guid: 8c4f8465e259c3145b959991e0ce1b9e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -7386,11 +7382,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3745800000498057891, guid: ad2b8a92bd15ed642bb38d7b186491c9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 25.76
+      value: 17.8
       objectReference: {fileID: 0}
     - target: {fileID: 3745800000498057891, guid: ad2b8a92bd15ed642bb38d7b186491c9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.04
+      value: 1.07
       objectReference: {fileID: 0}
     - target: {fileID: 3745800000498057891, guid: ad2b8a92bd15ed642bb38d7b186491c9, type: 3}
       propertyPath: m_LocalPosition.z
@@ -7768,7 +7764,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1773432263801435348, guid: ace4e22de7c7e46469ce1a0c6110cf01, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8355947447172959028, guid: ace4e22de7c7e46469ce1a0c6110cf01, type: 3}
       propertyPath: m_LocalPosition.x

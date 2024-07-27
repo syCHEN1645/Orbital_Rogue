@@ -12,17 +12,18 @@ public class BringerOfDeath : Enemy
     
     // an empty object indicating centre of boss
     public GameObject centre;
+    public GameObject attackMarker;
     private float spellPositionOffset;
     protected float centreOffset;
-    protected Vector3 previousVector;
+    // protected Vector3 previousVector;
     private bool canRangedAttack;
+    private int facingDirection;
     private float workspace;
 
     void Start()
     {
         InitialiseEnemy();
         // correct dir
-        // Flip();
         // Attack();
         // Cast();
         // Spell();
@@ -51,7 +52,7 @@ public class BringerOfDeath : Enemy
         speed = 2.0f;
         // attack is by default referring to melee attack if both melee and ranged attacks exist
         attack = 30.0f;
-        attackRange = 1.5f;
+        attackRange = 2f;
         attackInterval = 1.5f;
         
         spriteScale = 4.0f;
@@ -70,7 +71,7 @@ public class BringerOfDeath : Enemy
 
         canRangedAttack = true;
         spellPositionOffset = 1.24f;
-        previousVector = GetUnitVectorTowardsPlayer();
+        // previousVector = GetUnitVectorTowardsPlayer();
         
     }
 
@@ -120,7 +121,7 @@ public class BringerOfDeath : Enemy
             StopWalk();
         } else {
             // if not attacking, move towards Player
-            if (Vector2.Distance(player.transform.position, centre.transform.position) < stopMovingDistance) {
+            if (Vector2.Distance(player.transform.position, attackMarker.transform.position) < stopMovingDistance) {
                 Debug.Log("Attack");
                 StopWalk();
                 StartCoroutine(AttackPlayer());
@@ -136,18 +137,21 @@ public class BringerOfDeath : Enemy
     protected void MoveTowardsPlayer()
     {
         // vector pointing to Player
-        // Debug.Log("pos " + centre.transform.position.x);
-        // Debug.Log("local " + centre.transform.localPosition.x);
+        // Debug.Log("pos " + attackMarker.transform.position.x);
+        // Debug.Log("local " + attackMarker.transform.localPosition.x);
         var unitVector = GetUnitVectorTowardsPlayer();
         gameObject.transform.Translate(
             speed * Time.deltaTime * unitVector.x, 
             speed * Time.deltaTime * unitVector.y, 
             0);
-        
+        facingDirection = (int)Mathf.Sign(animator.transform.localScale.x);
+        var directionVector = player.transform.position - centre.transform.position;
+        //Debug.Log(directionVector.x);
+        //Debug.Log("facingDirection: " + facingDirection);
         // flip
-        if (unitVector.x * previousVector.x < -0.2) {
+        if (directionVector.x * facingDirection < -1) {
             // dir has changed
-            Debug.Log("Flip");
+            //Debug.Log("flip");
             Flip();
             // left / right
             if (unitVector.x > 0) {
@@ -160,11 +164,12 @@ public class BringerOfDeath : Enemy
         // animation
         Walk();
         // current vector becomes previous vector
-        previousVector = unitVector;
+        // previousVector = directionVector;
     }
 
     private void Flip()
     {
+        //facingDirection *= 1;
         animator.transform.localScale = new Vector3(
             -animator.transform.localScale.x, 
             animator.transform.localScale.y, 
@@ -173,18 +178,18 @@ public class BringerOfDeath : Enemy
         centreOffset = Mathf.Abs(gameObject.transform.position.x - centre.transform.position.x);
         if (animator.transform.localScale.x < 0) {
             // if now x < 0 i.e. face left, shift left
-            gameObject.transform.Translate(-2 * centreOffset, 0 , 0);
+            gameObject.transform.Translate(-2f * centreOffset, 0 , 0);
             //Debug.Log(-2 * centreOffset);
         } else {
             // if now x > 0 i.e. face right, shift right
-            gameObject.transform.Translate(2 * centreOffset, 0 , 0);
+            gameObject.transform.Translate(2f * centreOffset, 0 , 0);
             //Debug.Log(2 * centreOffset);
         }
     }
 
     protected Vector3 GetUnitVectorTowardsPlayer() {
         // x = x, y = y, z = 0
-        return Vector3.Normalize(player.transform.position - centre.transform.position);
+        return Vector3.Normalize(player.transform.position - attackMarker.transform.position);
     }
 
     protected IEnumerator RangedAttackPlayer() {

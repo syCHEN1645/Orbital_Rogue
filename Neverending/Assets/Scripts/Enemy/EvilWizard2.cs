@@ -9,9 +9,11 @@ public class EvilWizard2 : Enemy
     
     // an empty object indicating centre of boss
     public GameObject centre;
-    //private float spellPositionOffset;
+    public GameObject attackMarker;
+    // private float spellPositionOffset;
     protected float centreOffset;
-    protected Vector3 previousVector;
+    // protected Vector3 previousVector;
+    private int facingDirection;
     private float workspace;
 
     void Start()
@@ -31,7 +33,7 @@ public class EvilWizard2 : Enemy
             if (enemyHealth.IsDead()) {
                 Die();
             } else {
-                if (Vector2.Distance(player.transform.position, gameObject.transform.position) <= huntRange) {
+                if (Vector2.Distance(player.transform.position, centre.transform.position) <= huntRange) {
                     HuntPlayer();
                 } else {
                     // idle around
@@ -54,7 +56,7 @@ public class EvilWizard2 : Enemy
         spriteScale = 4.0f;
 
         healthBarOffset = 1.4f;
-        //attackOffsetX = 0.1f;
+        attackOffsetX = 0.5f;
         attackOffsetY = 1.5f;
         huntRange = 15.0f;
 
@@ -64,7 +66,7 @@ public class EvilWizard2 : Enemy
         enemyHealth.HealthBarUpdate();
 
         //canAttack = true;
-        previousVector = GetUnitVectorTowardsPlayer();
+        // previousVector = GetUnitVectorTowardsPlayer();
         
     }
 
@@ -112,10 +114,10 @@ public class EvilWizard2 : Enemy
             StopWalk();
         } else {
             // if not attacking, move towards Player
-            Debug.Log("attackrange: " + attackRange + "  offset: " + Mathf.Abs(player.transform.position.x - centre.transform.position.x));
+            // Debug.Log("attackrange: " + attackRange + "  offset: " + Mathf.Abs(player.transform.position.x - centre.transform.position.x));
             
-            if (Mathf.Abs(player.transform.position.x - centre.transform.position.x) < attackRange
-                    && Mathf.Abs(player.transform.position.y - centre.transform.position.y) < attackOffsetY) {
+            if (Mathf.Abs(player.transform.position.x - attackMarker.transform.position.x) < attackOffsetX
+                    && Mathf.Abs(player.transform.position.y - attackMarker.transform.position.y) < attackOffsetY) {
                 Debug.Log("Attack");
                 StopWalk();
                 StartCoroutine(AttackPlayer());
@@ -154,9 +156,12 @@ public class EvilWizard2 : Enemy
             speed * Time.deltaTime * unitVector.x, 
             speed * Time.deltaTime * unitVector.y, 
             0);
+
+        facingDirection = (int)Mathf.Sign(animator.transform.localScale.x);
+        var directionVector = player.transform.position - centre.transform.position;
         
         // flip
-        if (unitVector.x * previousVector.x < 0) {
+        if (directionVector.x * facingDirection < -1) {
             // dir has changed
             Flip();
             // left / right
@@ -170,7 +175,7 @@ public class EvilWizard2 : Enemy
         // animation
         Walk();
         // current vector becomes previous vector
-        previousVector = unitVector;
+        // previousVector = unitVector;
     }
 
     private void Flip()
@@ -194,7 +199,7 @@ public class EvilWizard2 : Enemy
 
     protected Vector3 GetUnitVectorTowardsPlayer() {
         // x = x, y = y, z = 0
-        return Vector3.Normalize(player.transform.position - centre.transform.position);
+        return Vector3.Normalize(player.transform.position - attackMarker.transform.position);
     }
 }
 
