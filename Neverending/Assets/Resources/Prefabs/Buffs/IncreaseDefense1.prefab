@@ -162,7 +162,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.38213158, y: 0.478357}
+  m_Size: {x: 0.3821316, y: 0.478357}
   m_EdgeRadius: 0
 --- !u!114 &126252464685787006
 MonoBehaviour:
@@ -180,7 +180,7 @@ MonoBehaviour:
   art: {fileID: 1102498498690107766}
   collide: {fileID: 0}
   traj: {fileID: 2854902736996544274}
-  defense: 20
+  defense: 1
 --- !u!1 &8264674967550410374
 GameObject:
   m_ObjectHideFlags: 0

@@ -10,6 +10,8 @@ public class IncreaseDefenseBuff : PermanentBuff
     {
         // Debug.Log("Defense + " + defense);
         // increase player's defense by "amt"
-        playerData.IncreaseDefense(defense);
+        if (playerData.GetDefense() <= 90) {
+            playerData.IncreaseDefense(defense);
+        }
     }
 }
