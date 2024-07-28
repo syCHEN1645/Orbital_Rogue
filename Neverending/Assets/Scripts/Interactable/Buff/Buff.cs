@@ -4,7 +4,7 @@ using UnityEngine;
 public abstract class Buff : MonoBehaviour
 {
     [SerializeField]
-    protected Player player;
+    protected GameObject player;
     [SerializeField]
     protected GameObject art;
     [SerializeField]
@@ -13,8 +13,8 @@ public abstract class Buff : MonoBehaviour
     [SerializeField]
     protected Trajectory traj;
     void Start() {
-        player = FindObjectOfType<Player>();
-        playerData = player.playerData;
+        player = GameObject.FindGameObjectWithTag("Player");
+        playerData = player.GetComponent<PlayerData>();
         collide = GetComponent<Collider2D>();
         traj = GetComponent<Trajectory>();
     }

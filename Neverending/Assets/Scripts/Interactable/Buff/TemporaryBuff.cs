@@ -8,7 +8,7 @@ public abstract class TemporaryBuff : Buff
 
     void OnTriggerEnter2D(Collider2D other) {
         if (other.gameObject.CompareTag("Player")) {
-            playerData = other.gameObject.GetComponent<PlayerData>();
+            // playerData = other.gameObject.GetComponent<PlayerData>();
             // Buff disappears upon collection
             art.SetActive(false);
             // Disable Collider2D
