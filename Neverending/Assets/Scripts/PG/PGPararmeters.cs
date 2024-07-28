@@ -24,8 +24,13 @@ public static class PGPararmeters
     public static GameObject[] itemList = {
         // Resources.Load("Prefabs/Buffs/AttackBoost1") as GameObject, 
         Resources.Load("Prefabs/Buffs/IncreaseDefense1") as GameObject, 
+        Resources.Load("Prefabs/Buffs/IncreaseDefense2") as GameObject, 
         Resources.Load("Prefabs/Buffs/HealthRecovery1") as GameObject,
-        Resources.Load("Prefabs/Buffs/AttackBoost1") as GameObject
+        Resources.Load("Prefabs/Buffs/HealthRecovery2") as GameObject,
+        Resources.Load("Prefabs/Buffs/AttackBoost1") as GameObject,
+        Resources.Load("Prefabs/Buffs/IncreaseAttack1") as GameObject,
+        Resources.Load("Prefabs/Buffs/IncreaseMaxHealth1") as GameObject,
+        Resources.Load("Prefabs/Buffs/DefenseBoost1") as GameObject
     };
 
     // list of weapons

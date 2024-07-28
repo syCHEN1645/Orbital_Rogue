@@ -115,8 +115,16 @@ public class PlayerData : MonoBehaviour
         Attack += amt;
     }
 
+    public void DefenseBoost(float amt) {
+        Defense += amt;
+    }
+
     public void RecoverAttack(float amt) {
         Attack -= amt;
+    }
+
+    public void RecoverDefense(float amt) {
+        Defense -= amt;
     }
 
     public void IncreaseDefense(float amt) {
