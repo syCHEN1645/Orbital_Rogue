@@ -8,7 +8,7 @@ public class EnemyBandit : Enemy
     protected bool stepFinished;
     // distance to travel before change dir, i.e. step length
     protected float stepLen;
-    private Collider2D collider;
+    private Collider2D banditCollider;
 
     [SerializeField]
     protected float patrolRange, healthBarOffset, huntRange;
@@ -20,7 +20,7 @@ public class EnemyBandit : Enemy
         base.InitialiseEnemy();
         // speed = 0.7f;
         // attack = 15.0f;
-        // attackRange = 1f;
+        attackRange = 0.8f;
         // attackInterval = 1.0f;
         spriteScale = 1.0f;
         patrolRange = 5.0f;
@@ -37,7 +37,7 @@ public class EnemyBandit : Enemy
     {
         InitialiseEnemy();      
         animator.transform.localScale = new Vector3(-spriteScale, spriteScale, spriteScale);
-        collider = GetComponent<Collider2D>();
+        banditCollider = GetComponent<Collider2D>();
     }
 
     // Update is called once per frame
@@ -118,12 +118,12 @@ public class EnemyBandit : Enemy
 
     public void ColliderOffset()
     {       
-        collider.offset = attackColliderOffset;
+        banditCollider.offset = attackColliderOffset;
     }
 
     public void RecoverColliderOffset()
     {
-        collider.offset = idleColliderOffset;
+        banditCollider.offset = idleColliderOffset;
     }
 
     public void LockMovement()
