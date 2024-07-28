@@ -9,7 +9,11 @@ public class RecoverHealthBuff : PermanentBuff
     protected override void BuffEffect(PlayerData playerData)
     {
         Debug.Log("Health + " + amt);
-        // increase player's health by "recovery"
+        // increase player's health by "amt"
         playerData.RecoverHealth(amt);
+        if (playerData.GetHealth() > playerData.GetMaxHealth()) {
+            // prevent overflow
+            playerData.SetHealth(playerData.GetMaxHealth());
+        }
     }
 }
