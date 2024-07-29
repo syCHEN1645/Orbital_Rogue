@@ -88,7 +88,7 @@ GameObject:
   - component: {fileID: 1714306994958012522}
   - component: {fileID: 3646734355679252560}
   - component: {fileID: 71673344965443890}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Simple Portal
   m_TagString: Interactable
   m_Icon: {fileID: 0}
@@ -220,6 +220,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8042e34e3a3b9e34baa9d3fda2758576, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  atVictoryPoint: 0
   indicator: {fileID: 3082215478447342631}
 --- !u!1 &7357793982986831143
 GameObject:
