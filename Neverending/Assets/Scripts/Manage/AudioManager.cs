@@ -3,10 +3,8 @@ using UnityEngine;
 public class AudioManager : MonoBehaviour
 {
     [Header("----------Audio Source----------")]
-    [SerializeField]
-    AudioSource bgmSource;
-    [SerializeField]
-    AudioSource effectSource;
+    public AudioSource bgmSource;
+    public AudioSource effectSource;
 
     [Header("----------Audio Clip----------")]
     public AudioClip theme;
@@ -17,10 +15,12 @@ public class AudioManager : MonoBehaviour
     public AudioClip clip5;
     public AudioClip clip6;
 
-    void Start() {
-        bgmSource.clip = theme;
-        bgmSource.Play();
-    }
+    // void Start() {
+    //     if (bgmSource.clip == null) {
+    //         bgmSource.clip = clip1;
+    //     }
+    //     bgmSource.Play();
+    // }
 
     public void PlayEffectSounds(AudioClip clip) {
         effectSource.PlayOneShot(clip);

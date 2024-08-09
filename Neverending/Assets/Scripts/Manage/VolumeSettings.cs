@@ -1,3 +1,5 @@
+using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
@@ -9,15 +11,19 @@ public class VolumeSettings : MonoBehaviour
     private AudioMixer mixer;
     [SerializeField]
     private Slider bgmSlider;
+    [SerializeField]
+    private TMP_Dropdown bgmDrop;
     // [SerializeField]
     // private Slider effectSlider;
     private string bgm = ManagerParameters.BGM;
     // private string effect = ManagerParameters.EFFECT;
     private float coe = ManagerParameters.COE;
+    private string theme = ManagerParameters.THEME;
 
     void Start() {
         Initialise();
     }
+
     public void Initialise () {
         if (PlayerPrefs.HasKey(bgm)) {
             LoadBGMVolume();
@@ -26,12 +32,56 @@ public class VolumeSettings : MonoBehaviour
             SetBGMVolume();
         }
 
+        if (PlayerPrefs.HasKey(theme)) {
+            LoadBGMTheme();
+        } else {
+            SetBGMTheme();
+        }
+
         // if (PlayerPrefs.HasKey(effect)) {
         //     LoadEffectVolume();
         // } else {
         //     SetEffectVolume();
         // }
     }
+
+    public void OptionChanged() {
+        PlayerPrefs.SetInt(theme, bgmDrop.value);
+        LoadBGMTheme();
+    }
+
+    private void SetBGMTheme()
+    {
+        // if no saved settings, set to 0
+        PlayerPrefs.SetInt(theme, 0);
+        bgmDrop.value = 0;
+        manager.bgmSource.Stop();
+        manager.bgmSource.Play();
+    }
+
+    private void LoadBGMTheme()
+    {
+        switch (PlayerPrefs.GetInt(theme)) {
+            case 0:
+                manager.bgmSource.clip = manager.clip1;
+                bgmDrop.value = 0;
+                break;
+            case 1:
+                manager.bgmSource.clip = manager.clip2;
+                bgmDrop.value = 1;
+                break;
+            case 2:
+                manager.bgmSource.clip = manager.clip3;
+                bgmDrop.value = 2;
+                break;
+            default:
+                Debug.Log("invalid theme number");
+                break;
+        }
+        manager.bgmSource.Stop();
+        manager.bgmSource.Play();
+    }
+
     public void SetBGMVolume() {
         // vol is the slider value, not actual volume
         float vol = bgmSlider.value;

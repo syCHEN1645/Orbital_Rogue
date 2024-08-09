@@ -8,6 +8,7 @@ public static class ManagerParameters
     public const string BGM = "bgm";
     public const string EFFECT = "effect";
     public const float COE = 20.0f;
+    public const string THEME = "theme";
 
     // Record related parameters
     // kill record
