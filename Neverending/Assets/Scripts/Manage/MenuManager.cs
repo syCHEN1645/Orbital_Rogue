@@ -1,17 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
     public Canvas settings;
+    public Canvas menu;
+    public GameObject stats;
     // Start is called before the first frame update
     void Start() 
     {
-        // make sure showing main menu and not showing settings page
-        gameObject.SetActive(true);
+        // make sure showing main menu and not showing settings page or record page
+        menu.gameObject.SetActive(true);
         settings.gameObject.SetActive(false);
+        stats.SetActive(false);
         // initialise saved settings
         settings.GetComponent<VolumeSettings>().Initialise();
     }
@@ -39,17 +43,18 @@ public class MenuManager : MonoBehaviour
     // press this button to go to settings page
     public void SettingsButton() {
         // main menu disappears
-        gameObject.SetActive(false);
+        menu.gameObject.SetActive(false);
         // settings page appears
         settings.gameObject.SetActive(true);
     }
 
     // press this button to go back from settings page to main menu
     public void BackButton() {
-        // settings page disappears
+        // settings page/record page disappears
         settings.gameObject.SetActive(false);
+        stats.SetActive(false);
         // main menu appears
-        gameObject.SetActive(true);
+        menu.gameObject.SetActive(true);
     }
 
     // public void TestFeatureButton() {
@@ -57,6 +62,8 @@ public class MenuManager : MonoBehaviour
     // }
 
     public void RecordButton() {
-        SceneManager.LoadScene(ManagerParameters.RECORD_SCENE);
+        menu.gameObject.SetActive(false);
+        settings.gameObject.SetActive(false);
+        stats.SetActive(true);
     }
 }
