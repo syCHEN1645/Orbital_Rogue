@@ -4,14 +4,15 @@ using UnityEngine.UI;
 
 public class VolumeSettings : MonoBehaviour
 {
+    public AudioManager manager;
     [SerializeField]
     private AudioMixer mixer;
     [SerializeField]
     private Slider bgmSlider;
-    [SerializeField]
-    private Slider effectSlider;
+    // [SerializeField]
+    // private Slider effectSlider;
     private string bgm = ManagerParameters.BGM;
-    private string effect = ManagerParameters.EFFECT;
+    // private string effect = ManagerParameters.EFFECT;
     private float coe = ManagerParameters.COE;
 
     void Start() {
@@ -25,11 +26,11 @@ public class VolumeSettings : MonoBehaviour
             SetBGMVolume();
         }
 
-        if (PlayerPrefs.HasKey(effect)) {
-            LoadEffectVolume();
-        } else {
-            SetEffectVolume();
-        }
+        // if (PlayerPrefs.HasKey(effect)) {
+        //     LoadEffectVolume();
+        // } else {
+        //     SetEffectVolume();
+        // }
     }
     public void SetBGMVolume() {
         // vol is the slider value, not actual volume
@@ -47,20 +48,20 @@ public class VolumeSettings : MonoBehaviour
         SetBGMVolume();
     }
 
-    public void SetEffectVolume() {
-        // vol is the slider value, not the actual volume
-        float vol = effectSlider.value;
-        // music val changes logarithmically, slider val changes linearly
-        mixer.SetFloat(effect, Mathf.Log10(vol) * coe);
+    // public void SetEffectVolume() {
+    //     // vol is the slider value, not the actual volume
+    //     float vol = effectSlider.value;
+    //     // music val changes logarithmically, slider val changes linearly
+    //     mixer.SetFloat(effect, Mathf.Log10(vol) * coe);
 
-        // PlayerPrefs Class: saves player's preferences
-        // store vol (slider value) into PlayerPrefs
-        PlayerPrefs.SetFloat(effect, vol);
-    }
+    //     // PlayerPrefs Class: saves player's preferences
+    //     // store vol (slider value) into PlayerPrefs
+    //     PlayerPrefs.SetFloat(effect, vol);
+    // }
 
-    private void LoadEffectVolume() {
-        // get vol (slider value) from PlayerPrefs
-        effectSlider.value = PlayerPrefs.GetFloat(effect);
-        SetEffectVolume();
-    }
+    // private void LoadEffectVolume() {
+    //     // get vol (slider value) from PlayerPrefs
+    //     effectSlider.value = PlayerPrefs.GetFloat(effect);
+    //     SetEffectVolume();
+    // }
 }
