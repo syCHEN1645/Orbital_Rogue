@@ -59,6 +59,7 @@ public static class ManagerParameters
     public const string GAME_SCENE = "PG Test Scene";
     public const string TRANSITION_SCENE = "Transition Scene";
     public const string END_SCENE = "End Scene";
+    public const string RECORD_SCENE = "Record Scene";
 
     // Level related parameters
     public const int MAX_LEVEL = 3;

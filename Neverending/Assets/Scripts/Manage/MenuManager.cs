@@ -52,7 +52,11 @@ public class MenuManager : MonoBehaviour
         gameObject.SetActive(true);
     }
 
-    public void TestFeatureButton() {
-        SceneManager.LoadScene("Game");
+    // public void TestFeatureButton() {
+    //     SceneManager.LoadScene("Game");
+    // }
+
+    public void RecordButton() {
+        SceneManager.LoadScene(ManagerParameters.RECORD_SCENE);
     }
 }
