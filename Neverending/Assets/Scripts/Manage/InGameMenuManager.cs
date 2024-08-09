@@ -23,6 +23,7 @@ public class InGameMenuManager : MonoBehaviour
         resumeButton.gameObject.SetActive(false);
         // settings button is shown only if the game is paused
         settingsButton.gameObject.SetActive(false);
+        // this is to activate volume settings
         settingsWindow.gameObject.SetActive(false);
     }
 

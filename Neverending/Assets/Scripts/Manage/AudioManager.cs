@@ -17,7 +17,7 @@ public class AudioManager : MonoBehaviour
 
     // void Start() {
     //     if (bgmSource.clip == null) {
-    //         bgmSource.clip = clip1;
+    //         // 
     //     }
     //     bgmSource.Play();
     // }
