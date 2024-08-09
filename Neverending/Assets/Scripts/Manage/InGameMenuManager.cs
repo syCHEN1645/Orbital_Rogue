@@ -18,13 +18,21 @@ public class InGameMenuManager : MonoBehaviour
     private GameObject settingsWindow;
     void Start()
     {
-        // make sure showing pause button and hiding resume button
-        pauseButton.gameObject.SetActive(true);
-        resumeButton.gameObject.SetActive(false);
-        // settings button is shown only if the game is paused
-        settingsButton.gameObject.SetActive(false);
+        // // make sure showing pause button and hiding resume button
+        // pauseButton.gameObject.SetActive(true);
+        // resumeButton.gameObject.SetActive(false);
+        // // settings button is shown only if the game is paused
+        // settingsButton.gameObject.SetActive(false);
+        // // this is to activate volume settings
+        // settingsWindow.gameObject.SetActive(false);
+        
+        // show settings window upon starting the level
         // this is to activate volume settings
-        settingsWindow.gameObject.SetActive(false);
+        Time.timeScale = 0;
+        pauseButton.gameObject.SetActive(false);
+        resumeButton.gameObject.SetActive(true);
+        settingsButton.gameObject.SetActive(true);
+        settingsWindow.gameObject.SetActive(true);
     }
 
     // press this button to go to main menu
