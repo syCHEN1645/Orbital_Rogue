@@ -8,7 +8,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Menu Scene.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Game.unity
     guid: 0b936a4f5d4686b48a18167b9289373e
   - enabled: 1
@@ -17,7 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Transition Scene.unity
     guid: 3bcb6cca6a2007044b998e94381afc81
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Record Scene.unity
     guid: 4c44c4789f721214ea96b28c4b7f9106
   - enabled: 1
